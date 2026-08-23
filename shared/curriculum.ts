@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 6 hours",
+  duration: "Approx. 7 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -787,12 +787,168 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "crop-and-variety-selection",
+      index: 6,
+      title: "Crop and variety selection",
+      eyebrow: "Module 06",
+      description:
+        "Select crops and varieties with farmers by balancing crop family, rotation, local adaptability, market preference, and practical production knowledge.",
+      lessons: [
+        {
+          id: "use-crop-families-to-plan-rotation",
+          title: "Use crop families to plan rotation",
+          duration: "22 min",
+          kicker: "Choose with the crop system in mind",
+          summary:
+            "Recognise major vegetable families and use the family relationship to plan field layout, crop rotation, and pest, disease, and nutrient-risk management.",
+          outcomes: [
+            "Identify major vegetable families and representative crops relevant to field planning.",
+            "Explain why family groupings matter when designing a rotation.",
+            "Use crop family knowledge to anticipate management and production risks before planting.",
+          ],
+          sections: [
+            {
+              heading: "Know why the crop choice matters",
+              body:
+                "Choosing what to plant affects field layout, day-to-day crop management, pest and disease strategy, and the rotation plan. Vegetable crops can offer several crop cycles per year because many have short production periods, but they can also respond quickly to environmental stress and pest or disease attack. Diversifying crops and varieties is therefore a production-risk decision as well as a market decision.",
+              callout:
+                "Crop and variety selection should fit both the market opportunity and the risk profile of the field and season.",
+            },
+            {
+              heading: "Read the vegetable family",
+              body:
+                "Vegetable families group crops with related characteristics. The source document highlights Solanaceae, including eggplant, hot pepper, sweet pepper, and tomato; Brassicaceae, including cauliflower, broccoli, pechay, kale, and cabbage; Fabaceae, including cowpea, mungbean, snap bean, and yardlong bean; Cucurbitaceae, including squash, cucumber, bitter gourd, bottle gourd, ridge gourd, melon, and watermelon; Poaceae, including sweet corn and rice; and Malvaceae, represented by okra. It also lists Amaryllidaceae such as onion, garlic, leek, and chive; Asteraceae such as lettuce; Caricaceae such as papaya; Convolvulaceae such as sweet potato and kangkong; Amaranthaceae such as amaranth, beet, chard, and spinach; Apiaceae such as carrot, coriander, parsley, and celery; and Lamiaceae such as mint, basil, rosemary, and thyme.",
+            },
+            {
+              heading: "Rotate to interrupt problems",
+              body:
+                "Family knowledge is important for crop rotation because repeated related crops can contribute to the build-up of pests and diseases and to nutrient depletion. A rotation plan should therefore record the current and previous crop families, not only individual crop names. Use this information with field history, nearby crop pressure, and the next intended crop to decide whether a different family offers a better risk-managed option.",
+            },
+          ],
+        },
+        {
+          id: "match-variety-to-market-and-site",
+          title: "Match variety to market and site",
+          duration: "28 min",
+          kicker: "Adaptability and acceptability",
+          summary:
+            "Develop crop-and-variety selection criteria that combine buyer preference, field conditions, season, elevation, farmer experience, and reliable local product information.",
+          outcomes: [
+            "Define buyer-facing variety characteristics such as size, shape, colour, flavour, firmness, and nutritional quality.",
+            "Assess variety adaptability against local environmental conditions, elevation, and growing-season temperatures.",
+            "Involve farmers and local information sources in a documented crop-and-variety decision.",
+          ],
+          sections: [
+            {
+              heading: "Start with market acceptability",
+              body:
+                "Varieties must have characteristics desired by buyers. These can include size, shape, colour, flavour, firmness, and nutritional quality. Visit vegetable markets and speak with vendors and collectors to understand which characteristics are accepted, which products are consistently available, and where a market opportunity may exist. A high-yielding variety that buyers do not accept may not deliver the expected return.",
+              callout:
+                "A variety decision should make the buyer’s preferred product characteristics explicit before seed is purchased.",
+            },
+            {
+              heading: "Test adaptability against the local site and season",
+              body:
+                "A variety must perform under the range of environmental conditions expected in the assignment area and during the growing season. Review last year’s meteorological conditions and current forecasts or seasonal provisions. Elevation is also a useful planning clue: the document groups vegetables as low elevation below 300 metres above sea level, mid elevation from above 300 to 1,000 metres, and high elevation from above 1,000 to below 2,500 metres. Some crops, including tomato, cucumber, sweet pepper, lettuce, cabbage, cauliflower, and broccoli, are identified as variety dependent, so local seed-supplier information is essential.",
+            },
+            {
+              heading: "Decide with the farmer and reliable information",
+              body:
+                "Discuss crop and variety options with the farmer when starting a demonstration or production cycle. Check what has worked for the key farmer and farmers nearby, what crops the farmer already knows, and what information they can access. Advisors should also make sure they can obtain reliable product and technical information from local vendors, agro-dealers, sales teams, or local seed suppliers. The final choice should document market preference, adaptability, crop-family implications, farmer capability, and the evidence used.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "crop-and-variety-selection-check",
+        title: "Crop and variety selection check",
+        description:
+          "Apply crop-family, rotation, adaptability, market-preference, and farmer-participation criteria to a defensible crop-and-variety decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "cv-1",
+            prompt:
+              "Why should an advisor identify the vegetable family of crops already grown in a field before recommending the next crop?",
+            options: [
+              { id: "a", label: "Related crops can contribute to pest, disease, and nutrient-risk build-up when repeatedly grown in the same sequence." },
+              { id: "b", label: "All crop families require identical management." },
+              { id: "c", label: "Family identity replaces the need to review field history." },
+              { id: "d", label: "Crop rotation is unnecessary for vegetables with short cycles." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct:
+                "Correct. Family-aware rotation helps interrupt related pest and disease pressure and avoids repeatedly placing similar nutrient demands on the field.",
+              incorrect:
+                "Crop family matters because repeated related crops can contribute to pest, disease, and nutrient-risk build-up in a rotation.",
+            },
+          },
+          {
+            id: "cv-2",
+            prompt:
+              "Which criterion is most directly linked to market acceptability when selecting a variety?",
+            options: [
+              { id: "a", label: "The buyer’s desired size, shape, colour, flavour, firmness, and nutritional quality." },
+              { id: "b", label: "Only the number of crops grown in the prior year." },
+              { id: "c", label: "Whether a variety has the longest maturity period." },
+              { id: "d", label: "The colour of the seed packet." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct:
+                "Correct. Market acceptability is about the product characteristics that vendors, collectors, and buyers prefer.",
+              incorrect:
+                "Use direct market information to identify the size, shape, colour, flavour, firmness, and nutritional characteristics buyers want.",
+            },
+          },
+          {
+            id: "cv-3",
+            prompt:
+              "What is the most appropriate way to assess whether a tomato variety is suitable for a specific assignment area?",
+            options: [
+              { id: "a", label: "Assume all tomato varieties are equally adapted at every elevation and season." },
+              { id: "b", label: "Compare the variety’s traits with local elevation, expected temperatures, seasonal conditions, and reliable supplier information." },
+              { id: "c", label: "Select the variety only because it has a familiar name." },
+              { id: "d", label: "Ignore meteorological history if market demand is high." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. Adaptability requires a fit between the variety, site elevation, growing-season environment, and locally reliable information.",
+              incorrect:
+                "Assess variety adaptability against elevation, expected temperatures, seasonal conditions, and local technical or supplier evidence.",
+            },
+          },
+          {
+            id: "cv-4",
+            prompt:
+              "Which decision process best involves the farmer in crop and variety selection?",
+            options: [
+              { id: "a", label: "Choose the variety alone, then ask the farmer to purchase the inputs." },
+              { id: "b", label: "Discuss what has worked locally, farmer experience and preferences, buyer needs, and verified product information before recording the choice." },
+              { id: "c", label: "Use only an advisor’s prior preference, regardless of local context." },
+              { id: "d", label: "Avoid talking with nearby farmers because their experience is not relevant." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. A defensible selection process combines farmer knowledge, nearby experience, buyer requirements, and reliable local information.",
+              incorrect:
+                "Involve the farmer and document the evidence: local experience, market requirements, site adaptability, and verified product information.",
+            },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, and cost-based decision-making to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, and crop-and-variety selection to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -902,6 +1058,24 @@ export const cropAdvisorCourse: CourseDefinition = {
             "Correct. Cost planning supports a decision cycle: revise a weak financial plan before committing resources and retain the record for review.",
           incorrect:
             "When estimated benefits do not justify costs, revise the plan or strategy and reassess rather than changing assumptions or omitting real expenses.",
+        },
+      },
+      {
+        id: "final-7",
+        prompt:
+          "A farmer wants a vegetable variety with strong local demand, but the proposed cultivar has uncertain performance in the area’s expected season and elevation. What is the most defensible advisory response?",
+        options: [
+          { id: "a", label: "Plant it immediately because market demand is the only selection criterion." },
+          { id: "b", label: "Select a variety only from the crop family name without checking field or market evidence." },
+          { id: "c", label: "Review buyer requirements, local seasonal and elevation conditions, reliable supplier information, and farmer experience before agreeing a suitable variety." },
+          { id: "d", label: "Avoid involving the farmer because crop choice is a technical decision only." },
+        ],
+        correctOptionId: "c",
+        feedback: {
+          correct:
+            "Correct. Variety selection requires a documented fit among market preference, environmental adaptability, reliable information, and farmer knowledge.",
+          incorrect:
+            "A defensible decision balances market acceptability with local adaptability, verified product information, and farmer participation.",
         },
       },
     ],

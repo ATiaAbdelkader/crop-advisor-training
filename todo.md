@@ -21,3 +21,6 @@
 - [x] Document that the sandbox-only localhost capture may reconnect during restarts, while the public managed-preview HMR route is the supported learner-facing path and passed the hot-update check.
 - [x] Replace the unconditional secure HMR target with an origin-aware configuration and prove hot updates on both managed-preview and local development paths without new WebSocket errors.
 - [x] Analyse REVISED_ECN-002.Cost Planning and Decision Making in Vegetable Production and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_ECN-003.Choosing a Crop and a Variety to Plant and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Restore stable Vite preview updates for learner routes after detecting failed HMR reloads and transient managed-preview WebSocket errors during validation.
+- [x] Eliminate the remaining managed-preview Vite WebSocket failure and verify a fresh learner-route preview without reload or connection errors.

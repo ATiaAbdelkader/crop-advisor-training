@@ -6,17 +6,14 @@ import path from "path";
 import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 
-export async function setupVite(app: Express, server: Server) {
+export async function setupVite(app: Express, _server: Server) {
   const serverOptions = {
     middlewareMode: true,
-    // The managed preview is HTTPS behind a reverse proxy. Tell the Vite client
-    // to reconnect through that public secure WebSocket endpoint rather than
-    // falling back to its local development target.
-    hmr: {
-      server,
-      protocol: "wss" as const,
-      clientPort: 443,
-    },
+    // This application runs Vite as middleware behind a managed HTTPS proxy.
+    // Disable HMR's separate WebSocket client so server restarts do not surface
+    // transient connection errors in the learner preview; a normal page refresh
+    // still serves the current transformed application.
+    hmr: false,
     allowedHosts: true as const,
   };
 
@@ -25,33 +22,6 @@ export async function setupVite(app: Express, server: Server) {
     configFile: false,
     server: serverOptions,
     appType: "custom",
-  });
-
-  // Vite compiles a single client script, while this app is viewed both through
-  // the managed HTTPS proxy and through the local HTTP server. Keep the public
-  // proxy target for external previews, but make the generated client select a
-  // secure default-port WebSocket only when its own page is HTTPS.
-  app.use("/@vite/client", async (req, res, next) => {
-    if (req.method !== "GET") return next();
-
-    try {
-      const transformed = await vite.transformRequest("/@vite/client");
-      if (!transformed?.code) return next();
-
-      const clientCode = transformed.code
-        .replace(
-          'const socketProtocol = "wss" || (importMetaUrl.protocol === "https:" ? "wss" : "ws");',
-          'const socketProtocol = importMetaUrl.protocol === "https:" ? "wss" : "ws";'
-        )
-        .replace(
-          "const hmrPort = 443;",
-          'const hmrPort = importMetaUrl.protocol === "https:" ? 443 : importMetaUrl.port;'
-        );
-
-      res.status(200).set({ "Content-Type": "application/javascript" }).end(clientCode);
-    } catch {
-      next();
-    }
   });
 
   app.use(vite.middlewares);

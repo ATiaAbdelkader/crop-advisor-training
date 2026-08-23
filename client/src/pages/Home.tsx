@@ -72,7 +72,7 @@ export default function Home() {
                 <Button
                   onClick={continueLearning}
                   disabled={overviewQuery.isLoading || enroll.isPending}
-                  aria-label="Start or continue the Crop Advisor Foundations pathway"
+                  aria-label="Start or continue the Crop Advisor Foundations course pathway"
                   className="rounded-full bg-[#eef3e9] px-5 text-xs font-bold text-[#1c4639] shadow-none transition-transform duration-200 hover:bg-white active:scale-[.97]"
                 >
                   {action?.type === "enroll" || !overview ? "Begin the pathway" : action?.title}

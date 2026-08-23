@@ -89,6 +89,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the crop-and-variety module after the cost-planning module", () => {
+    const selectionModule = cropAdvisorCourse.modules.find(
+      module => module.id === "crop-and-variety-selection"
+    );
+    const previousModule = cropAdvisorCourse.modules[4];
+
+    expect(selectionModule?.lessons).toHaveLength(2);
+    expect(selectionModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(selectionModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
