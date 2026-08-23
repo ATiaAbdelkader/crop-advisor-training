@@ -3097,12 +3097,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "water-management",
+      index: 23,
+      title: "Water management",
+      eyebrow: "Module 23",
+      description:
+        "Manage the water-air balance in the root zone by reading soil moisture, crop and climate demand, irrigation-system performance, seasonal risk, drainage, and water quality.",
+      lessons: [
+        {
+          id: "read-water-air-balance-and-crop-demand",
+          title: "Read water-air balance and crop demand",
+          duration: "38 min",
+          kicker: "Irrigate the root zone, not a schedule alone",
+          summary:
+            "Assess the water and air available to roots, recognise over- and under-watering stress, read soil moisture by feel and appearance, and adjust water decisions for soil, crop, growth stage, and weather.",
+          outcomes: [
+            "Explain why a stable water-air balance supports healthy root function, nutrient uptake, and crop growth.",
+            "Recognise field signs of overwatering and underwatering before stress escalates into yield loss.",
+            "Use soil texture, structure, moisture feel, crop stage, and climatic demand to guide irrigation frequency and quantity.",
+          ],
+          sections: [
+            {
+              heading: "Manage water and air together in the root zone",
+              body:
+                "The source defines water management as managing the ratio of water and air in each soil type to suit the cultivated crop. Root or absorbent hairs need a consistently moist environment, but fluctuations in water-air ratio create stress. Healthy roots are white or nearly white, fresh looking, and earthy smelling; unhealthy roots may become orange, brownish, or blackish. Roots need contact with soil particles, air, and water. They use oxygen to produce energy for nutrient uptake, while dissolved nutrients move to roots in water. Water also supports photosynthesis, mineral transport, turgidity, and temperature regulation. The advisor’s task is therefore to preserve a functioning root zone rather than simply maximise the amount of water applied.",
+              callout:
+                "A water decision is also an air decision: observe roots, soil condition, and crop response before increasing irrigation.",
+            },
+            {
+              heading: "Recognise both oversupply and undersupply stress",
+              body:
+                "Overwatering and fluctuating supply can contribute to cracking in crops such as tomato and bitter gourd, a more favourable environment for fungal and bacterial diseases, dark root or lower-stem colour, wet black patches, lower-leaf drop, yellowing, wilting, and nutrient leaching. Underwatering can cause leaf wilting and death, distorted young leaves, burned mature-leaf tips, blossom-end rot in tomato and pepper, deformed cucumber and bean fruit, flower abortion, stunting, greater pest vulnerability, and reduced yield. Diagnose the pattern rather than reacting to one symptom alone: wilting can occur under both root-zone saturation and water shortage, so root condition, soil feel, drainage, recent weather, and irrigation history matter.",
+            },
+            {
+              heading: "Measure moisture against soil, crop, stage, and climate",
+              body:
+                "The source presents an auger or sampling pipe and a feel-or-appearance method for assessing soil moisture. A ball is formed by squeezing soil firmly in the hand; a ribbon is formed by pressing soil between thumb and forefinger. Sandy soils are porous, allow quick water flow, and hold less water; loams retain moisture while remaining relatively porous; clay soils hold more water but absorb and release it slowly. Apply less water but more frequently in sandy soil to reduce leaching and waste. Soil structure also matters: granular and aggregated structures allow faster downward movement than platey or massive structures. Adjust water for critical crop stages such as flowering, fruit set, and fruit development, and for evaporative demand, which rises in sunny, hot, dry, and windy conditions and falls in cooler, cloudier, humid, and less windy conditions.",
+            },
+          ],
+        },
+        {
+          id: "design-efficient-seasonal-water-management",
+          title: "Design efficient seasonal water management",
+          duration: "36 min",
+          kicker: "Conserve, apply, drain, and verify water",
+          summary:
+            "Choose practical irrigation and water-saving practices, manage dry- and wet-season risks, and verify that the water source itself supports safe vegetable production.",
+          outcomes: [
+            "Compare irrigation-system performance and apply water deeply enough to meet the root-zone need without repeated partial saturation.",
+            "Integrate mulch, catchment, contouring, low-input irrigation, raised beds, and open drainage into seasonal water planning.",
+            "Screen irrigation water for unsafe wastewater use, salinity, pH, chlorine, and harmful contaminants before using it on vegetables.",
+          ],
+          sections: [
+            {
+              heading: "Choose a practical system and wet the intended root zone",
+              body:
+                "Watering-system choice depends on efficiency and practicality in the local area. The source gives indicative efficiency ranges for common approaches and presents drip irrigation as highly efficient. Its rule of thumb is that irrigation run longer at lower pressure can penetrate more deeply and saturate the soil better. It contrasts one fully saturating irrigation per day with two irrigations that leave soil unsaturated. Apply this principle with the soil-moisture evidence from the field: the aim is to meet the crop’s root-zone demand while avoiding leaching, runoff, saturation, and unnecessary pumping or labour. Mulch, planting system, protected production, drought-tolerant varieties, and grafted seedlings can further influence the water-management plan.",
+              callout:
+                "Irrigation frequency alone is not a performance measure. Check whether water reaches the relevant root zone and whether the soil retains the needed balance of water and air.",
+            },
+            {
+              heading: "Conserve water in dry periods and drain it in wet periods",
+              body:
+                "For dry-season conservation, the source recommends mulch and cover crops to conserve soil moisture; small pits, micro-catchments, ponds, dams, and rainwater catchment to retain water; contour farming to slow downslope flow; and low-input systems such as drip irrigation. It frames these through the three Rs: recharge, retention, and reuse. Reuse requires safeguards: water from handwashing and drainage systems should be stored and treated before disposal or reuse, while untreated wastewater must not be used for irrigation or fertigation. In wet seasons, use raised beds, drainage canals, and clear open channels with barriers removed so groundwater and surface water do not rise into the root zone. These measures protect root aeration and reduce the waterlogging stress that drives root damage and wilt.",
+            },
+            {
+              heading: "Verify water quality before irrigation",
+              body:
+                "Water quantity does not compensate for poor water quality. The source identifies water pH, salinity, chlorine, and harmful substances as practical checks. It states an ideal pH range for vegetable growth of 6.0 to 7.5, warns that high salt levels can salinise soil, gives an electrical-conductivity reference below 0.8 dS/m, and notes that high chlorine can damage roots and reduce yield. Water containing harmful substances such as heavy metals or pesticides should not be used for vegetable production. Treat these values as screening indicators within local testing and advisory systems; combine them with source protection, safe storage, and the explicit prohibition on using untreated wastewater for irrigation or fertigation.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "water-management-check",
+        title: "Water-management check",
+        description:
+          "Apply root-zone water-air balance, soil-moisture assessment, crop demand, irrigation, seasonal water management, drainage, and water-quality principles to a field decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "wm-1",
+            prompt: "Why must water management protect both soil water and soil air around crop roots?",
+            options: [
+              { id: "a", label: "Roots need contact with soil particles, water, and air; oxygen supports energy for nutrient uptake while water carries dissolved nutrients to roots." },
+              { id: "b", label: "Roots function best when all pore space is permanently filled with water." },
+              { id: "c", label: "Only leaf colour matters; root condition and soil air do not affect water decisions." },
+              { id: "d", label: "Water management only concerns field appearance, not crop growth or nutrient movement." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links root health with soil-particle contact, water, air, oxygen-driven energy, and dissolved nutrient uptake.", incorrect: "Water and air must be balanced. Roots require oxygen for energy and water for nutrient transport, so saturated or dry soil can both disrupt growth." },
+          },
+          {
+            id: "wm-2",
+            prompt: "What irrigation pattern best follows the source guidance for a sandy soil?",
+            options: [
+              { id: "a", label: "Apply smaller quantities more frequently than on loam or clay, while checking root-zone moisture to avoid leaching and waste." },
+              { id: "b", label: "Apply the largest possible volume infrequently because sandy soil stores water for a long time." },
+              { id: "c", label: "Irrigate exactly like clay without checking texture, drainage, or moisture feel." },
+              { id: "d", label: "Avoid irrigation because sandy soil always contains enough air." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Sandy soil is porous and drains quickly, so the source recommends less water per event but more frequent application to reduce leaching and waste.", incorrect: "Sandy soils hold less water and transmit it quickly. Use smaller, more frequent applications and verify the root-zone result rather than copying a clay-soil schedule." },
+          },
+          {
+            id: "wm-3",
+            prompt: "Which seasonal water-management plan is most defensible?",
+            options: [
+              { id: "a", label: "Use mulch, cover crops, catchment, contouring, and low-input irrigation for dry periods; use raised beds, clear drainage canals, and open channels for excess water in wet periods." },
+              { id: "b", label: "Use the same water plan in dry and wet periods, regardless of rainfall, drainage, or root-zone saturation." },
+              { id: "c", label: "Block drainage canals in the rainy season so water remains close to crop roots." },
+              { id: "d", label: "Use untreated wastewater whenever dry-season irrigation water is scarce." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source combines water conservation and capture for dry periods with raised beds and maintained drainage for wet periods, while prohibiting untreated wastewater use.", incorrect: "Seasonal planning changes with the water risk: conserve and retain water during dry periods, but protect roots from excess water through raised beds and open drainage in wet periods." },
+          },
+          {
+            id: "wm-4",
+            prompt: "Which water-source decision best follows the source water-quality guidance?",
+            options: [
+              { id: "a", label: "Use screened water with suitable pH and low salinity, chlorine, and harmful contaminants; do not use untreated wastewater for irrigation or fertigation." },
+              { id: "b", label: "Use any wastewater directly because the crop will filter harmful substances before harvest." },
+              { id: "c", label: "Ignore water salinity and contaminants if the irrigation system is efficient." },
+              { id: "d", label: "Add more irrigation water to dilute any water-quality problem without testing or source control." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Water must be screened for pH, salinity, chlorine, and harmful contaminants, and untreated wastewater is not acceptable for irrigation or fertigation.", incorrect: "Efficient application cannot make unsafe water safe. Screen water quality and keep untreated wastewater out of vegetable irrigation and fertigation." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, and transplanting to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, and water management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3485,6 +3617,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan links field readiness, moisture, hardening, low-stress timing, careful removal, correct depth, cotyledon protection, and safe nutrient placement.",
           incorrect: "Successful transplanting is a system: prepare field and seedling, harden and water, choose lower heat, protect the root block and cotyledons, prevent fertiliser burn, and monitor the early stand.",
+        },
+      },
+      {
+        id: "final-24",
+        prompt:
+          "A sandy vegetable field receives long, heavy irrigation events, then dries out before flowering. In the rainy period, drainage canals are blocked, and the grower proposes untreated wastewater as a backup source. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Use smaller, more frequent applications guided by root-zone moisture; protect the root-zone water-air balance; conserve water with mulch and catchment; open drainage canals in wet periods; and exclude untreated wastewater from irrigation." },
+          { id: "b", label: "Continue heavy infrequent irrigation on sand, leave drainage blocked, and use untreated wastewater whenever irrigation is scarce." },
+          { id: "c", label: "Ignore soil texture, critical flowering demand, waterlogging, and water quality because all crops use water in the same way." },
+          { id: "d", label: "Apply more water in every season without checking moisture, root health, climate, soil type, or drainage." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan integrates sandy-soil scheduling, root-zone balance, dry-season conservation, wet-season drainage, and water-quality safeguards.",
+          incorrect: "A defensible water plan adapts to soil, crop stage, moisture, climate, and season while protecting roots from saturation, reducing leaching, maintaining drainage, and excluding untreated wastewater.",
         },
       },
     ],
