@@ -369,6 +369,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the seedling-production planning module after protected cellular seedlings", () => {
+    const planningModule = cropAdvisorCourse.modules.find(
+      module => module.id === "seedling-production-planning"
+    );
+    const previousModule = cropAdvisorCourse.modules[18];
+
+    expect(planningModule?.lessons).toHaveLength(2);
+    expect(planningModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(planningModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

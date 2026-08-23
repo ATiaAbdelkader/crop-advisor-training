@@ -2703,12 +2703,142 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "seedling-production-planning",
+      index: 20,
+      title: "Seedling production planning",
+      eyebrow: "Module 20",
+      description:
+        "Plan seedling production from seed quality and crop layout through media, nursery method, and nutrient choices so the right number of healthy transplants is ready at the right time.",
+      lessons: [
+        {
+          id: "select-quality-seed-and-compute-seedling-needs",
+          title: "Select quality seed and compute seedling needs",
+          duration: "35 min",
+          kicker: "Turn crop layout into a traceable seed order",
+          summary:
+            "Read seed quality and packaging information, distinguish hybrid from open-pollinated seed, protect storage and seed-treatment integrity, and calculate the seedling quantity required for a planned area.",
+          outcomes: [
+            "Use label, source, origin, production date, storage condition, and germination information to assess seed quality before purchase or sowing.",
+            "Compare hybrid and open-pollinated seed characteristics against the production objective and management context.",
+            "Calculate target plant population and seed quantity from area, layout, crop-guide information, seed count, and a realistic replacement allowance.",
+          ],
+          sections: [
+            {
+              heading: "Read seed quality before the nursery starts",
+              body:
+                "Good-quality seed supports high yield and produce quality only when crop management is also sound. The source directs learners to examine label instructions, seed packaging, storage condition, seed source and origin, and production date. Common packaging information includes purity, disease-protection information, germination percentage, company name, batch number, production and best-before dates, coating-film information, crop, variety, and seed type. Record the details that affect the production decision rather than treating seed as an interchangeable input. Storage and packaging determine viability; the source advises cool, dry, aerated storage and warns that moist conditions can cause seed to germinate in storage.",
+              callout:
+                "Seed quality is verified from traceable information and storage history—not inferred from a packet’s appearance alone.",
+            },
+            {
+              heading: "Match seed type and treatment to the plan",
+              body:
+                "The source describes hybrid seed as produced through a plant-breeding programme and associates it with improved pest and disease resistance or abiotic-stress tolerance, earlier maturity, higher yield, and more uniform fruit. Open-pollinated seed is described as arising through natural selection and, in the source comparison, as generally less resistant, later maturing, lower yielding, and less uniform. Use this as a planning comparison, then connect the seed choice to target market, crop calendar, risk, budget, and the grower’s system. Film coating can protect stored seed and early seedlings, but coated seed should not be soaked before sowing because its protective film can be lost. Read the packet label and avoid duplicating pesticide treatments where the seed treatment already addresses the relevant risk.",
+            },
+            {
+              heading: "Compute seed needs from the actual layout",
+              body:
+                "Start with the intended crop area, planting geometry, and a crop guide when one is available. Convert area and spacing to the planned number of plants, then add a realistic allowance for replacement seedlings; the source exercise uses a 30 percent allowance. Finally, convert the required seedling count into grams or packets using the stated seeds-per-gram information. When a crop guide is unavailable, calculate the area occupied per plant from row width and in-row spacing, including practical layout features such as paths, canals, or crawling areas. This prevents seed orders that ignore the real field layout or leave no capacity for replanting after establishment losses.",
+            },
+          ],
+        },
+        {
+          id: "plan-media-method-and-nutrition-for-the-nursery",
+          title: "Plan media, method, and nutrition for the nursery",
+          duration: "31 min",
+          kicker: "Design the production system before sowing",
+          summary:
+            "Select media, seedling-production method, nutrient source, and nursery protection as a connected system for healthy, disease-free seedlings.",
+          outcomes: [
+            "Specify growing-medium properties and locally available materials that support healthy seedling roots.",
+            "Select a tray, leaf-pot, or improved-ground-nursery approach that fits the scale and production plan.",
+            "Compare nutrient-source choices and use a protected nursery design to reduce avoidable seedling stress and contamination.",
+          ],
+          sections: [
+            {
+              heading: "Choose media for root function, not convenience alone",
+              body:
+                "The source defines a good medium by high porosity, useful water-holding capacity, freedom from soil-borne disease, good nutrient content, and freedom from salinity and acidity. It lists decomposed manure, decomposed or carbonised rice hull, peat moss, garden soil, commercial media, coco coir dust, guano, and vermicast as possible materials. Select a medium by the functions it must perform: retain sufficient water, allow air into the root zone, supply or hold nutrients, and avoid pathogens or chemical stresses. A nutrient-rich medium such as one incorporating vermicompost can reduce the need for later fertiliser use, but it does not eliminate the need to monitor seedling condition.",
+            },
+            {
+              heading: "Select the method that matches the nursery plan",
+              body:
+                "The source identifies seed trays, leaf pots, and an improved ground nursery as seedling-production methods. Compare them against planned scale, availability of materials, labour, handling and transport requirements, root protection, and the planned transplant date. The choice should also align with the crop’s seed size, growing period, expected field conditions, and the amount of media and protection the nursery can reliably provide. Use the method as part of a wider production plan that links seed quality, target plant number, growing medium, crop calendar, and field establishment rather than as an isolated equipment decision.",
+            },
+            {
+              heading: "Build nutrient and protection choices into the nursery plan",
+              body:
+                "The source groups seedling nutrient sources into organic and inorganic options, listing examples such as fish amino acid, vermi tea, activated microbial solution, balanced mineral fertiliser, calcium nitrate, calcium ammonium nitrate, and urea. The appropriate source must fit the medium, crop stage, observed vigour, and local product guidance; do not turn the category list into a universal application recipe. A nursery house helps maintain healthy, disease-free seedlings by protecting them from soil contamination, rain, intense sunlight, insect pests, and diseases. Combine media, method, nutrient strategy, and nursery protection early in planning so later care is a managed programme rather than a response to preventable stress.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "seedling-production-planning-check",
+        title: "Seedling-production planning check",
+        description:
+          "Apply seed-quality, seedling-quantity, media, method, nutrient, and nursery-protection principles to plan a dependable seedling-production cycle.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "sp-1",
+            prompt: "Which information set gives the strongest basis for checking the quality and traceability of a seed lot before planning nursery production?",
+            options: [
+              { id: "a", label: "Label instructions, source and origin, storage condition, purity and germination information, batch, production and best-before dates, and crop-variety details." },
+              { id: "b", label: "Packet colour and the assumption that all seed of one crop is identical." },
+              { id: "c", label: "Seedling height after transplanting only." },
+              { id: "d", label: "A decision to ignore coating, germination, source, and storage information." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source identifies traceable label, package, source, origin, production, germination, and storage information as the basis for a quality seed decision.", incorrect: "Use the seed label and package to check source, origin, batch, dates, purity, germination, treatment, crop, variety, type, and storage context before nursery planning." },
+          },
+          {
+            id: "sp-2",
+            prompt: "How should a grower handle film-coated seed before sowing?",
+            options: [
+              { id: "a", label: "Read the packet label and sow without soaking so the protective coating is not removed; avoid duplicating a treatment already present on the seed." },
+              { id: "b", label: "Soak it until the coating washes off so germination becomes faster." },
+              { id: "c", label: "Ignore coating information and automatically add the same pesticide treatment." },
+              { id: "d", label: "Store it in a moist sealed environment until it begins germinating." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source warns that soaking can make a protective film ineffective and directs growers to read the seed packet before adding treatment.", incorrect: "Film-coated seed should not be soaked. Preserve the treatment, read the label, and avoid duplicating pesticide application already addressed by the seed coating." },
+          },
+          {
+            id: "sp-3",
+            prompt: "A calculated field layout requires 665 tomato plants. Using the source exercise’s 30% allowance for replanting, what seedling quantity should be planned?",
+            options: [
+              { id: "a", label: "About 865 seedlings." },
+              { id: "b", label: "Exactly 665 seedlings, with no allowance." },
+              { id: "c", label: "About 220 seedlings." },
+              { id: "d", label: "About 1,330 seedlings." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. 665 plants plus a 30% allowance is approximately 865 seedlings, as shown in the source example.", incorrect: "Plan for replanting. The source exercise adds 30% to 665 target plants, giving approximately 865 seedlings before converting that quantity to seed weight or packet needs." },
+          },
+          {
+            id: "sp-4",
+            prompt: "Which nursery plan best connects media, method, nutrients, and protection?",
+            options: [
+              { id: "a", label: "Use a porous, water-holding, nutrient-supplying, disease-free, non-saline medium; choose trays, leaf pots, or an improved ground nursery for the plan; match nutrients to crop condition and product guidance; and use a nursery house for contamination, weather, and pest protection." },
+              { id: "b", label: "Use any compact, saline medium, choose a method without considering scale, and treat nutrient and protection decisions as unrelated." },
+              { id: "c", label: "Rely on fertiliser alone, regardless of medium quality, nursery method, or protection from rain and insects." },
+              { id: "d", label: "Remove nursery protection so rain, intense sun, contamination, and insects can harden seedlings immediately." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source presents medium function, production method, nutrient-source choice, and nursery protection as linked planning decisions.", incorrect: "A dependable nursery begins with media quality and a suitable method, then integrates nutrients with crop condition and protects seedlings from contamination, damaging weather, pests, and disease." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, and protected cellular seedling production to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, and seedling-production planning to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3044,6 +3174,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan links media quality, careful cellular sowing, appropriate pre-germination, protected emergence, hardening, and multi-signal readiness assessment.",
           incorrect: "Cellular seedling quality depends on a balanced moist sterilised medium, uncompressed cells, correctly handled emerging radicles, protected germination, hardening, and root-shoot quality checks.",
+        },
+      },
+      {
+        id: "final-21",
+        prompt:
+          "A grower orders seed without checking lot information, soaks coated seed, counts only the target plants without a replacement allowance, and fills a nursery with saline compacted medium. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Verify label, source, storage, germination, and treatment information; preserve coated-seed treatment; compute layout-based seedling needs with an allowance; and select porous, water-holding, disease-free, non-saline media with an appropriate protected nursery method." },
+          { id: "b", label: "Use packet appearance, soak every seed, order exactly one seedling per intended plant, and rely on fertiliser to correct unsuitable medium." },
+          { id: "c", label: "Ignore crop layout, expected losses, media quality, seed treatment, and nursery protection until field problems occur." },
+          { id: "d", label: "Choose all inputs only by lowest price, regardless of crop target, seed traceability, planting geometry, and root conditions." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response links traceable seed quality, correct treatment handling, realistic field-layout calculation, media function, method choice, and protection before production begins.",
+          incorrect: "Defensible seedling planning integrates seed verification, coated-seed handling, field-layout and replacement calculations, appropriate media, a suitable method, and protected nursery conditions.",
         },
       },
     ],
