@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 2.3  
+**Version:** 2.4  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through sixteen required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through seventeen required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -30,6 +30,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **14. Acid soil causes and management** | Diagnosing acidification, confirming pH, and selecting liming and complementary practices responsibly. | Explain acidification; identify acid-soil characteristics and causes; measure pH appropriately; select liming and supporting management; avoid overliming. | **Diagnose acid soil and pH risk**; **Measure and manage acid soil** | Both lessons complete and module check passed at 80% or above. |
 | **15. How to promote soil health** | Assessing soil as a living system and selecting practical practices that build resilience, function, and yield. | Integrate physical, chemical, and biological testing; improve structure, biology, water, and nutrients; use rotation, cover, organic matter, and crop-soil fit. | **Test the living soil system**; **Build soil health with living practices** | Both lessons complete and module check passed at 80% or above. |
 | **16. Collect soil samples for soil testing** | Producing a representative, traceable soil sample that supports defensible fertiliser and crop-management decisions. | Explain testing purpose and timing; define homogeneous areas; collect and prepare representative composites; record crop and management context for interpretation. | **Plan a representative soil sample**; **Collect, prepare, and label the composite** | Both lessons complete and module check passed at 80% or above. |
+| **17. Nursery for vegetable production** | Recognising high-quality seedlings and building a practical protected nursery for reliable establishment. | Assess root-system quality and stress; improve spacing, soil, drainage, and light; protect seedlings from rain, intense sun, contamination, and insect entry; decide transplant readiness. | **Recognise a high-quality seedling**; **Build and protect an improved nursery** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -69,6 +70,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Build soil health with living practices** | Build soil health through reduced disturbance, rotation, mulch, green manure, cover crops, organic matter, residue management, erosion control, IPM, and local crop fit. | Feed the soil, protect the surface, and use an intentional living-practice system instead of isolated inputs. |
 | **Plan a representative soil sample** | Use soil-test purpose, timing, farm maps, homogeneous sampling areas, clean materials, and atypical-area avoidance to design a representative sample. | The laboratory can quantify only the soil received; sample the field area for which the decision will be made. |
 | **Collect, prepare, and label the composite** | Gather distributed subsamples at a recorded depth, make a clean composite, air-dry and prepare it appropriately, then retain crop and management history on the label. | A soil-test result becomes decision-ready only when its zone, depth, and field context remain traceable. |
+| **Recognise a high-quality seedling** | Compare root quality, plant form, uniformity, stress, and transplant response between strong and weak nursery batches. | A green canopy does not compensate for a weak root system; assess readiness as a root-and-shoot question. |
+| **Build and protect an improved nursery** | Combine spacing, line sowing, soil preparation, raised drainage, light, rain-sun protection, and intact insect exclusion in a practical nursery design. | Protection must reduce stress while retaining good light, drainage, and clean barriers to pest entry. |
 
 ## Assessment package
 
@@ -92,7 +95,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Acid soil causes and management check** | Acidification, ammonium-fertiliser risks, pH confirmation, liming-material ENV, and complementary acid-soil management. | 4 | 80% | Unlocks the integrated final assessment only after both Module 14 lessons are complete and the check is passed. |
 | **Soil health promotion check** | Integrated soil-health testing, visual assessment, rotation, cover, and organic-matter functions. | 4 | 80% | Unlocks the integrated final assessment only after both Module 15 lessons are complete and the check is passed. |
 | **Soil-sample collection check** | Soil-test purpose and timing, homogeneous sampling areas, representative depth and composite sampling, clean preparation, and traceable sample labels. | 4 | 80% | Unlocks the integrated final assessment only after both Module 16 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, and representative soil-sample collection. | 17 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Vegetable-nursery quality check** | Root-system value, traditional seedling stress, improved-nursery practices, and intact insect exclusion with delayed-virus-risk awareness. | 4 | 80% | Unlocks the integrated final assessment only after both Module 17 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, and protected vegetable-nursery management. | 18 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -122,6 +126,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Manage a confirmed acid-soil field** | Low pH, high ammonium-fertiliser use, and declining nutrient response. | Integrates confirmed pH, soil context, liming-material properties, fertiliser choice, residues, organic matter, and ground cover. | Use a measured, balanced acid-soil plan rather than a universal or excessive lime rate. |
 | **Rebuild a declining soil-health system** | Bare soil, declining infiltration, low organic matter, disease pressure, and a poor crop-soil fit. | Integrates physical, chemical, and biological evidence with rotation, cover, organic matter, reduced disturbance, erosion control, and local crop adaptation. | Build the living soil system rather than responding with one isolated input or practice. |
 | **Collect a representative soil sample** | A farm with localised fertiliser or compost sources plus sloping and flat areas with different crop history. | Separates homogeneous decision areas, avoids atypical points, standardises depth, makes clean composites, and retains crop-management context. | Design the sample around the decision area, then protect its integrity and traceability through laboratory submission. |
+| **Protect vegetable-transplant quality** | Weak roots, elongated stems, uneven vigour, and gaps in an insect-net barrier. | Selects linked improvements for seedling space, growing medium, drainage, sun-rain protection, insect exclusion, and transplant readiness. | Improve the nursery environment and verify seedling quality before field establishment rather than transplanting stress into the crop. |
 
 ## Certificate template specification
 
@@ -207,13 +212,17 @@ flowchart TD
   AX --> AY[Module 16 lessons and assessment]
   AY --> AZ{Module 16 passed?}
   AZ -- No --> AY
-  AZ -- Yes --> BA[Unlock integrated final assessment]
-  BA --> BB{Final score at least 80%?}
-  BB -- No --> BC[Feedback and final retake available]
-  BC --> BA
-  BB -- Yes --> BD[Create credential record]
-  BD --> BE[Notify platform owner]
-  BE --> BF[Enable certificate download]
+  AZ -- Yes --> BA[Unlock Module 17]
+  BA --> BB[Module 17 lessons and assessment]
+  BB --> BC{Module 17 passed?}
+  BC -- No --> BB
+  BC -- Yes --> BD[Unlock integrated final assessment]
+  BD --> BE{Final score at least 80%?}
+  BE -- No --> BF[Feedback and final retake available]
+  BF --> BD
+  BE -- Yes --> BG[Create credential record]
+  BG --> BH[Notify platform owner]
+  BH --> BI[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -261,6 +270,8 @@ Module 15 is derived from the supplied *How to Promote Soil Health* training doc
 
 Module 16 is derived from the supplied *How to Collect Soil Sample for Soil Test* training document. Its instructional structure retains soil-test purpose, pre-cropping timing and monitoring frequency, farm mapping, homogeneous sampling areas, material preparation, atypical-area avoidance, distributed subsampling, depth selection, composite preparation, air-drying, clean handling, and label context. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [13]
 
+Module 17 is derived from the supplied *Nursery for Vegetable Production* training document. Its instructional structure retains root-system benefits, high-quality versus traditional seedling cues, nursery spacing and line sowing, soil preparation and sterilisation, raised beds and drainage, light and rain management, nursery-house contamination protection, and intact insect-net exclusion with delayed virus-effect awareness. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [14]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -288,3 +299,5 @@ Module 16 is derived from the supplied *How to Collect Soil Sample for Soil Test
 [12] [REVISED_ENV-009. *How to Promote Soil Health* (user-supplied training document, 29 March 2023)](file:///home/ubuntu/upload/REVISED_ENV-009.HowtoPromoteSoilHealth_03292023.pdf)
 
 [13] [REVISED_ENV-010. *How to Collect Soil Sample for Soil Test* (user-supplied training document, 30 March 2023)](file:///home/ubuntu/upload/REVISED_ENV-010.HowtoCollectSoilSampleforSoilTest_30032023.pdf)
+
+[14] [REVISED_PRD-001. *Nursery for Vegetable Production* (user-supplied training document, 25 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-001.NurseryforVegetableProduction_05252023.pdf)

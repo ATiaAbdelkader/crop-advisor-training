@@ -309,6 +309,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the vegetable-nursery module after soil-sample collection", () => {
+    const nurseryModule = cropAdvisorCourse.modules.find(
+      module => module.id === "nursery-for-vegetable-production"
+    );
+    const previousModule = cropAdvisorCourse.modules[15];
+
+    expect(nurseryModule?.lessons).toHaveLength(2);
+    expect(nurseryModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(nurseryModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

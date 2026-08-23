@@ -2307,12 +2307,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "nursery-for-vegetable-production",
+      index: 17,
+      title: "Nursery for vegetable production",
+      eyebrow: "Module 17",
+      description:
+        "Recognise high-quality vegetable seedlings and design a protected, practical nursery that supports healthy roots, uniform growth, and successful field establishment.",
+      lessons: [
+        {
+          id: "recognise-a-high-quality-seedling",
+          title: "Recognise a high-quality seedling",
+          duration: "27 min",
+          kicker: "Root quality drives field establishment",
+          summary:
+            "Use rooting, plant form, uniformity, and transplant response to distinguish a seedling that is ready for the field from one carrying nursery stress.",
+          outcomes: [
+            "Describe the root-system benefits associated with high-quality vegetable seedlings.",
+            "Recognise traditional-nursery signals that increase seedling stress and transplant shock.",
+            "Explain why early seedling quality influences establishment, flowering, and fruiting after transplanting.",
+          ],
+          sections: [
+            {
+              heading: "Start with the root system",
+              body:
+                "A good rooting system supports healthy seedlings, efficient seed use, uniform and vigorous plants, and lower seedling losses. The source connects healthy roots with reduced transplant shock and better field establishment. In practice, a nursery decision should ask whether roots can establish quickly after transplanting, rather than judging a tray only by leaf colour or height. Seedling quality is an early production decision because weak roots can carry stress into the field before a crop-management response is possible.",
+              callout:
+                "Assess the seedling as a root-and-shoot system: a green canopy does not compensate for a weak root system.",
+            },
+            {
+              heading: "Recognise stress in a traditional seedling nursery",
+              body:
+                "The source describes traditional seedlings as having underdeveloped or weak roots, longer stems that indicate greater stress, and a high susceptibility to transplanting shock. These features make the crop less predictable at field establishment. Compare seedlings within a batch as well as against an expected standard: variation in vigour, stem form, and rooting can signal that spacing, light, moisture, drainage, soil condition, or pest protection needs improvement before transplanting begins.",
+            },
+            {
+              heading: "Connect nursery quality with the crop calendar",
+              body:
+                "High-quality seedlings can establish rapidly in the field, which the source associates with earlier flowering and fruiting than seedlings from a ground nursery. This benefit comes through faster establishment, not through skipping crop, field, or weather assessment. Use the nursery review to decide whether a batch is ready, needs more protection or recovery time, or should be rejected. A uniform, vigorous batch also makes subsequent irrigation, nutrition, scouting, and crop-stage decisions easier to time consistently.",
+            },
+          ],
+        },
+        {
+          id: "build-and-protect-an-improved-nursery",
+          title: "Build and protect an improved nursery",
+          duration: "33 min",
+          kicker: "Improve the environment before the crop is transplanted",
+          summary:
+            "Apply practical nursery improvements for spacing, soil condition, water movement, light, rain, and insect exclusion so seedlings enter the field healthy and protected.",
+          outcomes: [
+            "Select practical nursery improvements for spacing, sowing, soil condition, raised beds, drainage, and light exposure.",
+            "Explain how a nursery house and intact insect net reduce seedling contamination and pest-disease risk.",
+            "Design a simple protected nursery that balances sun, rain, airflow, drainage, and exclusion of insect entry points.",
+          ],
+          sections: [
+            {
+              heading: "Improve the nursery bed and growing space",
+              body:
+                "The source identifies wider spacing, planting in rows or line sowing, soil preparation, soil sterilisation, raised beds, drainage, rain cover where appropriate, insect netting, and a nursery area with good light exposure as practical improvements. These measures work together. Wider, orderly spacing supports more even growth and inspection; prepared and sterilised soil reduces avoidable risk; raised beds and drainage protect the root zone; and good light exposure supports strong seedlings. Select a package that fits the nursery site rather than relying on one improvement alone.",
+              callout:
+                "A protected nursery still needs good light and drainage. Protection should control stress, not create a dark or waterlogged growing environment.",
+            },
+            {
+              heading: "Use the nursery house as a health barrier",
+              body:
+                "A nursery house is important because it helps produce healthy, disease-free seedlings. The source identifies protection from soil contamination, rain, and excessively intense sunlight, as well as protection from insect pests and diseases using nets around the nursery. Inspect the enclosure for openings: an insect net only functions as an exclusion barrier when insects cannot enter through gaps. Treat the structure, net, entrance practice, and clean growing environment as linked controls rather than as separate features.",
+            },
+            {
+              heading: "Design a simple, practical protected nursery",
+              body:
+                "The source describes a strong, simple, practical, and effective nursery as protected from strong sun heat and strong rain, positioned openly without shade, and raised above the ground. It also notes that insect nets protect against sucking insects, while virus effects may take three to six weeks to become visible and seedlings can be infected before transplanting. Do not treat a symptom-free tray as proof that exclusion failed nowhere. Maintain intact netting and a clean, protected environment from the earliest seedling stage, then continue inspection before field planting.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "nursery-for-vegetable-production-check",
+        title: "Vegetable-nursery quality check",
+        description:
+          "Apply root-quality, nursery-improvement, and seedling-protection principles to a practical vegetable-transplant decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "nv-1",
+            prompt: "Which outcome is most closely associated with a good seedling root system in the source?",
+            options: [
+              { id: "a", label: "Better field establishment, reduced transplant shock, and fewer seedling losses." },
+              { id: "b", label: "A guarantee that seedlings need no water after transplanting." },
+              { id: "c", label: "Longer stems and greater susceptibility to transplant shock." },
+              { id: "d", label: "A reason to avoid all nursery inspection." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links healthy roots with reduced stress, less loss, and stronger establishment in the field.", incorrect: "A good root system supports healthy, uniform seedlings, reduces transplant shock and losses, and improves field establishment." },
+          },
+          {
+            id: "nv-2",
+            prompt: "Which combination best signals a stressed traditional seedling nursery according to the source?",
+            options: [
+              { id: "a", label: "Underdeveloped roots, elongated stems, and high vulnerability to transplant shock." },
+              { id: "b", label: "Healthy roots, uniform vigour, and rapid establishment." },
+              { id: "c", label: "Raised beds, good drainage, and an intact insect net." },
+              { id: "d", label: "An open, well-lit site with protection from strong rain." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source describes weak roots, longer stressed stems, and transplant-shock susceptibility in traditional seedlings.", incorrect: "The source contrasts traditional seedlings with weak roots, longer stressed stems, and high transplant-shock risk against high-quality seedlings." },
+          },
+          {
+            id: "nv-3",
+            prompt: "Which nursery-improvement package best follows the source guidance?",
+            options: [
+              { id: "a", label: "Use wider spacing and line sowing with prepared or sterilised soil, raised beds, drainage, appropriate rain cover, good light, and insect netting." },
+              { id: "b", label: "Crowd seedlings in an unprepared flat area so they compete for light." },
+              { id: "c", label: "Place the nursery in permanent deep shade and remove drainage to hold water." },
+              { id: "d", label: "Use a single fertiliser input instead of managing spacing, soil, water, and pest entry." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The improved nursery combines practical controls for growing space, soil condition, drainage, protection, and light.", incorrect: "The source presents nursery improvement as a combined package: spacing, orderly sowing, soil preparation, raised drainage, appropriate cover, good light, and insect exclusion." },
+          },
+          {
+            id: "nv-4",
+            prompt: "Why must insect netting around a nursery have no openings, even when seedlings do not yet show virus symptoms?",
+            options: [
+              { id: "a", label: "Nets exclude sucking insects, and virus effects may take three to six weeks to appear after seedlings have already been infected." },
+              { id: "b", label: "Openings improve disease protection by increasing insect access." },
+              { id: "c", label: "Virus symptoms always appear immediately, so net integrity does not matter before transplanting." },
+              { id: "d", label: "Netting replaces the need for light, drainage, and nursery hygiene." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links intact netting with protection from sucking insects and cautions that virus effects can be delayed.", incorrect: "Intact netting prevents insect entry; delayed virus symptoms mean seedlings can be infected before visible signs appear or before transplanting." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, and representative soil-sample collection to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, and protected vegetable-nursery management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2600,6 +2732,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan protects representativeness by separating decision areas, avoiding localised bias, standardising depth, using composites, and preserving the management context for interpretation.",
           incorrect: "A usable soil test begins with a mapped decision area, representative distributed subsamples at a recorded depth, clean preparation, and a label that preserves crop and management history.",
+        },
+      },
+      {
+        id: "final-18",
+        prompt:
+          "A vegetable-transplant batch has weak roots, elongated stems, uneven vigour, and a nursery enclosure with gaps in its insect net. Which advisor plan is most defensible?",
+        options: [
+          { id: "a", label: "Improve spacing and line sowing, prepare and protect the growing medium, use raised drainage and appropriate rain-sun protection, repair the net barrier, and reassess root quality before transplanting." },
+          { id: "b", label: "Transplant immediately because canopy colour is the only seedling-quality measure." },
+          { id: "c", label: "Leave gaps in the net, crowd seedlings further, and rely on visible virus symptoms to identify all problems." },
+          { id: "d", label: "Move the nursery into permanent dense shade and remove drainage so stress cannot occur." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan addresses root quality, orderly nursery conditions, moisture management, protective structure, insect exclusion, and a readiness check before field establishment.",
+          incorrect: "Weak roots, elongation, uneven vigour, and gaps in exclusion require a linked nursery-improvement plan before transplanting—not a rushed field move or a single input.",
         },
       },
     ],
