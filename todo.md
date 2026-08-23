@@ -39,3 +39,4 @@
 - [x] Analyse REVISED_PRD-003.Protective and Cellular Seedling Production and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-004.Seedling Production Planning and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-005.Field Preparation, Mulching, Trellising and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_PRD-006.Transplanting and integrate its source-grounded module, assessments, progression, and design documentation.

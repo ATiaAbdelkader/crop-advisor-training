@@ -2965,12 +2965,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "transplanting",
+      index: 22,
+      title: "Transplanting",
+      eyebrow: "Module 22",
+      description:
+        "Prepare seedlings and field conditions, select the right transplanting stage and time, establish plants without root or heat stress, and recover missing stands quickly.",
+      lessons: [
+        {
+          id: "prepare-seedlings-and-field-for-transplanting",
+          title: "Prepare seedlings and field for transplanting",
+          duration: "33 min",
+          kicker: "Make the transition planned rather than stressful",
+          summary:
+            "Coordinate mulch, trellis, nutrient placement, moisture, hardening, plant stage, and field readiness so transplanting begins with the highest possible establishment potential.",
+          outcomes: [
+            "Confirm that mulch, trellising, planting holes, nutrient placement, and seedling moisture are ready before transplanting begins.",
+            "Use gradual hardening and plant-stage cues to reduce transplant shock and avoid over-mature transplants.",
+            "Schedule transplanting around heat exposure, seedling condition, field readiness, and crop-specific development.",
+          ],
+          sections: [
+            {
+              heading: "Complete the field-readiness checks before moving seedlings",
+              body:
+                "Transplanting is the transfer of seedlings from a seedbed, tray, or leaf cell to their permanent field position. The source directs the grower to verify that plastic or organic mulch is properly placed, that trellises are installed before transplanting where needed, and that planting holes are ready. If basal fertiliser was not incorporated before mulch installation, prepare holes and apply the appropriate nutrient inputs three to five days before transplanting rather than placing roots directly against fertiliser. Water seedlings in the morning of transplanting and water the field bed to reduce stress. In hot weather, recheck tray moisture one to two hours before planting and water if the root block has dried so it remains intact when removed from the tray.",
+              callout:
+                "The field, planting hole, mulch, nutrient placement, support system, and seedling root block must all be ready at the same time; otherwise transplanting transfers avoidable stress into the crop.",
+            },
+            {
+              heading: "Harden seedlings before they face field conditions",
+              body:
+                "Hardening reduces transplant shock, supports faster field establishment, and promotes vigorous growth. The source recommends gradually removing shade or moving seedlings into full sun, beginning with short exposure and increasing it over following days, while protecting seedlings at midday during the first days and gradually reducing both amount and frequency of watering. It gives an indicative start of three to five days before transplanting for cucurbits and brassicas and five to seven days for solanaceous crops. Hardening is deliberate adaptation, not neglect: it prepares seedlings raised under protected conditions for heat, wind, light, and water conditions in the field.",
+            },
+            {
+              heading: "Use development stage and field readiness to decide timing",
+              body:
+                "The source identifies a practical stage of two true leaves for cucurbits and four true leaves for solanaceous crops, distinguishing these from cotyledons or seed leaves. It also gives crop and season examples for time from sowing, including a longer window for onions and a warning that over-mature onion seedlings can reduce bulb size or delay bulbing. Use true-leaf stage, root quality, crop type, and field readiness together rather than waiting for one calendar number. Do not delay until seedlings are overgrown: the source associates overgrown transplants with lower yield, greater disease susceptibility, and a shorter productive life. Plan sowing from the date the field can genuinely receive the crop.",
+            },
+          ],
+        },
+        {
+          id: "establish-transplants-and-protect-the-stand",
+          title: "Establish transplants and protect the stand",
+          duration: "34 min",
+          kicker: "Protect roots, cotyledons, and early recovery",
+          summary:
+            "Use careful tray handling, correct depth and timing, water and heat protection, nutrient safeguards, monitoring, and timely replacement to secure a uniform field stand.",
+          outcomes: [
+            "Remove tray-grown seedlings without breaking the root block, stem, cotyledons, or field planting sequence.",
+            "Plant at the correct level and time of day, then protect and water seedlings to reduce heat and transplant shock.",
+            "Monitor, replant, and address common transplanting problems without causing fertiliser or pest damage.",
+          ],
+          sections: [
+            {
+              heading: "Move each seedling from tray to bed with the root block intact",
+              body:
+                "The source sequence begins by watering both seedlings and bed in the morning. Gently remove a seedling by pushing upward from the bottom of the tray while supporting the stem, then set it at the same soil level as its root block—neither too deep nor too shallow. Do not cover the cotyledons because they provide stored food for the young plant. Water after transplanting, inspect the field daily, and quickly replace seedlings that wilt or die so missing stands do not remain unmanaged. This sequence protects the root block, prevents avoidable stem injury, preserves early seedling reserves, and keeps the planting population close to the plan.",
+              callout:
+                "Correct depth is a root-and-shoot decision: protect the root block with soil contact while keeping cotyledons above the soil surface.",
+            },
+            {
+              heading: "Choose low-stress planting conditions and moderate heat",
+              body:
+                "Transplant in the afternoon or during lower sun exposure. The source cautions against morning transplanting when severe sun is expected, especially for seedlings that are not well hardened or have been raised in an open field, because high temperatures increase shock, poor recovery, and missing stands. After planting, use soil, rice straw, or a palm leaf around the plant where appropriate to reduce heat stress radiating from the bed or reflected by plastic mulch. These actions complement hardening; they do not replace the need for a properly prepared, watered seedling and field.",
+            },
+            {
+              heading: "Prevent nutrient burn and act on common early problems",
+              body:
+                "Do not allow roots to touch inorganic fertiliser. When nutrients have not been incorporated before mulch installation, recover them with soil before placing the transplant. The source notes that a root-zone nutrient drench may be used where a basal fertiliser was not placed or shock is more likely, but it warns that fertiliser solution should not touch leaves because it can cause burning or necrosis; rinse affected leaves with water if splashing occurs and follow locally appropriate, labelled nutrient guidance. Common problems include planting too shallowly, using seedlings that are too old, and early pest damage such as crickets. Daily inspection, correct planting depth, rapid replacement, and physical protection options such as a cut drinking-straw collar can support stand recovery without delaying action until losses become severe.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "transplanting-check",
+        title: "Transplanting check",
+        description:
+          "Apply field-readiness, hardening, stage, handling, placement, heat-management, and stand-recovery principles to a practical transplanting decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "tp-1",
+            prompt: "Which preparation sequence best follows the source before tray-grown seedlings are moved to the field?",
+            options: [
+              { id: "a", label: "Verify mulch and trellis readiness, prepare planting holes and nutrient placement in advance, water seedlings and bed, and recheck tray moisture in hot conditions." },
+              { id: "b", label: "Move dry seedlings first, then decide later whether mulch, support, holes, water, or nutrient placement are needed." },
+              { id: "c", label: "Place roots directly on fertiliser granules so early growth is accelerated." },
+              { id: "d", label: "Leave a dry root block so it breaks apart easily when pulled from the tray." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source connects prepared mulch, trellising, holes, appropriate nutrient placement, and morning moisture checks with lower transplant stress.", incorrect: "Prepare the field systems first and protect the root block: verify mulch and support, prepare holes and nutrient placement in advance, water the bed and seedlings, and recheck moisture before planting in heat." },
+          },
+          {
+            id: "tp-2",
+            prompt: "What is the purpose of hardening seedlings before transplanting?",
+            options: [
+              { id: "a", label: "To adapt seedlings gradually to field conditions, reduce transplant shock, support fast establishment, and promote vigorous growth." },
+              { id: "b", label: "To keep seedlings permanently in shade and increase watering until transplanting day." },
+              { id: "c", label: "To make seedlings older than their appropriate stage before the field is ready." },
+              { id: "d", label: "To remove cotyledons before planting." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Gradual sun exposure and water reduction prepare seedlings for field conditions and reduce shock.", incorrect: "Hardening gradually increases field-like exposure while reducing protection and watering so the seedling can establish more successfully after transplanting." },
+          },
+          {
+            id: "tp-3",
+            prompt: "Which transplant placement and handling approach is correct for a tray-grown vegetable seedling?",
+            options: [
+              { id: "a", label: "Push it gently from the tray bottom while supporting the stem, plant at the same level, keep cotyledons uncovered, and water after planting." },
+              { id: "b", label: "Pull it by the leaves, bury the cotyledons, and leave the root block dry after transplanting." },
+              { id: "c", label: "Plant it deeply on top of untreated inorganic fertiliser so roots contact the material directly." },
+              { id: "d", label: "Break the root block apart before placing it in a shallow hole." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source specifies bottom-up tray removal, stem support, same-level planting, exposed cotyledons, and watering after transplanting.", incorrect: "Protect the root block and seedling reserves: remove gently from below, support the stem, plant at the original level, keep cotyledons above soil, and water after planting." },
+          },
+          {
+            id: "tp-4",
+            prompt: "A field is hot and reflective plastic mulch increases heat around recently planted seedlings. What is the strongest immediate transplant-management response?",
+            options: [
+              { id: "a", label: "Transplant in the afternoon or lower sun, use suitable local cover around plants to reduce reflected heat, inspect daily, and replace seedlings that fail." },
+              { id: "b", label: "Transplant at the hottest morning period and wait until the end of the season to check missing stands." },
+              { id: "c", label: "Apply fertiliser spray to leaves without checking for burn risk." },
+              { id: "d", label: "Bury cotyledons deeply under mulch and leave roots in contact with fertiliser." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source recommends lower-sun transplanting, heat moderation around the plant, daily checks, and rapid replacement of losses.", incorrect: "Avoid severe sun at transplanting, reduce heat stress from the bed or mulch where needed, monitor the stand daily, and replace losses quickly." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, and field preparation, mulching, and trellising to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, and transplanting to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3338,6 +3470,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan connects field appraisal, clearing, bed and drainage design, sound mulch installation, and timely crop-specific trellising before preventable stresses are transferred to the crop.",
           incorrect: "A defensible field plan addresses site and soil evidence, clearing, raised beds and drainage, mulch-installation quality, and trellis timing together—before crop establishment." },
+      },
+      {
+        id: "final-23",
+        prompt:
+          "A grower plans to transplant dry, unhardened tray seedlings at midday into a field whose mulch, holes, and trellises are incomplete. The grower also plans to bury cotyledons and set roots directly on fertiliser. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Finish field preparation; water seedlings and bed; harden seedlings; transplant in lower sun; remove tray plants from below with stem support; plant at the same level with cotyledons exposed; and keep roots separated from fertiliser." },
+          { id: "b", label: "Proceed at midday because transplant shock has no relationship to hardening, heat, water, root handling, or field readiness." },
+          { id: "c", label: "Bury cotyledons, break root blocks, and place fertiliser directly against roots to increase early uptake." },
+          { id: "d", label: "Delay all monitoring until late season, even if plants wilt and missing stands develop immediately." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan links field readiness, moisture, hardening, low-stress timing, careful removal, correct depth, cotyledon protection, and safe nutrient placement.",
+          incorrect: "Successful transplanting is a system: prepare field and seedling, harden and water, choose lower heat, protect the root block and cotyledons, prevent fertiliser burn, and monitor the early stand.",
+        },
       },
     ],
   },

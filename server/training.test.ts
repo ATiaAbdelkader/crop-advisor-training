@@ -409,6 +409,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds transplanting after field preparation, mulching, and trellising", () => {
+    const transplantingModule = cropAdvisorCourse.modules.find(
+      module => module.id === "transplanting"
+    );
+    const previousModule = cropAdvisorCourse.modules[20];
+
+    expect(transplantingModule?.lessons).toHaveLength(2);
+    expect(transplantingModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(transplantingModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
