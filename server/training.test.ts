@@ -109,6 +109,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the crop-yield factors module after crop-and-variety selection", () => {
+    const yieldModule = cropAdvisorCourse.modules.find(
+      module => module.id === "factors-affecting-crop-yield"
+    );
+    const previousModule = cropAdvisorCourse.modules[5];
+
+    expect(yieldModule?.lessons).toHaveLength(2);
+    expect(yieldModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(yieldModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 7 hours",
+  duration: "Approx. 8 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -943,12 +943,160 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "factors-affecting-crop-yield",
+      index: 7,
+      title: "Factors affecting crop yield",
+      eyebrow: "Module 07",
+      description:
+        "Connect seed genetics, climate, soil, and topography to crop performance, yield risk, and practical adaptation decisions.",
+      lessons: [
+        {
+          id: "match-seed-genetics-to-production-goal",
+          title: "Match seed genetics to the production goal",
+          duration: "22 min",
+          kicker: "Yield potential begins with genetics",
+          summary:
+            "Distinguish open-pollinated and hybrid seed systems, then use genetic characteristics to select seed that suits the production objective and management context.",
+          outcomes: [
+            "Explain how genetic and environmental factors jointly affect crop yield.",
+            "Distinguish open-pollinated from hybrid seed systems and their seed-saving implications.",
+            "Relate seed traits such as yield potential, resistance, maturity, fruit quality, and shelf life to a production objective.",
+          ],
+          sections: [
+            {
+              heading: "Yield is shaped by genetics and environment",
+              body:
+                "Crop yield is affected by two broad groups of factors. Genetic factors are inherent in the plant’s makeup. Environmental factors include climatic or physical conditions, edaphic soil properties, and topographic conditions. Sound advisory work does not treat these as separate checklists: seed potential can only be realised when the crop is matched to the environment and managed appropriately.",
+              callout:
+                "A high-potential seed cannot compensate for a poor fit between crop, season, soil, and landscape position.",
+            },
+            {
+              heading: "Recognise the seed system",
+              body:
+                "Open-pollinated varieties are naturally pollinated by agents such as insects or wind and originate from one parent; when genetic purity is maintained through proper selection, seed can be saved for a following season. Hybrid varieties result from controlled cross-pollination between male and female parents. The document advises that saving hybrid seed is not recommended because the next generation will not reliably reproduce the intended hybrid characteristics.",
+            },
+            {
+              heading: "Select traits for the decision in front of you",
+              body:
+                "Hybrids may be bred for high yield per unit area or time, pest and disease tolerance or resistance, earlier maturity than open-pollinated varieties, stable and distinct fruit quality, and longer shelf life. These traits are useful only when they address the farmer’s production objective, the local market, the season, and the expected management capacity. Compare the seed characteristics with the crop-and-variety criteria already developed in the learning pathway rather than selecting on potential yield alone.",
+            },
+          ],
+        },
+        {
+          id: "read-environmental-yield-factors",
+          title: "Read environmental yield factors",
+          duration: "27 min",
+          kicker: "Climate, soil, and landscape",
+          summary:
+            "Identify the climatic, edaphic, and topographic elements that influence crop growth and use their interactions to plan adaptation in vegetable production.",
+          outcomes: [
+            "List key climatic, soil, and topographic factors affecting crop growth and development.",
+            "Explain how environmental factors interact with genetic potential to influence yield.",
+            "Use local environmental information to prepare practical adaptations to climate-related production risk.",
+          ],
+          sections: [
+            {
+              heading: "Monitor the climatic factors",
+              body:
+                "Climatic or physical factors include light or irradiance, temperature, water or moisture supply, air composition, relative humidity, and wind. These factors influence growth and development throughout the crop cycle. Record the expected season, recent weather pattern, and field-level exposure before deciding on crop timing, variety, irrigation, protection, or other management adjustments.",
+            },
+            {
+              heading: "Assess the soil and landscape together",
+              body:
+                "Edaphic factors include the soil’s physical, chemical, and biological properties. Topographic factors include elevation or altitude and its relationship with temperature, the slope of the land, and location expressed through latitude and longitude. A crop can experience a different yield environment within a short distance when slope, elevation, drainage, soil depth, or exposure change. Link this observation to the soil-context and site-appraisal approaches developed earlier in the pathway.",
+              callout:
+                "Environmental interpretation should lead to a practical management decision, not a generic description of conditions.",
+            },
+            {
+              heading: "Use relationships to adapt, not merely explain",
+              body:
+                "Food production is strongly affected by the three environmental groups and is vulnerable to climate-change phenomena. Understanding the elements and their relationships makes it possible to prepare adaptations in vegetable production. Use locally available product information, agro-dealers or vendors, and local technical support to check crops and varieties suited to the area and season. Then record the planned response to the relevant climate, soil, or topographic risk rather than assuming conditions will remain unchanged.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "factors-affecting-crop-yield-check",
+        title: "Factors affecting crop yield check",
+        description:
+          "Apply genetic, climatic, soil, and topographic concepts to realistic seed and yield-risk decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "fy-1",
+            prompt:
+              "Which statement best distinguishes an open-pollinated variety from a hybrid variety for seed saving?",
+            options: [
+              { id: "a", label: "Open-pollinated seed can be saved when genetic purity is maintained; saving hybrid seed is not recommended." },
+              { id: "b", label: "Hybrid seed always comes from one parent and can be saved indefinitely." },
+              { id: "c", label: "Neither seed system has any genetic connection to yield." },
+              { id: "d", label: "Open-pollinated varieties are only pollinated by breeders and workers." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Properly maintained open-pollinated seed can retain genetic purity, while hybrid seed does not reliably reproduce the intended hybrid traits in the next generation.",
+              incorrect: "Open-pollinated varieties can provide saved seed when selection maintains purity; hybrid seed is produced through controlled crossing and should not normally be saved for the next crop.",
+            },
+          },
+          {
+            id: "fy-2",
+            prompt:
+              "Which trait is a valid reason to consider a hybrid variety for a particular production objective?",
+            options: [
+              { id: "a", label: "It may be bred for early maturity, disease tolerance or resistance, stable fruit quality, or longer shelf life." },
+              { id: "b", label: "It removes the need to consider local climate or soil conditions." },
+              { id: "c", label: "It guarantees the same yield under every management system." },
+              { id: "d", label: "It allows any saved seed to reproduce the hybrid exactly." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Hybrid traits can support a defined objective, but the variety must still be matched to the local environment and management context.",
+              incorrect: "Hybrids may offer useful traits such as earliness, resistance, fruit quality, and shelf life, but they do not remove environmental or management constraints.",
+            },
+          },
+          {
+            id: "fy-3",
+            prompt:
+              "Which group contains only climatic or physical factors identified in the source document?",
+            options: [
+              { id: "a", label: "Light, temperature, moisture supply, relative humidity, and wind." },
+              { id: "b", label: "Soil biological properties, soil chemical properties, and slope." },
+              { id: "c", label: "Elevation, latitude, and soil texture." },
+              { id: "d", label: "Crop family, seed parentage, and shelf life." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Light, temperature, water or moisture supply, air, relative humidity, and wind are climatic factors in the document’s framework.",
+              incorrect: "Climatic factors include light, temperature, water or moisture supply, air composition, relative humidity, and wind.",
+            },
+          },
+          {
+            id: "fy-4",
+            prompt:
+              "Why should an advisor study the relationship among climate, soil, and topography before recommending a crop-management response?",
+            options: [
+              { id: "a", label: "Because understanding their interactions supports practical adaptation to yield risk and climate-change effects." },
+              { id: "b", label: "Because environmental factors affect yield only after harvest." },
+              { id: "c", label: "Because one environmental factor always explains all field variability." },
+              { id: "d", label: "Because seed genetics have no relationship with environmental conditions." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. The purpose is to use environmental understanding for proactive, context-specific adaptation rather than simply describing conditions.",
+              incorrect: "Environmental factors interact with each other and with genetics; understanding those relationships supports practical adaptation to crop-yield risk.",
+            },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, and crop-and-variety selection to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, and crop-yield factors to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -1076,6 +1224,22 @@ export const cropAdvisorCourse: CourseDefinition = {
             "Correct. Variety selection requires a documented fit among market preference, environmental adaptability, reliable information, and farmer knowledge.",
           incorrect:
             "A defensible decision balances market acceptability with local adaptability, verified product information, and farmer participation.",
+        },
+      },
+      {
+        id: "final-8",
+        prompt:
+          "A farmer wants to maximise yield by switching to a high-potential hybrid, but the field has variable slope, moisture supply, and seasonal wind exposure. What is the most defensible advisory response?",
+        options: [
+          { id: "a", label: "Recommend the hybrid without reviewing the field because genetics determine yield alone." },
+          { id: "b", label: "Assess the hybrid traits against the production objective and evaluate climatic, soil, and topographic risks before agreeing the variety and management plan." },
+          { id: "c", label: "Assume that environmental conditions only affect open-pollinated varieties." },
+          { id: "d", label: "Focus only on the slope and ignore moisture, wind, and seed characteristics." },
+        ],
+        correctOptionId: "b",
+        feedback: {
+          correct: "Correct. Yield potential depends on a fit among genetics, production objective, and interacting climate, soil, and topographic conditions.",
+          incorrect: "A high-potential seed still needs a realistic match to environmental conditions and a management response to the field’s key risks.",
         },
       },
     ],
