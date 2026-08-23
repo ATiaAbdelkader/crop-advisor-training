@@ -3361,12 +3361,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "drip-irrigation-system",
+      index: 25,
+      title: "Drip irrigation system",
+      eyebrow: "Module 25",
+      description:
+        "Plan, install, control, inspect, and maintain a drip system that delivers uniform water to the root zone without clogging, leakage, or avoidable pressure loss.",
+      lessons: [
+        {
+          id: "plan-a-drip-system-around-field-demand",
+          title: "Plan a drip system around field demand",
+          duration: "39 min",
+          kicker: "Design for uniformity before buying components",
+          summary:
+            "Evaluate drip irrigation’s fit, benefits, constraints, capacity, field layout, delivery method, equipment, and component functions before installation begins.",
+          outcomes: [
+            "Explain how drip applies water and the conditions that make its root-zone delivery reliable.",
+            "Plan a system from crop, soil, slope, bed, water demand, pump capacity, water quality, and layout evidence.",
+            "Identify the essential components and their role in safe, uniform, controllable drip operation.",
+          ],
+          sections: [
+            {
+              heading: "Use drip for controlled root-zone delivery—not as an automatic solution",
+              body:
+                "The source defines drip irrigation as slow, direct application of small quantities of water to soil through micro-emitters. It describes more than 90 percent water efficiency, controllable release through valves, reduced runoff and evaporation, lower nutrient leaching, labour savings, water-air balance around the crop, and avoidance of foliar disease. These benefits depend on design and operation. The same source notes high initial cost, high maintenance needs, higher skills and technology requirements, the need for clean water, uneven distribution when emitters clog, and the need for a suitable design. Drip becomes efficient only when water quality, pressure, layout, emitter condition, and maintenance remain under control.",
+              callout:
+                "Drip efficiency is earned through uniform delivery. A clogged, leaking, or poorly designed system can transfer water stress into hidden parts of the field.",
+            },
+            {
+              heading: "Plan capacity, zones, and delivery before installing",
+              body:
+                "Start with a rough field sketch, the crop and its stage-specific water needs, soil type, slope, planned beds, and irrigation layout. Each drip tube should serve an area with similar water needs, and mainline length must match available pressure. If pump delivery is uncertain, the source recommends timing the water volume released in one minute, multiplying by sixty for hourly capacity, and designing around 80 percent of that maximum capacity. Select emitters, tape, line, or micro-sprinkler heads by crop, soil, pressure, row design, durability, and management capacity. Estimate every emitter’s flow rate and total demand so the pump and zone design can supply it without starving distant lines.",
+            },
+            {
+              heading: "Specify the system parts and their functions",
+              body:
+                "The source lists pressure gauge and regulator, pump or gravity tank, drip lines or tapes, flush ends or end caps, bypass valve, fittings, pipes, filter, and tees as core equipment. A valve starts or stops flow; backflow control protects a shared household water source; a regulator reduces excessive pressure and holds it constant; and adaptors connect differing pipe and fitting sizes. Filtration is the system’s protective core because suspended solids can shorten line life, block lines, create uneven growth, reduce yield, and stress plants. The source matches sand or gravel filters to dirty surface water, disc filters to medium-quality water such as wells or ponds, and screen filters to higher-quality water such as wells or springs. A pressure gauge monitors performance, an air valve reduces pressure fluctuations, and an injector introduces approved nutrients or maintenance products.",
+            },
+          ],
+        },
+        {
+          id: "install-monitor-and-maintain-uniform-drip-delivery",
+          title: "Install, monitor, and maintain uniform drip delivery",
+          duration: "36 min",
+          kicker: "Prevent clogging before it becomes crop stress",
+          summary:
+            "Install a drip system in a logical sequence, verify wetting and pressure, then prevent blockage and leaks through filtration, flushing, inspection, and safe maintenance procedures.",
+          outcomes: [
+            "Install, test, flush, and close a drip system while protecting filters, lines, emitters, and uniform flow.",
+            "Differentiate drip tape and drip line and use emitters, end caps, gauges, air valves, and injectors correctly.",
+            "Use prevention-focused maintenance to detect clogs, pressure loss, leaks, and uneven wetting before crop performance declines.",
+          ],
+          sections: [
+            {
+              heading: "Install, test, and observe the system as a whole",
+              body:
+                "For a small gravity system, the source sequence is to prepare raised beds; create a suitable tank head structure; fit an outlet and water filter; connect the mainline; lay drip lines; trial run with the open line end to inspect emitters and flush dirt; then lock the ends. After installation, open line ends periodically to flush debris, check distribution uniformity, repair leaks, and inspect soil moisture at points across the lines. Monitor irrigation time, moisture, bed wetting, and depth of penetration, then use field evidence to adjust frequency and flow. Close tape by folding and locking the end; use an end cap to close a drip tape or tube system. Drip tape is thin-walled and lies flat when unpressurised, while drip line is thicker, more durable, and longer lived. Emitters determine how quickly water enters soil, so their condition directly affects crop uniformity.",
+              callout:
+                "Do not judge a drip system by a wet inlet. Verify moisture and emitter flow at the far ends of lines and across contrasting parts of the field.",
+            },
+            {
+              heading: "Prevent the causes of blockage and leakage",
+              body:
+                "The source identifies silt or clay, calcium or magnesium precipitates, and algae or bacteria as main causes of blocked emitters. It identifies animals, farm equipment, and workers as common causes of leaking drip lines. Flushing removes accumulated debris and pollutants; the source suggests monthly flushing or more often when water quality is poor. Filters remove suspended solids and need regular cleaning. Check dripper flow at least weekly, verify that water reaches the ends of all drip lines, inspect for physical damage, and repair leaks before unequal irrigation becomes uneven crop growth.",
+            },
+            {
+              heading: "Control pressure and use maintenance treatments safely",
+              body:
+                "System pressure should be checked at the end of a drip line with a hand pressure gauge; the source gives a working range of 8 to 15 PSI, but the installed design and manufacturer requirements remain the operating reference. Air valves reduce pressure fluctuation, while regulators help maintain constant pressure. The source also describes acid treatment to reduce low-solubility salt clogging and chlorination to control microorganisms. These are specialist maintenance actions: follow local regulations, product labels, safety procedures, water-source requirements, and equipment supplier instructions rather than treating source quantities as universal recipes. Keep a maintenance record of filter cleaning, flushing, pressure, line-end flow, repairs, and soil wetting.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "drip-irrigation-system-check",
+        title: "Drip-irrigation-system check",
+        description:
+          "Apply drip-system design, component, installation, distribution, pressure, filtration, flushing, and maintenance principles to a practical irrigation decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "di-1",
+            prompt: "What makes drip irrigation a managed system rather than an automatic water-saving solution?",
+            options: [
+              { id: "a", label: "Its efficiency depends on appropriate design, clean and filtered water, pressure control, functioning emitters, uniform distribution, and regular maintenance." },
+              { id: "b", label: "Once installed, a drip line cannot clog, leak, or deliver uneven water." },
+              { id: "c", label: "Drip is suitable only when every field has unlimited investment and skilled labour." },
+              { id: "d", label: "Drip efficiency is determined only by the colour of the tape." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source pairs drip’s efficiency and root-zone benefits with design, water-quality, clogging, maintenance, skill, and cost requirements.", incorrect: "Drip systems need ongoing control. Design, filtration, clean water, pressure, emitter condition, leak repair, and maintenance determine whether water is delivered uniformly." },
+          },
+          {
+            id: "di-2",
+            prompt: "Why should a drip-system plan group an area with similar water needs and be designed below maximum pump capacity?",
+            options: [
+              { id: "a", label: "To match zones to crop demand and preserve sufficient pressure and flow for emitters across the operating area." },
+              { id: "b", label: "To force all crops and soil types to receive exactly the same water regardless of need." },
+              { id: "c", label: "To avoid measuring pump delivery, emitter flow, crop stage, soil, slope, or layout." },
+              { id: "d", label: "To make distant drip lines receive less water than near lines." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links zoning and planning below pump maximum with reliable flow and pressure for areas that share water demand.", incorrect: "Plan zones around similar crop water needs and verify pump capacity and emitter demand so pressure and flow remain adequate throughout each operating area." },
+          },
+          {
+            id: "di-3",
+            prompt: "Which filter selection most closely follows the source guidance?",
+            options: [
+              { id: "a", label: "Use sand or gravel filtration for dirty surface water, disc filtration for medium-quality well or pond water, and screen filtration for higher-quality water." },
+              { id: "b", label: "Use no filtration because debris cannot block drip emitters." },
+              { id: "c", label: "Use the same unmaintained filter for every water source regardless of solids or water quality." },
+              { id: "d", label: "Remove filtration to increase the quantity of particles reaching the emitters." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source matches filter types with water quality because filtration protects line life, emitter flow, plant uniformity, and yield.", incorrect: "Choose filtration from water quality and clean filters regularly. Without it, solids can block lines and create uneven water, plant stress, and yield loss." },
+          },
+          {
+            id: "di-4",
+            prompt: "Which maintenance routine best protects drip uniformity?",
+            options: [
+              { id: "a", label: "Flush line ends on a planned schedule, clean filters, monitor pressure and flow at line ends, inspect soil wetting and emitters, and repair leaks or physical damage promptly." },
+              { id: "b", label: "Wait until a crop section dies before checking filters, pressure, line ends, or leaks." },
+              { id: "c", label: "Treat chemical maintenance rates as universal without following local safety, label, or equipment instructions." },
+              { id: "d", label: "Check only the inlet and assume distant emitters receive the same water." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source emphasises prevention through flushing, filtration, pressure and flow checks, wetting observation, and fast repair before nonuniformity affects the crop.", incorrect: "Use prevention-first maintenance: flush and filter, check pressure and far-line flow, observe soil wetting, inspect emitters and damage, and repair leaks before crop stress develops." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, and irrigation-system selection to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, and drip-system planning and maintenance to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3781,6 +3913,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The recommendation compares systems with field and farmer evidence, recognises plastic-mulch conditions, and addresses the clean-water and maintenance requirements that make drip performance reliable.",
           incorrect: "System choice must combine agronomy and feasibility: assess land, water quality and supply, crop, mulch, system efficiency, labour, cost, skill, design, and maintenance before recommending an improvement.",
+        },
+      },
+      {
+        id: "final-26",
+        prompt:
+          "A new drip system wets plants close to the tank but lines at the far end remain dry. The water source is silty, filters are rarely cleaned, line ends are never flushed, and pressure is never measured. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Check pump and zone design, water quality and filtration, pressure and far-end flow, flush line ends, inspect emitters and soil wetting, repair leaks, and keep a maintenance record before changing the irrigation schedule." },
+          { id: "b", label: "Increase the run time without inspecting filtration, pressure, clogs, far-end flow, leaks, or uneven wetting." },
+          { id: "c", label: "Remove filters and leave the line ends closed permanently so debris remains in the system." },
+          { id: "d", label: "Treat all maintenance chemicals as universal recipes without checking safety requirements, labels, water source, or equipment guidance." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan investigates the full cause of nonuniform delivery and uses prevention-focused filtration, flushing, pressure, flow, wetting, leak, and record checks.",
+          incorrect: "Correcting drip nonuniformity requires diagnostic checks from water source and pump capacity through filtration, pressure, far-end flow, emitters, leaks, and actual soil wetting—not simply longer run time.",
         },
       },
     ],
