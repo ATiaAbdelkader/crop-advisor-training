@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 3.2  
+**Version:** 3.3  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-five required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-six required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -39,6 +39,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **23. Water management** | Managing root-zone water and air through soil-moisture assessment, crop and climate demand, efficient irrigation, seasonal conservation and drainage, and water-quality safeguards. | Diagnose water-air balance; measure soil moisture; adapt irrigation to soil, crop stage, and weather; conserve water; drain excess; screen water quality. | **Read water-air balance and crop demand**; **Design efficient seasonal water management** | Both lessons complete and module check passed at 80% or above. |
 | **24. Irrigation systems** | Selecting and improving crop-appropriate irrigation through stress-stage awareness, system comparison, field evidence, water quality, labour, cost, and maintenance capacity. | Protect critical crop stages; compare hand, sprinkler, surface, and drip delivery; select a system from field and farmer evidence; improve practical operation. | **Compare irrigation systems and crop stress**; **Select and improve a system with field evidence** | Both lessons complete and module check passed at 80% or above. |
 | **25. Drip irrigation system** | Planning, installing, controlling, monitoring, and maintaining a uniform root-zone drip system. | Design zones and capacity; specify components and filtration; install and verify distribution; prevent clogs, leaks, and pressure loss; maintain safely. | **Plan a drip system around field demand**; **Install, monitor, and maintain uniform drip delivery** | Both lessons complete and module check passed at 80% or above. |
+| **26. Fertilisation of vegetables** | Building soil- and crop-grounded nutrient plans through nutrient uptake, the 4Rs, source selection, nutrient analysis, effective placement, and responsible decision-making. | Diagnose limiting factors; assess soil supply and crop demand; apply the 4Rs; compare sources; interpret labels; choose an effective application method. | **Build a 4R plan from soil and crop demand**; **Select sources and place nutrients effectively** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -96,6 +97,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Select and improve a system with field evidence** | Use soil, topography, water, crop, field size, technology, labour, cost, experience, and maintenance evidence to recommend a feasible system. | An efficient system that the farmer cannot supply, maintain, or operate is not an effective recommendation. |
 | **Plan a drip system around field demand** | Design capacity and zones from crop, soil, slope, beds, water source, pressure, layout, flow, and component needs. | Uniform delivery starts with a design that reflects real water demand and pump capacity. |
 | **Install, monitor, and maintain uniform drip delivery** | Install and flush lines, verify far-end flow and soil wetting, prevent blockages and leaks, control pressure, and maintain safely. | Prevention-based maintenance protects every emitter’s contribution to a uniform crop stand. |
+| **Build a 4R plan from soil and crop demand** | Diagnose soil constraints and nutrient interactions; establish crop demand from soil supply, uptake, removal, residues, and stage; set the 4Rs. | A fertiliser plan must resolve the limiting factor and match nutrient supply to crop demand. |
+| **Select sources and place nutrients effectively** | Compare organic and inorganic sources, interpret nutrient labels, and match placement method to roots, timing, field conditions, and crop safety. | Product choice only becomes efficient when its nutrient analysis, application method, and soil effects fit the field plan. |
 
 ## Assessment package
 
@@ -128,7 +131,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Water-management check** | Root-zone water-air balance, soil moisture, soil and crop demand, irrigation, seasonal conservation and drainage, water quality, and wastewater safeguards. | 4 | 80% | Unlocks the integrated final assessment only after both Module 23 lessons are complete and the check is passed. |
 | **Irrigation-systems check** | Critical crop stages, watering time, hand/sprinkler/surface/drip trade-offs, field and farmer evidence, water quality, labour, cost, and maintenance capacity. | 4 | 80% | Unlocks the integrated final assessment only after both Module 24 lessons are complete and the check is passed. |
 | **Drip-irrigation-system check** | Drip design, pump capacity, zones, components, filtration, installation, uniformity, pressure, flushing, clogging, leakage, and prevention-focused maintenance. | 4 | 80% | Unlocks the integrated final assessment only after both Module 25 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, and drip-system planning and maintenance. | 26 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Vegetable-fertilisation check** | Soil condition and limiting factors, crop uptake and removal, soil testing, pH, nutrient sources, label interpretation, application methods, and the 4Rs. | 4 | 80% | Unlocks the integrated final assessment only after both Module 26 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, and efficient vegetable fertilisation. | 27 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -167,6 +171,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Protect a functional root zone across seasons** | Long heavy irrigation on a sandy field, dry stress before flowering, blocked rainy-season drainage, and proposed untreated-wastewater use. | Connects texture-responsive irrigation, moisture checks, water-air balance, dry-season conservation, wet-season drainage, and water-quality safeguards. | Water planning must respond to soil, crop stage, weather, and season while keeping both saturation and unsafe sources out of the crop system. |
 | **Select an irrigation system the field and farmer can sustain** | A hot dry plastic-mulched field, limited labour, debris-contaminated water, and a familiar low-capital furrow option. | Compares delivery options against land, water, crop, mulch, field scale, labour, cost, skills, design, filtration, and maintenance. | Recommend the system that achieves agronomic performance within the farm’s actual capacity to supply, maintain, and operate it. |
 | **Recover uniform drip delivery** | Near-tank wetting, dry far lines, silty water, neglected filters, unflushed ends, and no pressure checks. | Diagnoses pump and zone design, filtration, pressure, far-end flow, emitters, wetting, leaks, and maintenance records. | Investigate the whole water path before changing the irrigation schedule or replacing components. |
+| **Correct a universal fertiliser schedule** | Low soil potassium, large nitrogen doses throughout the cycle, and the same product and rate broadcast in every field. | Connects limiting factors, soil NPK and pH, crop uptake and removal, stage, label analysis, root access, nutrient antagonism, losses, and the 4Rs. | Efficient fertilisation corrects the field’s limiting factor and matches source, rate, timing, and placement to evidence. |
 
 ## Certificate template specification
 
@@ -288,13 +293,17 @@ flowchart TD
   BY --> BZ[Module 25 lessons and assessment]
   BZ --> CA{Module 25 passed?}
   CA -- No --> BZ
-  CA -- Yes --> CB[Unlock integrated final assessment]
-  CB --> CC{Final score at least 80%?}
-  CC -- No --> CD[Feedback and final retake available]
-  CD --> CB
-  CC -- Yes --> CE[Create credential record]
-  CE --> CF[Notify platform owner]
-  CF --> CG[Enable certificate download]
+  CA -- Yes --> CB[Unlock Module 26]
+  CB --> CC[Module 26 lessons and assessment]
+  CC --> CD{Module 26 passed?}
+  CD -- No --> CC
+  CD -- Yes --> CE[Unlock integrated final assessment]
+  CE --> CF{Final score at least 80%?}
+  CF -- No --> CG[Feedback and final retake available]
+  CG --> CE
+  CF -- Yes --> CH[Create credential record]
+  CH --> CI[Notify platform owner]
+  CI --> CJ[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -360,6 +369,8 @@ Module 24 is derived from the supplied *Irrigation Systems* training document. I
 
 Module 25 is derived from the supplied *Drip Irrigation System* training document. Its instructional structure retains drip efficiency and constraints, field and pump-capacity planning, zones, delivery methods, component functions, gravity-system installation, filtration, tape and line characteristics, gauges and air control, soil-wetting checks, flushing, clogging and leakage causes, pressure monitoring, and prevention-based maintenance. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [22]
 
+Module 26 is derived from the supplied *Fertilization of Vegetables* training document. Its instructional structure retains soil physical, biological, and chemical conditions; nutrient availability, limiting factors, antagonism, fixation, and losses; crop uptake, removal, residues, NPK and pH testing; stage-based nutrient demand; the 4Rs; organic and inorganic source choices; label analysis; application methods; and return-focused fertiliser decision-making. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [23]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -405,3 +416,5 @@ Module 25 is derived from the supplied *Drip Irrigation System* training documen
 [21] [REVISED_PRD-008. *Irrigation Systems* (user-supplied training document, 11 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-008.IrrigationSystems_05112023.pdf)
 
 [22] [REVISED_PRD-009. *Drip Irrigation System* (user-supplied training document, 29 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-009.DripIrrigationSystem_05292023.pdf)
+
+[23] [REVISED_PRD-010. *Fertilization of Vegetables* (user-supplied training document, 11 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-010.FertilizationofVegetables_05112023.pdf)

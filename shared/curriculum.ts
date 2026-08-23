@@ -3493,12 +3493,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "vegetable-fertilisation",
+      index: 26,
+      title: "Fertilisation of vegetables",
+      eyebrow: "Module 26",
+      description:
+        "Build a soil- and crop-grounded fertilisation plan using nutrient uptake, the 4Rs, suitable nutrient sources, effective placement, and economically responsible decisions.",
+      lessons: [
+        {
+          id: "build-a-4r-plan-from-soil-and-crop-demand",
+          title: "Build a 4R plan from soil and crop demand",
+          duration: "39 min",
+          kicker: "Start with the limiting nutrient and the living soil",
+          summary:
+            "Interpret physical, biological, and chemical soil conditions; relate nutrient supply to crop uptake and removal; and use the 4Rs to make nutrient decisions more efficient.",
+          outcomes: [
+            "Explain how soil condition, nutrient availability, losses, fixation, and antagonism affect fertiliser response.",
+            "Use soil testing, crop uptake, crop removal, residues, and crop stage to establish nutrient demand.",
+            "Apply the right source, rate, time, and place as an integrated plan rather than a fixed fertiliser recipe.",
+          ],
+          sections: [
+            {
+              heading: "Treat soil condition as the starting point for fertilisation",
+              body:
+                "The source presents soil as the main factor in production and groups its relevant properties into physical conditions such as compaction, structure, and water availability; biological conditions such as organic matter and soil life; and chemical conditions such as nutrient availability, salinity, and acidity. Fertiliser response can be limited by low soil nutrient supply, Liebig’s law of the minimum, nutrient antagonism, nutrient fixation, and losses through volatilisation, leaching, and runoff. Liebig’s law means the limiting factor constrains potential yield: adding more of another nutrient does not remove that limit. Antagonism is competition in nutrient uptake; the source illustrates that high nitrogen can inhibit copper, potassium, and boron uptake. Diagnose the soil constraint before increasing a fertiliser input.",
+              callout:
+                "A fertiliser plan cannot compensate indefinitely for compacted, poorly aerated, saline, acidic, or biologically inactive soil. Correct the yield-limiting factor first.",
+            },
+            {
+              heading: "Calculate demand from soil supply, crop removal, and growth stage",
+              body:
+                "Plants require macronutrients and micronutrients, while structural elements are also acquired from air. The source frames crop nutrient uptake against crop removal and crop residue: the marketable product removes nutrients from the field, while debris and unmarketable plant parts may remain. Apply at least enough to replace what the crop removes only after accounting for the nutrient already available from soil, residues, and other sources. Soil NPK testing checks nutrient status, and pH testing helps interpret nutrient availability. The tomato example reinforces that total uptake is not enough—advisors should examine the uptake pattern across the crop cycle and identify which element is needed most at each stage. The source uses the nitrogen-to-potassium balance as an example, with relatively higher nitrogen emphasis in vegetative growth and relatively lower N/K ratio in generative growth. Use crop guides and local validation instead of transferring one crop’s figures to every crop or field.",
+            },
+            {
+              heading: "Use the four rights to turn evidence into a fertilisation plan",
+              body:
+                "The source’s 4Rs are right source, right rate, right time, and right place. A right source supplies the nutrient form the crop and soil need; a right rate reflects crop demand, removal, soil supply, and realistic efficiency; a right time makes nutrients available when the crop needs them; and a right place positions nutrients where roots can take them up. Fertiliser rates in crop guides are nutrient requirements rather than universal product weights, so advisors must read fertiliser labels and convert nutrient content carefully. The source’s examples and schedules must be adapted to plant population, crop stage, soil test results, weather, root condition, irrigation, and local technical advice. This converts fertilisation from a purchase decision into a monitored nutrient-management decision.",
+            },
+          ],
+        },
+        {
+          id: "select-sources-and-place-nutrients-effectively",
+          title: "Select sources and place nutrients effectively",
+          duration: "37 min",
+          kicker: "Deliver nutrients where and when roots can use them",
+          summary:
+            "Compare organic and inorganic sources, interpret fertiliser labels, select a safe application method, and combine sources into a financially responsible field plan.",
+          outcomes: [
+            "Compare organic and inorganic nutrient sources by nutrient certainty, release, soil-conditioning value, risk, and operational fit.",
+            "Interpret inorganic fertiliser labels and distinguish nutrient analysis from fertiliser product weight.",
+            "Match broadcasting, band, basal, side-dress, foliar, fertigation, drenching, and trenching methods to field conditions and the 4Rs.",
+          ],
+          sections: [
+            {
+              heading: "Choose sources for both nutrient supply and soil function",
+              body:
+                "The source distinguishes organic or indigenous nutrient supplies, including compost and farmyard manure, from inorganic fertilisers. Organic sources can supply trace elements and act as both fertiliser and soil conditioner, but may have limited availability, uncertain composition, possible contaminants, pathogen or weed-seed risks, high volume requirements, and slow release. Inorganic materials such as urea, DAP, and MOP are concentrated, have known nutrient content, and act quickly, but can be costly, do not directly provide food for soil organisms and earthworms, and carry higher leaching and volatilisation risk. Use the source mix that matches verified soil supply, crop demand, financial capacity, organic-material quality, timing, and a plan to improve soil function rather than treating organic and inorganic options as interchangeable.",
+              callout:
+                "The source of a nutrient changes the timing, placement, risk, and soil effects of the recommendation. Compare its full operating consequences—not only its price per bag.",
+            },
+            {
+              heading: "Read fertiliser labels as nutrient analysis, not product names",
+              body:
+                "Inorganic fertilisers differ in analysis and nutrient concentration, so equal product weights do not provide equal nutrients. The source uses labels such as 13-13-21 plus trace elements to reinforce that the figures refer to nitrogen, phosphorus expressed as P2O5, potassium expressed as K2O, and included trace elements. A recommendation must distinguish the nutrient requirement from the weight of a specific fertiliser product and consider the product’s nutrient balance, crop stage, and soil test evidence. Avoid correcting a perceived deficiency by repeatedly adding one nutrient without checking antagonism, existing supply, placement, moisture, pH, root health, or possible losses.",
+            },
+            {
+              heading: "Match application method to timing, root access, and field conditions",
+              body:
+                "The source identifies broadcast, band, basal, side-dress, foliar, fertigation, drenching, and trenching as application approaches. Basal and band placement can position nutrients during establishment, while localised side-dressing responds after planting or transplanting. Foliar and fertigation methods require close attention to product suitability, concentration, timing, water quality, and crop safety; drenching must meet the 4Rs; and trenching can place organic material in the planting area. Mulch, plant stage, root depth, irrigation system, soil moisture, and access all affect the suitable method. Match crop demand with nutrients available in soil, organic fertiliser, and inorganic fertiliser, then improve efficiency through correct placement, solved soil constraints, good root growth, and the four rights. Record the plan and revise it from field response and financial return.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "vegetable-fertilisation-check",
+        title: "Vegetable-fertilisation check",
+        description:
+          "Apply soil diagnosis, crop uptake, nutrient sources, label interpretation, application methods, and the 4Rs to an efficient vegetable-fertilisation decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "fv-1",
+            prompt: "A tomato field has low potassium, but the grower wants to add only more nitrogen. What does the source’s limiting-factor principle suggest?",
+            options: [
+              { id: "a", label: "Address the potassium limitation first because adding more nitrogen will not remove the yield constraint created by low potassium." },
+              { id: "b", label: "Add nitrogen indefinitely because one nutrient always corrects every other nutrient shortage." },
+              { id: "c", label: "Ignore soil testing because nutrient availability cannot affect yield." },
+              { id: "d", label: "Apply the same fertiliser rate without considering soil, crop, stage, or limiting factors." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Liebig’s limiting-factor principle means the constraining nutrient must be addressed before additional non-limiting inputs can raise yield.", incorrect: "Identify the limiting factor first. More of a different nutrient does not remove a yield constraint caused by inadequate potassium or another limiting condition." },
+          },
+          {
+            id: "fv-2",
+            prompt: "Which evidence best establishes a crop’s fertiliser demand?",
+            options: [
+              { id: "a", label: "Soil nutrient and pH tests, crop uptake and removal, residues, crop stage, plant population, root and soil condition, and local crop guidance." },
+              { id: "b", label: "Only the brand name of a fertiliser previously used by a neighbour." },
+              { id: "c", label: "Only the total product weight applied last season, without knowing nutrient analysis or crop removal." },
+              { id: "d", label: "Only leaf colour, while ignoring soil supply, pH, root condition, and crop stage." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source connects soil testing, pH, crop uptake, removal, residues, stage, and crop demand to effective nutrient planning.", incorrect: "Build demand from soil supply and availability, crop uptake and removal, residues, crop stage, plant population, root-zone conditions, and appropriate local crop guidance." },
+          },
+          {
+            id: "fv-3",
+            prompt: "How should an advisor interpret an inorganic fertiliser label such as 13-13-21 plus trace elements?",
+            options: [
+              { id: "a", label: "As an analysis of nitrogen, phosphorus expressed as P2O5, potassium expressed as K2O, plus trace elements—not as a guarantee that every bag weight supplies the same nutrient amount as another product." },
+              { id: "b", label: "As a statement that the product contains identical amounts of every possible plant nutrient." },
+              { id: "c", label: "As proof that the product will solve soil compaction, salinity, acidity, and poor drainage without other management." },
+              { id: "d", label: "As a reason to ignore product nutrient concentration, crop stage, and soil test results." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Product labels describe nutrient analysis. Convert a crop nutrient need into the relevant product amount while checking balance, stage, and soil evidence.", incorrect: "Read fertiliser analysis precisely. Nutrient content differs among products, so equal bag weights are not equal nutrient supplies." },
+          },
+          {
+            id: "fv-4",
+            prompt: "Which fertilisation plan best applies the 4Rs?",
+            options: [
+              { id: "a", label: "Choose verified organic and/or inorganic sources, calculate the rate from soil supply and crop demand, time delivery around crop uptake, and place nutrients where active roots can access them using a crop-safe method." },
+              { id: "b", label: "Apply a single product at the same rate, time, and location to every crop regardless of soil, stage, roots, or irrigation." },
+              { id: "c", label: "Broadcast all materials during heavy runoff risk because placement and timing do not matter." },
+              { id: "d", label: "Use only price to choose a source and never inspect composition, quality, losses, or soil effects." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The right source, rate, time, and place connect soil and crop evidence with nutrient efficiency and crop-safe application.", incorrect: "The 4Rs require the correct source, rate, time, and place. Match each to soil supply, crop demand, root access, field conditions, and a safe application method." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, and drip-system planning and maintenance to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, and efficient vegetable fertilisation to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3929,6 +4061,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan investigates the full cause of nonuniform delivery and uses prevention-focused filtration, flushing, pressure, flow, wetting, leak, and record checks.",
           incorrect: "Correcting drip nonuniformity requires diagnostic checks from water source and pump capacity through filtration, pressure, far-end flow, emitters, leaks, and actual soil wetting—not simply longer run time.",
+        },
+      },
+      {
+        id: "final-27",
+        prompt:
+          "A grower has low soil potassium, applies large nitrogen doses throughout the crop cycle, and broadcasts the same fertiliser product at the same rate in every field. How should the advisor revise the plan?",
+        options: [
+          { id: "a", label: "Use soil NPK and pH evidence, crop uptake and removal, crop stage, root-zone conditions, and label analysis to correct the limiting factor and apply the right source, rate, time, and place with suitable placement." },
+          { id: "b", label: "Increase nitrogen further because it will automatically resolve potassium limitation, soil constraints, and application inefficiency." },
+          { id: "c", label: "Ignore the soil test and keep one universal schedule because crop stage and nutrient antagonism do not affect uptake." },
+          { id: "d", label: "Choose fertiliser only by bag price and apply it without checking source quality, nutrient content, crop demand, root access, or loss pathways." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The revision identifies the limiting condition and integrates soil, crop, source, rate, timing, placement, and root-zone evidence through the 4Rs.",
+          incorrect: "A defensible fertilisation plan begins with soil and crop evidence, corrects the limiting factor, interprets nutrient analysis, and applies the right source, rate, time, and place rather than repeating a universal product schedule.",
         },
       },
     ],

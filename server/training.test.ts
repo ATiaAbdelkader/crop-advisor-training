@@ -489,6 +489,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds vegetable fertilisation after drip irrigation", () => {
+    const fertilisationModule = cropAdvisorCourse.modules.find(
+      module => module.id === "vegetable-fertilisation"
+    );
+    const previousModule = cropAdvisorCourse.modules[24];
+
+    expect(fertilisationModule?.lessons).toHaveLength(2);
+    expect(fertilisationModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(fertilisationModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
