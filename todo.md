@@ -16,3 +16,7 @@
 - [x] Add explicit learning-record loading states across dashboard, lesson, assessment, and credential routes.
 - [x] Add unit coverage for final-pass-only certificate issuance and single-event owner notification rules.
 - [x] Analyse REVISED_ECN-001.Importance of Planning in Vegetable Production and integrate its source-grounded course module, assessments, progression, and design documentation.
+- [x] Fix the Vite preview WebSocket connection failure reported on the managed development URL and verify HMR connectivity.
+- [x] Verify managed-preview and local HMR end-to-end with a safe frontend hot update, then retain only a configuration that supports both paths.
+- [x] Document that the sandbox-only localhost capture may reconnect during restarts, while the public managed-preview HMR route is the supported learner-facing path and passed the hot-update check.
+- [x] Replace the unconditional secure HMR target with an origin-aware configuration and prove hot updates on both managed-preview and local development paths without new WebSocket errors.

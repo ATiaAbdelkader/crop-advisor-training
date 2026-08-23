@@ -9,7 +9,14 @@ import viteConfig from "../../vite.config";
 export async function setupVite(app: Express, server: Server) {
   const serverOptions = {
     middlewareMode: true,
-    hmr: { server },
+    // The managed preview is HTTPS behind a reverse proxy. Tell the Vite client
+    // to reconnect through that public secure WebSocket endpoint rather than
+    // falling back to its local development target.
+    hmr: {
+      server,
+      protocol: "wss" as const,
+      clientPort: 443,
+    },
     allowedHosts: true as const,
   };
 
@@ -18,6 +25,33 @@ export async function setupVite(app: Express, server: Server) {
     configFile: false,
     server: serverOptions,
     appType: "custom",
+  });
+
+  // Vite compiles a single client script, while this app is viewed both through
+  // the managed HTTPS proxy and through the local HTTP server. Keep the public
+  // proxy target for external previews, but make the generated client select a
+  // secure default-port WebSocket only when its own page is HTTPS.
+  app.use("/@vite/client", async (req, res, next) => {
+    if (req.method !== "GET") return next();
+
+    try {
+      const transformed = await vite.transformRequest("/@vite/client");
+      if (!transformed?.code) return next();
+
+      const clientCode = transformed.code
+        .replace(
+          'const socketProtocol = "wss" || (importMetaUrl.protocol === "https:" ? "wss" : "ws");',
+          'const socketProtocol = importMetaUrl.protocol === "https:" ? "wss" : "ws";'
+        )
+        .replace(
+          "const hmrPort = 443;",
+          'const hmrPort = importMetaUrl.protocol === "https:" ? 443 : importMetaUrl.port;'
+        );
+
+      res.status(200).set({ "Content-Type": "application/javascript" }).end(clientCode);
+    } catch {
+      next();
+    }
   });
 
   app.use(vite.middlewares);
