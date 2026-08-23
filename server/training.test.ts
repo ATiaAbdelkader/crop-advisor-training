@@ -269,6 +269,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the soil-health module after the acid-soil module", () => {
+    const soilHealthModule = cropAdvisorCourse.modules.find(
+      module => module.id === "how-to-promote-soil-health"
+    );
+    const previousModule = cropAdvisorCourse.modules[13];
+
+    expect(soilHealthModule?.lessons).toHaveLength(2);
+    expect(soilHealthModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(soilHealthModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

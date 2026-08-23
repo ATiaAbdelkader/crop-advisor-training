@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 15 hours",
+  duration: "Approx. 16 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -2043,12 +2043,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "how-to-promote-soil-health",
+      index: 15,
+      title: "How to promote soil health",
+      eyebrow: "Module 15",
+      description:
+        "Treat soil as a living production system, assess physical, chemical, and biological conditions, and use practical management to build soil health and crop yield.",
+      lessons: [
+        {
+          id: "test-the-living-soil-system",
+          title: "Test the living soil system",
+          duration: "30 min",
+          kicker: "Assess physical, chemical, and biological health",
+          summary:
+            "Define soil health and combine physical, chemical, and biological tests to understand the field before choosing a soil-health strategy.",
+          outcomes: [
+            "Define soil health as an integrated physical, chemical, biological, and management-practice question.",
+            "Describe practical physical, chemical, and biological soil-testing approaches.",
+            "Use visual soil assessment and laboratory evidence to frame soil-health management decisions.",
+          ],
+          sections: [
+            {
+              heading: "Treat soil as a living production system",
+              body:
+                "Soil health should be considered slowly and gradually because degradation often goes unnoticed. The source emphasises that soil is the basis for plant production, encourages advisors to feed the soil instead of feeding crops alone, and recommends letting the soil do work rather than overworking it. Soil health integrates physical, chemical, and biological components with management practices. The first step is testing: use evidence to understand the system before selecting a practice, rather than treating a single symptom or laboratory number as the entire field story.",
+              callout:
+                "A healthy-soil recommendation connects how soil looks and functions with chemistry, biology, crop demands, and the practices that sustain the system.",
+            },
+            {
+              heading: "Assess physical and chemical conditions",
+              body:
+                "Physical testing examines structure and texture because they affect water, air, and nutrient availability for crops. A field visual soil assessment can include making a 50-by-50 centimetre pit to inspect the profile, taking a 25-by-25 centimetre cone from the top layer, placing it on a flat surface, breaking it, and examining it. Chemical testing helps determine pH, CEC, organic-matter content, and nutrients that are available or deficient. Use soil chemical analysis or plant tissue analysis, supported by test kits or a laboratory, to make these measurements decision-ready.",
+            },
+            {
+              heading: "Include biological evidence in the assessment",
+              body:
+                "Biological testing looks for beneficial microorganisms and, where relevant, can include nematode and soil-pathogen analysis. Biology, organic matter, and physical structure interact: a soil that supports organisms, roots, aggregates, water movement, and nutrient cycling is more resilient than one assessed only by a fertiliser value. Pair physical visual assessment with chemical results and biological observations, then explain to the farmer how these components connect with soil function, crop response, and the choice of management practices.",
+            },
+          ],
+        },
+        {
+          id: "build-soil-health-with-living-practices",
+          title: "Build soil health with living practices",
+          duration: "35 min",
+          kicker: "Cover, rotate, feed, and protect",
+          summary:
+            "Select complementary practices that protect soil, build organic matter, improve biology, and fit crop rotation, local soil conditions, and farmer resources.",
+          outcomes: [
+            "Select soil-health practices that reduce erosion, protect structure, and improve water and nutrient function.",
+            "Explain the benefits of rotation, mulch, green manure, cover crops, mixed cropping, and organic matter.",
+            "Adapt crop, seed, and field-practice choices to local soil conditions.",
+          ],
+          sections: [
+            {
+              heading: "Reduce disturbance and rotate crops deliberately",
+              body:
+                "The source recommends minimal soil disturbance or tillage because it can protect soil from water and wind erosion, reduce long-term input, fuel, time, and labour costs, improve water infiltration, conserve moisture, and improve soil organic matter. Crop rotation breaks insect-pest and disease cycles, reduces nutrient depletion, maintains fertility, and can reduce dependence on chemical fertilisers. In a rotation discussion, distinguish nitrogen-fixing legume crops from heavy feeders and light feeders, record current practice, and agree a rotation that fits the farm’s crops, season, market, and soil constraints.",
+              callout:
+                "A rotation plan is a deliberate sequence that manages nutrient demand, pests, diseases, residue, and soil cover over time.",
+            },
+            {
+              heading: "Keep soil covered and feed soil biology",
+              body:
+                "Mulch, green manure, and cover crops can improve biological, chemical, and physical soil properties. Organic mulch can limit weeds, provide habitat for soil biota, support pathogen suppression, add organic matter, improve fertility, conserve moisture, improve aeration and infiltration, and protect against erosion. Green manures add biomass and organic matter; legume root nodules can support nutrient availability and contribute to aggregation and water-holding capacity. Cover crops enhance soil quality by adding organic matter, suppressing weeds, supporting soil biota, improving aeration and infiltration, protecting against erosion, and reducing compaction. Mixed cropping can optimise nutrient uptake, control erosion, reduce disease and insect spread, and improve yield per unit area.",
+            },
+            {
+              heading: "Apply organic matter and protect the field system",
+              body:
+                "Organic matter includes living and decomposing plant and animal materials that ultimately contribute to humus. It helps bind soil aggregates, buffer pH change, promote nutrient availability, increase CEC, support beneficial microorganisms, and increase water-holding capacity. Sources include manure, bagasse, crop residues, coco coir, and tree residues. Incorporate crop residues rather than burning them to improve structure, fertility, and organic matter while reducing emissions. Complement this with erosion control, responsible pesticide use and IPM, the 4Rs of fertiliser use, and crops and quality seed adapted to local soil. For example, carrots need light, loose soils; heavy clay and stones can impair root formation and increase rot or forking risk.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "how-to-promote-soil-health-check",
+        title: "Soil health promotion check",
+        description:
+          "Apply integrated soil-health assessment and living-practice principles to practical crop and field decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "sh-1",
+            prompt: "Which three evidence areas does the source place at the centre of soil-health testing?",
+            options: [
+              { id: "a", label: "Physical, chemical, and biological assessment." },
+              { id: "b", label: "Crop price, transport distance, and packaging only." },
+              { id: "c", label: "Rainfall forecast, seed label, and market logo only." },
+              { id: "d", label: "Fertiliser product, machinery brand, and field size only." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Soil health integrates physical, chemical, and biological evidence with management practices.", incorrect: "The source groups soil-health testing into physical, chemical, and biological assessment, interpreted alongside management practice." },
+          },
+          {
+            id: "sh-2",
+            prompt: "What is a field visual-soil-assessment method described in the source?",
+            options: [
+              { id: "a", label: "Make a 50-by-50 centimetre pit, take a 25-by-25 centimetre top-layer cone, break it on a flat surface, and examine it." },
+              { id: "b", label: "Apply lime first and inspect the profile only after harvest." },
+              { id: "c", label: "Judge structure only from a satellite image without visiting the field." },
+              { id: "d", label: "Measure crop price instead of looking at the soil profile." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source outlines a field visual soil assessment using a pit and a top-layer cone for examination.", incorrect: "The field method uses a 50-by-50 centimetre pit and a 25-by-25 centimetre top-layer cone that is broken and examined." },
+          },
+          {
+            id: "sh-3",
+            prompt: "Which is a soil-health benefit of crop rotation highlighted in the source?",
+            options: [
+              { id: "a", label: "Breaking pest and disease cycles, reducing nutrient depletion, and helping maintain fertility." },
+              { id: "b", label: "Guaranteeing identical nutrient demand every season." },
+              { id: "c", label: "Removing all crop residues from the field." },
+              { id: "d", label: "Eliminating the need to assess local soil conditions." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Rotation helps break pest and disease cycles, reduce nutrient depletion, and maintain soil fertility.", incorrect: "Crop rotation is used to manage pest and disease cycles, nutrient demand, and fertility—not to eliminate soil assessment." },
+          },
+          {
+            id: "sh-4",
+            prompt: "Which effect of organic matter is consistent with the source?",
+            options: [
+              { id: "a", label: "It helps bind aggregates, supports nutrient availability and beneficial microorganisms, and increases water-holding capacity." },
+              { id: "b", label: "It always reduces CEC and removes soil life." },
+              { id: "c", label: "It prevents any need for crop rotation or erosion control." },
+              { id: "d", label: "It makes local soil adaptation irrelevant when choosing a crop." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Organic matter supports aggregates, buffering, nutrient availability, CEC, beneficial biology, and water holding.", incorrect: "The source identifies multiple positive organic-matter functions, including aggregate stability, nutrient availability, CEC, beneficial microorganisms, and water holding." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, and acid-soil management to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, and soil-health promotion to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2304,6 +2436,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. A defensible acid-soil response uses confirmed pH, soil context, a suitable liming calculation, reduced acidifying pressure, and complementary organic-matter and cover practices.",
           incorrect: "Acid-soil management requires confirmed pH, soil and lime-material context, careful rate selection, and practices that reduce recurring acidification rather than a one-step or universal rate.",
+        },
+      },
+      {
+        id: "final-16",
+        prompt:
+          "A vegetable farm has declining infiltration, bare soil between crops, low organic matter, repeated disease problems, and a plan to plant carrots in heavy stony clay. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Assess physical, chemical, and biological soil health, then build a rotation, cover or mulch, organic-matter, reduced-disturbance, erosion-control, and crop-soil-fit plan." },
+          { id: "b", label: "Increase tillage and leave soil bare so the field dries faster, while planting carrots without checking soil fit." },
+          { id: "c", label: "Use a single fertiliser input and ignore structure, biology, crop rotation, cover, and local soil condition." },
+          { id: "d", label: "Burn residues and choose seed without considering soil health or root-forming conditions." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan uses integrated soil-health evidence and combines cover, rotation, organic matter, disturbance reduction, erosion control, and crop-soil fit.",
+          incorrect: "The evidence points to a soil-health plan that assesses all three soil components and builds functions through cover, rotation, organic matter, reduced disturbance, erosion control, and locally adapted crop choice.",
         },
       },
     ],
