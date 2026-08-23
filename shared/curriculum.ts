@@ -2439,12 +2439,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "open-field-seedling-production",
+      index: 18,
+      title: "Open-field seedling production",
+      eyebrow: "Module 18",
+      description:
+        "Produce, protect, harden, and transplant bare-root seedlings through careful site selection, thin sowing, climate-responsive protection, and daily nursery management.",
+      lessons: [
+        {
+          id: "prepare-and-sow-a-bare-root-nursery",
+          title: "Prepare and sow a bare-root nursery",
+          duration: "34 min",
+          kicker: "Build the conditions for strong transplants",
+          summary:
+            "Select and prepare an open-field nursery site, manage the seedbed and weeds, then use thin, precise row sowing to produce vigorous bare-root seedlings.",
+          outcomes: [
+            "Compare dense traditional sowing with thin row sowing for seed use, aeration, vigour, and disease-transfer risk.",
+            "Select and prepare a nursery site for light, drainage, soil condition, weed control, and raised-bed management.",
+            "Apply precise thin-sowing principles for row spacing, depth, coverage, watering, and realistic seedling-loss allowance.",
+          ],
+          sections: [
+            {
+              heading: "Replace dense sowing with orderly rows",
+              body:
+                "The source identifies densely sown traditional onion beds as a risk because they use a high seed volume, force seedlings to compete for nutrients, light, and space, produce weak plants, reduce aeration, and allow disease to move quickly from one seedling to another. Row sowing reverses these pressures: it uses less seed, reduces competition, improves aeration, supports strong healthy vigorous seedlings, and lowers disease-transfer incidence. Use the nursery layout to create space for individual seedling development and for practical inspection, weeding, watering, and removal of problem plants.",
+              callout:
+                "Thin, orderly sowing is a seedling-health practice, not simply a way to make a nursery look tidy.",
+            },
+            {
+              heading: "Select and prepare the nursery site before sowing",
+              body:
+                "Choose a site free from adjacent trees that would shade the bed and free from weeds. The source recommends the highest suitable position on the farm to reduce flooding damage, sandy loam as an optimum soil type, and raised beds as the preferred structure; wet areas may need high beds with deep furrows for drainage. An ideal soil has good aeration, holds useful water while draining excess water, and is fertile. Prepare the soil well before the intended sowing date, incorporate well-decomposed organic material and the locally appropriate nutrient inputs, shape the raised beds, then level, rake, and water about two weeks before sowing.",
+            },
+            {
+              heading: "Use a stale seedbed and precise thin sowing",
+              body:
+                "Before sowing, irrigate the prepared seedbed to encourage weed germination for about a week, then cultivate again to remove those weeds before the crop seeds are placed. Clean the bed before weeds flower or set seed. For solanaceous and brassica crops, the source gives an example of one-half gram of seed per running metre and row spacing of about eight to fifteen centimetres. Mark rows with a wooden stick, cover seeds gently by replacing soil, and water lightly after sowing. As a rough depth rule, do not sow seed deeper than twice its diameter. Plan for mortality in the bare-root system rather than crowding beds to compensate; the source notes an indicative mortality level of around 30 percent.",
+            },
+          ],
+        },
+        {
+          id: "protect-harden-and-transplant-bare-root-seedlings",
+          title: "Protect, harden, and transplant bare-root seedlings",
+          duration: "38 min",
+          kicker: "Carry nursery quality into the field",
+          summary:
+            "Adapt nursery protection to weather, prevent pest and disease losses, harden seedlings before field conditions, and transplant bare-root plants with minimum root injury and shock.",
+          outcomes: [
+            "Select moisture, shade, rain, heat, and insect protection that fit dry, wet, or cool nursery conditions.",
+            "Harden seedlings and schedule transplanting to minimise environmental and root-system shock.",
+            "Use daily monitoring, cultural controls, and locally compliant interventions to manage nursery pests and disease risks.",
+          ],
+          sections: [
+            {
+              heading: "Match seedling protection to the weather",
+              body:
+                "In a dry climate, keep beds moist but not waterlogged, check soil moisture, irrigate only when needed, and protect beds from strong sun with shade netting. A temporary jute-bag or similar cover can protect the top layer from drying, but remove it as soon as germination begins; continuing to cover emerged seedlings can reduce light and cause stretching. Check germination twice daily and protect seedlings from sucking insects that can transmit viral diseases. In wet conditions, protect beds from strong rain with suitable cover, but remove plastic after rain when sun breaks through to prevent overheating. In cool semi-tropical winter conditions, transparent plastic can trap heat and accelerate seedling development. Mulch or netting can help retain moisture for germination, but all covers must be managed in response to heat, light, and emergence.",
+              callout:
+                "A cover is a temporary climate control: remove or adjust it when it begins to create heat, darkness, or excess moisture rather than protection.",
+            },
+            {
+              heading: "Harden before transplanting and handle roots carefully",
+              body:
+                "For solanaceous and brassica seedlings, the source recommends gradual exposure to direct sunlight for five to seven days before transplanting and a gradual reduction in irrigation. Hardening prepares seedlings for field conditions and helps reduce transplant shock. Transplant late in the afternoon or on a cloudy day. Water the seedling beds beforehand and water the destination field so soil can contact roots well. Lift seedlings carefully with a tool that digs beneath the root system, separate plants gently, transport them in a container, and water them if they dry. Set bare-root seedlings slightly deeper than their nursery position, water again if needed, and do not transplant broken or very weak plants. During the usual seven- to fourteen-day root-establishment period, irrigate as required, inspect the field, and replace plants that die or are destroyed by insects.",
+            },
+            {
+              heading: "Monitor daily and manage pests and disease early",
+              body:
+                "Daily ground-nursery monitoring supports rapid action: remove weeds before they compete for space, light, and nutrients; inspect for leaf miners, caterpillars, sucking insects, beetle feeding, and nursery disease. The source uses cultural controls such as raised beds, appropriate spacing, avoiding excessive irrigation, watering early enough for the bed to dry before night, and rain protection to reduce damping-off risk. It also presents physical controls, intact netting, yellow or blue sticky traps, affected-leaf removal, caterpillar collection, and biopesticides such as neem extract as options. Where a crop-protection product is considered, use only a locally registered product, follow its label, and integrate it with cultural and physical controls rather than waiting for a serious outbreak.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "open-field-seedling-production-check",
+        title: "Open-field seedling-production check",
+        description:
+          "Apply bare-root nursery, climate protection, hardening, transplanting, and daily pest-management principles to seedling-production decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "of-1",
+            prompt: "What is the strongest reason to use thin row sowing rather than a densely sown traditional bare-root bed?",
+            options: [
+              { id: "a", label: "It reduces seed use and competition, improves aeration, supports vigorous seedlings, and reduces disease transfer." },
+              { id: "b", label: "It guarantees that no seedling mortality will occur." },
+              { id: "c", label: "It removes the need for site selection and drainage." },
+              { id: "d", label: "It makes seedlings compete more strongly for light and nutrients." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links row sowing with less seed use, less competition, better aeration, stronger seedlings, and less disease transfer.", incorrect: "Thin row sowing improves the growing environment by reducing competition and disease-transfer pressure while supporting aeration and vigour." },
+          },
+          {
+            id: "of-2",
+            prompt: "Which site-and-bed preparation best follows the source guidance for an open-field bare-root nursery?",
+            options: [
+              { id: "a", label: "Use a weed-free, well-lit high site with suitable well-aerated soil, raised beds and drainage; prepare, level, and water the bed ahead of sowing." },
+              { id: "b", label: "Place the nursery under trees in the farm’s lowest flooded area so the bed stays moist." },
+              { id: "c", label: "Sow into a weedy, unprepared bed and rely on crowding to suppress weeds." },
+              { id: "d", label: "Use a flat compacted bed with no furrows because drainage reduces seedling growth." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source favours a weed-free, unshaded high site, suitable aerated soil, raised beds, drainage, and well-timed preparation.", incorrect: "Strong seedlings begin with site, soil, drainage, and weed management. Avoid shaded, weedy, low-lying, or poorly drained nursery positions." },
+          },
+          {
+            id: "of-3",
+            prompt: "Seedlings have just started emerging beneath a temporary mulch or jute cover in strong dry weather. What should the nursery manager do?",
+            options: [
+              { id: "a", label: "Remove the cover immediately to prevent light shortage and stretching, then continue to manage moisture and protection as needed." },
+              { id: "b", label: "Leave the cover in place until transplanting so seedlings receive no direct light." },
+              { id: "c", label: "Flood the bed every evening regardless of soil moisture." },
+              { id: "d", label: "Stop checking germination because emergence proves all seedlings are healthy." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source says to remove mulch when seeds sprout to avoid etiolation from inadequate sun exposure.", incorrect: "Temporary covers protect germination, but they should be removed at emergence to prevent low-light stretching; manage water according to actual soil moisture." },
+          },
+          {
+            id: "of-4",
+            prompt: "Which transplanting sequence best reduces shock for bare-root seedlings?",
+            options: [
+              { id: "a", label: "Harden seedlings, transplant late in the afternoon or on a cloudy day, water nursery and field, lift roots carefully, set slightly deeper, and maintain establishment irrigation and checks." },
+              { id: "b", label: "Transplant weak or broken seedlings at midday into dry soil and withhold water to harden them quickly." },
+              { id: "c", label: "Pull seedlings sharply from dry beds, expose roots to sun, and avoid replacing plants that die." },
+              { id: "d", label: "Wait for damping-off symptoms before managing moisture, spacing, drainage, weeds, or rain protection." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links hardening, low-stress timing, pre-watering, careful root handling, appropriate depth, irrigation, and follow-up checks with lower transplant shock.", incorrect: "Bare-root seedlings need gradual hardening, careful lifting, good root-soil contact, low-stress timing, establishment irrigation, and a field check for losses." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, and protected vegetable-nursery management to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, and open-field bare-root seedling production to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2748,6 +2880,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan addresses root quality, orderly nursery conditions, moisture management, protective structure, insect exclusion, and a readiness check before field establishment.",
           incorrect: "Weak roots, elongation, uneven vigour, and gaps in exclusion require a linked nursery-improvement plan before transplanting—not a rushed field move or a single input.",
+        },
+      },
+      {
+        id: "final-19",
+        prompt:
+          "An open-field tomato nursery is densely sown in a low, weedy bed. Emerging seedlings remain under an opaque cover, and the grower plans to pull them into a dry field at midday. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Rebuild the plan around a weed-free, well-drained raised bed and thin rows; remove opaque cover at emergence; harden seedlings; pre-water nursery and field; then transplant carefully in lower-stress conditions." },
+          { id: "b", label: "Leave the nursery crowded and covered, then pull all seedlings at midday because fast transplanting prevents shock." },
+          { id: "c", label: "Increase evening irrigation in the poorly drained bed and transplant broken seedlings to avoid wasting seed." },
+          { id: "d", label: "Ignore shading, drainage, root handling, and timing because bare-root seedlings establish without management." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan corrects dense sowing, site and drainage risks, low-light stretching, inadequate hardening, dry root-zone contact, and high-stress transplant timing.",
+          incorrect: "Open-field seedling quality depends on a connected approach to site and bed design, thin sowing, cover management, hardening, careful roots, water, and transplant timing.",
         },
       },
     ],

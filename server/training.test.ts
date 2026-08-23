@@ -329,6 +329,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the open-field seedling-production module after the vegetable nursery", () => {
+    const openFieldModule = cropAdvisorCourse.modules.find(
+      module => module.id === "open-field-seedling-production"
+    );
+    const previousModule = cropAdvisorCourse.modules[16];
+
+    expect(openFieldModule?.lessons).toHaveLength(2);
+    expect(openFieldModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(openFieldModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

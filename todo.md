@@ -35,3 +35,4 @@
 - [x] Analyse REVISED_ENV-009.How to Promote Soil Health and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_ENV-010.How to Collect Soil Sample for Soil Test and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-001.Nursery for Vegetable Production and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_PRD-002.Open Field Seedling Production and integrate its source-grounded module, assessments, progression, and design documentation.
