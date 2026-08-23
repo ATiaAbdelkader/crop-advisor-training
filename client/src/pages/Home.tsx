@@ -1,33 +1,184 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import { startLogin } from "@/const";
+import LearnerLoading from "@/components/LearnerLoading";
+import TrainingShell from "@/components/TrainingShell";
+import { ProgressRing } from "@/components/ProgressRing";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { cn } from "@/lib/utils";
+import { trpc } from "@/lib/trpc";
+import { cropAdvisorCourse } from "@shared/curriculum";
+import { Award, BookOpen, CheckCircle2, ChevronRight, Clock3, LockKeyhole, Play, Sprout, Target } from "lucide-react";
+import { useLocation } from "wouter";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
+const heroImage = "/manus-storage/crop-advisor-field-hero_39c00e74.jpg";
+
+function getActionIcon(type: string) {
+  if (type === "assessment") return Target;
+  if (type === "certificate") return Award;
+  if (type === "enroll") return Sprout;
+  return Play;
+}
+
 export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated } = useAuth();
+  const [location, setLocation] = useLocation();
+  const utils = trpc.useUtils();
+  const overviewQuery = trpc.training.overview.useQuery(undefined, { enabled: isAuthenticated });
+  const enroll = trpc.training.enroll.useMutation({
+    onSuccess: () => utils.training.overview.invalidate(),
+  });
+  const overview = overviewQuery.data;
+  const progress = overview?.progressPercent ?? 0;
+  const action = overview?.nextAction;
+  const ActionIcon = getActionIcon(action?.type ?? "lesson");
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  const continueLearning = () => {
+    if (!isAuthenticated) return startLogin();
+    if (action?.type === "enroll") {
+      enroll.mutate();
+      return;
+    }
+    if (action?.href) setLocation(action.href);
+  };
+
+  if (isAuthenticated && overviewQuery.isLoading) {
+    return <TrainingShell wide><LearnerLoading message="Preparing your advisor dashboard" /></TrainingShell>;
+  }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
+    <TrainingShell wide>
+      <main className="pb-14">
+        <section className="mx-auto max-w-[1520px] px-5 pt-6 sm:px-8 lg:pt-8">
+          <div
+            className="relative overflow-hidden rounded-[28px] bg-[#173c30] px-6 py-8 text-[#f8f7ef] shadow-[0_18px_55px_rgba(25,56,45,.18)] sm:px-10 sm:py-11 lg:min-h-[282px]"
+            style={{
+              backgroundImage: `linear-gradient(90deg, rgba(20,55,43,.97) 0%, rgba(21,57,45,.93) 33%, rgba(25,59,47,.55) 62%, rgba(24,55,43,.2) 100%), url(${heroImage})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
+            <div className="relative z-10 max-w-2xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-[#c6d9bc]">Crop Advisor Foundations</p>
+              <h1 className="mt-4 font-serif text-3xl font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[42px]">
+                {isAuthenticated ? `Welcome back, ${user?.name?.split(" ")[0] || "advisor"}.` : "A sharper field of judgement."}
+              </h1>
+              <p className="mt-4 max-w-xl text-sm leading-6 text-[#e2ebd9] sm:text-[15px]">
+                {isAuthenticated
+                  ? "Continue through a rigorous, field-centred learning path built for the decisions that matter in crop production."
+                  : "Master a disciplined, field-centred approach to crop advisory—from observation and soil context to sound recommendations."}
+              </p>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <Button
+                  onClick={continueLearning}
+                  disabled={overviewQuery.isLoading || enroll.isPending}
+                  className="rounded-full bg-[#eef3e9] px-5 text-xs font-bold text-[#1c4639] shadow-none transition-transform duration-200 hover:bg-white active:scale-[.97]"
+                >
+                  {action?.type === "enroll" || !overview ? "Begin the pathway" : action?.title}
+                  <ChevronRight className="ml-1 h-3.5 w-3.5" />
+                </Button>
+                <span className="inline-flex items-center gap-2 text-xs font-semibold text-[#d3e0cc]">
+                  <Clock3 className="h-3.5 w-3.5" />
+                  {cropAdvisorCourse.duration}
+                </span>
+              </div>
+            </div>
+            <div className="absolute -bottom-24 -right-14 h-64 w-64 rounded-full border border-white/10 bg-white/[.03]" />
+            <div className="absolute bottom-8 right-8 hidden items-end gap-5 lg:flex">
+              <div className="rounded-2xl border border-white/15 bg-[#173c30]/55 px-5 py-4 backdrop-blur-sm">
+                <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#cad8c5]">Certification standard</p>
+                <p className="mt-1 font-serif text-2xl font-semibold">{cropAdvisorCourse.passMark}%</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto grid max-w-[1520px] gap-6 px-5 pt-7 sm:px-8 lg:grid-cols-[minmax(0,1fr)_370px]">
+          <div className="min-w-0">
+            <div className="mb-4 flex items-end justify-between gap-4">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#839080]">Your learning path</p>
+                <h2 className="mt-1 font-serif text-2xl font-semibold tracking-[-0.035em] text-[#23362b]">Required modules</h2>
+              </div>
+              <span className="text-xs font-semibold text-[#718072]">{overview ? `${overview.completedSteps} of ${overview.totalSteps} checkpoints` : "4-hour pathway"}</span>
+            </div>
+
+            <div className="grid gap-3">
+              {cropAdvisorCourse.modules.map((module, index) => {
+                const state = overview?.moduleStates.find(item => item.id === module.id);
+                const moduleProgress = state
+                  ? Math.round(((state.completedLessons + (state.assessmentPassed ? 1 : 0)) / (state.lessonCount + 1)) * 100)
+                  : 0;
+                const locked = Boolean(state?.locked);
+                const isDone = Boolean(state?.assessmentPassed);
+                return (
+                  <button
+                    key={module.id}
+                    type="button"
+                    disabled={locked}
+                    onClick={() => setLocation(`/course/${module.id}`)}
+                    className={cn(
+                      "group flex w-full items-center gap-4 rounded-[20px] border bg-[#fcfcf8] p-4 text-left transition-all duration-200 sm:p-5",
+                      locked
+                        ? "cursor-not-allowed border-[#e6e9e1] opacity-65"
+                        : "border-[#e1e5dc] shadow-[0_7px_20px_rgba(39,67,47,.035)] hover:-translate-y-0.5 hover:border-[#b9c8b5] hover:shadow-[0_13px_28px_rgba(39,67,47,.08)] active:scale-[.995]"
+                    )}
+                  >
+                    <div className={cn("grid h-11 w-11 shrink-0 place-items-center rounded-[15px] text-sm font-extrabold", isDone ? "bg-[#e2f0e2] text-[#31714a]" : locked ? "bg-[#edf0e9] text-[#8b958a]" : "bg-[#e7eee2] text-[#285744]")}>{isDone ? <CheckCircle2 className="h-5 w-5" /> : locked ? <LockKeyhole className="h-4 w-4" /> : `0${index + 1}`}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <p className="truncate text-[15px] font-bold text-[#294237]">{module.title}</p>
+                        {isDone && <Badge className="border-0 bg-[#e2f0e2] px-2 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-[#347048] hover:bg-[#e2f0e2]">Passed</Badge>}
+                      </div>
+                      <p className="mt-1 truncate text-xs leading-5 text-[#718072]">{locked ? "Complete the preceding module assessment to unlock." : module.description}</p>
+                      <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-[#e8ece5]">
+                        <div className="h-full rounded-full bg-[#79a06c] transition-all duration-500" style={{ width: `${moduleProgress}%` }} />
+                      </div>
+                    </div>
+                    <ChevronRight className="h-4 w-4 shrink-0 text-[#98a496] transition-transform duration-200 group-hover:translate-x-0.5" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          <aside className="space-y-4">
+            <div className="rounded-[22px] border border-[#dfe6d9] bg-[#edf3e9] p-5">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#728570]">Overall completion</p>
+                  <p className="mt-2 font-serif text-3xl font-semibold tracking-[-0.04em] text-[#234032]">{progress}%</p>
+                </div>
+                <ProgressRing value={progress} />
+              </div>
+              <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-[#d7e2d1]">
+                <div className="h-full rounded-full bg-[#4f8063] transition-all duration-500" style={{ width: `${progress}%` }} />
+              </div>
+              <p className="mt-3 text-xs leading-5 text-[#617762]">{progress === 100 ? "Your learning evidence is complete." : "Your pathway combines lessons, module checks, and an integrated final assessment."}</p>
+            </div>
+
+            <div className="rounded-[22px] border border-[#e0e5dc] bg-[#fcfcf8] p-5 shadow-[0_9px_24px_rgba(39,67,47,.035)]">
+              <div className="flex items-center gap-2 text-[#4e8061]"><span className="grid h-7 w-7 place-items-center rounded-full bg-[#e7f0e4]"><ActionIcon className="h-3.5 w-3.5" /></span><p className="text-[10px] font-bold uppercase tracking-[0.18em]">Next required activity</p></div>
+              <h3 className="mt-4 font-serif text-xl font-semibold leading-6 tracking-[-0.03em] text-[#23372b]">{action?.title ?? "Enroll to begin"}</h3>
+              <p className="mt-2 text-xs leading-5 text-[#6c7a6c]">{action?.description ?? "Sign in to activate your personal progress record."}</p>
+              <Button
+                variant="ghost"
+                onClick={continueLearning}
+                disabled={overviewQuery.isLoading || enroll.isPending}
+                className="mt-4 h-auto p-0 text-xs font-bold text-[#275b43] hover:bg-transparent hover:text-[#183e2f]"
+              >
+                {action?.type === "enroll" || !overview ? "Activate pathway" : "Continue learning"}
+                <ChevronRight className="ml-1 h-3.5 w-3.5" />
+              </Button>
+            </div>
+
+            <div className="rounded-[22px] border border-[#dfe5db] bg-[#fbfaf5] p-5">
+              <div className="flex items-center gap-3"><BookOpen className="h-4 w-4 text-[#617f54]" /><p className="text-xs font-bold text-[#344b3b]">What the credential proves</p></div>
+              <p className="mt-3 text-xs leading-5 text-[#718071]">You have demonstrated a structured approach to field observation, soil and nutrition context, and evidence-led crop decisions.</p>
+            </div>
+          </aside>
+        </section>
       </main>
-    </div>
+    </TrainingShell>
   );
 }
