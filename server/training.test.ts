@@ -209,6 +209,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the plant-nutrition module after the soil-degradation module", () => {
+    const nutritionModule = cropAdvisorCourse.modules.find(
+      module => module.id === "nutrients-required-in-plant-nutrition"
+    );
+    const previousModule = cropAdvisorCourse.modules[10];
+
+    expect(nutritionModule?.lessons).toHaveLength(2);
+    expect(nutritionModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(nutritionModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

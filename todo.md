@@ -29,3 +29,4 @@
 - [x] Analyse REVISED_ENV-003.Topographic Factors Affecting Crop Yield and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_ENV-004.Edaphic Soil Factor and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_ENV-005.Soil Degradation and Management and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_ENV-006.Nutrients Required in Plant Nutrition and integrate its source-grounded module, assessments, progression, and design documentation.

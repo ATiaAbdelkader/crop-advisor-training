@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 12 hours",
+  duration: "Approx. 13 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1647,12 +1647,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "nutrients-required-in-plant-nutrition",
+      index: 12,
+      title: "Nutrients required in plant nutrition",
+      eyebrow: "Module 12",
+      description:
+        "Distinguish plant nutrition from fertilisation, classify essential nutrients, and use nutrient source, mobility, and function evidence to support balanced crop nutrition.",
+      lessons: [
+        {
+          id: "map-essential-nutrients-and-sources",
+          title: "Map essential nutrients and sources",
+          duration: "28 min",
+          kicker: "What plants need and where it comes from",
+          summary:
+            "Distinguish plant nutrition from fertilisation, identify essential elements, and classify macro- and micronutrients by plant need and source.",
+          outcomes: [
+            "Explain the difference between plant nutrition and plant fertilisation.",
+            "Classify essential nutrients into structural elements, macronutrients, and micronutrients.",
+            "Use soil-test evidence to identify nutrient availability, imbalance, and likely limiting factors before recommending inputs.",
+          ],
+          sections: [
+            {
+              heading: "Separate plant nutrition from fertilisation",
+              body:
+                "Plant nutrition concerns the nutrients or elements a plant needs and their functions. Plant fertilisation is the application or addition of these nutrients to soil for plants. Nutrients originate from the physical environment: air, soil, water, and light indirectly through photosynthesis. A nutrient is considered essential when its absence prevents the plant from completing its seed-to-seed life cycle. Do not begin with a product; begin with the crop need, nutrient source, soil condition, and evidence of whether a nutrient is truly limiting.",
+              callout:
+                "A fertiliser recommendation is only one possible response within a broader plant-nutrition decision based on nutrient need, source, availability, and crop stage.",
+            },
+            {
+              heading: "Classify nutrients by plant requirement",
+              body:
+                "Structural elements from the air are carbon, hydrogen, and oxygen. Macronutrients are needed in relatively large amounts and include nitrogen, phosphorus, potassium, calcium, magnesium, and sulfur. Micronutrients are needed in smaller amounts and include iron, chlorine, manganese, boron, zinc, copper, molybdenum, sodium, nickel, silicon, and cobalt. The source notes that cobalt and silicon are not essential to all plants but are required by some. Classification helps organise understanding; it does not mean micronutrients are unimportant or that a larger application is always beneficial.",
+            },
+            {
+              heading: "Use soil evidence before selecting a source",
+              body:
+                "A soil test from a representative field can identify available nutrients, reveal very low nutrients that create a limiting factor, and flag very high levels. Organic sources such as compost and farmyard manure may supply trace elements and also condition soil, but their composition can be uncertain, volumes may be high, release is slow, and poorly managed sources may carry pathogens or weed seeds. Inorganic sources such as urea, DAP, and MOP are concentrated, known-content, and fast acting, but can be costly, do not feed soil organisms directly, and carry leaching or volatilisation risks. Select a source and dose only after linking the test, crop need, field history, and management capacity.",
+            },
+          ],
+        },
+        {
+          id: "translate-nutrient-roles-into-field-decisions",
+          title: "Translate nutrient roles into field decisions",
+          duration: "33 min",
+          kicker: "Availability, mobility, and function",
+          summary:
+            "Use nutrient mobility, availability, and plant function to interpret symptoms carefully and plan balanced, accessible crop nutrition.",
+          outcomes: [
+            "Distinguish mobile from immobile nutrient behaviour and the leaf position where deficiency signs first appear.",
+            "Relate major nutrient functions to plant growth, yield, quality, and resilience.",
+            "Explain why nutrients must be soluble, balanced, and accessible to roots for optimum growth.",
+          ],
+          sections: [
+            {
+              heading: "Read mobility before interpreting a symptom",
+              body:
+                "Mobile nutrients move to new growth, so deficiency is often evident first in older leaves. The source lists nitrogen, sulfur, phosphorus, chlorine, potassium, nickel, and magnesium as mobile in plants. Immobile nutrients do not move to new growth, so deficiency signs first show in new leaves; examples include boron, calcium, copper, iron, manganese, zinc, molybdenum, and cobalt. Nutrients also differ in their movement through soil: some move with mass flow while relatively immobile forms rely more on diffusion and near-root placement. Use this information as one diagnostic clue, not as a substitute for field, soil, root, and management evidence.",
+              callout:
+                "Symptom position helps frame a question; it does not confirm a nutrient diagnosis without considering root access, moisture, pH, and other field conditions.",
+            },
+            {
+              heading: "Connect nutrient function with crop performance",
+              body:
+                "Nitrogen supports photosynthesis, rapid growth, leaf size and quality, and crop maturity. Phosphorus supports strong roots, early seedling growth, fruit development and ripening, seed formation, and disease resistance. Potassium supports seed and fruit quality, turgor, reduced water loss and wilting, drought tolerance, and disease resistance. Calcium supports new growing points and root tips, fruit set, and uptake regulation; magnesium is a key chlorophyll element and enzyme component; sulfur is part of amino acids, enzymes, vitamins, nodulation, seed production, and chlorophyll formation. Micronutrients also have precise roles, such as iron in chlorophyll-related processes, boron in root and pollen-tube elongation, zinc in growth hormones and enzymes, manganese in metabolic activity, and copper in fruit quality and cell-wall strength.",
+            },
+            {
+              heading: "Make nutrients available, balanced, and accessible",
+              body:
+                "For optimum growth, nutrients need to be available as solutes in soil water, present in adequate and balanced amounts, and accessible to the root system. Nutrients contribute to plant parts, photosynthesis, sugar transport, and water-balance regulation. Match crop demand with the nutrient uptake pattern across the crop cycle, but avoid assuming that every symptom requires a single nutrient input. Check root-zone moisture, pH, compaction, soil test results, recent fertiliser practice, and the crop’s current growth stage before deciding whether the next action is a source change, placement adjustment, balanced nutrition plan, or further evidence gathering.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "nutrients-required-in-plant-nutrition-check",
+        title: "Plant nutrition essentials check",
+        description:
+          "Apply essential-nutrient classification, source, mobility, and function concepts to balanced crop-nutrition decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "pn-1",
+            prompt: "Which statement correctly distinguishes plant nutrition from plant fertilisation?",
+            options: [
+              { id: "a", label: "Nutrition concerns nutrients plants need and their functions; fertilisation is the application or addition of nutrients to soil." },
+              { id: "b", label: "Nutrition and fertilisation always mean exactly the same action." },
+              { id: "c", label: "Fertilisation means identifying nutrients from air only." },
+              { id: "d", label: "Nutrition applies only after the crop is harvested." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Plant nutrition is broader than fertiliser use; it includes nutrient need, source, function, availability, and root access.", incorrect: "Plant nutrition addresses what nutrients plants need and how they function, while fertilisation is the addition of nutrients to soil." },
+          },
+          {
+            id: "pn-2",
+            prompt: "Which set contains the six macronutrients highlighted in the source objective?",
+            options: [
+              { id: "a", label: "Nitrogen, phosphorus, potassium, calcium, magnesium, and sulfur." },
+              { id: "b", label: "Iron, boron, zinc, copper, manganese, and molybdenum." },
+              { id: "c", label: "Carbon, hydrogen, oxygen, chlorine, nickel, and cobalt." },
+              { id: "d", label: "Nitrogen, iron, zinc, boron, copper, and chlorine only." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Nitrogen, phosphorus, potassium, calcium, magnesium, and sulfur are the six macronutrients in the module objective.", incorrect: "The six macronutrients are nitrogen, phosphorus, potassium, calcium, magnesium, and sulfur." },
+          },
+          {
+            id: "pn-3",
+            prompt: "Where is a deficiency of a mobile nutrient most likely to appear first?",
+            options: [
+              { id: "a", label: "Older leaves, because the nutrient can move to support new growth." },
+              { id: "b", label: "Only in flowers, regardless of crop stage." },
+              { id: "c", label: "Only in roots, with no leaf evidence." },
+              { id: "d", label: "New leaves, because mobile nutrients cannot move." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Mobile nutrients can move to newer growth, so deficiency signs commonly appear first in older leaves.", incorrect: "Mobile nutrient deficiencies commonly appear in older leaves; immobile nutrient deficiencies tend to appear in new growth." },
+          },
+          {
+            id: "pn-4",
+            prompt: "Which nutrient role best matches potassium in the source material?",
+            options: [
+              { id: "a", label: "Maintaining turgor, reducing water loss and wilting, supporting fruit and seed quality, and increasing disease resistance." },
+              { id: "b", label: "Only producing new root tips and no role in water balance." },
+              { id: "c", label: "Only helping pollen-tube elongation under stress." },
+              { id: "d", label: "Only converting nitrate to ammonium in legume nodules." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Potassium supports quality, water balance, drought tolerance, and disease resistance.", incorrect: "Potassium supports fruit and seed quality, turgor, reduced water loss, drought tolerance, and disease resistance." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, and soil-protection planning to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, and balanced plant-nutrition decisions to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -1860,6 +1992,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan addresses erosion, soil cover, water flow, compaction, and organic-matter decline with linked practical actions.",
           incorrect: "The evidence points to interacting erosion and compaction risks; use ground cover, sound layout, raised beds and paths, reduced wet-soil traffic, and organic residues.",
+        },
+      },
+      {
+        id: "final-13",
+        prompt:
+          "A vegetable crop has yellowing first in older leaves, poor growth, and a soil test indicating low available nitrogen. Which advisor response is most defensible?",
+        options: [
+          { id: "a", label: "Treat the older-leaf pattern as a clue for a mobile nutrient issue, confirm root access and moisture conditions, then plan an evidence-led balanced nitrogen response." },
+          { id: "b", label: "Assume every new-leaf symptom is caused by nitrogen and ignore the soil test." },
+          { id: "c", label: "Apply several inputs without checking crop stage, moisture, or nutrient balance." },
+          { id: "d", label: "Ignore the soil test because nutrient availability never affects crop performance." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. Nitrogen is mobile, so older-leaf symptoms can guide the question, but root access, moisture, crop stage, soil evidence, and balance still matter before action.",
+          incorrect: "Use symptom position with soil-test, root-zone, moisture, and crop-stage evidence. Mobile-nutrient signs in older leaves are a clue, not a stand-alone diagnosis.",
         },
       },
     ],
