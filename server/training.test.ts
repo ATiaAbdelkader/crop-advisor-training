@@ -149,6 +149,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the topographic-factors module after the climatic-factors module", () => {
+    const topographicModule = cropAdvisorCourse.modules.find(
+      module => module.id === "topographic-factors-affecting-crop-yield"
+    );
+    const previousModule = cropAdvisorCourse.modules[7];
+
+    expect(topographicModule?.lessons).toHaveLength(2);
+    expect(topographicModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(topographicModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

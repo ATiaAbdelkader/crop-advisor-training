@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 9 hours",
+  duration: "Approx. 10 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1239,12 +1239,156 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "topographic-factors-affecting-crop-yield",
+      index: 9,
+      title: "Topographic factors and crop yield",
+      eyebrow: "Module 09",
+      description:
+        "Read elevation, slope, landform, exposure, and farm-site features to reduce erosion and water risks and improve crop placement decisions.",
+      lessons: [
+        {
+          id: "read-elevation-and-landform",
+          title: "Read elevation and landform",
+          duration: "24 min",
+          kicker: "The shape and height of the land",
+          summary:
+            "Identify natural and man-made topographic features, distinguish lowland, mid-elevation, and highland production areas, and relate elevation to crop and variety fit.",
+          outcomes: [
+            "Define topography as the shape and slope of land and identify relevant natural and man-made features.",
+            "Classify a production site by lowland, mid-elevation, or highland context.",
+            "Use elevation and temperature relationships to select crops and varieties suited to the field.",
+          ],
+          sections: [
+            {
+              heading: "Describe the land before prescribing a crop",
+              body:
+                "Topography means the shape of the land and the extent to which it slopes. Some land has a gentle slope and some a steep slope; steep slopes tend to be more severely affected by soil erosion. Vegetable crops may be planted in mountains, hills, valleys, plains, or low-lying areas, and their performance is affected by water infiltration, runoff, erosion, elevation, slope, and exposure to sun. Start the field description by locating both natural features—mountains, hills, valleys, and plains—and man-made features such as roads, dams, and common irrigation facilities.",
+              callout:
+                "A topographic description becomes useful only when it changes the crop, layout, water, erosion, or site-management decision.",
+            },
+            {
+              heading: "Use elevation to test crop and variety fit",
+              body:
+                "Elevation is commonly recorded as metres above sea level. Low elevation areas include valleys and plains; medium elevation areas include hills; and high elevation areas include mountains. The source highlights that roughly 70% of vegetables are lowland adapted and that highland cultivars of crops such as capsicum pepper may not perform well in lowland conditions, and vice versa. Locate the elevation of the place and each farm field using a mapping website or other reliable source, then compare it with planned crops and available varieties.",
+            },
+            {
+              heading: "Link elevation with temperature and observation",
+              body:
+                "Elevation changes the temperature environment experienced by the crop. Rather than assuming that a crop name guarantees adaptation, use elevation together with local temperature, season, and variety information. Record multiple fields separately when they differ in elevation, landform, or exposure. This provides a transparent basis for choosing a suitable demo-farm crop, assessing why a variety may be underperforming, and returning to the crop-and-variety selection process when the site evidence does not fit the original plan.",
+            },
+          ],
+        },
+        {
+          id: "map-slope-water-and-farm-risk",
+          title: "Map slope, water, and farm risk",
+          duration: "29 min",
+          kicker: "Use the terrain as evidence",
+          summary:
+            "Use slope, water movement, exposure, and a field sketch to choose bed orientation, control erosion and runoff, and identify site-specific climate and access risks.",
+          outcomes: [
+            "Explain how slope influences infiltration, runoff, soil erosion, moisture distribution, and crop placement.",
+            "Select practical erosion and runoff controls for hilly or sloping vegetable fields.",
+            "Create a topographic farm sketch that combines elevation, slope, water, access, orientation, and local climate-risk information.",
+          ],
+          sections: [
+            {
+              heading: "Question easy assumptions about lower slopes",
+              body:
+                "It may appear easy to plant vegetables in the lower portion of a slope because water is available, but this requires careful observation. Topography affects infiltration, runoff, soil erosion, and moisture distribution. Compare different positions on a slope for water abundance, fertility, and likely yield rather than assuming one position is automatically better. Consider both immediate water availability and the risks of runoff, sediment movement, waterlogging, or loss of topsoil.",
+              callout:
+                "On a slope, ask where water comes from, where it goes, what it carries, and how those flows change the root-zone conditions for the crop.",
+            },
+            {
+              heading: "Lay out beds to control runoff and erosion",
+              body:
+                "Hilly or sloping fields require an intentional bed layout. Use contouring and other runoff-control methods to slow water movement, reduce soil loss, and protect the field’s productive soil. The appropriate arrangement depends on the measured slope, the direction of water flow, access, water sources, and the crop’s sensitivity to drainage conditions. Treat bed orientation and water-control measures as part of the production plan, not as an afterthought once erosion is visible.",
+            },
+            {
+              heading: "Make a map that supports decisions",
+              body:
+                "Use mapping and field observation to create a practical topographic sketch of the farm. Locate the site, map the farm area, record elevation, show roads, water sources, and houses, indicate slope, and mark east, west, north, and south. Add climate information such as temperature, sunlight hours, rainfall, droughts, floods, and the main strong-wind direction. Identify flood-prone areas on the sketch. The completed map helps farmers and advisors integrate topographic features with climatic and other yield factors when selecting a site, crop, layout, and risk-management plan.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "topographic-factors-affecting-crop-yield-check",
+        title: "Topographic factors and crop yield check",
+        description:
+          "Apply elevation, slope, landform, and mapping concepts to crop-placement and soil-and-water risk decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "tf-1",
+            prompt: "What does topography most directly describe in a farm-planning context?",
+            options: [
+              { id: "a", label: "The shape of the land, including its slope and related landscape features." },
+              { id: "b", label: "Only the seed packet selected for the crop." },
+              { id: "c", label: "Only the price received for harvested produce." },
+              { id: "d", label: "The crop’s fertiliser analysis without considering the field." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Topography is the shape of the land, including slope, elevation, landform, and the features that influence water and erosion processes.",
+              incorrect: "Topography concerns the shape of the land and its slope, elevation, landforms, and related effects on water, erosion, and crop placement.",
+            },
+          },
+          {
+            id: "tf-2",
+            prompt: "Why should an advisor verify a field’s elevation before recommending a crop variety?",
+            options: [
+              { id: "a", label: "Because lowland, mid-elevation, and highland environments differ, and a variety adapted to one may perform poorly in another." },
+              { id: "b", label: "Because all vegetable varieties have identical elevation requirements." },
+              { id: "c", label: "Because elevation changes seed cost but not crop performance." },
+              { id: "d", label: "Because only roads and dams determine variety adaptation." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Elevation is linked to the temperature environment and crop adaptation; verify the site before choosing a lowland, mid-elevation, or highland variety.",
+              incorrect: "Elevation affects the crop environment. A variety that fits a highland field may not perform well in a lowland field, and vice versa.",
+            },
+          },
+          {
+            id: "tf-3",
+            prompt: "What is a key purpose of contouring or similar layout control on a sloping vegetable field?",
+            options: [
+              { id: "a", label: "To slow runoff, reduce erosion, and protect productive soil." },
+              { id: "b", label: "To make water move down the slope as quickly as possible." },
+              { id: "c", label: "To remove the need to observe soil or water movement." },
+              { id: "d", label: "To ensure all field positions receive identical moisture conditions." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Contour-oriented management helps reduce the speed of runoff, limit soil loss, and protect the field’s productive root-zone conditions.",
+              incorrect: "Runoff-control practices such as contouring are used to slow water movement, reduce erosion, and protect the productive soil resource.",
+            },
+          },
+          {
+            id: "tf-4",
+            prompt: "Which information set should a practical topographic farm sketch include?",
+            options: [
+              { id: "a", label: "Farm area, elevation, slope, roads, water sources, houses, cardinal direction, flood-prone areas, and key climate information." },
+              { id: "b", label: "Only the crop name and expected farm-gate price." },
+              { id: "c", label: "Only a single elevation number, without field features or orientation." },
+              { id: "d", label: "Only the date on which the map was drawn." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. A decision-ready farm sketch combines the terrain with access, water, orientation, flood exposure, and local climate information.",
+              incorrect: "A useful topographic sketch includes elevation, slope, access and water features, orientation, and local climate risks so it can guide real field decisions.",
+            },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, and climatic-risk management to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, and topographic site interpretation to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -1404,6 +1548,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. Flowering is sensitive to water limitation, high humidity increases disease risk, and hot winds increase drying and physical stress; the response should address all three factors.",
           incorrect: "A defensible plan connects crop stage with water supply, humidity-related disease risk, and wind protection rather than relying on genetics alone.",
+        },
+      },
+      {
+        id: "final-10",
+        prompt:
+          "A farmer proposes a highland-adapted variety for a low-lying, sloping field where runoff is already carrying soil toward a flood-prone area. What is the most defensible advisor response?",
+        options: [
+          { id: "a", label: "Plant the variety immediately and address erosion only if the crop fails." },
+          { id: "b", label: "Verify elevation and local variety fit, map slope and water flow, then redesign the crop and bed layout with runoff and erosion controls." },
+          { id: "c", label: "Ignore slope and flood exposure because only seed genetics affect crop yield." },
+          { id: "d", label: "Use the lowest part of the field without checking drainage, runoff, or waterlogging risk." },
+        ],
+        correctOptionId: "b",
+        feedback: {
+          correct: "Correct. A defensible site decision combines elevation and variety fit with a map of slope, water flow, erosion risk, drainage, and appropriate layout controls.",
+          incorrect: "Topographic interpretation should guide both crop-and-variety fit and the field layout, especially where slope, runoff, erosion, or flood exposure affect yield risk.",
         },
       },
     ],
