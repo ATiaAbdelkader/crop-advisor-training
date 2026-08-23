@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
-import { getAssessmentById } from "@shared/curriculum";
+import { getAssessmentById, getModuleForAssessment } from "@shared/curriculum";
 import { Award, CheckCircle2, ChevronLeft, ChevronRight, CircleAlert, LockKeyhole, RotateCcw, Target } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -54,7 +54,8 @@ export default function Assessment() {
 
   const accessible = overview?.availableAssessmentIds.includes(assessment.id) ?? false;
   const canSubmit = assessment.questions.every(question => answers[question.id]);
-  const returnPath = assessment.kind === "final" ? "/dashboard" : `/course/${assessmentId === "advisory-practice-check" ? "advisory-practice" : assessmentId === "soil-and-nutrition-check" ? "soil-and-nutrition" : "crop-observation"}`;
+  const sourceModule = getModuleForAssessment(assessment.id);
+  const returnPath = assessment.kind === "final" ? "/dashboard" : `/course/${sourceModule?.id ?? "advisory-practice"}`;
 
   const handleSubmit = () => {
     if (!isAuthenticated) return startLogin();

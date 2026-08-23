@@ -11,7 +11,7 @@ import { cropAdvisorCourse } from "@shared/curriculum";
 import { Award, BookOpen, CheckCircle2, ChevronRight, Clock3, LockKeyhole, Play, Sprout, Target } from "lucide-react";
 import { useLocation } from "wouter";
 
-const heroImage = "/manus-storage/crop-advisor-field-hero_39c00e74.jpg";
+const heroImage = "/manus-storage/vegetable-planning-field-hero_325e5a88.jpg";
 
 function getActionIcon(type: string) {
   if (type === "assessment") return Target;

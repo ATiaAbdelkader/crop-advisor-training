@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 4 hours",
+  duration: "Approx. 5 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -475,12 +475,168 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "vegetable-production-planning",
+      index: 4,
+      title: "Vegetable production planning",
+      eyebrow: "Module 04",
+      description:
+        "Build a rich picture of the farm context, then turn climatic, soil, market, biological, and knowledge factors into a practical vegetable field plan.",
+      lessons: [
+        {
+          id: "build-the-rich-picture",
+          title: "Build the rich picture",
+          duration: "24 min",
+          kicker: "Planning the whole system",
+          summary:
+            "Use a rich picture to make visible the main elements and relationships that shape a vegetable-production decision before choosing a crop, variety, or field layout.",
+          outcomes: [
+            "Identify the climatic, edaphic, topographic, economic, biological, and knowledge factors that shape vegetable production.",
+            "Use planning questions to reveal constraints beyond location, soil quality, and water availability.",
+            "Create a field-context picture that connects farm conditions with practical decisions.",
+          ],
+          sections: [
+            {
+              heading: "See the system before the plot",
+              body:
+                "A rich picture is a drawing of a situation that brings together the elements and relationships to consider before an intervention. In vegetable production, this prevents planning from narrowing too early to a suitable soil or a nearby water source. The picture can include the field, access route, water point, family labour, buyers, neighbouring crops, seasonal hazards, available equipment, and the farmer’s existing knowledge.",
+              callout:
+                "Planning is strongest when the field is understood as a production-and-market system, not as soil alone.",
+            },
+            {
+              heading: "Ask about the growing environment",
+              body:
+                "Climatic conditions influence crop choice and timing. Short and long days can affect flowering in fruit vegetables; the hottest and coldest months can influence pests, diseases, flowering, fruiting, and variety adaptability. Ask whether water is reliable year-round or only in the rainy season, and identify the months in which flooding or typhoon risk is most likely. These questions help make timing and risk controls explicit.",
+            },
+            {
+              heading: "Use the six planning lenses",
+              body:
+                "Work through six connected lenses. Edaphic factors include soil condition, colour, structure, texture, porosity, pH, nutrient content, organic matter, soil life, and access to testing. Topographic factors include location, access, transport route, slope, drainage, and elevation. Economic factors include market, seasonal price and quantity changes, agro-input availability, finance, information, land, labour, equipment, and locally available materials. Biological factors include field history, problem history, recent outbreaks, nearby crops, biodiversity, and ecosystem observations. Finally, assess the farmer’s skills, prior training, farming experience, learning preferences, and access to phones or smartphones.",
+            },
+          ],
+        },
+        {
+          id: "turn-site-appraisal-into-plan",
+          title: "Turn a site appraisal into a field plan",
+          duration: "26 min",
+          kicker: "From observation to action",
+          summary:
+            "Translate field history, soil and water checks, crop selection, and household or market purpose into an agreed vegetable-production plan and practical checklist.",
+          outcomes: [
+            "Conduct a field appraisal that covers location, history, soil, water, slope, sun, wind, and biological pressures.",
+            "Select crop and variety using field evidence, season, farmer preference, and market or household purpose.",
+            "Co-design a field layout, irrigation approach, crop-protection practices, and activity record with the farmer.",
+          ],
+          sections: [
+            {
+              heading: "Appraise the site in sequence",
+              body:
+                "Begin with field location and access: is the site close to a road, path, or home, and how will inputs and harvested produce move? Review the field’s crop and fertiliser history, recurrent problems, neighbouring practices, and crops grown around it. Then examine soil pH, texture, profile and hardpan, colour and humus; map the water source, seasonal availability, water quality, and irrigation equipment; and note slope, sun exposure, wind, farm animals, or stray animals.",
+              callout:
+                "A plan should be made with the farmer, using a map or crop planner that makes the site conditions and intended layout visible.",
+            },
+            {
+              heading: "Choose the crop, variety, and plot design together",
+              body:
+                "Crop and variety selection should respond to field observations, season, the farmer’s preference, and relevant market or partner information. Once a choice is made, agree land preparation, ploughing or harrowing needs, basal amendments, raised-bed number, size, height, and orientation. Decide whether to use seedlings or direct sowing, which mulch is suitable, whether a trellis or net trellis is required, and how irrigation will be delivered. A gentle slope can support irrigation and drainage, but the plan must still control erosion and avoid concentrating water in vulnerable areas.",
+            },
+            {
+              heading: "Adapt the checklist to the production purpose",
+              body:
+                "A small commercial field checklist should include market potential, buyer access, crop quality requirements, input and finance access, harvest and post-harvest planning, and safe disposal of non-biodegradable materials. A home-garden checklist can centre household vegetable preferences, a compact layout, water intervals checked against soil moisture, nursery quality, healthy and uniform seedlings, organic mulch, trellis timing, crop protection, and the farmer’s activity record. In both settings, record decisions so the plan can be checked and improved over time.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "vegetable-production-planning-check",
+        title: "Vegetable production planning check",
+        description:
+          "Apply the document’s rich-picture framework and site-appraisal checklist to an actionable vegetable-production plan.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "vp-1",
+            prompt:
+              "What is the main purpose of a rich picture in vegetable-production planning?",
+            options: [
+              { id: "a", label: "To draw an attractive image of the finished vegetable plot." },
+              { id: "b", label: "To show the important field, household, market, and environmental elements and how they influence each other." },
+              { id: "c", label: "To replace all field observations with a single soil test." },
+              { id: "d", label: "To select a variety before checking the farm context." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. A rich picture makes the relevant system elements and relationships visible before an intervention is planned.",
+              incorrect:
+                "A rich picture is a planning view of the situation: it links field, environmental, economic, biological, and knowledge factors to decisions.",
+            },
+          },
+          {
+            id: "vp-2",
+            prompt:
+              "A farmer has fertile soil and a reliable water source. Which additional question is essential before selecting the vegetable calendar?",
+            options: [
+              { id: "a", label: "Which month is flooding or typhoon risk most likely to occur?" },
+              { id: "b", label: "Which colour should be used for the signboard?" },
+              { id: "c", label: "Can the field be considered risk-free because water is available?" },
+              { id: "d", label: "Should climate be ignored if the soil is rich in organic matter?" },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct:
+                "Correct. Seasonal flood and typhoon risk can change crop timing, field protection, and the practicality of an otherwise suitable site.",
+              incorrect:
+                "Planning must test seasonal hazards such as flooding and typhoon exposure as well as soil and water resources.",
+            },
+          },
+          {
+            id: "vp-3",
+            prompt:
+              "Which set of observations best represents an edaphic or soil appraisal before vegetable production?",
+            options: [
+              { id: "a", label: "Soil pH, texture, structure, porosity, organic matter, and soil life." },
+              { id: "b", label: "Only the distance from the farm to the market." },
+              { id: "c", label: "The farmer’s phone model and nearby buyers." },
+              { id: "d", label: "Only the crop price in the last month." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct:
+                "Correct. An edaphic appraisal examines the physical, chemical, and biological condition of the soil that will support the crop.",
+              incorrect:
+                "The soil appraisal should include pH, texture, structure, porosity, organic matter, nutrient condition, and biological activity.",
+            },
+          },
+          {
+            id: "vp-4",
+            prompt:
+              "Which action most clearly turns a site appraisal into a usable vegetable-production plan?",
+            options: [
+              { id: "a", label: "Choose the most popular vegetable without discussing the field with the farmer." },
+              { id: "b", label: "Use site, season, water, soil, purpose, and farmer preference to agree crop choice, bed layout, irrigation, and follow-up records." },
+              { id: "c", label: "Delay all layout decisions until after harvest." },
+              { id: "d", label: "Use the same plot design for every household and commercial field." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. A practical plan is co-designed from observed conditions and covers crop choice, layout, irrigation, management, and recordkeeping.",
+              incorrect:
+                "Translate the appraisal into an agreed plan with crop selection, layout, irrigation, management choices, and a record for checking progress.",
+            },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, and crop observation to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, and vegetable-production planning to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -554,6 +710,24 @@ export const cropAdvisorCourse: CourseDefinition = {
             "Correct. Proportionate uncertainty management protects both the grower and the quality of the advisory decision.",
           incorrect:
             "For a high-consequence intervention, communicate uncertainty and obtain the evidence or expertise needed before acting.",
+        },
+      },
+      {
+        id: "final-5",
+        prompt:
+          "Before establishing a small commercial vegetable demonstration field, which planning approach is most defensible?",
+        options: [
+          { id: "a", label: "Start with the crop that is currently fashionable, then inspect the site later." },
+          { id: "b", label: "Map the field system, check climate, soil, water, access, market, biological pressure, and farmer capability, then agree the layout and crop plan." },
+          { id: "c", label: "Use a permanent layout without considering slope, sun, wind, or drainage." },
+          { id: "d", label: "Base every production decision only on the soil colour." },
+        ],
+        correctOptionId: "b",
+        feedback: {
+          correct:
+            "Correct. A defensible vegetable plan connects the rich-picture context with an agreed, site-specific crop and layout decision.",
+          incorrect:
+            "Begin with a rich picture and site appraisal that connects crop choice and layout to climate, soil, water, access, market, biology, and farmer capability.",
         },
       },
     ],

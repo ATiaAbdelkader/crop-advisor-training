@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 1.0  
+**Version:** 1.1  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a four-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through three required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a five-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through four required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -17,6 +17,7 @@ Crop Advisor Foundations is a four-hour, self-paced professional learning pathwa
 | **01. Advisory practice** | Turning a field observation into transparent, risk-aware advice. | Distinguish observations, interpretations, and recommendations; define the evidence needed for a field question; keep a traceable recommendation record; recognise when escalation is appropriate. | **Observe, frame, decide**; **Stewardship, records, and risk** | Both lessons complete and module check passed at 80% or above. |
 | **02. Soil and nutrition** | Interpreting soil context and collecting representative evidence. | Relate rooting and water conditions to crop performance; identify field zones; design a representative sample; state the assumptions behind nutrient advice. | **Read the soil profile in context**; **From sampling to recommendation** | Both lessons complete and module check passed at 80% or above. |
 | **03. Crop observation** | Scouting by growth stage and diagnosing field variability. | Prioritise field observations by crop stage; separate incidence from severity; test competing explanations; communicate certainty proportionately. | **Scout by growth stage**; **Diagnose field variability** | Both lessons complete and module check passed at 80% or above. |
+| **04. Vegetable production planning** | Building a whole-system vegetable plan from farm context and site appraisal. | Identify the climatic, edaphic, topographic, economic, biological, and knowledge factors affecting the plan; develop a rich picture; turn site evidence into crop, layout, irrigation, and checklist decisions. | **Build the rich picture**; **Turn a site appraisal into a field plan** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -30,6 +31,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **From sampling to recommendation** | Design a sample for the decision; protect sample integrity; explain recommendation assumptions and checks. | Sampling error can be a larger practical risk than small laboratory-number differences. |
 | **Scout by growth stage** | Use crop stage to plan visits; walk for field contrast; distinguish incidence from severity. | Link stage, distribution, incidence, severity, and plausible driver. |
 | **Diagnose field variability** | Use spatial pattern as a clue; test competing explanations; communicate diagnostic certainty honestly. | A diagnosis should be a transparent argument that links evidence to the next decision. |
+| **Build the rich picture** | Map the farm system through climatic, edaphic, topographic, economic, biological, and knowledge lenses. | Planning is strongest when the field is understood as a production-and-market system, not as soil alone. |
+| **Turn a site appraisal into a field plan** | Appraise location, history, soil, water, slope, sun, wind, crop choice, layout, and production purpose before agreeing a plan. | Make the plan with the farmer, using a visible map or crop planner and an activity record. |
 
 ## Assessment package
 
@@ -40,7 +43,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Advisory practice check** | Field pattern comparison, record traceability, appropriate escalation. | 3 | 80% | Unlocks Soil and nutrition only after both Module 01 lessons are complete and the check is passed. |
 | **Soil and nutrition check** | Root-zone context, management-zone sampling, prevention of sampling bias. | 3 | 80% | Unlocks Crop observation only after both Module 02 lessons are complete and the check is passed. |
 | **Crop observation check** | Growth-stage scouting, interpreting spatial patterns, evidence-limited diagnosis. | 3 | 80% | Unlocks the integrated final assessment only after both Module 03 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management. | 4 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Vegetable production planning check** | Rich-picture purpose, seasonal hazard planning, edaphic appraisal, and translating site evidence into an agreed field plan. | 4 | 80% | Unlocks the integrated final assessment only after both Module 04 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, and whole-system vegetable planning. | 5 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -57,6 +61,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Sequence advisory practice** | General field-advisory decision. | Orders observation, decision framing, evidence collection, constrained advice, and follow-up. | Use the complete evidence-led advisory sequence. |
 | **Represent a management zone** | Soil sampling across distinct field positions. | Connects sample design with a spatially specific decision. | Keep distinct zones separate when management may differ. |
 | **Manage uncertainty proportionately** | Plausible but incompletely evidenced diagnosis. | Chooses verification or specialist input before a high-consequence action. | State uncertainty and seek decisive evidence or expertise. |
+| **Plan a vegetable field as a system** | Small-commercial vegetable demonstration planning. | Connects rich picture, climate, soil, water, access, market, biological pressure, farmer capability, crop choice, and layout. | Complete the site appraisal before agreeing crop and field-plan decisions. |
 
 ## Certificate template specification
 
@@ -90,13 +95,17 @@ flowchart TD
   K --> L[Module 03 lessons and assessment]
   L --> M{Module 03 passed?}
   M -- No --> L
-  M -- Yes --> N[Unlock integrated final assessment]
-  N --> O{Final score at least 80%?}
-  O -- No --> P[Feedback and final retake available]
-  P --> N
-  O -- Yes --> Q[Create credential record]
-  Q --> R[Notify platform owner]
-  R --> S[Enable certificate download]
+  M -- Yes --> N[Unlock Module 04]
+  N --> O[Module 04 lessons and assessment]
+  O --> P{Module 04 passed?}
+  P -- No --> O
+  P -- Yes --> Q[Unlock integrated final assessment]
+  Q --> R{Final score at least 80%?}
+  R -- No --> S[Feedback and final retake available]
+  S --> Q
+  R -- Yes --> T[Create credential record]
+  T --> U[Notify platform owner]
+  U --> V[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -115,3 +124,11 @@ The implemented visual system is a **quiet agrarian academy**. It uses deep fiel
 ## Data and operational workflow
 
 The platform persists enrollment, individual lesson completion, assessment attempts, and issued certificates. Assessment availability is calculated from stored completion and passing records rather than trusting client-side navigation. A final assessment pass creates a single certificate for the learner-course pair and marks the enrollment complete. On first issuance only, the server sends the platform owner an operational alert containing the learner name, score, and credential ID.
+
+## Document conversion record
+
+Module 04 is derived from the supplied *Importance of Planning in Vegetable Production* training document. Its instructional structure retains the document’s rich-picture method, the six planning-factor lenses, the field-appraisal sequence, the distinction between small commercial fields and home gardens, and the use of practical checklists. The platform renders the source themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [1]
+
+## References
+
+[1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)

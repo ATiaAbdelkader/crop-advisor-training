@@ -15,3 +15,4 @@
 - [x] Add persisted course, module, lesson, and assessment models to support future document-driven curriculum updates.
 - [x] Add explicit learning-record loading states across dashboard, lesson, assessment, and credential routes.
 - [x] Add unit coverage for final-pass-only certificate issuance and single-event owner notification rules.
+- [x] Analyse REVISED_ECN-001.Importance of Planning in Vegetable Production and integrate its source-grounded course module, assessments, progression, and design documentation.
