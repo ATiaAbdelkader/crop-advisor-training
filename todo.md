@@ -20,3 +20,4 @@
 - [x] Verify managed-preview and local HMR end-to-end with a safe frontend hot update, then retain only a configuration that supports both paths.
 - [x] Document that the sandbox-only localhost capture may reconnect during restarts, while the public managed-preview HMR route is the supported learner-facing path and passed the hot-update check.
 - [x] Replace the unconditional secure HMR target with an origin-aware configuration and prove hot updates on both managed-preview and local development paths without new WebSocket errors.
+- [x] Analyse REVISED_ECN-002.Cost Planning and Decision Making in Vegetable Production and integrate its source-grounded module, assessments, progression, and design documentation.

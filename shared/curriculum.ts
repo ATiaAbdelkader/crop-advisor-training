@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 5 hours",
+  duration: "Approx. 6 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -631,12 +631,168 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "cost-planning-and-decisions",
+      index: 5,
+      title: "Cost planning and decisions",
+      eyebrow: "Module 05",
+      description:
+        "Turn a vegetable-production objective into tasks, resource quantities, costs, expected returns, and a decision to proceed or revise the plan.",
+      lessons: [
+        {
+          id: "set-objectives-map-activities",
+          title: "Set objectives and map activities",
+          duration: "24 min",
+          kicker: "Plan before spending",
+          summary:
+            "Establish a clear production objective, estimate the scale of the crop, and map the activity sequence, resources, and timing needed to deliver it.",
+          outcomes: [
+            "Write a production objective that states crop, area, season, and intended production context.",
+            "Estimate plant numbers from a crop-guide density and a measured field area.",
+            "Map crop-cycle tasks, resources, and timing from land preparation through harvest and post-harvest handling.",
+          ],
+          sections: [
+            {
+              heading: "Start with a measurable production objective",
+              body:
+                "Cost planning begins with a specific objective rather than a general desire to grow vegetables. In the document scenario, the objective is to establish a tomato crop on 500 m² during the dry season. Measure field length and width, confirm the crop and season with the farmer, and check what varieties are available. A measurable objective gives every later quantity, task, and cost a clear basis.",
+              callout:
+                "A cost estimate is only as useful as the production objective and field area on which it is based.",
+            },
+            {
+              heading: "Translate the crop guide into a field estimate",
+              body:
+                "Use crop-guide information to make a first estimate of the crop scale. The document illustrates a guide density of 26,600 tomato plants per 10,000 m². For a 500 m² field, the quick estimate is 1,330 plants: divide the guide density by 10,000 and multiply by the field area. Expected production is then estimated from the expected yield per plant and the planned plant population. When a farm-gate price is available, expected returns equal expected kilograms multiplied by the price per kilogram.",
+            },
+            {
+              heading: "List the work before pricing it",
+              body:
+                "Create a crop-cycle task list from land preparation to harvest and post-harvest operations. The source document includes clearing, ploughing, bed preparation, basal fertilisation, nursery set-up, sowing and seedling care, transplanting, watering, fertiliser application, pest management, trellising, pruning, fruit thinning, harvesting, and other crop-specific activities. For each activity, identify the resources and inputs needed and when they are needed, such as labour and a plough in the first week, seed trays and media for seedling production, mulch for bed preparation, and water infrastructure during field layout.",
+            },
+          ],
+        },
+        {
+          id: "compute-costs-test-returns",
+          title: "Compute costs and test returns",
+          duration: "30 min",
+          kicker: "Quantity, cost, and decision",
+          summary:
+            "Calculate the physical quantities behind a vegetable plan, price the required inputs, estimate plausible returns, and revise a plan when the numbers do not justify the risk.",
+          outcomes: [
+            "Calculate bed, mulch, plant, seedling, seed-tray, fertiliser, and other input quantities from a field layout.",
+            "Include a seedling-production allowance and use locally relevant input prices in the cost plan.",
+            "Compare potential returns with production costs and revise the plan when costs are not justified by likely benefits.",
+          ],
+          sections: [
+            {
+              heading: "Calculate quantities from the field layout",
+              body:
+                "Work from dimensions rather than guesses. In the 20 m by 25 m tomato example, a 1 m bed plus a 0.5 m canal requires 1.5 m across the field, so 25 m ÷ 1.5 m gives 16 whole beds. Leave 0.5 m at each end for path and drainage, producing a 19 m bed length. Plastic mulch required is therefore 16 beds × 19 m = 304 m. With 0.5 m plant spacing and two rows per bed, each bed holds (19 ÷ 0.5) × 2 = 76 plants, for a minimum of 1,216 plants in the field.",
+              callout:
+                "Use whole, workable units. A fractional bed or a partially priced packet cannot be treated as a full production resource without a clear adjustment.",
+            },
+            {
+              heading: "Build a realistic input cost plan",
+              body:
+                "Add a safety allowance where production losses are likely. The document uses a 30% seedling allowance: 1,216 plants plus 30% gives 1,581 seedlings or seeds to plan for. Divide seeds required by seeds per packet, round up to a whole packet, then multiply by the actual local packet price. The same process applies to seed trays: 1,581 seeds in 104-hole trays require 16 trays after rounding. Price fertilizers, liming where soil pH requires it, mulch, trellis materials, water and irrigation components, crop-protection inputs, labour, and any other resource identified in the activity plan.",
+            },
+            {
+              heading: "Test the plan against plausible returns",
+              body:
+                "Estimate yield and return using a realistic crop population rather than assuming every plant will produce. In the tomato example, if 70% of 1,216 plants produce and yield averages 2 kg per producing plant, estimated yield is about 1,702 kg. Multiply this by a relevant farm-gate price to estimate return. Place all costs and returns in a spreadsheet or farm record. If projected costs are high compared with potential returns, review the plan, lower avoidable costs, adjust the production strategy, or defer the decision. Store the plan and actual costs so future decisions can improve on the estimate.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "cost-planning-and-decisions-check",
+        title: "Cost planning and decisions check",
+        description:
+          "Apply the document’s objective, activity, quantity, cost, and return calculations to a vegetable-production decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "cp-1",
+            prompt:
+              "Which production objective gives the strongest basis for a vegetable cost plan?",
+            options: [
+              { id: "a", label: "Grow some tomatoes whenever there is spare time." },
+              { id: "b", label: "Establish a tomato crop on a measured 500 m² field during the dry season." },
+              { id: "c", label: "Buy inputs first, then decide what crop will be grown." },
+              { id: "d", label: "Use the same plant population for every field without measuring it." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. Crop, measured area, and timing give later resource and cost estimates a defined basis.",
+              incorrect:
+                "A usable production objective specifies the crop, a measurable production area, and the relevant season or production context.",
+            },
+          },
+          {
+            id: "cp-2",
+            prompt:
+              "A field is 25 m wide. Beds are 1 m wide and each canal is 0.5 m wide. How many whole beds fit across the field?",
+            options: [
+              { id: "a", label: "12 beds" },
+              { id: "b", label: "16 beds" },
+              { id: "c", label: "25 beds" },
+              { id: "d", label: "50 beds" },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. Each bed-and-canal unit is 1.5 m, so 25 ÷ 1.5 gives 16 whole workable beds.",
+              incorrect:
+                "Calculate the bed-and-canal unit first: 1 m + 0.5 m = 1.5 m; 25 ÷ 1.5 allows 16 whole beds.",
+            },
+          },
+          {
+            id: "cp-3",
+            prompt:
+              "A layout requires a minimum of 1,216 field plants. Why does the document plan 1,581 seedlings or seeds?",
+            options: [
+              { id: "a", label: "To allow a 30% safety margin for seedling production and transplanting losses." },
+              { id: "b", label: "Because every bed must have three rows." },
+              { id: "c", label: "Because seed costs should always be tripled." },
+              { id: "d", label: "To avoid checking seed-tray capacity." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct:
+                "Correct. The 30% allowance provides a practical safety net for losses before plants reach the field.",
+              incorrect:
+                "The planned number includes a 30% allowance so that seedling-production and transplanting losses do not reduce the required field population.",
+            },
+          },
+          {
+            id: "cp-4",
+            prompt:
+              "What should an advisor do when calculated production costs are too high compared with plausible returns?",
+            options: [
+              { id: "a", label: "Proceed without recording the figures because market prices may improve." },
+              { id: "b", label: "Review the plan, identify ways to lower avoidable costs or adjust the strategy, and retain the cost-and-return record." },
+              { id: "c", label: "Increase the expected yield estimate until the plan looks profitable." },
+              { id: "d", label: "Ignore labour, equipment, and crop-protection costs." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. The document’s decision cycle requires reviewing and revising a plan when expected benefits do not justify its costs.",
+              incorrect:
+                "When the financial case is weak, review the costs and strategy rather than changing assumptions or omitting real resources.",
+            },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, and vegetable-production planning to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, and cost-based decision-making to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -728,6 +884,24 @@ export const cropAdvisorCourse: CourseDefinition = {
             "Correct. A defensible vegetable plan connects the rich-picture context with an agreed, site-specific crop and layout decision.",
           incorrect:
             "Begin with a rich picture and site appraisal that connects crop choice and layout to climate, soil, water, access, market, biology, and farmer capability.",
+        },
+      },
+      {
+        id: "final-6",
+        prompt:
+          "A vegetable plan has quantified crop tasks, inputs, and expected yield, but its likely return is lower than the estimated production cost. What is the most appropriate next decision?",
+        options: [
+          { id: "a", label: "Proceed because the calculations are complete." },
+          { id: "b", label: "Increase the assumed farm-gate price without evidence." },
+          { id: "c", label: "Review the plan, reduce avoidable costs or change the strategy, then reassess expected returns." },
+          { id: "d", label: "Remove seedling, fertiliser, and labour costs from the record." },
+        ],
+        correctOptionId: "c",
+        feedback: {
+          correct:
+            "Correct. Cost planning supports a decision cycle: revise a weak financial plan before committing resources and retain the record for review.",
+          incorrect:
+            "When estimated benefits do not justify costs, revise the plan or strategy and reassess rather than changing assumptions or omitting real expenses.",
         },
       },
     ],

@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 1.1  
+**Version:** 1.2  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a five-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through four required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a six-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through five required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -18,6 +18,7 @@ Crop Advisor Foundations is a five-hour, self-paced professional learning pathwa
 | **02. Soil and nutrition** | Interpreting soil context and collecting representative evidence. | Relate rooting and water conditions to crop performance; identify field zones; design a representative sample; state the assumptions behind nutrient advice. | **Read the soil profile in context**; **From sampling to recommendation** | Both lessons complete and module check passed at 80% or above. |
 | **03. Crop observation** | Scouting by growth stage and diagnosing field variability. | Prioritise field observations by crop stage; separate incidence from severity; test competing explanations; communicate certainty proportionately. | **Scout by growth stage**; **Diagnose field variability** | Both lessons complete and module check passed at 80% or above. |
 | **04. Vegetable production planning** | Building a whole-system vegetable plan from farm context and site appraisal. | Identify the climatic, edaphic, topographic, economic, biological, and knowledge factors affecting the plan; develop a rich picture; turn site evidence into crop, layout, irrigation, and checklist decisions. | **Build the rich picture**; **Turn a site appraisal into a field plan** | Both lessons complete and module check passed at 80% or above. |
+| **05. Cost planning and decisions** | Turning a field objective into a resource, cost, return, and revision decision. | Define a measurable production objective; estimate crop-scale and activity needs; compute input quantities and locally relevant costs; compare plausible returns with costs and revise a weak plan. | **Set objectives and map activities**; **Compute costs and test returns** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -33,6 +34,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Diagnose field variability** | Use spatial pattern as a clue; test competing explanations; communicate diagnostic certainty honestly. | A diagnosis should be a transparent argument that links evidence to the next decision. |
 | **Build the rich picture** | Map the farm system through climatic, edaphic, topographic, economic, biological, and knowledge lenses. | Planning is strongest when the field is understood as a production-and-market system, not as soil alone. |
 | **Turn a site appraisal into a field plan** | Appraise location, history, soil, water, slope, sun, wind, crop choice, layout, and production purpose before agreeing a plan. | Make the plan with the farmer, using a visible map or crop planner and an activity record. |
+| **Set objectives and map activities** | Define crop, area, and season; convert crop-guide density into a plant estimate; list tasks, resources, and timing across the crop cycle. | A cost estimate is only as useful as the production objective and field area on which it is based. |
+| **Compute costs and test returns** | Derive input quantities from a layout, price materials and resources, estimate a realistic return, and review a weak plan. | Use whole, workable resource units and record the cost-and-return decision for later improvement. |
 
 ## Assessment package
 
@@ -44,7 +47,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Soil and nutrition check** | Root-zone context, management-zone sampling, prevention of sampling bias. | 3 | 80% | Unlocks Crop observation only after both Module 02 lessons are complete and the check is passed. |
 | **Crop observation check** | Growth-stage scouting, interpreting spatial patterns, evidence-limited diagnosis. | 3 | 80% | Unlocks the integrated final assessment only after both Module 03 lessons are complete and the check is passed. |
 | **Vegetable production planning check** | Rich-picture purpose, seasonal hazard planning, edaphic appraisal, and translating site evidence into an agreed field plan. | 4 | 80% | Unlocks the integrated final assessment only after both Module 04 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, and whole-system vegetable planning. | 5 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Cost planning and decisions check** | Measurable objectives, bed calculations, seedling-loss allowance, and review of a weak financial plan. | 4 | 80% | Unlocks the integrated final assessment only after both Module 05 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, and cost-based revision decisions. | 6 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -62,6 +66,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Represent a management zone** | Soil sampling across distinct field positions. | Connects sample design with a spatially specific decision. | Keep distinct zones separate when management may differ. |
 | **Manage uncertainty proportionately** | Plausible but incompletely evidenced diagnosis. | Chooses verification or specialist input before a high-consequence action. | State uncertainty and seek decisive evidence or expertise. |
 | **Plan a vegetable field as a system** | Small-commercial vegetable demonstration planning. | Connects rich picture, climate, soil, water, access, market, biological pressure, farmer capability, crop choice, and layout. | Complete the site appraisal before agreeing crop and field-plan decisions. |
+| **Revise a financially weak vegetable plan** | Quantified production plan with lower likely return than estimated cost. | Uses the cost-and-return comparison to decide whether to reduce avoidable costs, change strategy, or defer the plan. | Review the plan and its assumptions before committing resources. |
 
 ## Certificate template specification
 
@@ -99,13 +104,17 @@ flowchart TD
   N --> O[Module 04 lessons and assessment]
   O --> P{Module 04 passed?}
   P -- No --> O
-  P -- Yes --> Q[Unlock integrated final assessment]
-  Q --> R{Final score at least 80%?}
-  R -- No --> S[Feedback and final retake available]
-  S --> Q
-  R -- Yes --> T[Create credential record]
-  T --> U[Notify platform owner]
-  U --> V[Enable certificate download]
+  P -- Yes --> Q[Unlock Module 05]
+  Q --> R[Module 05 lessons and assessment]
+  R --> S{Module 05 passed?}
+  S -- No --> R
+  S -- Yes --> T[Unlock integrated final assessment]
+  T --> U{Final score at least 80%?}
+  U -- No --> V[Feedback and final retake available]
+  V --> T
+  U -- Yes --> W[Create credential record]
+  W --> X[Notify platform owner]
+  X --> Y[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -129,6 +138,10 @@ The platform persists enrollment, individual lesson completion, assessment attem
 
 Module 04 is derived from the supplied *Importance of Planning in Vegetable Production* training document. Its instructional structure retains the document’s rich-picture method, the six planning-factor lenses, the field-appraisal sequence, the distinction between small commercial fields and home gardens, and the use of practical checklists. The platform renders the source themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [1]
 
+Module 05 is derived from the supplied *Cost Planning and Decision Making in Vegetable Production* training document. Its instructional structure retains the source sequence of defining a production objective, identifying crop-cycle tasks, mapping resources and their timing, calculating quantities and costs, estimating yield and returns, testing potential benefit, and reviewing a plan whose costs are too high. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [2]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
+
+[2] [REVISED_ECN-002. *Cost Planning and Decision Making in Vegetable Production* (user-supplied training document, 5 April 2023)](file:///home/ubuntu/upload/REVISED_ECN-002.CostPlanningandDecisionMakinginVegetableProduction_04052023.pdf)
