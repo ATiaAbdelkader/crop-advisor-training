@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 1.4  
+**Version:** 1.5  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is an eight-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through seven required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a nine-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through eight required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -21,6 +21,7 @@ Crop Advisor Foundations is an eight-hour, self-paced professional learning path
 | **05. Cost planning and decisions** | Turning a field objective into a resource, cost, return, and revision decision. | Define a measurable production objective; estimate crop-scale and activity needs; compute input quantities and locally relevant costs; compare plausible returns with costs and revise a weak plan. | **Set objectives and map activities**; **Compute costs and test returns** | Both lessons complete and module check passed at 80% or above. |
 | **06. Crop and variety selection** | Choosing a crop and variety through family, rotation, market, site, season, and farmer-participation criteria. | Identify major crop families; use rotation to reduce repeat-crop risks; define buyer preference; test local adaptability; agree a selection with the farmer using reliable information. | **Use crop families to plan rotation**; **Match variety to market and site** | Both lessons complete and module check passed at 80% or above. |
 | **07. Factors affecting crop yield** | Relating seed genetics, climate, soil, and topography to yield potential and adaptation. | Distinguish genetic from environmental factors; choose seed traits for an objective; identify climatic, edaphic, and topographic factors; use their interaction to plan adaptation. | **Match seed genetics to the production goal**; **Read environmental yield factors** | Both lessons complete and module check passed at 80% or above. |
+| **08. Climatic factors and crop yield** | Applying light, temperature, water, air, humidity, and wind evidence to seasonal crop planning and climate-risk management. | Classify light and temperature fit; align water supply with crop stage; interpret air and humidity signals; reduce damaging wind stress; build a locally relevant crop calendar. | **Plan with light and temperature**; **Manage water, air, humidity, and wind** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -42,6 +43,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Match variety to market and site** | Test buyer preferences, environmental adaptability, elevation, season, farmer experience, and supplier information before choosing. | Make the buyer’s preferred product characteristics explicit before purchasing seed. |
 | **Match seed genetics to the production goal** | Contrast open-pollinated and hybrid seed systems, seed saving, and production-relevant genetic traits. | High-potential seed must still fit the production objective, environment, and management context. |
 | **Read environmental yield factors** | Connect climate, soil, and topographic elements with crop yield and adaptation choices. | Environmental interpretation should lead to a practical management decision, not a generic description of conditions. |
+| **Plan with light and temperature** | Use light quantity, quality, duration, photoperiod, and temperature fit to plan crop timing and variety use. | A crop calendar is a practical climate decision that matches crops and varieties to likely local conditions. |
+| **Manage water, air, humidity, and wind** | Relate water to crop stage; monitor humidity disease risk; and reduce damaging wind exposure while retaining moderate-wind benefits. | Plan water by crop stage and connect climate signals to a specific field-management response. |
 
 ## Assessment package
 
@@ -56,7 +59,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Cost planning and decisions check** | Measurable objectives, bed calculations, seedling-loss allowance, and review of a weak financial plan. | 4 | 80% | Unlocks the integrated final assessment only after both Module 05 lessons are complete and the check is passed. |
 | **Crop and variety selection check** | Crop-family rotation, buyer preference, environmental adaptability, and farmer participation in selection. | 4 | 80% | Unlocks the integrated final assessment only after both Module 06 lessons are complete and the check is passed. |
 | **Factors affecting crop yield check** | Seed systems and genetic traits; climatic, edaphic, and topographic factors; adaptation to yield risk. | 4 | 80% | Unlocks the integrated final assessment only after both Module 07 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, and genetic-environmental yield fit. | 8 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Climatic factors and crop yield check** | Light and photoperiod, crop-stage water needs, humidity disease risk, and wind-stress management. | 4 | 80% | Unlocks the integrated final assessment only after both Module 08 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, and crop-stage climatic-risk management. | 9 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -77,6 +81,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Revise a financially weak vegetable plan** | Quantified production plan with lower likely return than estimated cost. | Uses the cost-and-return comparison to decide whether to reduce avoidable costs, change strategy, or defer the plan. | Review the plan and its assumptions before committing resources. |
 | **Select a variety through evidence** | Market demand for a cultivar with uncertain local performance. | Balances buyer requirements with local season, elevation, reliable supplier information, and farmer experience. | Agree a variety only after market acceptability and local adaptability have both been tested. |
 | **Match yield potential to the field** | A high-potential hybrid considered for a field with slope, moisture, and wind variation. | Relates seed traits to interacting climate, soil, and topographic risks before recommendation. | Assess genetic potential and environmental fit together before agreeing crop and management decisions. |
+| **Protect flowering under climate stress** | A flowering vegetable crop facing high humidity and strong hot winds. | Combines crop-stage irrigation, humidity-related disease vigilance, and practical wind protection. | Respond to interacting climate risks with a specific, stage-sensitive field plan. |
 
 ## Certificate template specification
 
@@ -126,13 +131,17 @@ flowchart TD
   W --> X[Module 07 lessons and assessment]
   X --> Y{Module 07 passed?}
   Y -- No --> X
-  Y -- Yes --> Z[Unlock integrated final assessment]
-  Z --> AA{Final score at least 80%?}
-  AA -- No --> AB[Feedback and final retake available]
-  AB --> Z
-  AA -- Yes --> AC[Create credential record]
-  AC --> AD[Notify platform owner]
-  AD --> AE[Enable certificate download]
+  Y -- Yes --> Z[Unlock Module 08]
+  Z --> AA[Module 08 lessons and assessment]
+  AA --> AB{Module 08 passed?}
+  AB -- No --> AA
+  AB -- Yes --> AC[Unlock integrated final assessment]
+  AC --> AD{Final score at least 80%?}
+  AD -- No --> AE[Feedback and final retake available]
+  AE --> AC
+  AD -- Yes --> AF[Create credential record]
+  AF --> AG[Notify platform owner]
+  AG --> AH[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -162,6 +171,8 @@ Module 06 is derived from the supplied *Choosing a Crop and Variety to Plant* tr
 
 Module 07 is derived from the supplied *Overview of Factors Affecting Crop Yield* training document. Its instructional structure retains the distinction between genetic and environmental factors, the open-pollinated and hybrid seed comparison, genetic trait selection, climatic-edaphic-topographic yield elements, and climate-adaptation purpose. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [4]
 
+Module 08 is derived from the supplied *Climatic Factors Affecting Crop Yield* training document. Its instructional structure retains the crop-growth balance, light quantity-quality-duration framework, photoperiod and temperature planning, crop-stage water needs, air and humidity effects, wind benefits and stress, and practical climate-risk responses. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [5]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -171,3 +182,5 @@ Module 07 is derived from the supplied *Overview of Factors Affecting Crop Yield
 [3] [REVISED_ECN-003. *Choosing a Crop and Variety to Plant* (user-supplied training document, 10 April 2023)](file:///home/ubuntu/upload/REVISED_ECN-003.ChoosingaCropandaVarietytoPlant_04102023.pdf)
 
 [4] [REVISED_ENV-001. *Overview of Factors Affecting Crop Yield* (user-supplied training document, 21 February 2023)](file:///home/ubuntu/upload/REVISED_ENV-001.OverviewofFactorsAffectingCropYield_022123.pdf)
+
+[5] [REVISED_ENV-002. *Climatic Factors Affecting Crop Yield* (user-supplied training document, 16 February 2023)](file:///home/ubuntu/upload/REVISED_ENV-002.ClimaticFactorsAffectingCropYield_version021623.pdf)

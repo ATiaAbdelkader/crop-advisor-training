@@ -25,3 +25,4 @@
 - [x] Restore stable Vite preview updates for learner routes after detecting failed HMR reloads and transient managed-preview WebSocket errors during validation.
 - [x] Eliminate the remaining managed-preview Vite WebSocket failure and verify a fresh learner-route preview without reload or connection errors.
 - [x] Analyse REVISED_ENV-001.Overview of Factors Affecting Crop Yield and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_ENV-002.Climatic Factors Affecting Crop Yield and integrate its source-grounded module, assessments, progression, and design documentation.

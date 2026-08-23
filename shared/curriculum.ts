@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 8 hours",
+  duration: "Approx. 9 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1091,12 +1091,160 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "climatic-factors-affecting-crop-yield",
+      index: 8,
+      title: "Climatic factors and crop yield",
+      eyebrow: "Module 08",
+      description:
+        "Use light, temperature, water, air, humidity, and wind evidence to choose crops, plan seasons, and reduce climate-related yield risk.",
+      lessons: [
+        {
+          id: "plan-with-light-and-temperature",
+          title: "Plan with light and temperature",
+          duration: "28 min",
+          kicker: "Seasonal energy and heat",
+          summary:
+            "Connect light and temperature requirements to photosynthesis, crop development, variety choice, and a locally relevant year-round crop calendar.",
+          outcomes: [
+            "Explain how light quantity, quality, and duration affect plant growth and flowering.",
+            "Classify crops by light and photoperiod response when planning a crop calendar.",
+            "Match crop and variety temperature requirements to local growing conditions.",
+          ],
+          sections: [
+            {
+              heading: "Balance growth processes before selecting a crop",
+              body:
+                "Plant growth depends on a workable balance among photosynthesis, respiration, and transpiration. Light provides the energy used in photosynthesis, while temperature influences all three processes and affects germination, flowering, fruiting, and the transition from vegetative to reproductive growth. A crop calendar should therefore start with the expected light and temperature pattern, not only a preferred market date.",
+              callout:
+                "A year-round crop calendar is a practical climate decision: it matches crop and variety requirements to the most likely local conditions.",
+            },
+            {
+              heading: "Read light quantity, quality, and duration",
+              body:
+                "Light quantity is the intensity of sunlight and changes through the year. Shade plants need lower intensity, partial-shade plants need moderate intensity, sun plants need high intensity, and some crops tolerate a wide range. Light quality is the wavelength reaching the plant; red and blue light are especially important for plant growth. Light duration is the time a plant is exposed to light. Day-neutral crops such as tomato, pepper, cucurbits, cowpea, okra, French bean, and amaranth have no preferential photoperiod for flowering. Long-day crops such as potato, onion, lettuce, cabbage, cauliflower, radish, spinach, beet, turnip, and carrot need longer light periods, while short-day crops such as sweet potato, Indian spinach, hyacinth bean, cluster bean, and winged bean flower under shorter light periods.",
+            },
+            {
+              heading: "Classify temperature fit before planting",
+              body:
+                "Temperature affects the speed of respiration: in general, respiration is slower at lower temperature and increases as temperature rises. The source distinguishes cool-season and warm-season vegetable requirements. For example, many cool-season crops such as broccoli, cabbage, radish, spinach, turnip, carrot, cauliflower, pea, and potato have optimum ranges around 15–18 °C, while warm-season crops include tomato and sweet pepper around 21–24 °C, cucurbits around 18–24 °C, and chili, eggplant, okra, sweet potato, and watermelon around 21–29 °C. Use locally available varieties bred for the expected light and temperature conditions rather than assuming all varieties share the same adaptation.",
+            },
+          ],
+        },
+        {
+          id: "manage-water-air-humidity-and-wind",
+          title: "Manage water, air, humidity, and wind",
+          duration: "30 min",
+          kicker: "Water relations and exposure",
+          summary:
+            "Recognise crop-stage water needs and manage the effects of air, relative humidity, and wind on transpiration, disease pressure, plant condition, and yield.",
+          outcomes: [
+            "Relate water supply to germination, vegetative growth, flowering, fruiting, and harvest quality.",
+            "Explain how air composition and relative humidity affect photosynthesis, transpiration, nutrient uptake, and disease risk.",
+            "Identify wind benefits, wind-stress damage, and field-management responses.",
+          ],
+          sections: [
+            {
+              heading: "Match water supply to the crop stage",
+              body:
+                "Water activates enzymes needed for germination; without it, germination will not proceed. During vegetative growth, water supports photosynthesis, and shortage limits food production and causes stunting. At flowering, shortage can cause flowers to abort. During fruiting, water carries calcium from soil to plant tissues; a limitation can contribute to fruit disease such as blossom-end rot. At harvest, water fills plant cells; limited supply can result in lighter produce and shortened shelf life. Water also maintains turgor: when water is inadequate, stomata close, leaves may curl downward, and the plant becomes flaccid rather than turgid.",
+              callout:
+                "Do not treat irrigation as a single seasonal quantity—plan it against the crop stage and the yield or quality risk at that stage.",
+            },
+            {
+              heading: "Use air and humidity as crop-health signals",
+              body:
+                "Air is mostly nitrogen and oxygen, with a small proportion of carbon dioxide, water vapour, and other gases. In photosynthesis, light energy combines carbon dioxide and water to produce sugars and releases oxygen. Relative humidity is the amount of water in air expressed as a percentage. Drier air outside the leaf raises transpiration. Very low humidity can lead to wilting, stunting, small leaves, tip burn, and leaf curl. Very high humidity can reduce nutrient uptake and increase fungal disease risk. Monitor field conditions and disease signals rather than relying on a single humidity reading.",
+            },
+            {
+              heading: "Reduce wind stress while preserving benefits",
+              body:
+                "Moderate wind can support pollination, replenish carbon dioxide around the crop, and increase photosynthesis. However, wind also increases transpiration; hot winds accelerate drying and may contribute to tip burn. Strong wind can damage seedlings and shoots, cause flower or fruit drop, uproot plants, and puncture tissues that become entry points for pathogens. Practical management includes reducing wind velocity with windbreaks, supporting crops with trellises and tying, trapping soil particles with mulch or cover crops, and aligning field layout with the wind direction where possible.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "climatic-factors-affecting-crop-yield-check",
+        title: "Climatic factors and crop yield check",
+        description:
+          "Apply light, temperature, water, humidity, and wind concepts to year-round crop planning and climate-risk management decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "cf-1",
+            prompt:
+              "A grower is preparing a calendar for a crop that does not require a particular day length to flower. Which group contains day-neutral examples from the source document?",
+            options: [
+              { id: "a", label: "Tomato, pepper, cucurbits, cowpea, and okra." },
+              { id: "b", label: "Onion, cabbage, cauliflower, and radish only." },
+              { id: "c", label: "Sweet potato, hyacinth bean, and winged bean only." },
+              { id: "d", label: "All vegetables require the same photoperiod." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. The document identifies tomato, pepper, cucurbits, cowpea, and okra among the day-neutral crops.",
+              incorrect: "Day-neutral examples include tomato, pepper, cucurbits, cowpea, okra, French bean, and amaranth; long-day and short-day crops have different flowering responses.",
+            },
+          },
+          {
+            id: "cf-2",
+            prompt:
+              "What is the most likely crop-stage consequence of inadequate water at flowering?",
+            options: [
+              { id: "a", label: "Flowers are more likely to abort." },
+              { id: "b", label: "Germination is activated more quickly." },
+              { id: "c", label: "Fruit cells are filled more completely at harvest." },
+              { id: "d", label: "The plant always develops deeper roots without yield effects." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Water shortage during flowering can cause flowers to abort and reduce later fruit set.",
+              incorrect: "The document links limited water at flowering with flower abortion; plan water supply by crop stage to protect yield formation.",
+            },
+          },
+          {
+            id: "cf-3",
+            prompt:
+              "Which combination best describes the risk of very high relative humidity in a vegetable crop?",
+            options: [
+              { id: "a", label: "Reduced nutrient uptake and increased fungal disease risk." },
+              { id: "b", label: "Guaranteed resistance to leaf diseases and better nutrient uptake." },
+              { id: "c", label: "No relationship with crop health or disease conditions." },
+              { id: "d", label: "Only improved pollination with no other implications." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Very high humidity can reduce nutrient uptake and favour fungal disease conditions.",
+              incorrect: "High humidity requires crop-health attention because it can reduce nutrient uptake and increase fungal disease risk.",
+            },
+          },
+          {
+            id: "cf-4",
+            prompt:
+              "Which field action is an appropriate response to damaging wind exposure?",
+            options: [
+              { id: "a", label: "Use windbreaks, support crops with trellises and tying, and use mulch or cover crops to trap soil particles." },
+              { id: "b", label: "Remove all supports so wind can bend the plants freely." },
+              { id: "c", label: "Align every field layout directly against the prevailing wind where possible." },
+              { id: "d", label: "Assume wind only affects pollination and cannot damage plants." },
+            ],
+            correctOptionId: "a",
+            feedback: {
+              correct: "Correct. Windbreaks, crop support, ground cover, and thoughtful field orientation can reduce wind stress while retaining the benefits of moderate air movement.",
+              incorrect: "Strong wind can cause physical damage, flower or fruit loss, and excessive transpiration; reduce exposure with windbreaks, support, ground cover, and suitable orientation.",
+            },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, and crop-yield factors to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, and climatic-risk management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -1240,6 +1388,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. Yield potential depends on a fit among genetics, production objective, and interacting climate, soil, and topographic conditions.",
           incorrect: "A high-potential seed still needs a realistic match to environmental conditions and a management response to the field’s key risks.",
+        },
+      },
+      {
+        id: "final-9",
+        prompt:
+          "A vegetable field is entering flowering during a period of high humidity and strong hot winds. Which plan best protects yield potential?",
+        options: [
+          { id: "a", label: "Ignore the climate signals because flowering is determined only by seed genetics." },
+          { id: "b", label: "Match irrigation to flowering needs, monitor humidity-related disease risk, and reduce damaging wind exposure with practical field protection." },
+          { id: "c", label: "Stop all water applications so flowers adapt to the conditions." },
+          { id: "d", label: "Remove crop supports and windbreaks to increase wind speed through the crop." },
+        ],
+        correctOptionId: "b",
+        feedback: {
+          correct: "Correct. Flowering is sensitive to water limitation, high humidity increases disease risk, and hot winds increase drying and physical stress; the response should address all three factors.",
+          incorrect: "A defensible plan connects crop stage with water supply, humidity-related disease risk, and wind protection rather than relying on genetics alone.",
         },
       },
     ],

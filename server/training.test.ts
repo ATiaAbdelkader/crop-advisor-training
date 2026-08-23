@@ -129,6 +129,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the climatic-factors module after the crop-yield factors module", () => {
+    const climateModule = cropAdvisorCourse.modules.find(
+      module => module.id === "climatic-factors-affecting-crop-yield"
+    );
+    const previousModule = cropAdvisorCourse.modules[6];
+
+    expect(climateModule?.lessons).toHaveLength(2);
+    expect(climateModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(climateModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
