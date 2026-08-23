@@ -2833,12 +2833,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "field-preparation-mulching-and-trellising",
+      index: 21,
+      title: "Field preparation, mulching, and trellising",
+      eyebrow: "Module 21",
+      description:
+        "Prepare a productive, well-drained field and use mulch and trellises as connected systems for soil protection, water management, crop health, and accessible field work.",
+      lessons: [
+        {
+          id: "prepare-the-field-and-raised-beds",
+          title: "Prepare the field and raised beds",
+          duration: "38 min",
+          kicker: "Build the crop environment before planting",
+          summary:
+            "Assess the site, clear and prepare the soil, set a workable layout, and form raised beds and drainage that match crop, soil, season, water flow, and field operations.",
+          outcomes: [
+            "Use field history, soil, water, light, slope, access, crop-fit, and farm-resource evidence to assess a potential planting area.",
+            "Explain how clearing, soil preparation, layout, testing, amendments, beds, and drainage work together before planting.",
+            "Design raised beds and drainage around season, soil, waterlogging risk, crop operations, and root-zone protection.",
+          ],
+          sections: [
+            {
+              heading: "Visit and assess the field before committing the crop",
+              body:
+                "The source begins with field selection: inspect soil quality, water availability, light direction and duration, field history, and topography, including contours on sloping land. It gives a practical light reference of at least six hours per day. During a field visit, discuss previous crops, pest and disease problems, fertilisation history, flooding, local crop patterns, and market prices with the farmer and surrounding growers. Check road proximity, signage, security, soil pH, texture, profile and colour, year-round water access, slope, sun direction, winds, crop and variety fit, labour, and input accessibility. This turns land preparation into a site-specific decision rather than a routine sequence applied to every plot.",
+              callout:
+                "A productive bed starts with a field decision: document the water, soil, light, history, slope, market, and resource conditions that will determine whether the crop can be managed well.",
+            },
+            {
+              heading: "Clear, cultivate, and lay out the work system",
+              body:
+                "Clear old crops, weeds, stones, and rocks before construction begins. The source recommends composting weeds and crop debris except infected or infested plants, and clearing weeds before they flower or set seed. Soil preparation disrupts weeds, breaks blocky structure, supports bed preparation and mulching, helps control insects and breeding sites, improves aeration and root growth, supports water holding, and improves nutrient uptake. Plough and harrow as appropriate, then use stakes, a measuring tape, and string to lay out the field while accounting for slope, sun, and wind. Check soil quality, including pH and nitrogen where possible, review field and crop history, obtain appropriate amendment advice when needed, and plan drainage around rainy-season water flow. A visible layout makes weeding, fertilising, spraying, irrigation, and movement easier to manage.",
+            },
+            {
+              heading: "Form beds and drainage for the season and soil",
+              body:
+                "The source warns that earthing up without raised beds can be labour-intensive, damage surface roots, complicate irrigation through runoff, and contribute to stem rot where stems are covered. Raised-bed preparation creates favourable structure, reduces waterlogging, supports furrow irrigation and rainy-season drainage, avoids compaction in the growing area, and organises field work. Use a roughly one-metre bed width with drainage canals, incorporate nutrients based on soil pH and nutrient evidence, then level and form the beds. Adjust height to soil and season: the source gives approximately ten to twenty centimetres in dry periods and thirty to fifty centimetres in rainy periods, with bed preparation completed about two weeks before planting. Build drainage canals before heavy rain; waterlogging reduces soil aeration, damages roots, and can lead to wilting.",
+            },
+          ],
+        },
+        {
+          id: "use-mulch-and-trellises-as-crop-management-systems",
+          title: "Use mulch and trellises as crop-management systems",
+          duration: "37 min",
+          kicker: "Protect the soil and support the crop",
+          summary:
+            "Select, install, and manage plastic or organic mulch and crop-appropriate trellises to improve moisture, weed, disease, erosion, fruit quality, crop access, and field operations.",
+          outcomes: [
+            "Compare plastic and plant-based mulches for their soil, water, crop-health, labour, cost, and disposal implications.",
+            "Install mulch so it protects the bed without creating heat, humidity, root, or environmental problems.",
+            "Select and time trellising for crop family, growth habit, field work, wind protection, light exposure, and harvest access.",
+          ],
+          sections: [
+            {
+              heading: "Use mulch for more than weed suppression",
+              body:
+                "Mulching is a layer placed on the bed primarily to conserve soil moisture and suppress weeds. The source describes mulch, drip irrigation, green manuring, and rotation as complementary field improvements. Plastic mulch can suppress weeds, reduce nutrient leaching, conserve moisture, improve aeration and infiltration, reduce waterlogging and erosion, and keep fruit off soil. Plant-based mulch—such as grasses, rice straw, maize stalks, banana leaves, water hyacinth, and crop residues—can also reduce weeds and fruit-soil contact, conserve moisture, protect against rain damage, improve aeration and infiltration, contribute organic nutrients through decomposition, and cool soil in hot weather. Select the material around the whole field system, including water, disease pressure, labour, access, budget, and disposal.",
+              callout:
+                "Mulch is an active soil-management layer. Its value depends on bed preparation, water control, material condition, installation quality, and follow-up—not its presence alone.",
+            },
+            {
+              heading: "Install and manage mulch without creating new risks",
+              body:
+                "Plastic mulch carries a higher initial cost and must be installed tightly over a well-pulverised, level bed. Loose installation or air pockets beneath the plastic can create damaging heat during crop establishment, while extra humidity and heat can worsen existing fungal or bacterial problems. The source advises avoiding both loose plastic and excessive tension, preparing the soil so mulch sits snugly, checking plastic quality and thickness, and not using plastic beyond its suitable crop-cycle life. Handle used plastic responsibly: collect it for an available recycling route and do not burn it or leave it in the field. For straw mulch, level and water the bed first, apply a layer about eight to ten centimetres thick before sowing or transplanting, make planting holes, and keep mulch away from the plant base. Organic mulch can be labour-intensive, may encourage rats or chickens, can create rot under excessive humidity, and may be scarce at larger commercial scale.",
+            },
+            {
+              heading: "Trellis early and build it for crop work",
+              body:
+                "A trellis is a light wood or metal framework that supports shrub and climbing vegetables. It improves plant performance by supporting crops against strong winds, increasing light exposure and photosynthesis, maximising space, improving air circulation, simplifying pest and disease monitoring, keeping fruit off the ground, and easing harvest and maintenance such as pruning. For cucurbits and legumes, the source recommends preparing a vertical trellis before transplanting so vines have a ready crawling area and are not stressed by late training; do not sow if the needed trellising materials are not ready. For solanaceous crops, install support soon after transplanting—within roughly seven to fourteen days in the source guidance—to support growth and avoid later disturbance to flowers. Use strong, practical materials at adequate spacing and height, place posts before or soon after transplanting, tie them together securely, and fit netting or a suitable string, bamboo, or wire alternative. Clean, roll, and store reusable netting after harvest.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "field-preparation-mulching-and-trellising-check",
+        title: "Field-preparation, mulching, and trellising check",
+        description:
+          "Apply site appraisal, clearing, soil and bed preparation, drainage, mulch installation, and crop-specific trellising principles to a practical vegetable-field plan.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "fm-1",
+            prompt: "Which field-assessment approach best follows the source guidance before starting vegetable bed preparation?",
+            options: [
+              { id: "a", label: "Review soil, water, light, history, flooding, slope, sun, wind, crop fit, labour, input access, local crops, and market context with the farmer." },
+              { id: "b", label: "Select the field only because it is the closest plot, without checking soil, water, light, history, or field risk." },
+              { id: "c", label: "Begin planting first and investigate drainage or pest history only after a crop failure." },
+              { id: "d", label: "Use current crop price alone to replace all field and farm evidence." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source frames field preparation around a broad site visit that combines production, environmental, operational, and market evidence.", incorrect: "Start by documenting soil, water, light, history, flooding, topography, crop fit, access, labour, inputs, and local market context with the farmer." },
+          },
+          {
+            id: "fm-2",
+            prompt: "Why are raised beds and drainage canals particularly important for a vegetable field entering the rainy season?",
+            options: [
+              { id: "a", label: "They reduce waterlogging, protect root-zone aeration, support drainage and furrow irrigation, and make field work more systematic." },
+              { id: "b", label: "They intentionally keep roots saturated so wilting cannot occur." },
+              { id: "c", label: "They remove the need to assess slope or water flow." },
+              { id: "d", label: "They make soil testing and nutrient planning unnecessary." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links raised beds and drainage with less waterlogging, better root-zone conditions, drainage, and more manageable field operations.", incorrect: "Raised beds and canals must be designed around season, soil, slope, and water movement to limit waterlogging and maintain aerated rooting conditions." },
+          },
+          {
+            id: "fm-3",
+            prompt: "Which mulch-management plan best avoids the key risks identified in the source?",
+            options: [
+              { id: "a", label: "Prepare a level bed, install plastic snugly without looseness or excessive tension, manage humidity and disease risk, and collect used plastic for recycling rather than burning or leaving it in the field." },
+              { id: "b", label: "Leave loose plastic over cloddy soil so air pockets heat the bed, then burn it after harvest." },
+              { id: "c", label: "Pile organic mulch directly against every plant base and ignore wet-season rot risk." },
+              { id: "d", label: "Use mulch without considering bed level, soil moisture, material quality, environmental disposal, or crop health." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The plan addresses installation quality, heat and humidity risks, soil preparation, and responsible post-use handling.", incorrect: "Mulch requires a prepared level bed, suitable tension, humidity and disease awareness, and responsible disposal; do not create air pockets, burn plastic, or ignore wet mulch against stems." },
+          },
+          {
+            id: "fm-4",
+            prompt: "When should trellising be prepared for cucurbit crops, and why?",
+            options: [
+              { id: "a", label: "Before transplanting, so plants have a ready vertical crawling area and vines are not stressed by late training after they begin growing on the ground." },
+              { id: "b", label: "Only after harvest, because trellises do not affect crop growth or field work." },
+              { id: "c", label: "After vines have crawled on the ground for several weeks, so training creates the greatest disturbance." },
+              { id: "d", label: "Never; cucurbits cannot benefit from vertical support." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source advises preparing cucurbit and legume trellises before transplanting to avoid delayed training stress and provide a ready climbing structure.", incorrect: "For cucurbits and legumes, have materials and a vertical support ready before transplanting. Late installation can disturb vines that have already begun crawling on the ground." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, and seedling-production planning to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, and field preparation, mulching, and trellising to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3191,6 +3323,21 @@ export const cropAdvisorCourse: CourseDefinition = {
           correct: "Correct. The response links traceable seed quality, correct treatment handling, realistic field-layout calculation, media function, method choice, and protection before production begins.",
           incorrect: "Defensible seedling planning integrates seed verification, coated-seed handling, field-layout and replacement calculations, appropriate media, a suitable method, and protected nursery conditions.",
         },
+      },
+      {
+        id: "final-22",
+        prompt:
+          "A vegetable field has a weedy, uneven surface, poor rainy-season drainage, loose plastic mulch with heat pockets, and cucurbit seed ready before trellis materials arrive. Which advisor plan is most defensible?",
+        options: [
+          { id: "a", label: "Complete the site and soil review, clear weeds before seed set, level and form raised beds with drainage, install mulch snugly on prepared soil, and make the trellis ready before transplanting cucurbits." },
+          { id: "b", label: "Plant immediately, leave the field uneven, retain loose mulch, and wait until vines crawl on the soil before seeking trellis materials." },
+          { id: "c", label: "Remove drainage canals, burn used plastic in the field, and use crop price alone to decide bed layout." },
+          { id: "d", label: "Rely on fertiliser to correct waterlogging, mulch installation, field layout, and unsupported vines after planting." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan connects field appraisal, clearing, bed and drainage design, sound mulch installation, and timely crop-specific trellising before preventable stresses are transferred to the crop.",
+          incorrect: "A defensible field plan addresses site and soil evidence, clearing, raised beds and drainage, mulch-installation quality, and trellis timing together—before crop establishment." },
       },
     ],
   },
