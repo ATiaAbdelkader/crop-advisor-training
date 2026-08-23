@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 3.0  
+**Version:** 3.1  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-three required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-four required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -37,6 +37,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **21. Field preparation, mulching, and trellising** | Creating a productive, well-drained crop environment and using mulch and trellises to protect soil, manage water, support plants, and improve field work. | Assess the field; clear and lay out beds; form raised beds and drainage; install mulch responsibly; time trellises for crop family and operations. | **Prepare the field and raised beds**; **Use mulch and trellises as crop-management systems** | Both lessons complete and module check passed at 80% or above. |
 | **22. Transplanting** | Preparing and establishing field-ready seedlings with correct timing, careful handling, heat moderation, nutrient safeguards, and early stand recovery. | Confirm field and seedling readiness; harden and stage seedlings; transplant at appropriate depth and time; prevent stress and nutrient burn; monitor and replace missing plants. | **Prepare seedlings and field for transplanting**; **Establish transplants and protect the stand** | Both lessons complete and module check passed at 80% or above. |
 | **23. Water management** | Managing root-zone water and air through soil-moisture assessment, crop and climate demand, efficient irrigation, seasonal conservation and drainage, and water-quality safeguards. | Diagnose water-air balance; measure soil moisture; adapt irrigation to soil, crop stage, and weather; conserve water; drain excess; screen water quality. | **Read water-air balance and crop demand**; **Design efficient seasonal water management** | Both lessons complete and module check passed at 80% or above. |
+| **24. Irrigation systems** | Selecting and improving crop-appropriate irrigation through stress-stage awareness, system comparison, field evidence, water quality, labour, cost, and maintenance capacity. | Protect critical crop stages; compare hand, sprinkler, surface, and drip delivery; select a system from field and farmer evidence; improve practical operation. | **Compare irrigation systems and crop stress**; **Select and improve a system with field evidence** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -90,6 +91,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Establish transplants and protect the stand** | Remove tray plants carefully, plant at the right level, protect cotyledons and roots, moderate heat, prevent nutrient burn, monitor, and replace losses. | A uniform stand is secured through careful early handling and daily recovery action, not by planting alone. |
 | **Read water-air balance and crop demand** | Assess root-zone water and air, diagnose over- and under-supply, read moisture by feel, and adapt irrigation to soil, crop stage, and climate. | Irrigate the functioning root zone—not a calendar or a volume target alone. |
 | **Design efficient seasonal water management** | Select practical irrigation, conserve water in dry periods, drain excess in wet periods, and verify source quality and wastewater safeguards. | Good water management protects yield by connecting application, conservation, drainage, and source quality. |
+| **Compare irrigation systems and crop stress** | Identify sensitive stages and water-stress effects; schedule watering; compare hand, sprinkler, surface, and drip methods by delivery and operational trade-offs. | System performance matters only when it protects crop roots, foliage, yield, and field operations at the required time. |
+| **Select and improve a system with field evidence** | Use soil, topography, water, crop, field size, technology, labour, cost, experience, and maintenance evidence to recommend a feasible system. | An efficient system that the farmer cannot supply, maintain, or operate is not an effective recommendation. |
 
 ## Assessment package
 
@@ -120,7 +123,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Field-preparation, mulching, and trellising check** | Field appraisal, clearing, soil and bed preparation, drainage, mulch installation, disposal, and crop-specific trellis timing. | 4 | 80% | Unlocks the integrated final assessment only after both Module 21 lessons are complete and the check is passed. |
 | **Transplanting check** | Field and seedling readiness, hardening, true-leaf stage, careful tray handling, planting depth, heat management, nutrient safeguards, monitoring, and replacement. | 4 | 80% | Unlocks the integrated final assessment only after both Module 22 lessons are complete and the check is passed. |
 | **Water-management check** | Root-zone water-air balance, soil moisture, soil and crop demand, irrigation, seasonal conservation and drainage, water quality, and wastewater safeguards. | 4 | 80% | Unlocks the integrated final assessment only after both Module 23 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, and water management. | 24 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Irrigation-systems check** | Critical crop stages, watering time, hand/sprinkler/surface/drip trade-offs, field and farmer evidence, water quality, labour, cost, and maintenance capacity. | 4 | 80% | Unlocks the integrated final assessment only after both Module 24 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, and irrigation-system selection. | 25 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -157,6 +161,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Prepare and support a vegetable field system** | A weedy uneven field, poor drainage, loose heat-forming plastic mulch, and cucurbit seed ready before trellis materials. | Connects field appraisal, clearing, raised beds, drainage, mulch-installation quality, responsible plastic handling, and pre-transplant trellising. | Complete the soil, water, mulch, and support system before crop establishment transfers avoidable risks into the field. |
 | **Establish a uniform transplant stand** | Dry unhardened tray seedlings planned for a hot field with incomplete holes, mulch, and trellis; buried cotyledons; and roots touching fertiliser. | Connects pre-transplant readiness, moisture, hardening, low-stress timing, careful tray removal, correct planting depth, nutrient separation, and early stand monitoring. | Treat transplanting as a coordinated nursery-to-field transition rather than a single planting action. |
 | **Protect a functional root zone across seasons** | Long heavy irrigation on a sandy field, dry stress before flowering, blocked rainy-season drainage, and proposed untreated-wastewater use. | Connects texture-responsive irrigation, moisture checks, water-air balance, dry-season conservation, wet-season drainage, and water-quality safeguards. | Water planning must respond to soil, crop stage, weather, and season while keeping both saturation and unsafe sources out of the crop system. |
+| **Select an irrigation system the field and farmer can sustain** | A hot dry plastic-mulched field, limited labour, debris-contaminated water, and a familiar low-capital furrow option. | Compares delivery options against land, water, crop, mulch, field scale, labour, cost, skills, design, filtration, and maintenance. | Recommend the system that achieves agronomic performance within the farm’s actual capacity to supply, maintain, and operate it. |
 
 ## Certificate template specification
 
@@ -270,13 +275,17 @@ flowchart TD
   BS --> BT[Module 23 lessons and assessment]
   BT --> BU{Module 23 passed?}
   BU -- No --> BT
-  BU -- Yes --> BV[Unlock integrated final assessment]
-  BV --> BW{Final score at least 80%?}
-  BW -- No --> BX[Feedback and final retake available]
-  BX --> BV
-  BW -- Yes --> BY[Create credential record]
-  BY --> BZ[Notify platform owner]
-  BZ --> CA[Enable certificate download]
+  BU -- Yes --> BV[Unlock Module 24]
+  BV --> BW[Module 24 lessons and assessment]
+  BW --> BX{Module 24 passed?}
+  BX -- No --> BW
+  BX -- Yes --> BY[Unlock integrated final assessment]
+  BY --> BZ{Final score at least 80%?}
+  BZ -- No --> CA[Feedback and final retake available]
+  CA --> BY
+  BZ -- Yes --> CB[Create credential record]
+  CB --> CC[Notify platform owner]
+  CC --> CD[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -338,6 +347,8 @@ Module 22 is derived from the supplied *Transplanting* training document. Its in
 
 Module 23 is derived from the supplied *Water Management* training document. Its instructional structure retains root-zone water-air balance, over- and under-watering signs, soil-moisture assessment, texture and structure effects, crop-stage and climate demand, irrigation-system performance, dry-season conservation, wet-season drainage, water quality, and untreated-wastewater safeguards. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [20]
 
+Module 24 is derived from the supplied *Irrigation Systems* training document. Its instructional structure retains critical water-stress stages, drought and flood effects, watering timing, hand/sprinkler/surface/drip comparison, system efficiency, field and farmer inquiry, soil and topography fit, water supply and quality, mulch-compatible techniques, crop rooting, field size, labour, cost, system design, and maintenance capacity. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [21]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -379,3 +390,5 @@ Module 23 is derived from the supplied *Water Management* training document. Its
 [19] [REVISED_PRD-006. *Transplanting* (user-supplied training document, 24 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-006.Transplanting_05242023.pdf)
 
 [20] [REVISED_PRD-007. *Water Management* (user-supplied training document, 29 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-007.WaterManagement_05292023.pdf)
+
+[21] [REVISED_PRD-008. *Irrigation Systems* (user-supplied training document, 11 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-008.IrrigationSystems_05112023.pdf)

@@ -3229,12 +3229,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "irrigation-systems",
+      index: 24,
+      title: "Irrigation systems",
+      eyebrow: "Module 24",
+      description:
+        "Compare irrigation systems by crop stress, field performance, efficiency, practical constraints, and farmer capacity to recommend a system that fits the crop and site.",
+      lessons: [
+        {
+          id: "compare-irrigation-systems-and-crop-stress",
+          title: "Compare irrigation systems and crop stress",
+          duration: "37 min",
+          kicker: "Match water delivery to crop response",
+          summary:
+            "Recognise critical crop stages and water-stress effects, select an appropriate time to water, and compare hand, sprinkler, surface, and drip irrigation by delivery pattern, strengths, limitations, and efficiency.",
+          outcomes: [
+            "Identify crop stages and stress effects that require careful irrigation planning.",
+            "Schedule watering to reduce avoidable leaf wetness, heat stress, and poor crop response.",
+            "Compare hand, overhead, surface, and drip systems using distribution, disease, labour, cost, field condition, and efficiency evidence.",
+          ],
+          sections: [
+            {
+              heading: "Protect crops at their water-sensitive stages",
+              body:
+                "The source highlights vegetative, flowering, and fruiting stages as critical periods for water stress, with vegetative attention especially important during the first two weeks after transplanting. It shows how drought and flooding can produce different but serious outcomes: brassicas may bolt or rot; legumes may lose flowers and pods or become disease-prone; root vegetables may have restricted enlargement, cracking, or disease; and solanaceous and cucurbit crops may show flower or fruit drop, blossom-end rot, cracking, disease development, and stunting. The field advisor should protect crop moisture across stages where possible, then focus observations and system performance checks where the crop is most exposed to yield and quality loss.",
+              callout:
+                "Choose irrigation around the crop’s most sensitive stages and the source of water stress—not around the convenience of the system alone.",
+            },
+            {
+              heading: "Water at a time that supports uptake without needless wetness",
+              body:
+                "The source identifies early morning, approximately 5 to 9 am, as the ideal watering period because temperatures are lower and plants are cool. It cautions against watering while the plant is still cooling down and there is no sun to dry water droplets. In very hot conditions, it allows consideration of watering around mid-afternoon if plants are under water stress, while advising growers to avoid wetting foliage where possible. Timing therefore depends on temperature, crop stress, system type, and the risk of prolonged leaf wetness. Use this timing guidance with root-zone moisture checks rather than applying water mechanically at the same hour in every season.",
+            },
+            {
+              heading: "Compare system performance, not labels",
+              body:
+                "Hand watering delivers water directly and can be adjusted for microclimates while bringing the grower close to plants for pest and disease observation. Its limitations include high labour, unequal distribution, shallow penetration, potential seedling damage at high pressure, foliar disease, and possible need for nearby water storage. Sprinklers can provide good soil moisture and a cooling microclimate, suit large or high-density areas and nurseries, and help leach excess salts, but they have high initial cost, can promote foliar disease and weeds, waste water on bare spots, require even spacing and maintenance, and are unsuitable for plastic-mulched gardens. Surface or furrow irrigation is common and simple with low capital cost but can cause waterlogging without drainage, uneven distribution, water waste, wet paths, and canal weeds. Drip or trickle irrigation offers uniform, efficient application, lower disease pressure, potential water and fertiliser efficiency, and lower labour than hand watering, but requires investment, design, maintenance, skilled operation, and clean water to prevent clogging. The source presents indicative efficiency bands of 40–60% for surface, 60–75% for sprinkler, and about 90% for drip systems.",
+            },
+          ],
+        },
+        {
+          id: "select-and-improve-a-system-with-field-evidence",
+          title: "Select and improve a system with field evidence",
+          duration: "35 min",
+          kicker: "Ask the questions that make recommendations work",
+          summary:
+            "Use soil, terrain, water, crop, field size, technology, labour, cost, experience, and existing system performance to select or improve an irrigation method with the farmer.",
+          outcomes: [
+            "Gather the site, crop, water, and farmer evidence needed before recommending an irrigation system.",
+            "Connect system selection to soil texture, slope, water quantity and quality, crop rooting, field size, mulch, and technology fit.",
+            "Recommend realistic improvements that account for labour, financial capacity, maintenance, and farmer knowledge.",
+          ],
+          sections: [
+            {
+              heading: "Start with a structured field and farmer inquiry",
+              body:
+                "The source directs advisors to observe which systems farmers already use, whether production is irrigated or rainfed, how frequently irrigation occurs, what farmers consider when irrigating, and what they consider when choosing a system. Build the inquiry around natural conditions—soil type, slope and topography, water availability and source, and water quality—then add crop type, field size, available technology, previous irrigation experience, required labour, and costs and benefits. Ask how many people work on the farm, what system they know, how long an irrigation task takes, and whether the current arrangement is limiting crop management. This produces a recommendation that respects both agronomy and the operating reality of the farm.",
+              callout:
+                "A system recommendation is credible only when it answers the farmer’s water, land, labour, skill, and cost constraints together.",
+            },
+            {
+              heading: "Fit delivery method to soil, terrain, crop, and field design",
+              body:
+                "Soil texture, structure, and porosity influence whether water moves quickly, slowly, deeply, or laterally, so they should shape the preferred method and run time. Slope and topography raise practical questions about whether a field is flat or sloping, whether furrow or hand watering can be controlled, and how erosion or uneven distribution will be avoided. Water availability is seasonal and must be compared with crop demand, irrigation depth, and planned area. Crop roots also matter: a shallow-rooted leafy crop and a deeper-rooted tomato or cucurbit may not need the same delivery pattern. The source specifically notes that furrow or drip systems are recommended when plastic mulch is used, particularly in dry, hot periods. Treat field size as a scaling question rather than assuming one method suits 500 square metres, 1,000 square metres, and a hectare equally.",
+            },
+            {
+              heading: "Protect drip performance and match the recommendation to capacity",
+              body:
+                "Drip irrigation needs good-quality, clean water and a suitable design because clogged emitters can create uneven distribution. The source also highlights chloride as a water-quality concern for drip systems and presents concentration categories for interpreting potential crop injury; use local water testing and crop-specific tolerance guidance rather than assuming a source is safe. When recommending a system, be practical about financial capacity, seasonal water supply, labour, time, technology, maintenance knowledge, and the farmer’s existing experience. A lower-cost method may be appropriate where it can be managed well, while a more efficient system may fail if it cannot be maintained or supplied with clean water. Use the last demonstration or field visit as evidence: describe the system, identify its limitation, and specify an improvement the farmer can realistically operate.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "irrigation-systems-check",
+        title: "Irrigation-systems check",
+        description:
+          "Apply crop-stress, timing, system-performance, field, water, crop, labour, and cost evidence to choose and improve a vegetable irrigation system.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "is-1",
+            prompt: "Why should irrigation performance be checked particularly carefully during flowering and fruiting?",
+            options: [
+              { id: "a", label: "Water stress at these stages can contribute to flower or fruit drop, poor set or development, quality defects, disease, and stunting in many vegetable crops." },
+              { id: "b", label: "Crop water needs end once flowers are visible." },
+              { id: "c", label: "Flooding and drought have no effect on yield or quality after vegetative growth." },
+              { id: "d", label: "Only irrigation-system cost matters during reproductive crop stages." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source identifies flowering and fruiting as critical water-stress stages and links drought or flood stress with flower and fruit loss, defects, disease, and reduced growth.", incorrect: "Monitor water delivery closely during flowering and fruiting because both drought and flooding can cause flower or fruit loss, quality problems, disease, and lower growth." },
+          },
+          {
+            id: "is-2",
+            prompt: "What is the most generally suitable timing practice in the source for watering vegetable crops?",
+            options: [
+              { id: "a", label: "Water early morning when temperature is lower and plants are cool, then adapt in hot stress conditions while avoiding unnecessary foliage wetness." },
+              { id: "b", label: "Always water at night while leaves remain wet because drying is unnecessary." },
+              { id: "c", label: "Always water only at the hottest hour, regardless of crop stress or system type." },
+              { id: "d", label: "Ignore temperature, leaf wetness, crop stress, and season when scheduling water." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source recommends early-morning watering, cautions against prolonged wet droplets, and allows limited hot-season adjustment when plants face water stress.", incorrect: "Use early morning as the normal starting point, then adapt to heat and stress while avoiding unnecessary leaf wetness and checking root-zone moisture." },
+          },
+          {
+            id: "is-3",
+            prompt: "Which system comparison is accurate according to the source?",
+            options: [
+              { id: "a", label: "Drip is highly efficient and can reduce disease pressure but needs investment, suitable design, maintenance, and clean water; surface irrigation is low-capital but can waste water and waterlog without drainage." },
+              { id: "b", label: "Surface irrigation is always the most efficient method and never needs drainage." },
+              { id: "c", label: "Sprinklers cannot be used in nurseries and never affect foliar disease or weeds." },
+              { id: "d", label: "Hand watering always delivers equal deep water with no labour requirement or foliar-disease risk." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source contrasts drip efficiency and maintenance requirements with surface irrigation’s simplicity, low capital needs, drainage risks, and greater water waste.", incorrect: "Compare delivery, distribution, disease, weeds, drainage, cost, labour, maintenance, and water quality. No irrigation system is automatically suitable in every field." },
+          },
+          {
+            id: "is-4",
+            prompt: "Which evidence set should an advisor collect before recommending an irrigation system?",
+            options: [
+              { id: "a", label: "Soil, slope, water quantity and quality, crop and rooting pattern, field size, mulch or planting design, technology, farmer experience, labour, financial capacity, and current system performance." },
+              { id: "b", label: "Only the brand name of the nearest irrigation kit." },
+              { id: "c", label: "Only crop price, while ignoring land, water, labour, system maintenance, and farmer capacity." },
+              { id: "d", label: "Only system efficiency figures, without discussing whether clean water, training, or maintenance are available." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source requires natural conditions, crop and field size, technology, prior experience, labour, and cost-benefit evidence before selecting a system.", incorrect: "A practical recommendation combines site conditions, crop and design needs, water supply and quality, farmer experience, labour, maintenance capacity, technology, and cost-benefit evidence." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, and water management to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, and irrigation-system selection to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -3633,6 +3765,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan integrates sandy-soil scheduling, root-zone balance, dry-season conservation, wet-season drainage, and water-quality safeguards.",
           incorrect: "A defensible water plan adapts to soil, crop stage, moisture, climate, and season while protecting roots from saturation, reducing leaching, maintaining drainage, and excluding untreated wastewater.",
+        },
+      },
+      {
+        id: "final-25",
+        prompt:
+          "A farmer grows vegetables under plastic mulch on a hot, dry site. The water source has debris, labour is limited, and the grower is considering low-capital furrow irrigation because it is familiar. Which advisor recommendation is most defensible?",
+        options: [
+          { id: "a", label: "Compare practical furrow and drip options against soil, slope, water supply and quality, crop, field size, labour, cost, and maintenance; where drip is selected, protect it with clean water, correct design, and maintenance because plastic mulch and dry heat favour targeted delivery." },
+          { id: "b", label: "Choose furrow automatically because familiarity removes all drainage, water-use, and crop-management risks." },
+          { id: "c", label: "Install drip without checking debris, filtration, design, maintenance knowledge, labour, or whether the farmer can operate it." },
+          { id: "d", label: "Use one irrigation system for every field without considering crop stage, water stress, topography, mulch, or farmer capacity." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The recommendation compares systems with field and farmer evidence, recognises plastic-mulch conditions, and addresses the clean-water and maintenance requirements that make drip performance reliable.",
+          incorrect: "System choice must combine agronomy and feasibility: assess land, water quality and supply, crop, mulch, system efficiency, labour, cost, skill, design, and maintenance before recommending an improvement.",
         },
       },
     ],

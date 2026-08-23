@@ -41,3 +41,4 @@
 - [x] Analyse REVISED_PRD-005.Field Preparation, Mulching, Trellising and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-006.Transplanting and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-007.Water Management and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_PRD-008.Irrigation Systems and integrate its source-grounded module, assessments, progression, and design documentation.
