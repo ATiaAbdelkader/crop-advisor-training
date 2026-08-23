@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 2.5  
+**Version:** 2.6  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through eighteen required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through nineteen required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -32,6 +32,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **16. Collect soil samples for soil testing** | Producing a representative, traceable soil sample that supports defensible fertiliser and crop-management decisions. | Explain testing purpose and timing; define homogeneous areas; collect and prepare representative composites; record crop and management context for interpretation. | **Plan a representative soil sample**; **Collect, prepare, and label the composite** | Both lessons complete and module check passed at 80% or above. |
 | **17. Nursery for vegetable production** | Recognising high-quality seedlings and building a practical protected nursery for reliable establishment. | Assess root-system quality and stress; improve spacing, soil, drainage, and light; protect seedlings from rain, intense sun, contamination, and insect entry; decide transplant readiness. | **Recognise a high-quality seedling**; **Build and protect an improved nursery** | Both lessons complete and module check passed at 80% or above. |
 | **18. Open-field seedling production** | Producing, protecting, hardening, and transplanting vigorous bare-root seedlings for field establishment. | Select and prepare the nursery site; sow thinly; adapt weather protection; harden seedlings; transplant with minimum root injury; manage pests and diseases through daily monitoring. | **Prepare and sow a bare-root nursery**; **Protect, harden, and transplant bare-root seedlings** | Both lessons complete and module check passed at 80% or above. |
+| **19. Protective and cellular seedling production** | Producing uniform, protected cellular transplants with clean media, controlled germination, responsive care, hardening, and quality assurance. | Select a container and cell size; prepare and sterilise media; sow and protect seedlings; manage moisture and nutrition; harden and assess field readiness. | **Prepare cellular media and sow for uniformity**; **Manage protected germination and transplant readiness** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -75,6 +76,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Build and protect an improved nursery** | Combine spacing, line sowing, soil preparation, raised drainage, light, rain-sun protection, and intact insect exclusion in a practical nursery design. | Protection must reduce stress while retaining good light, drainage, and clean barriers to pest entry. |
 | **Prepare and sow a bare-root nursery** | Select a high, weed-free nursery site; prepare raised, drained soil; use a stale seedbed; and apply thin, precise row sowing. | Thin sowing creates the growing space, aeration, and inspection access that support vigorous transplants. |
 | **Protect, harden, and transplant bare-root seedlings** | Match covers to climate, remove covers at emergence, harden seedlings, minimise root injury, transplant in lower-stress conditions, and monitor pests and diseases daily. | Nursery protection is responsive: adjust shade, rain, heat, moisture, and insect controls as seedlings develop. |
+| **Prepare cellular media and sow for uniformity** | Compare containers and cell sizes; balance, moisten, and sterilise medium; then fill, sow, orient, cover, and water cells without disturbance. | A clean, well-structured cell gives each seedling a root environment that can be protected through transplantation. |
+| **Manage protected germination and transplant readiness** | Control pre-germination, covers, moisture, nutrition, pests, hardening, and multi-signal quality checks before transplanting. | A cellular seedling is field-ready when it is healthy and hardened—not simply when it has reached a calendar date. |
 
 ## Assessment package
 
@@ -100,7 +103,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Soil-sample collection check** | Soil-test purpose and timing, homogeneous sampling areas, representative depth and composite sampling, clean preparation, and traceable sample labels. | 4 | 80% | Unlocks the integrated final assessment only after both Module 16 lessons are complete and the check is passed. |
 | **Vegetable-nursery quality check** | Root-system value, traditional seedling stress, improved-nursery practices, and intact insect exclusion with delayed-virus-risk awareness. | 4 | 80% | Unlocks the integrated final assessment only after both Module 17 lessons are complete and the check is passed. |
 | **Open-field seedling-production check** | Thin row sowing, site and bed preparation, responsive seedling protection, hardening, careful transplanting, and daily pest-disease monitoring. | 4 | 80% | Unlocks the integrated final assessment only after both Module 18 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, and open-field bare-root seedling production. | 19 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Protected cellular seedling-production check** | Container and cell choice, clean-media preparation, controlled germination, responsive care, hardening, and field-ready seedling quality. | 4 | 80% | Unlocks the integrated final assessment only after both Module 19 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, and protected cellular seedling production. | 20 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -132,6 +136,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Collect a representative soil sample** | A farm with localised fertiliser or compost sources plus sloping and flat areas with different crop history. | Separates homogeneous decision areas, avoids atypical points, standardises depth, makes clean composites, and retains crop-management context. | Design the sample around the decision area, then protect its integrity and traceability through laboratory submission. |
 | **Protect vegetable-transplant quality** | Weak roots, elongated stems, uneven vigour, and gaps in an insect-net barrier. | Selects linked improvements for seedling space, growing medium, drainage, sun-rain protection, insect exclusion, and transplant readiness. | Improve the nursery environment and verify seedling quality before field establishment rather than transplanting stress into the crop. |
 | **Produce and establish bare-root seedlings** | A crowded low-lying nursery, opaque cover at emergence, weak roots, and a midday transplant plan into dry soil. | Connects nursery-site drainage, thin sowing, cover removal, hardening, pre-watering, careful lifting, and low-stress transplant timing. | Protect seedling quality from sowing through establishment instead of transferring nursery stress into the field. |
+| **Produce protected cellular transplants** | Dry compacted media, an overlong upward-bent cucurbit radicle, direct movement from shade to heat, and weak readiness signals. | Integrates balanced sterilised medium, uncompressed filling, correct radicle handling, protected germination, hardening, and root-shoot quality checks. | Preserve quality inside each cell, then adapt seedlings gradually before they face field stress. |
 
 ## Certificate template specification
 
@@ -225,13 +230,17 @@ flowchart TD
   BD --> BE[Module 18 lessons and assessment]
   BE --> BF{Module 18 passed?}
   BF -- No --> BE
-  BF -- Yes --> BG[Unlock integrated final assessment]
-  BG --> BH{Final score at least 80%?}
-  BH -- No --> BI[Feedback and final retake available]
-  BI --> BG
-  BH -- Yes --> BJ[Create credential record]
-  BJ --> BK[Notify platform owner]
-  BK --> BL[Enable certificate download]
+  BF -- Yes --> BG[Unlock Module 19]
+  BG --> BH[Module 19 lessons and assessment]
+  BH --> BI{Module 19 passed?}
+  BI -- No --> BH
+  BI -- Yes --> BJ[Unlock integrated final assessment]
+  BJ --> BK{Final score at least 80%?}
+  BK -- No --> BL[Feedback and final retake available]
+  BL --> BJ
+  BK -- Yes --> BM[Create credential record]
+  BM --> BN[Notify platform owner]
+  BN --> BO[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -283,6 +292,8 @@ Module 17 is derived from the supplied *Nursery for Vegetable Production* traini
 
 Module 18 is derived from the supplied *Open Field Seedling Production* training document. Its instructional structure retains bare-root nursery site selection, raised beds and drainage, soil and stale-seedbed preparation, thin row sowing, climate-responsive cover management, seedling hardening, careful transplanting, and daily pest-disease monitoring. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [15]
 
+Module 19 is derived from the supplied *Protective and Cellular Seedling Production* training document. Its instructional structure retains container and cell-size selection, balanced medium preparation, medium sterilisation, cellular filling and sowing, controlled pre-germination, protected tray management, responsive watering and feeding, hardening, and root-shoot quality assessment. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [16]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -314,3 +325,5 @@ Module 18 is derived from the supplied *Open Field Seedling Production* training
 [14] [REVISED_PRD-001. *Nursery for Vegetable Production* (user-supplied training document, 25 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-001.NurseryforVegetableProduction_05252023.pdf)
 
 [15] [REVISED_PRD-002. *Open Field Seedling Production* (user-supplied training document, 24 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-002.OpenFieldSeedlingProduction_05242023.pdf)
+
+[16] [REVISED_PRD-003. *Protective and Cellular Seedling Production* (user-supplied training document, 23 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-003.ProtectiveandCellularSeedlingProduction_05232023.pdf)

@@ -2571,12 +2571,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "protective-and-cellular-seedling-production",
+      index: 19,
+      title: "Protective and cellular seedling production",
+      eyebrow: "Module 19",
+      description:
+        "Use cellular containers, clean growing media, protected germination, responsive seedling care, hardening, and quality checks to produce uniform, field-ready vegetable transplants.",
+      lessons: [
+        {
+          id: "prepare-cellular-media-and-sow-for-uniformity",
+          title: "Prepare cellular media and sow for uniformity",
+          duration: "36 min",
+          kicker: "Build a clean root environment in every cell",
+          summary:
+            "Choose an appropriate container and cell size, prepare and sterilise a balanced seedling medium, then sow, orient, cover, and water seeds for uniform emergence.",
+          outcomes: [
+            "Compare leaf pots, recycled containers, and seedling trays against scale, cost, reuse, media demand, and local availability.",
+            "Select tray-cell size and growing-media qualities that fit crop seed size, canopy development, and transplant timing.",
+            "Prepare, sterilise, fill, sow, and water a cellular tray without damaging germination or root-zone structure.",
+          ],
+          sections: [
+            {
+              heading: "Choose the container and cell for the crop and schedule",
+              body:
+                "Container or cellular production can use leaf pots, plastic cups or polythene pots, and commercial seedling trays. Leaf pots can be locally available, low cost, organic, and suitable for a small area, but they are labour-intensive, can harbour insect eggs, and are generally single-use. Recycled cups and pots can be reused but create disposal and availability constraints and may require more media. Seedling trays are easy to handle and transport, reusable when durable, capable of producing high volumes, and use less media, although they can cost more and may not be available locally. Select the smallest practical cell when transplanting will occur on schedule; the source notes that smaller cells suit solanaceous and brassica crops, while larger cells suit cucurbits and provide more tolerance when transplanting is slightly delayed.",
+              callout:
+                "Cell size is a production-and-timing decision: the economical smallest cell becomes a quality risk when a transplant date is likely to slip.",
+            },
+            {
+              heading: "Balance the seedling medium and remove avoidable risks",
+              body:
+                "A good seedling medium combines nutrient content, porosity, and water-holding capacity. The source illustrates a mixture built from clean-area soil, well-decomposed manure, and sand or carbonised rice husk, with proportions adjusted to locally available materials. Vermicompost, well-decomposed farmyard manure, garden soil, cocopeat, sand, carbonised rice husk, and vermiculite can contribute different functions. Sieve material to obtain fine particles, mix thoroughly, and dampen it to the point at which it is neither too wet nor too dry. Sterilise the prepared, moist medium by heating and stirring evenly for the required time while preventing it from drying; steam helps control pathogens, insects, and weed seeds. Solarisation in a black or clear plastic bag in full sun is an alternative described by the source.",
+            },
+            {
+              heading: "Fill, sow, and water without disturbing the seed",
+              body:
+                "Fill trays and tap them gently so the substrate settles, but do not compress it. Make a planting hole and sow seed at about twice its diameter; deeper sowing can impair germination. Use one seed per cell. For very small seeds, lightly settle the substrate, place seed on the surface, and cover with a fine layer. When placing pre-germinated cucurbit seed, orient the emerging radicle downward. Use a sprinkler or fine-droplet sprayer so water does not wash seed out of its position. These small controls make emergence more uniform and preserve the root volume that will be carried into the field.",
+            },
+          ],
+        },
+        {
+          id: "manage-protected-germination-and-transplant-readiness",
+          title: "Manage protected germination and transplant readiness",
+          duration: "39 min",
+          kicker: "Protect, feed, harden, and verify the transplant",
+          summary:
+            "Control protection, pre-germination, moisture, nutrition, hardening, and quality checks so cellular seedlings leave the nursery vigorous and adapted to field conditions.",
+          outcomes: [
+            "Manage tray covers, pre-germination, and germination conditions without overheating, drying, or delaying emergence.",
+            "Use responsive watering, nutrition, and protective practices to reduce seedling stress and pest-disease risk.",
+            "Harden and assess seedlings using root, leaf, stem, height, vigour, and uniformity evidence before transplanting.",
+          ],
+          sections: [
+            {
+              heading: "Control germination rather than simply covering the tray",
+              body:
+                "Move newly sown trays into a protected nursery, use netting to reduce sucking-insect access and viral-disease risk, and use rice straw, paper, or sack material to limit drying and regulate temperature in cold conditions. Check daily and remove the cover once germination starts. Most seed can be sown directly, but the source identifies pre-germination as useful especially in winter or cold weather because it can speed and synchronise germination. Never soak coated seed, because soaking can remove its fungicide treatment. For seeds that need pre-germination, use a clean damp cloth and container, check regularly, and transfer seed to the tray when the radicle is just emerging; an overlong radicle can be damaged during sowing. A germination chamber offers controlled temperature and humidity, but trays still need checking several times a day, must not dry out or become too wet, and should not remain inside too long.",
+              callout:
+                "The right pre-germinated seed has a radicle just emerging—not a long root that must be bent, broken, or delayed before sowing.",
+            },
+            {
+              heading: "Give water, nutrients, and protection responsively",
+              body:
+                "Maintain constant root-block moisture and never allow a seedling to wilt completely. Use gentle mist, water early enough for foliage to dry, check the root block before choosing a light or heavier watering, and inspect cells that dry more quickly. Overwatering can promote damping-off, especially in warm weather. The source distinguishes short-stay crops such as cucurbits, which may not need supplementary fertiliser if the medium is nutrient-rich, from seedlings that remain in trays longer, such as brassicas and solanaceous crops, which may require feeding. It describes a starter solution after emergence and root-zone or bottom-of-tray application to avoid leaf burn; translate this into a locally appropriate, labelled programme based on crop duration, media quality, and observed vigour. Fine-mesh shade net can reduce light and insect pressure, while polythene can protect from heavy rain. Calcium, phosphorus, and potassium are discussed in the source as supporting stronger tissue and disease resistance, but nutrient additions should always follow evidence and local product guidance.",
+            },
+            {
+              heading: "Harden, then assess the field-ready seedling",
+              body:
+                "Hardening makes a protected seedling strong enough for field conditions. The source describes gradual shade removal or movement into full sun, midday protection during the first days, and reduced water. It gives an indicative hardening period of three to five days for cucurbits and brassicas and five to seven days for solanaceous crops, followed by late-afternoon transplanting. Without hardening, seedlings may wilt and die in hot, dry conditions. At the transplanting stage, expect uniform growth and assess vigour, root colour, height, leaf colour, and stem thickness. Healthy roots are white rather than brown, leaves should be green rather than yellowish, stems should be sturdy, and the source cites a typical height of three to four inches. Use these signals together; a seedling is field-ready when it is both uniform and well hardened, not simply because it has reached a calendar date.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "protective-and-cellular-seedling-production-check",
+        title: "Protected cellular seedling-production check",
+        description:
+          "Apply container choice, clean-media preparation, protected germination, responsive care, hardening, and seedling-quality principles to a transplant-production decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "pc-1",
+            prompt: "A grower may need to delay transplanting a cucurbit crop slightly. Which tray choice best follows the source guidance?",
+            options: [
+              { id: "a", label: "Use a larger cell that accommodates cucurbit growth and reduces quality loss if transplanting is slightly delayed." },
+              { id: "b", label: "Use the smallest possible cell because it always protects quality regardless of delay." },
+              { id: "c", label: "Use a leaf pot only because it can never harbour pest eggs." },
+              { id: "d", label: "Choose no container because all cellular systems require more media than bare soil." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source links larger cells with cucurbits and with lower quality risk when transplant timing slips slightly.", incorrect: "Cell size should reflect crop growth and schedule. The source identifies larger cells for cucurbits and notes their extra tolerance to a slight transplant delay." },
+          },
+          {
+            id: "pc-2",
+            prompt: "Which preparation sequence best protects the quality of a cellular growing medium?",
+            options: [
+              { id: "a", label: "Mix nutrient, porous, and water-holding materials; sieve and moisten to a balanced condition; then sterilise without allowing the medium to dry." },
+              { id: "b", label: "Heat completely dry medium until it changes colour, then compact it tightly into cells." },
+              { id: "c", label: "Use unsieved materials with weed seeds and add water only after seedlings emerge." },
+              { id: "d", label: "Compress the tray strongly so roots cannot move during germination." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source calls for balanced media, fine particles, correct moisture, and sterilisation that avoids heating the medium dry.", incorrect: "A high-quality medium combines nutrient content, porosity, water holding, fine texture, balanced moisture, and careful sterilisation; do not dry-heat or compact it." },
+          },
+          {
+            id: "pc-3",
+            prompt: "What is the most appropriate handling of pre-germinated bitter-gourd seed for cellular sowing?",
+            options: [
+              { id: "a", label: "Transfer it when the radicle is just emerging and place the radicle facing downward; do not wait until it becomes long." },
+              { id: "b", label: "Soak coated seed until its treatment washes off, then sow it with the radicle facing upward." },
+              { id: "c", label: "Keep seed in a germination chamber until roots become very long, then bend them into the cell." },
+              { id: "d", label: "Sow several pre-germinated seeds in one cell at an arbitrary deep depth." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source identifies just-emerging radicles as ideal for sowing and shows cucurbit radicles oriented downward.", incorrect: "Use seed when the radicle is only emerging and orient a pre-germinated cucurbit radicle downward; long roots are more easily damaged during sowing." },
+          },
+          {
+            id: "pc-4",
+            prompt: "Which combination best indicates a cellular seedling is ready for field transplanting?",
+            options: [
+              { id: "a", label: "Uniform vigorous growth, white roots, green leaves, a sturdy stem, appropriate height, and completion of gradual hardening." },
+              { id: "b", label: "Brown roots, yellow leaves, a thin stem, and no exposure to field-like conditions." },
+              { id: "c", label: "Maximum height alone, regardless of root colour, vigour, or hardening." },
+              { id: "d", label: "A calendar date alone, even if seedlings are wilted or uneven." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source combines quality cues—roots, foliage, stem, height, vigour, and uniformity—with hardening before field conditions.", incorrect: "Assess several indicators together and verify hardening. A field-ready seedling is uniform and vigorous, with healthy white roots, green leaves, a sturdy stem, appropriate height, and field adaptation." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, and open-field bare-root seedling production to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, and protected cellular seedling production to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2896,6 +3028,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan corrects dense sowing, site and drainage risks, low-light stretching, inadequate hardening, dry root-zone contact, and high-stress transplant timing.",
           incorrect: "Open-field seedling quality depends on a connected approach to site and bed design, thin sowing, cover management, hardening, careful roots, water, and transplant timing.",
+        },
+      },
+      {
+        id: "final-20",
+        prompt:
+          "A cellular cucurbit nursery uses dry, unsterilised compacted media, long pre-germinated roots are bent upward in each cell, and seedlings are moved directly from shade to a hot field. Which advisor plan is most defensible?",
+        options: [
+          { id: "a", label: "Prepare a moist, balanced and sterilised medium, fill cells without compaction, sow just-emerging radicles downward, manage protected germination, then harden seedlings before checking quality and transplanting." },
+          { id: "b", label: "Keep the medium dry during heating, pack it tightly, delay sowing until roots are long, and avoid hardening so leaves stay soft." },
+          { id: "c", label: "Add several seeds to each cell at arbitrary depth and use transplant date alone to decide readiness." },
+          { id: "d", label: "Treat brown roots and yellow leaves as normal if seedlings are tall enough to move immediately." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan links media quality, careful cellular sowing, appropriate pre-germination, protected emergence, hardening, and multi-signal readiness assessment.",
+          incorrect: "Cellular seedling quality depends on a balanced moist sterilised medium, uncompressed cells, correctly handled emerging radicles, protected germination, hardening, and root-shoot quality checks.",
         },
       },
     ],
