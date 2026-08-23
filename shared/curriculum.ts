@@ -2175,12 +2175,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "collect-soil-samples-for-soil-testing",
+      index: 16,
+      title: "Collect soil samples for soil testing",
+      eyebrow: "Module 16",
+      description:
+        "Plan, collect, prepare, and label representative soil samples so laboratory results support defensible fertiliser and crop-management decisions.",
+      lessons: [
+        {
+          id: "plan-a-representative-soil-sample",
+          title: "Plan a representative soil sample",
+          duration: "28 min",
+          kicker: "Test the decision area, not a convenient handful",
+          summary:
+            "Use soil testing to frame fertiliser decisions, select an appropriate sampling time, map management zones, assemble clean materials, and prevent field bias before sampling begins.",
+          outcomes: [
+            "Explain how soil tests support efficient fertiliser decisions and production-cost control.",
+            "Choose a sampling time and frequency that fit the cropping cycle and soil condition.",
+            "Map homogeneous sampling areas and identify locations that would bias a representative sample.",
+          ],
+          sections: [
+            {
+              heading: "Test soil before deciding what to supply",
+              body:
+                "A soil test can quantify key nutrients such as nitrogen, phosphorus, and potassium, together with pH, cation-exchange capacity, organic-matter content, and other relevant soil-health information. This evidence helps an advisor and grower make an informed fertilisation decision, apply fertiliser more efficiently, avoid over-fertilisation, and manage production cost. The laboratory result is not a crop prescription by itself: it becomes useful when the sample represents the field area and management decision under discussion.",
+              callout:
+                "A precise laboratory result cannot correct a sample that did not represent the field or the decision area.",
+            },
+            {
+              heading: "Choose the right sampling window",
+              body:
+                "Collect samples before the cropping cycle so the result can inform fertilisation management. Do not sample when soil is excessively wet or excessively dry because difficult conditions can affect the practical quality and consistency of collection. The source recommends testing every two to three years to observe change over time; intensively managed production may need annual testing. Keep timing consistent enough that a later result can be compared meaningfully with earlier records, while adapting the schedule to the crop plan and the intensity of management.",
+            },
+            {
+              heading: "Map zones and prepare the sampling kit",
+              body:
+                "Start with a map of the farm. Where a farm is heterogeneous—for example, where slope, crop history, crop type, or farming system differs—subdivide it into homogeneous sampling areas. Each distinct area needs its own sample if it could receive a different management decision. Assemble a clean auger, bucket, spade or shovel, permanent marker, and sample bags before entering the field. Avoid places that are not typical of the zone, including sites near fertiliser or liming applications, roads, fence rows, compost piles, or other localised disturbances.",
+            },
+          ],
+        },
+        {
+          id: "collect-prepare-and-label-the-composite",
+          title: "Collect, prepare, and label the composite",
+          duration: "32 min",
+          kicker: "Protect sample integrity from field to laboratory",
+          summary:
+            "Collect enough evenly distributed subsamples at the appropriate depth, combine and dry them cleanly, then label the composite with the field history a laboratory report needs for interpretation.",
+          outcomes: [
+            "Collect and combine a representative set of subsamples at an appropriate soil depth.",
+            "Prepare a composite sample without contaminating, overheating, or losing its field identity.",
+            "Record the crop, fertiliser, lime, slope, and erosion context required for interpretation.",
+          ],
+          sections: [
+            {
+              heading: "Take enough, well-distributed subsamples",
+              body:
+                "In each homogeneous sampling area, collect soil from at least ten locations; the source notes that a larger area may need around forty spots per hectare. More appropriately distributed spots improve representation. Take positions across the area, including edge and centre locations that are typical of the zone, while continuing to avoid atypical sites. Sampling depth must match the management question. The source identifies a primary-tillage depth of about 15 to 30 centimetres as common for vegetable root depth and a deeper 30 to 60 centimetre sample where a deeper investigation is required. Record depth so results are not compared as if they came from the same soil layer.",
+              callout:
+                "Composite samples represent a defined zone and depth; do not combine soil from different zones or layers merely to reduce laboratory cost.",
+            },
+            {
+              heading: "Make a clean, stable composite",
+              body:
+                "Mix soil from the selected spots thoroughly in a clean bucket to form one composite sample for the homogeneous area. Remove stones and visible plant or organic debris. If the sample is slightly wet, spread it on clean paper and air-dry it away from direct sunlight. Once dry, pulverise it using clean wooden material; do not use metal or stones. Place one kilogram of the prepared soil in a clean plastic bag. These controls prevent avoidable contamination, preserve a manageable sample, and make the laboratory submission traceable to a defined field area.",
+            },
+            {
+              heading: "Label the bag with the decision context",
+              body:
+                "Label the sample immediately with the farm owner’s name, collection date, location, crops grown in the area during the previous three to five years, and the crop planned for the next season. Add the type and amount of fertiliser used in previous years, the date of the last lime application, and the slope and erosion rate. These details connect laboratory values with crop history and management conditions, allowing the advisor to interpret the result as field evidence rather than an anonymous number.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "collect-soil-samples-for-soil-testing-check",
+        title: "Soil-sample collection check",
+        description:
+          "Apply representative sampling, sample preparation, and field-context recording principles to soil-testing decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "ss-1",
+            prompt: "Why should a soil sample be collected before the cropping cycle?",
+            options: [
+              { id: "a", label: "So the result can inform fertilisation management before the crop is established." },
+              { id: "b", label: "Because soil testing is useful only after harvest." },
+              { id: "c", label: "To avoid recording any crop or fertiliser history." },
+              { id: "d", label: "Because soil moisture and sample representativeness never matter." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Testing before the crop cycle gives the advisor and grower time to use the result in fertilisation management.", incorrect: "The source recommends testing before the cropping cycle so the result can guide fertilisation management." },
+          },
+          {
+            id: "ss-2",
+            prompt: "A farm contains an eroded hillside coconut area, a plain coconut area, a corn-legume area, and a lowland-rice area. What is the strongest sampling plan?",
+            options: [
+              { id: "a", label: "Combine all soil into one bag because the farm has one owner." },
+              { id: "b", label: "Create separate samples for the homogeneous sampling areas because their conditions and decisions may differ." },
+              { id: "c", label: "Sample only beside the road because it is easiest to reach." },
+              { id: "d", label: "Take one subsample from the middle of the largest area and ignore the others." },
+            ],
+            correctOptionId: "b",
+            feedback: { correct: "Correct. Heterogeneous land should be divided into homogeneous sampling areas, each with its own representative sample.", incorrect: "Slope, crop, and farming-system differences can create different sampling areas; keep them separate where management decisions may differ." },
+          },
+          {
+            id: "ss-3",
+            prompt: "Which collection method best represents a homogeneous vegetable sampling area?",
+            options: [
+              { id: "a", label: "Collect at least ten well-distributed subsamples, commonly at the 15-to-30-centimetre primary-tillage depth, then mix them into one composite." },
+              { id: "b", label: "Take one shallow handful from a fertiliser band and send it directly to the laboratory." },
+              { id: "c", label: "Collect from a compost pile and a fence row because they contain the most nutrients." },
+              { id: "d", label: "Mix 15-to-30-centimetre and 30-to-60-centimetre soil into one bag without recording depth." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. A composite should be built from multiple representative locations within one zone and one appropriate depth.", incorrect: "Use multiple distributed subsamples from one representative zone and depth; avoid localised nutrient sources and do not mix different soil layers." },
+          },
+          {
+            id: "ss-4",
+            prompt: "A composite sample is slightly wet. Which handling and labelling practice follows the source guidance?",
+            options: [
+              { id: "a", label: "Air-dry it on clean paper away from sunlight, pulverise with clean wood, bag one kilogram, and label crop and management history." },
+              { id: "b", label: "Dry it in direct sunlight, crush it with stones, and submit it without a location." },
+              { id: "c", label: "Leave stones and plant debris in the bucket and use a metal tool to mix it." },
+              { id: "d", label: "Discard the collection date and last lime application because laboratories do not need context." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source specifies clean paper, air drying away from sunlight, clean wooden pulverising, a one-kilogram bag, and a complete label.", incorrect: "Protect the sample from contamination and loss of context: air-dry away from sunlight, use clean wooden material, bag one kilogram, and record the field history." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, and soil-health promotion to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, and representative soil-sample collection to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2452,6 +2584,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan uses integrated soil-health evidence and combines cover, rotation, organic matter, disturbance reduction, erosion control, and crop-soil fit.",
           incorrect: "The evidence points to a soil-health plan that assesses all three soil components and builds functions through cover, rotation, organic matter, reduced disturbance, erosion control, and locally adapted crop choice.",
+        },
+      },
+      {
+        id: "final-17",
+        prompt:
+          "An advisor needs a soil test for a vegetable farm with a fertilised headland, a compost pile, a sloping field section, and a flatter section with different crop history. Which plan is most defensible?",
+        options: [
+          { id: "a", label: "Map and separate the distinct homogeneous areas, avoid atypical locations, collect multiple subsamples at a recorded root-zone depth, prepare clean composites, and label their crop and management histories." },
+          { id: "b", label: "Take a single sample from the fertilised headland and apply the result to the whole farm." },
+          { id: "c", label: "Mix soil from all depths, the compost pile, and every field section into one unlabelled bag." },
+          { id: "d", label: "Test only after harvest, without recording previous crops, fertiliser, lime, slope, or erosion information." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan protects representativeness by separating decision areas, avoiding localised bias, standardising depth, using composites, and preserving the management context for interpretation.",
+          incorrect: "A usable soil test begins with a mapped decision area, representative distributed subsamples at a recorded depth, clean preparation, and a label that preserves crop and management history.",
         },
       },
     ],

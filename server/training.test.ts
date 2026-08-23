@@ -289,6 +289,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the soil-sample collection module after the soil-health module", () => {
+    const soilSampleModule = cropAdvisorCourse.modules.find(
+      module => module.id === "collect-soil-samples-for-soil-testing"
+    );
+    const previousModule = cropAdvisorCourse.modules[14];
+
+    expect(soilSampleModule?.lessons).toHaveLength(2);
+    expect(soilSampleModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(soilSampleModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
