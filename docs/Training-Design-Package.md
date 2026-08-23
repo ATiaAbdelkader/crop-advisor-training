@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 1.7  
+**Version:** 1.8  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is an eleven-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through ten required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a twelve-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through eleven required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -24,6 +24,7 @@ Crop Advisor Foundations is an eleven-hour, self-paced professional learning pat
 | **08. Climatic factors and crop yield** | Applying light, temperature, water, air, humidity, and wind evidence to seasonal crop planning and climate-risk management. | Classify light and temperature fit; align water supply with crop stage; interpret air and humidity signals; reduce damaging wind stress; build a locally relevant crop calendar. | **Plan with light and temperature**; **Manage water, air, humidity, and wind** | Both lessons complete and module check passed at 80% or above. |
 | **09. Topographic factors and crop yield** | Using elevation, slope, landform, and site mapping to manage water, erosion, crop fit, and field-placement risk. | Identify landform features; test elevation and variety fit; interpret slope and water movement; design erosion controls; create a practical topographic farm sketch. | **Read elevation and landform**; **Map slope, water, and farm risk** | Both lessons complete and module check passed at 80% or above. |
 | **10. Edaphic soil factors and crop yield** | Assessing physical, chemical, and biological soil properties to identify root-zone limits and soil-improvement decisions. | Assess structure, texture, and colour; interpret pH and CEC; recognise soil life and organic matter; prepare a complete assessment with the farmer. | **Assess physical soil properties**; **Interpret chemical and biological soil health** | Both lessons complete and module check passed at 80% or above. |
+| **11. Soil degradation and management** | Identifying degradation risks and designing practical soil-conservation strategies. | Distinguish major degradation processes; identify likely causes; match risks with protection measures; present feasible risk-reduction actions with the farmer. | **Recognise soil degradation risks**; **Build a soil-protection plan** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -51,6 +52,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Map slope, water, and farm risk** | Connect slope and water movement with erosion control, bed orientation, farm mapping, and climate-risk identification. | Ask where water comes from, where it goes, what it carries, and how that changes root-zone conditions. |
 | **Assess physical soil properties** | Use structure, texture, colour, and a carefully timed visual soil assessment to interpret root-zone conditions. | Physical evidence must be recorded in the field, with the farmer, before prescribing an intervention. |
 | **Interpret chemical and biological soil health** | Connect pH, CEC, organic matter, nutrient holding, and soil life to a balanced assessment report. | A pH or laboratory value is not a treatment instruction without the rest of the soil evidence. |
+| **Recognise soil degradation risks** | Identify erosion, nutrient depletion, acidification, salinization, compaction, and pollution as distinct soil-management risks. | Name the degradation process, likely driver, evidence to verify, and a practical next action. |
+| **Build a soil-protection plan** | Match soil-protection practices to erosion, nutrient loss, acidity, salinity, compaction, and pollution evidence. | Keep soil covered, build organic matter, and design layout around water movement and field access. |
 
 ## Assessment package
 
@@ -68,7 +71,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Climatic factors and crop yield check** | Light and photoperiod, crop-stage water needs, humidity disease risk, and wind-stress management. | 4 | 80% | Unlocks the integrated final assessment only after both Module 08 lessons are complete and the check is passed. |
 | **Topographic factors and crop yield check** | Elevation and variety fit, slope and erosion control, topographic map elements, and water-risk interpretation. | 4 | 80% | Unlocks the integrated final assessment only after both Module 09 lessons are complete and the check is passed. |
 | **Edaphic soil factors and crop yield check** | Soil-property lenses, visual field-assessment conditions, CEC, soil colour, and drainage interpretation. | 4 | 80% | Unlocks the integrated final assessment only after both Module 10 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, and complete edaphic soil assessment. | 11 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Soil degradation and management check** | Erosion definition and management, salinity response, and evidence-led pollution management. | 4 | 80% | Unlocks the integrated final assessment only after both Module 11 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, and integrated soil-protection planning. | 12 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -92,6 +96,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Protect flowering under climate stress** | A flowering vegetable crop facing high humidity and strong hot winds. | Combines crop-stage irrigation, humidity-related disease vigilance, and practical wind protection. | Respond to interacting climate risks with a specific, stage-sensitive field plan. |
 | **Use topography to redesign the field plan** | A highland variety proposed for a low-lying sloping field with runoff and flood exposure. | Integrates elevation, variety fit, water flow, erosion risk, drainage, and bed layout controls. | Use a topographic farm sketch to connect crop placement with a practical runoff and erosion plan. |
 | **Diagnose the root zone through three soil lenses** | Bluish-grey soil, weak roots, and inconsistent nutrient response. | Combines physical, chemical, and biological evidence before prescribing treatment. | Conduct a complete farmer-involved soil assessment before selecting a management response. |
+| **Protect a degrading slope** | Bare sloping soil, runoff, declining yield, and wet-bed traffic. | Integrates ground cover, water control, layout, compaction prevention, and organic-matter restoration. | Address interacting degradation risks with a linked field-protection plan. |
 
 ## Certificate template specification
 
@@ -153,13 +158,17 @@ flowchart TD
   AF --> AG[Module 10 lessons and assessment]
   AG --> AH{Module 10 passed?}
   AH -- No --> AG
-  AH -- Yes --> AI[Unlock integrated final assessment]
-  AI --> AJ{Final score at least 80%?}
-  AJ -- No --> AK[Feedback and final retake available]
-  AK --> AI
-  AJ -- Yes --> AL[Create credential record]
-  AL --> AM[Notify platform owner]
-  AM --> AN[Enable certificate download]
+  AH -- Yes --> AI[Unlock Module 11]
+  AI --> AJ[Module 11 lessons and assessment]
+  AJ --> AK{Module 11 passed?}
+  AK -- No --> AJ
+  AK -- Yes --> AL[Unlock integrated final assessment]
+  AL --> AM{Final score at least 80%?}
+  AM -- No --> AN[Feedback and final retake available]
+  AN --> AL
+  AM -- Yes --> AO[Create credential record]
+  AO --> AP[Notify platform owner]
+  AP --> AQ[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -195,6 +204,8 @@ Module 09 is derived from the supplied *Topographic Factors Affecting Crop Yield
 
 Module 10 is derived from the supplied *Edaphic: Soil Factors* training document. Its instructional structure retains the physical-chemical-biological soil framework, structure-texture-colour assessment, field visual assessment method, pH and CEC interpretation, organic-matter role, and soil-life processes. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [7]
 
+Module 11 is derived from the supplied *Soil Degradation and Management* training document. Its instructional structure retains the erosion, nutrient-depletion, acidification, salinization, compaction, and soil-pollution framework, together with cover, contour, drainage, residue, layout, reduced-traffic, and integrated-management responses. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [8]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -210,3 +221,5 @@ Module 10 is derived from the supplied *Edaphic: Soil Factors* training document
 [6] [REVISED_ENV-003. *Topographic Factors Affecting Crop Yield* (user-supplied training document)](file:///home/ubuntu/upload/REVISED_ENV-003.TopographicFactorsAffectingCropYield.pdf)
 
 [7] [REVISED_ENV-004. *Edaphic: Soil Factors* (user-supplied training document, 24 February 2023)](file:///home/ubuntu/upload/REVISED_ENV-004.Edaphic_SoilFactor_022423.pdf)
+
+[8] [REVISED_ENV-005. *Soil Degradation and Management* (user-supplied training document, 24 February 2023)](file:///home/ubuntu/upload/REVISED_ENV-005.SoilDegradationandManagement_02242023.pdf)

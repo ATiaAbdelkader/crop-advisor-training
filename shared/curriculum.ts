@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 11 hours",
+  duration: "Approx. 12 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1515,12 +1515,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "soil-degradation-and-management",
+      index: 11,
+      title: "Soil degradation and management",
+      eyebrow: "Module 11",
+      description:
+        "Identify erosion, nutrient depletion, acidification, salinization, compaction, and pollution, then match risk-reduction strategies to protect soil as a productive resource.",
+      lessons: [
+        {
+          id: "recognise-soil-degradation-risks",
+          title: "Recognise soil degradation risks",
+          duration: "29 min",
+          kicker: "Read the signals of decline",
+          summary:
+            "Identify major forms of soil degradation, their likely causes, and the field evidence that should trigger a management discussion with the farmer.",
+          outcomes: [
+            "Identify erosion, nutrient depletion, acidification, salinization, compaction, and chemical pollution as soil-management issues.",
+            "Explain the main causes and crop consequences of soil erosion, nutrient depletion, and acidification.",
+            "Recognise why soil protection is a fertility, crop-yield, and food-quality decision.",
+          ],
+          sections: [
+            {
+              heading: "Set the objective before choosing a treatment",
+              body:
+                "Soil management aims to restore fertility, maintain fertility, and reduce soil degradation. The source identifies six recurring issues: erosion, nutrient depletion, acidification, salinization, compaction, and chemical pollution. Begin by identifying the degradation process and the local driver rather than assuming every poor crop response is a simple fertiliser shortage. Discuss the evidence with the farmer, including field history, cropping intensity, vegetation cover, water movement, and visible soil condition.",
+              callout:
+                "An effective recommendation names the degradation process, the likely driver, the evidence to verify, and a realistic risk-reduction action.",
+            },
+            {
+              heading: "Connect erosion and nutrient depletion to field management",
+              body:
+                "Soil erosion is the removal of topsoil through water, wind, and tillage. Eroded soils commonly have low nutrient content, fewer soil organisms, poor water infiltration, poor physical structure, and low organic matter. Wind erosion is severe in dry lands and bare soil; water and tillage erosion are especially serious on hillslopes, mountains, bare soil, and intensively cultivated areas. Nutrient depletion can be driven by erosion, leaching, intensified cropping without nutrient replacement, and vegetation removal. It can reduce the nutritive quality of vegetables as well as crop growth and yield.",
+            },
+            {
+              heading: "Understand acidification, salinity, and hidden pollution risks",
+              body:
+                "Soil acidification is the build-up of hydrogen ions that lowers pH. Heavy use of ammonium-based fertilisers, especially where nitrogen is leached, can contribute; rainfall, acid-sulphate soils, acid deposition, deforestation, and crop removal can also play a role. Salinization describes salt-affected soils that restrict plant growth. Soil pollution is the presence of higher-than-normal chemical concentrations and can be difficult to see without testing; sources include agrochemicals, waste, plastic mulch, machinery, manure, industries, mines, settlements, and water-treatment plants. Treat these as evidence-led management questions, not visual guesses alone.",
+            },
+          ],
+        },
+        {
+          id: "build-a-soil-protection-plan",
+          title: "Build a soil-protection plan",
+          duration: "32 min",
+          kicker: "Reduce risk and conserve soil",
+          summary:
+            "Select practical soil-conservation strategies for erosion, nutrient loss, acidity, salinity, compaction, and pollution with the farmer’s field layout and resources in mind.",
+          outcomes: [
+            "Match erosion and nutrient-depletion risks with appropriate cover, layout, organic-matter, and rotation practices.",
+            "Select management options for acidic, saline, compacted, and chemically polluted soils.",
+            "Present two or three practical soil-risk reduction strategies appropriate to a farmer’s needs.",
+          ],
+          sections: [
+            {
+              heading: "Protect the surface and slow water movement",
+              body:
+                "For erosion and nutrient depletion, the source recommends maintaining cover crops and intercrops, limiting tillage, using contour farming or terraces on slopes, developing good layouts and raised beds, mulching, diversifying crop rotations to increase residues, planting strip crops, using windbreaks, adding organic matter, green manuring, fallowing where appropriate, and adequate fertilisation. Select the combination that addresses the actual driver—bare soil, poor aggregation, compacted layers, poor layout, vegetation removal, or intense cropping—rather than applying every practice at once.",
+              callout:
+                "Keep soil covered, build organic matter, and design the crop layout around water movement; these are recurring foundations across multiple degradation risks.",
+            },
+            {
+              heading: "Adapt management to acidity, salinity, and compaction",
+              body:
+                "Acid-soil management may include liming, regulating ammonium-based fertiliser use, increasing ground cover, recycling crop residues, and adding organic matter. For saline soils, use salt-tolerant varieties, sound irrigation practices, improved drainage, vegetation cover, integrated soil-fertility management with organic fertilisers, raised beds, and mulching. Compaction is a reduction in pore space when particles are pressed together; working wet soil, repeated tillage at the same depth, heavy machinery, trampling, poor layout, and low organic matter can contribute. Reduce traffic and tillage in wet soils, use raised beds and paths, mulch, add residues and manure, diversify crops, use conservation tillage and cover crops, and avoid unnecessary heavy machinery.",
+            },
+            {
+              heading: "Prevent pollution through tested, integrated practice",
+              body:
+                "Because pollution can be a hidden danger, test soil when chemical contamination is plausible. Use integrated soil-fertility management and integrated pest management, apply properly decomposed manure, dispose of chemical containers and waste correctly, compost organic waste to minimise pathogens and support nutrient cycling, select crops based on soil analysis, and use plant barriers, cover crops, and organic mulch where appropriate. A good farmer-facing protection plan should name two or three feasible actions, state the reason for each, and describe what field evidence will show whether risk is falling.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "soil-degradation-and-management-check",
+        title: "Soil degradation and management check",
+        description:
+          "Apply evidence-led soil-conservation and remediation decisions to erosion, nutrient loss, acidity, salinity, compaction, and pollution risks.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "sd-1",
+            prompt: "How does the source define soil erosion?",
+            options: [
+              { id: "a", label: "Removal of topsoil from the land surface through water, wind, and tillage." },
+              { id: "b", label: "Any addition of organic matter to a field." },
+              { id: "c", label: "The natural increase of pore space in a healthy soil." },
+              { id: "d", label: "Only a decline in crop market price." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Erosion removes topsoil through water, wind, and tillage and weakens several soil functions.", incorrect: "The source describes erosion as removal of topsoil by water, wind, and tillage." },
+          },
+          {
+            id: "sd-2",
+            prompt: "Which combination is most appropriate for reducing erosion on a sloping vegetable field?",
+            options: [
+              { id: "a", label: "Maintain cover, use contouring or terraces, mulch, improve layout, and reduce unnecessary tillage." },
+              { id: "b", label: "Leave the soil bare and increase repeated tillage at the same depth." },
+              { id: "c", label: "Remove crop residues and direct runoff down the steepest slope." },
+              { id: "d", label: "Rely only on a single fertiliser application." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Ground cover, contouring, mulch, sound layout, and reduced tillage help slow water and protect soil.", incorrect: "Erosion control combines cover, water-flow control, sound layout, organic matter, and reduced disturbance." },
+          },
+          {
+            id: "sd-3",
+            prompt: "Which management response is suitable for a saline vegetable-production field?",
+            options: [
+              { id: "a", label: "Improve drainage and irrigation practice, maintain cover, consider salt-tolerant varieties, and use raised beds or mulching where suitable." },
+              { id: "b", label: "Apply heavy machinery on wet soil to increase pore pressure." },
+              { id: "c", label: "Remove all vegetation and stop monitoring water management." },
+              { id: "d", label: "Assume salinity can be diagnosed only from crop price." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Saline-soil management uses variety fit, irrigation and drainage improvement, cover, integrated fertility management, raised beds, and mulch.", incorrect: "Use an integrated saline-soil plan focused on water management, drainage, cover, suitable varieties, and practical field protection." },
+          },
+          {
+            id: "sd-4",
+            prompt: "What is an appropriate first response where soil pollution is suspected?",
+            options: [
+              { id: "a", label: "Test the soil and review possible contamination sources before selecting integrated management and disposal actions." },
+              { id: "b", label: "Assume the issue is visible and add more chemical inputs immediately." },
+              { id: "c", label: "Ignore chemical containers and waste because soil pollution is harmless." },
+              { id: "d", label: "Diagnose pollution only from plant height without testing or history." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Pollution can be hidden; testing and source review should guide integrated soil and waste-management actions.", incorrect: "Suspected pollution requires testing, source review, and evidence-led integrated management rather than visual guesswork." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, and complete edaphic soil assessment to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, and soil-protection planning to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -1712,6 +1844,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. Bluish-grey soil can indicate poor drainage, but a defensible response integrates physical, chemical, and biological evidence before treatment.",
           incorrect: "Use the three soil-property lenses and involve the farmer in assessing drainage, roots, structure, chemistry, and soil life before deciding on a response.",
+        },
+      },
+      {
+        id: "final-12",
+        prompt:
+          "A farmer’s sloping vegetable field has bare soil, visible runoff, lower yield over time, and frequent traffic on wet beds. Which advisor plan best addresses the evidence?",
+        options: [
+          { id: "a", label: "Increase tillage on wet soil and remove residues so the field dries quickly." },
+          { id: "b", label: "Use cover and mulch, improve slope-aware layout and runoff control, establish raised beds and paths, reduce wet-soil traffic, and add organic residues." },
+          { id: "c", label: "Focus only on fertiliser price and ignore erosion and compaction signals." },
+          { id: "d", label: "Leave the soil bare so the cause of degradation is easier to see." },
+        ],
+        correctOptionId: "b",
+        feedback: {
+          correct: "Correct. The plan addresses erosion, soil cover, water flow, compaction, and organic-matter decline with linked practical actions.",
+          incorrect: "The evidence points to interacting erosion and compaction risks; use ground cover, sound layout, raised beds and paths, reduced wet-soil traffic, and organic residues.",
         },
       },
     ],
