@@ -229,6 +229,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the nutrient-management module after the plant-nutrition module", () => {
+    const managementModule = cropAdvisorCourse.modules.find(
+      module => module.id === "nutrient-management"
+    );
+    const previousModule = cropAdvisorCourse.modules[11];
+
+    expect(managementModule?.lessons).toHaveLength(2);
+    expect(managementModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(managementModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

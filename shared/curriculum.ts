@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 13 hours",
+  duration: "Approx. 14 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1779,12 +1779,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "nutrient-management",
+      index: 13,
+      title: "Nutrient management",
+      eyebrow: "Module 13",
+      description:
+        "Diagnose nutrient-risk patterns carefully and build integrated nutrient-management plans that restore, maintain, and protect soil nutrient availability.",
+      lessons: [
+        {
+          id: "diagnose-nutrient-imbalance-methodically",
+          title: "Diagnose nutrient imbalance methodically",
+          duration: "32 min",
+          kicker: "From symptom to evidence question",
+          summary:
+            "Use leaf age, symptom pattern, nutrient mobility, soil context, and crop history to frame a nutrient diagnosis before recommending treatment.",
+          outcomes: [
+            "Explain why soil nutrient management is needed for growth, limited soil supply, crop removal, and nutrient loss.",
+            "Use older-versus-younger leaf patterns to narrow plausible nutrient deficiency causes.",
+            "Distinguish deficiency clues from excess-nitrogen signals and identify evidence that should be checked next.",
+          ],
+          sections: [
+            {
+              heading: "Manage nutrients because the balance changes",
+              body:
+                "Nutrient management is needed because nutrients support plant growth, soil nutrient availability is limited, crops remove nutrients, and nutrients are depleted through processes such as leaching. Crop uptake differs by crop and yield level, while crop removal is the portion removed from the field in marketable product; unmarketable debris may remain and contribute through residue cycling. A useful starting principle is to account for what the crop needs and what the field loses or exports, rather than applying a standard dose without evidence.",
+              callout:
+                "Nutrient management is a cycle of knowing the soil, diagnosing the crop, supplying what is needed, and reducing avoidable losses.",
+            },
+            {
+              heading: "Use leaf position to narrow the diagnosis",
+              body:
+                "Start by asking where symptoms first appear: older or younger leaves. Older-leaf yellowing at the margin can indicate potassium deficiency; purpling at the tip or veins can indicate phosphorus deficiency; and whole-leaf chlorosis in older leaves can indicate nitrogen deficiency. Interveinal chlorosis or yellow-and-green patches in older leaves can indicate magnesium deficiency. Younger-leaf abnormalities may point toward immobile elements: calcium deficiency can show as blossom-end rot, interveinal blotches, scorched leaf edges, or distorted tips; iron deficiency can appear as interveinal chlorosis or a bleached appearance in younger leaves. Use the symptom guide to list possibilities, then test them against root conditions, moisture, pH, soil analysis, and field history.",
+            },
+            {
+              heading: "Keep diagnosis separate from a product decision",
+              body:
+                "A visual pattern is a clue, not a complete diagnosis. Excess nitrogen can also create crop-management problems, including delayed flowering and fruit development, displacement of other needed nutrients through antagonism, thick stems, and dark-green foliage. Confirm whether the pattern is tied to nutrient availability, uptake, soil moisture, root access, compaction, pH, salinity, disease, or management history. When working near a farmer’s field, compare several sources and observations, record the symptom distribution and crop stage, and explain what evidence would change the recommendation.",
+            },
+          ],
+        },
+        {
+          id: "build-an-integrated-nutrient-management-plan",
+          title: "Build an integrated nutrient-management plan",
+          duration: "31 min",
+          kicker: "Supply, retain, and recycle",
+          summary:
+            "Use soil testing, nutrient sources, loss pathways, soil health practices, and crop planning to build a practical integrated nutrient-management plan.",
+          outcomes: [
+            "Use soil nutrient and pH testing to establish nutrient status before fertilisation.",
+            "Compare nutrient sources and identify pathways through which nutrients are supplied and lost.",
+            "Select physical, chemical, and biological practices that reduce depletion and support nutrient availability.",
+          ],
+          sections: [
+            {
+              heading: "Know the soil before fertilising",
+              body:
+                "The first step is to know the soil. Check nutrient status through a soil NPK test and check soil pH because it influences nutrient availability. Integrated nutrient management connects physical conditions such as compaction, structure, and water availability; chemical conditions such as nutrient availability; and biological conditions such as organic matter and soil life. Practices including fallowing where appropriate, green manuring, cover cropping, crop rotation, amendments, and organic or inorganic fertilisation should be selected as a package that fits the field problem and crop objective.",
+              callout:
+                "Fertilisation begins with evidence about soil nutrient status, pH, physical condition, water, and biological activity—not with a product catalogue.",
+            },
+            {
+              heading: "Map supply sources and loss pathways",
+              body:
+                "Plant nutrients can come from soil reserves, mineral fertilisers, organic sources through nutrient cycling, atmospheric nitrogen through biological fixation, aerial deposition from wind and rain, and irrigation, flood, groundwater, or runoff sediment. Nutrients can be lost through crop removal, leaching, volatilisation, denitrification, soil erosion, and fixation. Nutrient movement in soil can involve mass flow, root interception, diffusion, transpiration-related flow, and leaching. Use this map to ask where the nutrient supply is coming from, whether the crop can access it, and which loss pathway is most likely in the specific field.",
+            },
+            {
+              heading: "Turn evidence into a practical management plan",
+              body:
+                "A technical-assistance plan should make a clear diagnosis, state the supporting evidence, identify the nutrient or soil process involved, and present actions that fit the farmer’s resources. These may include balancing organic and inorganic sources, protecting soil cover, reducing erosion and leaching, adding organic matter, improving crop rotation, using green manures or cover crops, adjusting fertiliser timing or placement, and reviewing crop removal. Monitor the crop after the intervention and revise the plan when field evidence does not support the expected response.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "nutrient-management-check",
+        title: "Nutrient management check",
+        description:
+          "Apply symptom-led diagnosis and integrated nutrient-management principles to crop and soil decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "nm-1",
+            prompt: "Which is one of the four reasons the source gives for managing soil nutrients?",
+            options: [
+              { id: "a", label: "Crops remove nutrients and soil nutrients can be depleted through leaching." },
+              { id: "b", label: "Nutrients in soil are always unlimited." },
+              { id: "c", label: "Crop growth never depends on nutrient availability." },
+              { id: "d", label: "Leaching permanently increases plant-accessible nutrients." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Crops remove nutrients, soil supply is limited, and losses such as leaching can reduce availability.", incorrect: "Nutrient management is needed because nutrient supply is limited, crops remove nutrients, and losses such as leaching occur." },
+          },
+          {
+            id: "nm-2",
+            prompt: "A crop shows yellowing at the margins of older leaves. Which nutrient deficiency clue does the source highlight?",
+            options: [
+              { id: "a", label: "Potassium deficiency." },
+              { id: "b", label: "Iron deficiency only in young leaves." },
+              { id: "c", label: "Calcium deficiency at new growing points." },
+              { id: "d", label: "A certain diagnosis of any single disease." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Marginal yellowing on older leaves is presented as a potassium-deficiency clue.", incorrect: "Older-leaf margin yellowing can indicate potassium deficiency, but should still be verified with broader field and soil evidence." },
+          },
+          {
+            id: "nm-3",
+            prompt: "Which symptom pattern is most consistent with calcium deficiency in the source’s general guide?",
+            options: [
+              { id: "a", label: "Blossom-end rot and distorted or scorched young leaf tips." },
+              { id: "b", label: "Whole-leaf chlorosis on older leaves only." },
+              { id: "c", label: "Purpling of older leaves at veins only." },
+              { id: "d", label: "Dark-green foliage and delayed flowering from over-supplied nitrogen." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Calcium is treated as immobile, and blossom-end rot plus abnormal young tissues are key clues in the guide.", incorrect: "Calcium deficiency is associated with younger-tissue problems such as blossom-end rot, distorted tips, interveinal blotches, and leaf-edge scorching." },
+          },
+          {
+            id: "nm-4",
+            prompt: "What is the most defensible first step before choosing a fertiliser programme?",
+            options: [
+              { id: "a", label: "Check soil nutrient status and pH, then relate results to crop need, soil condition, sources, and likely loss pathways." },
+              { id: "b", label: "Apply the same product and rate to every field without soil evidence." },
+              { id: "c", label: "Ignore organic matter and soil life because only mineral fertiliser matters." },
+              { id: "d", label: "Diagnose nutrient status from crop price alone." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Integrated nutrient management starts by knowing soil nutrient status and pH, then selecting sources and practices that fit the field.", incorrect: "Begin with soil nutrient and pH evidence, then integrate crop need, source, soil health, and nutrient-loss risks into the plan." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, and balanced plant-nutrition decisions to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, and integrated nutrient management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2008,6 +2140,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. Nitrogen is mobile, so older-leaf symptoms can guide the question, but root access, moisture, crop stage, soil evidence, and balance still matter before action.",
           incorrect: "Use symptom position with soil-test, root-zone, moisture, and crop-stage evidence. Mobile-nutrient signs in older leaves are a clue, not a stand-alone diagnosis.",
+        },
+      },
+      {
+        id: "final-14",
+        prompt:
+          "A tomato field has older-leaf margin yellowing, recent high crop removal, and a soil test showing low available potassium. Which next step is most defensible?",
+        options: [
+          { id: "a", label: "Treat the pattern as a potassium clue, verify root-zone and moisture conditions, and build an integrated plan that supplies potassium while reducing avoidable nutrient loss." },
+          { id: "b", label: "Ignore the soil test because leaf symptoms always give a complete diagnosis." },
+          { id: "c", label: "Apply nitrogen only, regardless of crop removal or potassium evidence." },
+          { id: "d", label: "Assume low potassium can be corrected without considering source, timing, placement, or loss pathways." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The symptom, crop removal, and soil test point toward potassium, but an evidence-led response still checks root access and reduces loss risks.",
+          incorrect: "Integrate symptom position, soil analysis, crop removal, root-zone conditions, source choice, and nutrient-loss prevention in the management decision.",
         },
       },
     ],
