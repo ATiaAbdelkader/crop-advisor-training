@@ -169,6 +169,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the edaphic soil-factors module after the topographic-factors module", () => {
+    const soilModule = cropAdvisorCourse.modules.find(
+      module => module.id === "edaphic-soil-factors-affecting-crop-yield"
+    );
+    const previousModule = cropAdvisorCourse.modules[8];
+
+    expect(soilModule?.lessons).toHaveLength(2);
+    expect(soilModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(soilModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

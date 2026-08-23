@@ -27,3 +27,4 @@
 - [x] Analyse REVISED_ENV-001.Overview of Factors Affecting Crop Yield and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_ENV-002.Climatic Factors Affecting Crop Yield and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_ENV-003.Topographic Factors Affecting Crop Yield and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_ENV-004.Edaphic Soil Factor and integrate its source-grounded module, assessments, progression, and design documentation.

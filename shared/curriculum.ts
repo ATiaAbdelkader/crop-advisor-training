@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 10 hours",
+  duration: "Approx. 11 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1383,12 +1383,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "edaphic-soil-factors-affecting-crop-yield",
+      index: 10,
+      title: "Edaphic soil factors and crop yield",
+      eyebrow: "Module 10",
+      description:
+        "Assess physical, chemical, and biological soil properties with the farmer to interpret root-zone limits and choose evidence-led improvement actions.",
+      lessons: [
+        {
+          id: "assess-physical-soil-properties",
+          title: "Assess physical soil properties",
+          duration: "30 min",
+          kicker: "Structure, texture, and colour",
+          summary:
+            "Examine structure, texture, and colour in the field to interpret water, air, root growth, nutrient retention, and drainage conditions.",
+          outcomes: [
+            "Describe soil physical properties and relate structure, texture, and colour to crop performance.",
+            "Conduct a field visual soil assessment when the soil is suitably moist.",
+            "Use field observations to distinguish likely infiltration, drainage, erosion, and rooting constraints.",
+          ],
+          sections: [
+            {
+              heading: "Think in three soil-property lenses",
+              body:
+                "Edaphic means related to or caused by soil conditions without reference to climate. Soil quality has three connected dimensions: physical properties that can be seen, felt, or measured; chemical processes that affect nutrient availability and salinity; and biological activity that reflects the soil’s capacity to support life. The physical lens includes structure, texture, and colour, all of which influence infiltration, erosion, nutrient cycling, biological activity, roots, and water movement.",
+              callout:
+                "Whenever you see soil, assess physical, chemical, and biological properties together rather than turning one observation into a complete diagnosis.",
+            },
+            {
+              heading: "Read structure, texture, and colour as field evidence",
+              body:
+                "Soil structure is the physical arrangement of particles, air, organic matter, solids, and water. Granular and aggregated structures generally have high permeability; blocky and columnar or prismatic structures have moderate permeability; platy and massive structures have lower permeability. Structure influences aeration, moisture, nutrient availability, biological activity, and root growth. Texture is the proportion of sand, silt, and clay. Sand has high aeration and drainage but lower water, nutrient, and organic-matter holding; clay has lower aeration and drainage but higher holding capacity and lower erosion susceptibility. Soil colour is influenced by organic matter, minerals, and drainage: black-brown often indicates good water relation and higher organic matter, yellow-red higher iron oxide and well-drained conditions, white-light grey leached nutrients, and bluish-grey poor drainage.",
+            },
+            {
+              heading: "Conduct a careful field assessment with the farmer",
+              body:
+                "Assess physical soil when it is moist, not too dry and not too wet. For a visual soil assessment, make a 50 × 50 cm pit to inspect the profile, take a 25 × 25 cm cone from the top layer, place it on a flat surface, break it apart, and examine it. For texture, work a moist handful of soil, observe how it feels and sounds, push out a ribbon, and use a ribbon chart; laboratory particle-size analysis can confirm field impressions. Take photographs, write observations, and involve the farmer in identifying water movement, roots, texture, colour, and likely constraints.",
+            },
+          ],
+        },
+        {
+          id: "interpret-chemical-and-biological-soil-health",
+          title: "Interpret chemical and biological soil health",
+          duration: "31 min",
+          kicker: "Nutrients, pH, capacity, and life",
+          summary:
+            "Interpret nutrient availability, pH, cation exchange capacity, organic matter, and soil life before proposing a soil-management response.",
+          outcomes: [
+            "Explain how pH and cation exchange capacity influence nutrient availability and soil buffering.",
+            "Connect organic matter and soil organisms with structure stability, nutrient cycling, and crop-supporting life.",
+            "Produce a balanced soil assessment report with the farmer before recommending treatment.",
+          ],
+          sections: [
+            {
+              heading: "Use chemical evidence to explain nutrient availability",
+              body:
+                "Chemical soil properties include nutrients, pH, and cation exchange capacity (CEC). Soil nutrients are supplied through soil air, water, particles, and organic matter and include macro-nutrients such as phosphorus, potassium, calcium, magnesium, and sulfur as well as micro-nutrients. Soil pH measures acidity and alkalinity and influences nutrient uptake. The source identifies ranges from extremely acid below 4.5 through neutral 6.6–7.3 to very strongly alkaline above 9.1. Where an evidence-led treatment is appropriate, lime can be used to move extremely acidic soils toward slightly acidic conditions, while sulfur-based fertiliser can help adjust very strongly alkaline conditions toward mildly alkaline conditions.",
+              callout:
+                "A pH number is not a treatment instruction by itself: relate it to crop requirements, nutrient uptake, the full soil assessment, and farmer goals.",
+            },
+            {
+              heading: "Use CEC and organic matter to understand holding capacity",
+              body:
+                "CEC measures a soil’s ability to hold positively charged ions or nutrients. It indicates nutrient-holding capacity, acts as a buffer against soil acidity, and is influenced by organic matter and structure stability. Instead of treating CEC as an isolated laboratory term, interpret it alongside texture, organic matter, pH, crop demand, and the practical options available to the farmer. Increasing or protecting organic matter can support structure stability and the soil’s capacity to retain and cycle nutrients.",
+            },
+            {
+              heading: "Recognise the living soil",
+              body:
+                "Soil biological properties include organisms such as earthworms, nematodes, protozoa, fungi, bacteria, and arthropods; organic matter; nitrogen fixation; and carbon cycling. Soil organisms affect physical properties and processes, carbon and energy flows, and nutrient cycling. A good assessment records visible soil life and organic matter alongside the physical and chemical observations. Engage the farmer in the assessment, explain what each observation can and cannot show, and use the combined evidence to set a realistic next check or management action.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "edaphic-soil-factors-affecting-crop-yield-check",
+        title: "Edaphic soil factors and crop yield check",
+        description:
+          "Apply physical, chemical, and biological soil evidence to diagnose root-zone constraints and plan an appropriate next action.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "sf-1",
+            prompt: "Which three dimensions should a crop advisor consider when assessing soil as an edaphic factor?",
+            options: [
+              { id: "a", label: "Physical, chemical, and biological properties." },
+              { id: "b", label: "Only soil colour, seed price, and market demand." },
+              { id: "c", label: "Only rainfall, temperature, and wind direction." },
+              { id: "d", label: "Only crop variety, field road, and household size." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. A complete edaphic assessment connects physical, chemical, and biological soil properties.", incorrect: "Soil quality should be assessed through physical, chemical, and biological properties, not from a single indicator." },
+          },
+          {
+            id: "sf-2",
+            prompt: "When is the most appropriate time to conduct a visual field assessment of soil physical properties?",
+            options: [
+              { id: "a", label: "When the soil is moist, but neither too dry nor too wet." },
+              { id: "b", label: "Only when the soil is completely waterlogged." },
+              { id: "c", label: "Only when the soil is baked dry and cannot be broken." },
+              { id: "d", label: "Only after fertiliser has been spread across the field." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Suitable moisture allows meaningful observation of soil structure and handling characteristics.", incorrect: "The source recommends a visual physical assessment when soil is moist—not too dry and not too wet." },
+          },
+          {
+            id: "sf-3",
+            prompt: "What does cation exchange capacity (CEC) indicate?",
+            options: [
+              { id: "a", label: "The soil’s ability to hold positively charged nutrients and buffer acidity." },
+              { id: "b", label: "The number of hours of sunlight received by the crop." },
+              { id: "c", label: "The maximum wind speed a field can tolerate." },
+              { id: "d", label: "The crop’s market price at harvest." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. CEC is a nutrient-holding and acidity-buffering capacity that should be interpreted alongside texture and organic matter.", incorrect: "CEC describes the soil’s capacity to hold positively charged nutrients and help buffer soil acidity." },
+          },
+          {
+            id: "sf-4",
+            prompt: "Which observation is most consistent with a bluish-grey soil colour in the source’s basic field guide?",
+            options: [
+              { id: "a", label: "Poor drainage conditions that warrant further root-zone and water-movement assessment." },
+              { id: "b", label: "Guaranteed high nutrient availability without further checks." },
+              { id: "c", label: "A field that needs no physical assessment." },
+              { id: "d", label: "A direct proof that the crop variety is unsuitable." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Bluish-grey colour is associated with poor drainage in the source’s basic guide and should trigger further field assessment.", incorrect: "Bluish-grey soil is associated with poor drainage; investigate water movement, roots, structure, and management context before acting." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, and topographic site interpretation to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, and complete edaphic soil assessment to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -1564,6 +1696,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. A defensible site decision combines elevation and variety fit with a map of slope, water flow, erosion risk, drainage, and appropriate layout controls.",
           incorrect: "Topographic interpretation should guide both crop-and-variety fit and the field layout, especially where slope, runoff, erosion, or flood exposure affect yield risk.",
+        },
+      },
+      {
+        id: "final-11",
+        prompt:
+          "A field has bluish-grey soil in the rooting zone, weak root growth, and inconsistent nutrient response. What is the most defensible next advisor action?",
+        options: [
+          { id: "a", label: "Recommend more fertiliser immediately without inspecting physical or biological soil conditions." },
+          { id: "b", label: "Assess the physical, chemical, and biological soil properties with the farmer, including drainage, structure, roots, pH, and soil life, before selecting a response." },
+          { id: "c", label: "Assume colour alone proves the crop variety is wrong." },
+          { id: "d", label: "Ignore the rooting zone and use only a crop price forecast." },
+        ],
+        correctOptionId: "b",
+        feedback: {
+          correct: "Correct. Bluish-grey soil can indicate poor drainage, but a defensible response integrates physical, chemical, and biological evidence before treatment.",
+          incorrect: "Use the three soil-property lenses and involve the farmer in assessing drainage, roots, structure, chemistry, and soil life before deciding on a response.",
         },
       },
     ],
