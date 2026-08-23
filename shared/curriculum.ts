@@ -57,7 +57,7 @@ export const cropAdvisorCourse: CourseDefinition = {
   id: "crop-advisor-foundations",
   title: "Crop Advisor Foundations",
   subtitle: "A field-centred pathway from observation to defensible recommendations.",
-  duration: "Approx. 14 hours",
+  duration: "Approx. 15 hours",
   credentialName: "Crop Advisor Foundations Certificate",
   passMark: 80,
   modules: [
@@ -1911,12 +1911,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "acid-soil-causes-and-management",
+      index: 14,
+      title: "Acid soil causes and management",
+      eyebrow: "Module 14",
+      description:
+        "Explain how soils become acidic, measure soil pH carefully, and build evidence-led acid-soil management plans that include liming and complementary practices.",
+      lessons: [
+        {
+          id: "diagnose-acid-soil-and-ph-risk",
+          title: "Diagnose acid soil and pH risk",
+          duration: "31 min",
+          kicker: "Read the causes and consequences",
+          summary:
+            "Understand soil acidification, identify the causes and characteristics of acid soil, and use pH evidence to frame crop and nutrient-management decisions.",
+          outcomes: [
+            "Explain soil acidification as a build-up of hydrogen ions that lowers soil pH.",
+            "Identify acidification causes, acid-soil characteristics, and nitrogen-fertiliser effects on soil pH.",
+            "Explain why soil pH affects nutrient uptake and crop-management decisions.",
+          ],
+          sections: [
+            {
+              heading: "Define soil acidification before prescribing treatment",
+              body:
+                "Soil acidification is the build-up of hydrogen ions that reduces soil pH. Ammonium-based fertilisers, including DAP, can contribute strongly to acidification, particularly when nitrogen is leached rather than taken up by plants. Aluminium also contributes to acidity, although the source focuses on hydrogen ions. Incorporating plant residues after cropping can help reduce acidification. Start by asking whether low pH is confirmed, what processes are driving it, and how the condition affects the crop and nutrient availability; do not assume every poor field response is caused by acidity.",
+              callout:
+                "Acid-soil management starts with a measured pH and a diagnosis of the processes driving acidification—not with an automatic lime rate.",
+            },
+            {
+              heading: "Recognise the acid-soil context and its causes",
+              body:
+                "Acid soils are often highly weathered and leached, including ferralitic and latosol soils. The source identifies low pH, low CEC and low base saturation, manganese, iron, and aluminium toxicity, and phosphorus deficiency through fixation as important characteristics. In tropical acid soils, liming can carry a higher risk of poor structure and leaching, so management must fit soil type and condition. Causes include rainfall that leaches soluble nutrients such as calcium and magnesium and leaves aluminium in their place, drainage of acid-sulphate soils, deforestation and crop removal that deplete organic matter, acid deposition, and excessive ammonium-based fertiliser application.",
+            },
+            {
+              heading: "Link nitrogen form and pH with crop nutrition",
+              body:
+                "The form of nitrogen and its fate after application influence changes in soil pH. Ammonium-based fertilisers have greater potential to acidify soil; examples in the source include MAP, DAP, and sulfate of ammonia. Nitrate-based fertilisers have lower acidifying potential; examples include sodium nitrate, calcium nitrate, calcium ammonium nitrate, and potassium nitrate. Soil pH influences nutrient uptake, so pH should be interpreted alongside soil type, soil quality, nutrient status, crop stage, root condition, and the crop’s likely pH range. Use pH to ask a better nutrient-availability question rather than treating it as an isolated number.",
+            },
+          ],
+        },
+        {
+          id: "measure-and-manage-acid-soil",
+          title: "Measure and manage acid soil",
+          duration: "34 min",
+          kicker: "Confirm, correct, and monitor",
+          summary:
+            "Measure soil pH appropriately, select acid-soil management practices, and use liming materials and calculations responsibly with expert support.",
+          outcomes: [
+            "Describe how to collect a soil sample and confirm pH accurately.",
+            "Select complementary acid-soil management strategies in addition to liming.",
+            "Explain effective neutralising value and avoid overliming when planning lime use.",
+          ],
+          sections: [
+            {
+              heading: "Measure pH with the right level of confidence",
+              body:
+                "Check soil pH because it relates to nutrient availability, and take measurements in moist soil while also considering soil type and quality. A simple field estimation can be useful for discussion: clear vegetation and debris, collect a sample to the crop’s root depth, remove root debris, make a soil paste with water, and observe the response to baking soda or vinegar. The source stresses that this is only a quick estimate and does not provide a pH value. Confirm management decisions with a soil pH meter or soil laboratory for an accurate value.",
+              callout:
+                "Use a quick field test to stimulate observation; use a pH meter or laboratory result to support a rate or high-consequence management decision.",
+            },
+            {
+              heading: "Use liming as part of a broader acid-soil plan",
+              body:
+                "Acid-soil management may include liming, regulating ammonium-based fertiliser use, increasing ground cover through mulch or cover crops, recycling crop residues, adding organic matter, and using acid-tolerant varieties where available. Ground agricultural limestone is the most common liming material; limestone materials range from calcium carbonate to mixtures with calcium magnesium carbonate such as dolomitic limestone. Complementary management across land preparation, vegetative growth, and flowering helps reduce the processes that recreate acidity after an initial lime application.",
+            },
+            {
+              heading: "Calculate carefully and avoid overliming",
+              body:
+                "Liming must account for soil texture, CEC, pH result, and the material’s effective neutralising value (ENV). Clay soils generally require more lime than sandy soils to change pH. The source gives a rule of thumb of one tonne per hectare of calcium carbonate during land preparation to raise pH by one unit, but recommends expert advice for the accurate amount. Higher ENV means less material is required: calcium carbonate is listed at 100%, dolomite at 95–108%, calcium hydroxide at 120–135%, and calcium oxide at 150–175%. For a one-tonne-per-hectare recommendation using 95% ENV dolomite, the source calculation yields 1.05 tonnes per hectare. Avoid overliming because it can create alkalinity and additional correction cost.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "acid-soil-causes-and-management-check",
+        title: "Acid soil causes and management check",
+        description:
+          "Apply acidification, pH measurement, liming, and complementary management concepts to practical soil decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "as-1",
+            prompt: "What does the source identify as soil acidification?",
+            options: [
+              { id: "a", label: "A build-up of hydrogen ions that reduces soil pH." },
+              { id: "b", label: "A rise in soil pH caused only by calcium." },
+              { id: "c", label: "Any increase in soil organic matter." },
+              { id: "d", label: "A nutrient-deficiency symptom that always appears in old leaves." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Soil acidification is described as the build-up of hydrogen ions that lowers soil pH.", incorrect: "The source defines acidification as hydrogen-ion build-up that reduces soil pH." },
+          },
+          {
+            id: "as-2",
+            prompt: "Which practice is most likely to contribute to soil acidification according to the source?",
+            options: [
+              { id: "a", label: "Excessive application of ammonium-based fertilisers, especially where nitrogen is leached." },
+              { id: "b", label: "Returning crop residues to the soil." },
+              { id: "c", label: "Maintaining ground cover with mulch or cover crops." },
+              { id: "d", label: "Using soil-pH evidence before making a management decision." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Excessive ammonium-based fertiliser use is identified as a major acidification driver.", incorrect: "The source identifies excessive ammonium-based fertiliser use, rainfall leaching, acid-sulphate drainage, organic-matter depletion, and acid deposition as acidification drivers." },
+          },
+          {
+            id: "as-3",
+            prompt: "What is the most defensible way to use a simple vinegar or baking-soda soil test?",
+            options: [
+              { id: "a", label: "Use it as a quick estimate, then confirm pH with a meter or laboratory before making an accurate management decision." },
+              { id: "b", label: "Use it to calculate an exact lime rate without any confirmation." },
+              { id: "c", label: "Use it only on completely dry soil and ignore crop root depth." },
+              { id: "d", label: "Treat no reaction as proof that all soil nutrients are sufficient." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The field test is only a quick estimation; a pH meter or laboratory should confirm the value for management.", incorrect: "The simple test can support observation but does not give an exact pH value or replace a meter or laboratory result." },
+          },
+          {
+            id: "as-4",
+            prompt: "A liming recommendation is 1 tonne per hectare of calcium carbonate equivalent. Using dolomite with an ENV of 95%, what actual amount does the source calculation give?",
+            options: [
+              { id: "a", label: "1.05 tonnes of dolomite per hectare." },
+              { id: "b", label: "0.50 tonnes of dolomite per hectare." },
+              { id: "c", label: "95 tonnes of dolomite per hectare." },
+              { id: "d", label: "No calculation is needed because ENV never affects rate." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source example divides the recommendation by 95 and multiplies by 100, giving 1.05 tonnes per hectare.", incorrect: "Lower ENV means more material is needed. For a 1-tonne recommendation and 95% ENV dolomite, the source example gives 1.05 tonnes per hectare." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, and integrated nutrient management to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decision-making, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, and acid-soil management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -2156,6 +2288,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The symptom, crop removal, and soil test point toward potassium, but an evidence-led response still checks root access and reduces loss risks.",
           incorrect: "Integrate symptom position, soil analysis, crop removal, root-zone conditions, source choice, and nutrient-loss prevention in the management decision.",
+        },
+      },
+      {
+        id: "final-15",
+        prompt:
+          "A vegetable field has a confirmed low pH, high use of ammonium-based fertiliser, and declining nutrient response. Which advisor plan is most defensible?",
+        options: [
+          { id: "a", label: "Use the measured pH and soil context to obtain an appropriate liming recommendation, regulate acidifying fertiliser use, return residues, add organic matter, and protect soil cover while avoiding overliming." },
+          { id: "b", label: "Apply the same lime rate to every field without considering pH, soil texture, or liming-material ENV." },
+          { id: "c", label: "Increase ammonium fertiliser immediately and ignore residue, cover, and pH management." },
+          { id: "d", label: "Use only a quick vinegar test as the basis for an exact high-rate liming decision." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. A defensible acid-soil response uses confirmed pH, soil context, a suitable liming calculation, reduced acidifying pressure, and complementary organic-matter and cover practices.",
+          incorrect: "Acid-soil management requires confirmed pH, soil and lime-material context, careful rate selection, and practices that reduce recurring acidification rather than a one-step or universal rate.",
         },
       },
     ],

@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 2.0  
+**Version:** 2.1  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a fourteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through thirteen required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a fifteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through fourteen required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -27,6 +27,7 @@ Crop Advisor Foundations is a fourteen-hour, self-paced professional learning pa
 | **11. Soil degradation and management** | Identifying degradation risks and designing practical soil-conservation strategies. | Distinguish major degradation processes; identify likely causes; match risks with protection measures; present feasible risk-reduction actions with the farmer. | **Recognise soil degradation risks**; **Build a soil-protection plan** | Both lessons complete and module check passed at 80% or above. |
 | **12. Nutrients required in plant nutrition** | Classifying essential nutrients and using source, mobility, function, and availability evidence for balanced crop nutrition. | Distinguish nutrition from fertilisation; classify macro and micronutrients; interpret mobility; link nutrient functions with crop performance; use soil evidence before input decisions. | **Map essential nutrients and sources**; **Translate nutrient roles into field decisions** | Both lessons complete and module check passed at 80% or above. |
 | **13. Nutrient management** | Diagnosing nutrient-risk patterns and building integrated plans that supply, retain, recycle, and protect nutrients. | Diagnose patterns by leaf age and symptom; check soil nutrient status and pH; map supply and loss pathways; select integrated nutrient-management actions. | **Diagnose nutrient imbalance methodically**; **Build an integrated nutrient-management plan** | Both lessons complete and module check passed at 80% or above. |
+| **14. Acid soil causes and management** | Diagnosing acidification, confirming pH, and selecting liming and complementary practices responsibly. | Explain acidification; identify acid-soil characteristics and causes; measure pH appropriately; select liming and supporting management; avoid overliming. | **Diagnose acid soil and pH risk**; **Measure and manage acid soil** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -60,6 +61,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Translate nutrient roles into field decisions** | Use mobility, nutrient functions, solubility, balance, and root access to interpret nutrition evidence. | Symptom position frames a question but does not confirm a diagnosis without field and soil evidence. |
 | **Diagnose nutrient imbalance methodically** | Use leaf age, symptom pattern, nutrient mobility, and soil context to narrow nutrient-risk hypotheses. | A visual symptom is a clue that must be checked against root, moisture, pH, soil, and management evidence. |
 | **Build an integrated nutrient-management plan** | Use soil testing, nutrient sources, loss pathways, soil health practices, and crop planning to maintain nutrient availability. | Know the soil, map supply and loss, and select a realistic nutrient-management package with the farmer. |
+| **Diagnose acid soil and pH risk** | Explain acidification, identify causes and characteristics, and connect nitrogen form and pH with nutrient uptake. | Low pH must be confirmed and interpreted with soil type, crop condition, nutrients, and management history. |
+| **Measure and manage acid soil** | Measure pH appropriately and use liming, residue, cover, organic matter, and fertiliser-management practices safely. | A quick pH estimate supports observation; a meter or laboratory result supports a rate or high-consequence decision. |
 
 ## Assessment package
 
@@ -80,7 +83,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Soil degradation and management check** | Erosion definition and management, salinity response, and evidence-led pollution management. | 4 | 80% | Unlocks the integrated final assessment only after both Module 11 lessons are complete and the check is passed. |
 | **Plant nutrition essentials check** | Nutrition versus fertilisation, macronutrients, nutrient mobility, and potassium function. | 4 | 80% | Unlocks the integrated final assessment only after both Module 12 lessons are complete and the check is passed. |
 | **Nutrient management check** | Nutrient depletion, symptom-led diagnosis, calcium clue, soil testing, pH, nutrient supply, and loss-pathway decisions. | 4 | 80% | Unlocks the integrated final assessment only after both Module 13 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, and integrated nutrient management. | 14 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Acid soil causes and management check** | Acidification, ammonium-fertiliser risks, pH confirmation, liming-material ENV, and complementary acid-soil management. | 4 | 80% | Unlocks the integrated final assessment only after both Module 14 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, and acid-soil management. | 15 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -107,6 +111,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Protect a degrading slope** | Bare sloping soil, runoff, declining yield, and wet-bed traffic. | Integrates ground cover, water control, layout, compaction prevention, and organic-matter restoration. | Address interacting degradation risks with a linked field-protection plan. |
 | **Interpret a mobile-nutrient clue responsibly** | Older-leaf yellowing, poor growth, and a soil test indicating low available nitrogen. | Uses nutrient mobility with root-zone, moisture, crop-stage, and soil-test evidence. | Treat leaf position as a clue and make a balanced, evidence-led nutrition decision. |
 | **Manage a potassium-risk field** | Older-leaf margin yellowing, recent crop removal, and a soil test showing low available potassium. | Integrates a mobile-nutrient clue with soil evidence, root access, source choice, and loss prevention. | Make a crop- and field-specific nutrient plan rather than acting on a symptom alone. |
+| **Manage a confirmed acid-soil field** | Low pH, high ammonium-fertiliser use, and declining nutrient response. | Integrates confirmed pH, soil context, liming-material properties, fertiliser choice, residues, organic matter, and ground cover. | Use a measured, balanced acid-soil plan rather than a universal or excessive lime rate. |
 
 ## Certificate template specification
 
@@ -180,13 +185,17 @@ flowchart TD
   AO --> AP[Module 13 lessons and assessment]
   AP --> AQ{Module 13 passed?}
   AQ -- No --> AP
-  AQ -- Yes --> AR[Unlock integrated final assessment]
-  AR --> AS{Final score at least 80%?}
-  AS -- No --> AT[Feedback and final retake available]
-  AT --> AR
-  AS -- Yes --> AU[Create credential record]
-  AU --> AV[Notify platform owner]
-  AV --> AW[Enable certificate download]
+  AQ -- Yes --> AR[Unlock Module 14]
+  AR --> AS[Module 14 lessons and assessment]
+  AS --> AT{Module 14 passed?}
+  AT -- No --> AS
+  AT -- Yes --> AU[Unlock integrated final assessment]
+  AU --> AV{Final score at least 80%?}
+  AV -- No --> AW[Feedback and final retake available]
+  AW --> AU
+  AV -- Yes --> AX[Create credential record]
+  AX --> AY[Notify platform owner]
+  AY --> AZ[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -228,6 +237,8 @@ Module 12 is derived from the supplied *Nutrients Required in Plant Nutrition* t
 
 Module 13 is derived from the supplied *Nutrient Management* training document. Its instructional structure retains the soil-nutrient management rationale, crop removal, general nutrient-deficiency diagnostic guide, nutrient sources and losses, soil nutrient and pH testing, and integrated nutrient-management practices. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [10]
 
+Module 14 is derived from the supplied *Acid Soil: Causes and Management* training document. Its instructional structure retains acidification causes and characteristics, nitrogen-fertiliser effects, pH measurement, liming materials and effective neutralising value, calculation logic, and complementary acid-soil management practices. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [11]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -249,3 +260,5 @@ Module 13 is derived from the supplied *Nutrient Management* training document. 
 [9] [REVISED_ENV-006. *Nutrients Required in Plant Nutrition* (user-supplied training document, 21 March 2023)](file:///home/ubuntu/upload/REVISED_ENV-006.NutrientsRequiredinPlantNutrition_03212023.pdf)
 
 [10] [REVISED_ENV-007. *Nutrient Management* (user-supplied training document, 21 March 2023)](file:///home/ubuntu/upload/REVISED_ENV-007.NutrientManagement_032123.pdf)
+
+[11] [REVISED_ENV-008. *Acid Soil: Causes and Management* (user-supplied training document, 23 March 2023)](file:///home/ubuntu/upload/REVISED_ENV-008.AcidSoil_CausesandManagement_03232023.pdf)

@@ -249,6 +249,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds the acid-soil module after the nutrient-management module", () => {
+    const acidSoilModule = cropAdvisorCourse.modules.find(
+      module => module.id === "acid-soil-causes-and-management"
+    );
+    const previousModule = cropAdvisorCourse.modules[12];
+
+    expect(acidSoilModule?.lessons).toHaveLength(2);
+    expect(acidSoilModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(acidSoilModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
