@@ -89,3 +89,4 @@
 - [x] Surface the Algeria-relevant local-intelligence method and localisation boundaries directly in learner-facing field-readiness content.
 - [x] Add dedicated field-readiness resources for farm economics, adviser communication, ethics, confidentiality, and digital field methods.
 - [x] Add structured criterion-level rubric self-review for practicum and capstone evidence.
+- [x] Audit the current curriculum against all uploaded agricultural training files and identify source-grounded content gaps for field-ready graduates.
