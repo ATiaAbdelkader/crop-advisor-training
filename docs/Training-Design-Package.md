@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 3.8  
+**Version:** 3.9  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through thirty-one required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, integrated pest-management decision making, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through thirty-two required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -45,6 +45,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **29. Field diagnosis in vegetable crops** | Diagnosing vegetable health problems through structured observation, biotic–abiotic elimination, evidence-led questioning, and responsible IPM recommendations. | Inspect plants and patterns; compare causes; qualify evidence; assess severity; make IPM-aligned, prevention-focused recommendations. | **Diagnose by observation and elimination**; **Turn evidence into responsible recommendations** | Both lessons complete and module check passed at 80% or above. |
 | **30. Disease identification and management** | Identifying disease through symptoms, signs, patterns, and cause categories, then preventing and managing disease through host, pathogen, environment, and IPM evidence. | Scout and classify disease; distinguish look-alikes; manage fungal, bacterial, viral, and nematode risks; use prevention and lawful IPM. | **Identify disease with symptoms, signs, and patterns**; **Manage disease through prevention and IPM** | Both lessons complete and module check passed at 80% or above. |
 | **31. Insect pests and mites identification and management** | Identifying insect pests and mites through life cycle, damaging stage, feeding pattern, crop part, and vector risk, then managing them through integrated pest management. | Distinguish complete and incomplete metamorphosis; classify chewing, mining, boring, sucking, and mite injury; identify vector risk; combine scouting, prevention, traps, barriers, biological control, and lawful IPM. | **Recognise pest life cycles and damage patterns**; **Manage pests and mites with integrated IPM** | Both lessons complete and module check passed at 80% or above. |
+| **32. Integrated pest management** | Applying IPM as an ecosystem-based prevention, monitoring, analysis, intervention, and review process that protects crops, natural enemies, people, and the environment. | Define IPM; scout and map evidence; select cultural, physical, mechanical, biological, and last-resort chemical actions; evaluate outcomes. | **Use IPM as an observation-to-decision process**; **Select and review integrated IPM actions** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -114,6 +115,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Manage disease through prevention and IPM** | Match prevention and lawful IPM to fungal, bacterial, viral, water-mould, or nematode risks through material quality, sanitation, water, canopy, rotation, vector, and record controls. | Management changes disease-conducive conditions and spread pathways; a product decision does not replace diagnosis or prevention. |
 | **Recognise pest life cycles and damage patterns** | Distinguish complete and incomplete metamorphosis; inspect damaging stage, crop part, feeding injury, distribution, and vector-linked symptoms across chewing, mining, boring, sucking, and mite pests. | Record the stage actually observed; do not assume the adult seen on the crop is the stage causing injury. |
 | **Manage pests and mites with integrated IPM** | Use sanitation, weed and residue management, aeration, reflective mulch, netting, traps, hand removal, natural enemies, biological tools, botanicals, and lawful label-directed escalation to manage verified pest pressure. | IPM begins with monitoring and prevention; product choice must not replace diagnosis, sanitation, exclusion, or beneficial-insect protection. |
+| **Use IPM as an observation-to-decision process** | Define IPM as an ecosystem approach; use prevention, monitoring, and intervention; ask guide questions; scout plant parts, field pattern, pest evidence, and environmental conditions; map and record observations. | IPM is an observation, analysis, and decision-making process—not a fixed pesticide package. |
+| **Select and review integrated IPM actions** | Combine cultural crop management, targeted physical and mechanical measures, biological conservation or agents, and carefully constrained chemical stewardship; then self-evaluate the action. | Prevent pest build-up and protect beneficial organisms before considering a registered, selective, label-directed chemical as a last resort. |
 
 ## Assessment package
 
@@ -152,7 +155,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Field-diagnosis-in-vegetable-crops check** | Symptoms, signs, roots, incidence, distribution, crop and input history, biotic and abiotic causes, severity, IPM, prevention, and feedback. | 4 | 80% | Unlocks the integrated final assessment only after both Module 29 lessons are complete and the check is passed. |
 | **Disease-identification-and-management check** | Scouting, disease symptoms and signs, plant-part and infection patterns, abiotic look-alikes, disease categories, prevention, sanitation, IPM, and lawful crop-protection decisions. | 4 | 80% | Unlocks the integrated final assessment only after both Module 30 lessons are complete and the check is passed. |
 | **Insect-pests-and-mites-identification-and-management check** | Insect life cycles, damaging stage, chewing, mining, boring, sucking, and mite patterns, virus-vector risk, scouting, sanitation, barriers, target-aware traps, biological tools, and lawful IPM. | 4 | 80% | Unlocks the integrated final assessment only after both Module 31 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, and insect-pest and mite identification and IPM. | 32 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Integrated-pest-management check** | IPM definition and components, guide questions, evidence-led scouting, cultural prevention, target-aware physical and mechanical controls, biological conservation, and registered label-directed last-resort chemical stewardship and review. | 4 | 80% | Unlocks the integrated final assessment only after both Module 32 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, and integrated pest-management decision making. | 33 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -197,6 +201,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Resolve a yellowing-and-stunting complaint** | Patchy yellowing and stunting after an irrigation change and new chemical input. | Connects symptoms, signs, roots, group patterns, crop history, water, chemical inputs, soil, climate, severity, IPM, uncertainty, and prevention. | Eliminate cause categories with evidence before naming a problem or recommending an intervention. |
 | **Manage a wet-weather wilt and spot outbreak** | Spreading wilt and leaf spots under persistent wet conditions, with a request for an immediate product decision. | Connects disease diagnosis, abiotic look-alikes, pathogen category, sanitation, drainage, canopy, clean material, rotation, resistance, IPM, and lawful label-directed action. | Disease management begins by verifying the cause and breaking spread pathways, not by selecting a product in isolation. |
 | **Manage virus-vector pest pressure without sacrificing beneficials** | Tomato with whiteflies, virus-like symptoms, border weeds, and sticky traps catching beneficial insects. | Connects pest stage and symptom records, infected-plant and host-weed removal where appropriate, sanitation, reflective mulch or netting, target-aware traps, biological conservation, and lawful IPM. | Confirm the pest and vector risk, remove sources and protect natural enemies, then use a proportionate integrated response rather than a single product or trap. |
+| **Resolve early caterpillar pressure through IPM** | Brassica with caterpillar injury, weeds, crowding, a history of broad-spectrum spraying, and few natural enemies. | Connects scouting and quantification, crop-condition improvement, prevention, target-specific physical, mechanical, or biological tools, last-resort chemical stewardship, and review. | IPM protects natural control and starts with evidence, prevention, and targeted actions before any justified chemical decision. |
 
 ## Certificate template specification
 
@@ -342,13 +347,17 @@ flowchart TD
   CQ --> CR[Module 31 lessons and assessment]
   CR --> CS{Module 31 passed?}
   CS -- No --> CR
-  CS -- Yes --> CT[Unlock integrated final assessment]
-  CT --> CU{Final score at least 80%?}
-  CU -- No --> CV[Feedback and final retake available]
-  CV --> CT
-  CU -- Yes --> CW[Create credential record]
-  CW --> CX[Notify platform owner]
-  CX --> CY[Enable certificate download]
+  CS -- Yes --> CT[Unlock Module 32]
+  CT --> CU[Module 32 lessons and assessment]
+  CU --> CV{Module 32 passed?}
+  CV -- No --> CU
+  CV -- Yes --> CW[Unlock integrated final assessment]
+  CW --> CX{Final score at least 80%?}
+  CX -- No --> CY[Feedback and final retake available]
+  CY --> CW
+  CX -- Yes --> CZ[Create credential record]
+  CZ --> DA[Notify platform owner]
+  DA --> DB[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -426,6 +435,8 @@ Module 30 is derived from the supplied *Disease Identification and Management* t
 
 Module 31 is derived from the supplied *Insect Pests and Mites (Acari) Identification and Management* training document. Its instructional structure retains complete and incomplete metamorphosis, damaging-stage inspection, chewing, mining, boring, sucking, and mite injury patterns, crop-part and vector risk, scouting, sanitation, weed and residue control, aeration, reflective mulch, netting, target-aware traps, hand removal, natural enemies, biological and botanical tools, beneficial-insect safeguards, and lawful IPM-oriented crop protection. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [28]
 
+Module 32 is derived from the supplied *Integrated Pest Management* training document. Its instructional structure retains IPM as prevention, monitoring, intervention, and review; ecosystem and multidisciplinary decision making; guide questions; plant, pest, pattern, and environment scouting; integrated crop management; cultural, physical, mechanical, biological, and last-resort chemical controls; natural-enemy conservation; target-aware traps; biological agents; pesticide registration, selectivity, safety, pre-harvest interval, and evaluation safeguards. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [29]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -483,3 +494,5 @@ Module 31 is derived from the supplied *Insect Pests and Mites (Acari) Identific
 [27] [REVISED_PRT-002. *Disease Identification and Management* (user-supplied training document, 10 April 2023)](file:///home/ubuntu/upload/REVISED_PRT-002.DiseaseIdentificationandManagement_04102023.pdf)
 
 [28] [REVISED_PRT-003. *Insect Pests and Mites (Acari) Identification and Management* (user-supplied training document, 6 January 2023)](file:///home/ubuntu/upload/REVISED_PRT-003.InsectPestsandMites(Acari)IdentificationandManagement_06012023.pdf)
+
+[29] [REVISED_PRT-004. *Integrated Pest Management* (user-supplied training document, 6 February 2023)](file:///home/ubuntu/upload/REVISED_PRT-004.IntegratedPestManagement_06022023.pdf)

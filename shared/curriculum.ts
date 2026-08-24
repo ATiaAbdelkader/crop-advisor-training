@@ -4285,12 +4285,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "integrated-pest-management",
+      index: 32,
+      title: "Integrated pest management",
+      eyebrow: "Module 32",
+      description:
+        "Use prevention, monitoring, evidence-led intervention, and agroecosystem stewardship to select integrated pest-management actions before relying on chemical control.",
+      lessons: [
+        {
+          id: "use-ipm-as-an-observation-to-decision-process",
+          title: "Use IPM as an observation-to-decision process",
+          duration: "43 min",
+          kicker: "Prevent, monitor, analyse, and decide before choosing an intervention",
+          summary:
+            "Treat IPM as an ecosystem-based advisory process that combines prevention, monitoring, and proportionate intervention using crop, pest, weather, soil, and economic evidence.",
+          outcomes: [
+            "Explain IPM as an ecosystem approach and decision-making process rather than a pesticide schedule.",
+            "Use prevention, monitoring, and intervention as an ordered framework for a crop-pest decision.",
+            "Scout and record pest, plant, field-pattern, and environmental evidence needed to select an IPM response.",
+          ],
+          sections: [
+            {
+              heading: "Define IPM by its decision process",
+              body:
+                "The source defines integrated pest management as an ecosystem approach to crop production and protection that combines management strategies and practices to grow healthy crops while minimizing pesticide use, agroecosystem disruption, and loss of natural pest-control mechanisms. It frames IPM as multidisciplinary decision making: agronomy and soil science, weather and climatology, entomology and acarology, plant pathology, and economics all shape a sound choice. The source’s working sequence is prevention, monitoring, and intervention. Prevention asks how crop and field conditions can reduce pest establishment; monitoring identifies what is actually happening; intervention selects and plans a proportionate action only after the evidence is understood.",
+              callout:
+                "IPM is not a fixed package for every crop. It is an evidence-led process of observation, analysis, decision making, and respect for the agroecosystem.",
+            },
+            {
+              heading: "Ask decision-ready questions before acting",
+              body:
+                "The source begins with questions: what is normal, what is the problem, and what could occur under normal conditions? Proper identification and understanding of the cause are critical. Examine how a suspected pest attacks and what it attacks—leaf, fruit, stem, root, or whole plant—then inspect surrounding cultivated plants and field pattern. Random distribution, a single affected row, field borders, and row interiors can point to different influences. Prevention remains the preferred approach, but it must fit crop management and a verified problem rather than an assumed cause.",
+            },
+            {
+              heading: "Scout for evidence that can change a decision",
+              body:
+                "The source asks learners to scout differently each time, inspect a minimum number of plants in a problem spot, and examine leaves, stems, flowers, fruit, roots, and soil. Record observations quantitatively in a simple way, map problems and damage, collect or draw pests for identification when needed, and note environmental conditions such as water, temperature, spacing, soil, weeds, and diseases. A field sketch linking plant condition and its environment helps turn observation into an auditable hypothesis. Scouting is not a search for proof of a preferred intervention; it is the evidence that decides whether intervention is necessary at all.",
+            },
+          ],
+        },
+        {
+          id: "select-and-review-integrated-ipm-actions",
+          title: "Select and review integrated IPM actions",
+          duration: "44 min",
+          kicker: "Build a method hierarchy that protects crop health, beneficial organisms, and people",
+          summary:
+            "Combine cultural, physical, mechanical, biological, and carefully constrained chemical measures around the verified pest problem, then evaluate whether the chosen IPM action was necessary and effective.",
+          outcomes: [
+            "Select cultural crop-management practices that reduce pest establishment, survival, and spread.",
+            "Match physical, mechanical, and biological actions to pest biology while protecting beneficial organisms.",
+            "Use chemical control only as a justified, registered, selective, label-directed last resort and evaluate results afterward.",
+          ],
+          sections: [
+            {
+              heading: "Build prevention into the crop system",
+              body:
+                "The source’s cultural controls reduce pest establishment, reproduction, dispersal, and survival through site and soil preparation, resistant or tolerant varieties, crop rotation, intercropping, and microclimate management. Integrated crop management makes these choices practical through healthy seedlings, correct spacing, raised beds, protection, mulching, trellising, good nutrition, appropriate soil moisture, drainage that avoids waterlogging, removal of old crops and weeds, and correct use of fertilisers. Select the combination from the crop, season, soil, water, pest history, and field constraints; cultural prevention is a management system, not a one-time action.",
+              callout:
+                "The best IPM intervention is often a field condition that prevents pest build-up before pests need to be killed.",
+            },
+            {
+              heading: "Target pests without disregarding beneficials",
+              body:
+                "The source presents physical and mechanical controls such as hand collection in small areas, protective net tunnels, yellow sticky traps, light traps, pheromone traps, and soil solarisation or biofumigation where suitable. Match trap type, placement, and lure to a verified target; sweet, sticky, and light traps can also capture beneficial insects, while pheromone traps may improve target selectivity where locally available. Biological control includes conserving or introducing predators and parasitoids, using trap crops or repellents, and applying agents such as *Bacillus thuringiensis*, NPV, entomopathogenic fungi, bacteria, viruses, or nematodes when they fit the target pest and life stage. The source emphasises that predators, parasitoids, and pathogens have specific prey, host, or target ranges, and unnecessary broad disruption can remove the crop’s natural control capacity.",
+            },
+            {
+              heading: "Treat chemical control as the last, reviewed option",
+              body:
+                "The source calls chemical control the last solution and identifies risks including harm to soil life, beneficial insects, vegetables, the environment, households, and farm budgets. When a chemical action remains necessary, verify registration, target-pest fit, side effects, user and consumer safety, selectivity, dose and frequency, pre-harvest interval, hazard class, protective clothing, environmental precautions, storage, first aid, and expiry date. Apply only when needed and effectively, consider alternatives, and then ask whether the problem was serious, the action was necessary, the method worked as expected, the problem could be handled differently next time, or more information is needed. This review makes IPM a learning cycle rather than a repeated product decision.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "integrated-pest-management-check",
+        title: "Integrated pest-management check",
+        description:
+          "Apply prevention, monitoring, evidence-led intervention, crop management, biological conservation, and responsible last-resort chemical stewardship to an IPM decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "ipm-1",
+            prompt: "Which statement best describes the source’s definition of integrated pest management?",
+            options: [
+              { id: "a", label: "An ecosystem-based decision process that combines prevention, monitoring, and proportionate intervention to grow healthy crops while minimizing pesticide use and disruption of natural pest control." },
+              { id: "b", label: "A fixed pesticide schedule that should be applied to every crop before scouting begins." },
+              { id: "c", label: "A method that ignores soil, weather, crop management, beneficial organisms, and economics because insecticides solve all pest problems." },
+              { id: "d", label: "A way to replace field observation with a single product recommendation for any visible damage." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source defines IPM as a prevention-monitoring-intervention decision process that combines disciplines and protects crop health and agroecosystem function.", incorrect: "IPM is not a routine spray programme. It combines prevention, monitoring, analysis, and proportionate intervention using crop, pest, environment, beneficial-organism, and economic evidence." },
+          },
+          {
+            id: "ipm-2",
+            prompt: "A grower reports a patch of leaf damage near a field border. What is the most defensible first IPM sequence?",
+            options: [
+              { id: "a", label: "Inspect multiple plants and plant parts; identify or sample the pest or cause; map pattern and damage; record water, temperature, spacing, soil, weeds, and disease context; then decide whether intervention is needed." },
+              { id: "b", label: "Apply an insecticide to the whole field before checking whether the damage is caused by a pest, disease, nutrient issue, or field condition." },
+              { id: "c", label: "Inspect only one leaf and ignore borders, surrounding crops, roots, weeds, weather, and field pattern." },
+              { id: "d", label: "Assume every border problem has the same cause and choose a trap before identifying the target organism." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source’s scouting process captures plant, pest, distribution, and environmental evidence before an intervention is selected.", incorrect: "Start with field evidence. Inspect multiple plants and parts, identify or collect the suspected organism where needed, map the pattern, and record crop and environmental conditions before deciding whether intervention is necessary." },
+          },
+          {
+            id: "ipm-3",
+            prompt: "A moth pest is confirmed, but broad light and sticky trapping is also catching beneficial insects. Which adjustment best reflects the source’s IPM hierarchy?",
+            options: [
+              { id: "a", label: "Use target-appropriate pheromone trapping where locally available, combine it with crop prevention and biological conservation, and review trap effects rather than increasing non-selective trapping automatically." },
+              { id: "b", label: "Use every available light and sticky trap regardless of the target pest or beneficial-insect capture." },
+              { id: "c", label: "Stop scouting because any trap that catches insects proves the crop is protected." },
+              { id: "d", label: "Replace biological control with a broad-spectrum product before checking pest stage, damage, crop context, or alternatives." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source highlights target-aware pheromone trapping and warns that sweet, sticky, and light traps can also catch beneficial insects; prevention and biological conservation remain part of the response.", incorrect: "Match the control to the confirmed target and protect beneficials. Pheromone trapping may improve specificity, but it still belongs within prevention, monitoring, biological conservation, and review." },
+          },
+          {
+            id: "ipm-4",
+            prompt: "When can chemical control be considered in the source’s IPM framework?",
+            options: [
+              { id: "a", label: "Only as a justified last solution after prevention, monitoring, and suitable alternatives are considered, using a registered, target-effective, selective and label-directed product with safety, PHI, environmental, storage, and follow-up checks." },
+              { id: "b", label: "As the automatic first action for any insect, disease, weed, or symptom, without checking registration, target, safety, or alternatives." },
+              { id: "c", label: "Whenever a product is available, even if it is broad-spectrum, expired, unsafe, unregistered, ineffective against the target, or harmful to beneficial insects." },
+              { id: "d", label: "Without evaluating whether the problem was serious, the action was necessary, or the method worked as expected." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Chemical control is the source’s last solution and must be registered, selective where possible, target-effective, safe, label-directed, and evaluated after use.", incorrect: "The source places chemical control last. Verify the target and registration, choose the least disruptive safe option, follow label and PHI requirements, protect people and the environment, and evaluate the decision afterward." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, and insect-pest and mite identification and IPM to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, and integrated pest-management decision making to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4817,6 +4949,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The response combines evidence-led vector diagnosis with removal of infection sources and host weeds where appropriate, sanitation, exclusion, target-aware trapping, natural-enemy protection, and lawful label-directed IPM.",
           incorrect: "The source requires a pest- and context-specific IPM plan. Verify the pest and symptoms, remove virus sources and host weeds where appropriate, use barriers and target-aware traps without disregarding beneficial insects, and treat crop-protection action as a justified lawful component rather than the entire strategy.",
+        },
+      },
+      {
+        id: "final-33",
+        prompt:
+          "A brassica field has early caterpillar feeding, uneven weed pressure, crowded plants, a history of heavy broad-spectrum spraying, and few visible natural enemies. The grower asks for an immediate chemical recommendation. Which response best reflects the source’s integrated pest-management framework?",
+        options: [
+          { id: "a", label: "Scout and quantify damage, pest stage, plant parts, distribution, weeds, spacing, water, and natural enemies; improve sanitation, spacing, weed and crop-residue management, and crop conditions; select target-appropriate physical, mechanical, or biological options such as Bt for small caterpillars where suitable; then consider only a registered, selective, label-directed chemical last if justified, and review the outcome." },
+          { id: "b", label: "Apply a broad-spectrum chemical immediately without identifying the caterpillar stage, mapping the field, checking crop conditions, considering biological options, or protecting beneficial organisms." },
+          { id: "c", label: "Ignore weeds, crowding, crop residues, natural enemies, pest stage, and field pattern because chemical control makes prevention and monitoring unnecessary." },
+          { id: "d", label: "Use any available product at an arbitrary dose without checking target effectiveness, registration, hazard class, protective clothing, pre-harvest interval, environmental precautions, or follow-up." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response follows prevention, monitoring, target-specific intervention, biological conservation, and carefully constrained, lawful last-resort chemical stewardship followed by evaluation.",
+          incorrect: "The source treats IPM as an observation-analysis-decision process. Diagnose and quantify the field problem, reduce pest-conducive conditions, protect or use biological control, choose target-specific actions, and reserve lawful label-directed chemicals for a justified last step that is reviewed afterward.",
         },
       },
     ],
