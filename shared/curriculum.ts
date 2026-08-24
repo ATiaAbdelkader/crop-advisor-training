@@ -4021,12 +4021,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "disease-identification-and-management",
+      index: 30,
+      title: "Disease identification and management",
+      eyebrow: "Module 30",
+      description:
+        "Identify plant disease with symptoms, signs, patterns, and cause categories, then build preventive, IPM-aligned management around host, pathogen, and environment evidence.",
+      lessons: [
+        {
+          id: "identify-disease-with-symptoms-signs-and-patterns",
+          title: "Identify disease with symptoms, signs, and patterns",
+          duration: "40 min",
+          kicker: "Separate disease evidence from look-alike crop stress before acting",
+          summary:
+            "Scout systematically, distinguish symptoms from signs, compare plant-part patterns, and rule out abiotic and insect stresses before classifying a disease cause.",
+          outcomes: [
+            "Identify affected plants and record symptoms, signs, patterns, crop part, and level of incidence.",
+            "Distinguish biotic disease categories from non-disease abiotic and insect stress.",
+            "Use leaf, fruit, stem, root, and whole-plant evidence to form and verify a qualified disease hypothesis.",
+          ],
+          sections: [
+            {
+              heading: "Scout before you classify",
+              body:
+                "The source begins disease identification with field scouting and sample collection. Its first steps are to identify affected plants, check symptoms and signs, check the pattern of infection, consult local experts or agricultural advisors when unsure, and seek laboratory testing when available. Disease may arise from fungi, water moulds or oomycetes, bacteria, viruses, nematodes, and related living agents, but temperature, soil and canopy moisture, light, nutrient availability, chemical toxicity, soil pH, and host susceptibility can also cause or contribute to symptoms. Not all plant problems are caused by pathogens, and environmental or insect stress can closely resemble disease.",
+              callout:
+                "A disease label is a hypothesis until symptoms, signs, pattern, crop history, and alternative causes have been checked together.",
+            },
+            {
+              heading: "Read symptoms across plant parts and the whole field",
+              body:
+                "The source lists deformed leaves, shoot or leaf blight, fruit spot, fruit rot, canker, leaf spots, wilt, vascular wilt, root rot, yellowing, mosaic, and stunting as diagnostic starting points. It uses plant part as an entry point: leaf yellowing, mosaic, or spots can indicate different categories; fruit spots, rot, or deformation need different checks; stem collar rot, blight, or spots narrow the question; roots may show rot or galls; and whole plants may show wilt with or without yellowing, bacterial ooze, stunting, or pale colour. Compare the observed symptom with signs of a biotic agent and known crop, field, and input history. A single symptom can have more than one cause.",
+            },
+            {
+              heading: "Use infection pattern and severity to refine the decision",
+              body:
+                "Check infection pattern, amount of infected plants, and neighbouring fields. The source uses incidence below 30% as low, 30% to 50% as moderate, and above 50% as high as a practical severity frame. Record whether symptoms are localised or widespread and associated with moisture, field edges, water movement, crop density, machinery, or recent inputs. Review crop history, weather, irrigation, nutrition, and previous disease occurrence. Pattern helps distinguish broad abiotic influences from spreading pathogens, but it does not replace confirmation from signs, expert support, or testing where the decision has high consequences.",
+            },
+          ],
+        },
+        {
+          id: "manage-disease-through-prevention-and-ipm",
+          title: "Manage disease through prevention and IPM",
+          duration: "38 min",
+          kicker: "Break the disease cycle before relying on a treatment response",
+          summary:
+            "Match management to fungal, bacterial, viral, and nematode risks through resistant material, sanitation, clean inputs, water and canopy management, rotation, vector control, and lawful crop-protection decisions.",
+          outcomes: [
+            "Build preventive management from pathogen, host, environment, and disease-history evidence.",
+            "Differentiate disease-management priorities for fungi and water moulds, bacteria, viruses, and nematodes.",
+            "Use IPM and local legal requirements when considering crop-protection products or vector management.",
+          ],
+          sections: [
+            {
+              heading: "Use prevention to interrupt disease development",
+              body:
+                "The source’s general fungal-disease management begins with resistant or tolerant varieties where available, pathogen-free seed, removal of infected plants and debris, crop rotation, destruction of alternate hosts, clean tools, good drainage and land preparation, suitable plant spacing, and avoidance of excessive moisture or prolonged leaf wetness. Water mould and moisture-associated problems require special attention to drainage, irrigation practice, crop overlap, humidity, and leaf wetness. Use disease history, susceptible crop family, weather, soil, canopy condition, and planting material quality to select the preventive combination rather than applying a generic response.",
+              callout:
+                "The strongest disease recommendation usually changes the conditions that allow disease to establish, survive, and spread—not only the symptoms that are visible today.",
+            },
+            {
+              heading: "Adapt management to the disease cause category",
+              body:
+                "The source describes bacteria as organisms that can survive in crop residues, seed, tubers, volunteer plants, soil, and water, and spread mechanically, through water, insects, or infected planting material. Its bacterial-disease principles include resistant varieties, pathogen-free seeds or seedlings, removal of infected plants or branches, decontamination of tools and hands, adjusted watering to prevent spread, balanced fertilisation, and rotation with non-host crops. Viral diseases require prevention because infected plants are not cured by a later treatment; use monitoring, removal of infected plants and host weeds where appropriate, clean planting material, and management of relevant vectors through IPM. Root-knot nematode risks call for resistant varieties or rootstocks where available, rotation, soil-structure improvement, and locally validated soil-health measures.",
+            },
+            {
+              heading: "Keep crop-protection decisions lawful, precise, and integrated",
+              body:
+                "The source distinguishes preventive, contact, local-systemic, systemic, and curative crop-protection concepts, but a product category is not a diagnosis or a substitute for prevention. When crop-protection action is legally registered and technically justified, follow the local label, crop registration, pre-harvest interval, personal-protection, water-protection, resistance-management, and beneficial-insect requirements. Select the action from verified cause, crop, growth stage, severity, disease forecast, and preventive measures already in place. Avoid working on wet or diseased crops in ways that spread infection, and clean tools, hands, containers, and equipment between affected and clean areas.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "disease-identification-and-management-check",
+        title: "Disease-identification and management check",
+        description:
+          "Apply scouting, symptoms, signs, infection pattern, cause categories, prevention, IPM, and responsible management to a vegetable disease decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "dm-1",
+            prompt: "What is the most defensible first sequence when a vegetable field shows disease-like symptoms?",
+            options: [
+              { id: "a", label: "Identify affected plants; check symptoms and signs; assess infection pattern and incidence; review crop, weather, water, nutrition, and input history; seek expert or laboratory support when uncertainty remains." },
+              { id: "b", label: "Assume every symptom is a fungal disease and select a product before inspecting the field." },
+              { id: "c", label: "Ignore abiotic and insect stress because disease symptoms can only have one possible cause." },
+              { id: "d", label: "Assess only one leaf and never check roots, neighbouring fields, crop history, or planting material." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source requires systematic scouting, symptoms and signs, infection pattern, field history, and expert or laboratory support when needed.", incorrect: "Start with evidence. Scout affected plants and field patterns, check symptoms and signs, review abiotic factors and history, and seek expert or laboratory confirmation when the diagnosis remains uncertain." },
+          },
+          {
+            id: "dm-2",
+            prompt: "Why must an advisor check abiotic factors when investigating a suspected disease?",
+            options: [
+              { id: "a", label: "Because moisture, temperature, nutrients, chemical toxicity, pH, and other non-living stresses can resemble or contribute to disease symptoms." },
+              { id: "b", label: "Because environmental conditions do not affect plant health or pathogen development." },
+              { id: "c", label: "Because every root rot, wilt, spot, or yellow leaf is always caused by the same pathogen." },
+              { id: "d", label: "Because disease management never needs crop, water, soil, canopy, or input information." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source explicitly notes that not all plant problems are caused by pathogens and that abiotic factors can cause or contribute to similar symptoms.", incorrect: "Check non-living stresses as well as pathogens. Water, temperature, nutrients, chemical injury, pH, and canopy conditions can mimic, predispose crops to, or worsen disease symptoms." },
+          },
+          {
+            id: "dm-3",
+            prompt: "Which integrated action set best prevents spread of a bacterial disease problem?",
+            options: [
+              { id: "a", label: "Use clean planting material and resistant varieties where available, remove infected plants or branches, decontaminate tools and hands, adjust water management to reduce spread, rotate with non-hosts, and maintain balanced crop conditions." },
+              { id: "b", label: "Move from infected plants to healthy plants with uncleaned tools and increase water flow through affected areas." },
+              { id: "c", label: "Rely only on a product decision and keep infected residues, contaminated planting material, and uncleaned equipment in use." },
+              { id: "d", label: "Ignore crop rotation, planting-material health, water movement, sanitation, and field history because bacteria cannot spread through them." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source connects clean planting material, resistance, removal, tool hygiene, water management, balanced fertility, and non-host rotation in bacterial-disease management.", incorrect: "Bacterial-disease prevention is integrated: protect planting material, remove inoculum, decontaminate tools and hands, manage water spread, rotate crops, and maintain crop resilience." },
+          },
+          {
+            id: "dm-4",
+            prompt: "What is the correct role of a crop-protection product in the source’s disease-management framework?",
+            options: [
+              { id: "a", label: "It is one legally registered, label-directed component of an IPM plan selected from verified diagnosis, crop, stage, severity, forecast, and preventive measures—not a substitute for diagnosis or prevention." },
+              { id: "b", label: "It is the first and only step, regardless of cause, crop registration, severity, label, beneficial insects, or disease history." },
+              { id: "c", label: "It can cure viral infection in established plants without removing sources or managing vectors." },
+              { id: "d", label: "It removes the need for sanitation, resistant material, drainage, crop rotation, monitoring, or record keeping." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. A justified crop-protection action must be legally registered and label-directed, and it works alongside diagnosis, prevention, IPM, resistance management, and monitoring.", incorrect: "Do not use a product as a substitute for diagnosis. Integrate any legal label-directed crop-protection action with prevention, sanitation, crop history, water management, resistant material, and monitoring." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, and evidence-led field diagnosis to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, and integrated disease management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4521,6 +4653,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The response uses the source’s field-diagnosis process of elimination, gathers evidence at plant and field scales, compares cause categories, and links a qualified diagnosis to IPM and prevention.",
           incorrect: "Yellowing and stunting have multiple possible causes. Gather plant, root, field-pattern, history, water, input, soil, climate, and symptom-sign evidence before making an IPM-aligned, legally compliant, and preventively useful recommendation.",
+        },
+      },
+      {
+        id: "final-31",
+        prompt:
+          "A crop has spreading wilt and leaf spots during persistent wet conditions. The grower wants to select a product immediately. Which response best reflects an evidence-led disease-management plan?",
+        options: [
+          { id: "a", label: "Scout symptoms, signs, roots, incidence, patterns, crop and water history, and abiotic look-alikes; identify the likely cause category with support or testing when needed; then combine sanitation, drainage and canopy management, clean material, rotation or resistance where suitable, IPM, and only legally registered label-directed crop protection if justified." },
+          { id: "b", label: "Assume every wet-weather wilt and spot is identical, ignore diagnosis and prevention, and apply any available product without checking crop registration or label requirements." },
+          { id: "c", label: "Keep infected debris, work in wet crops with uncleaned tools, and rely on a later treatment to reverse every spread pathway." },
+          { id: "d", label: "Treat viral, bacterial, fungal, water-mould, nematode, and abiotic problems exactly the same because cause category does not affect prevention or management." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response verifies the cause category, manages wet-condition disease drivers and spread pathways, uses prevention and IPM, and treats legal label-directed crop protection as one justified component rather than the whole plan.",
+          incorrect: "Disease management starts with a qualified diagnosis. Use symptoms, signs, pattern, field context, and support or testing to identify likely causes, then integrate prevention, sanitation, water and canopy management, resistant material, rotation, IPM, and lawful label-directed action where justified.",
         },
       },
     ],

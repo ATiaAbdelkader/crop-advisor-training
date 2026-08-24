@@ -569,6 +569,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds disease identification and management after field diagnosis", () => {
+    const diseaseModule = cropAdvisorCourse.modules.find(
+      module => module.id === "disease-identification-and-management"
+    );
+    const previousModule = cropAdvisorCourse.modules[28];
+
+    expect(diseaseModule?.lessons).toHaveLength(2);
+    expect(diseaseModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(diseaseModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

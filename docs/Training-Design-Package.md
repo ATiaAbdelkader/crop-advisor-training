@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 3.6  
+**Version:** 3.7  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-nine required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through thirty required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -43,6 +43,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **27. Field care and maintenance of vegetable crops** | Maintaining crop structure, canopy health, fruit set, and market quality through support, pruning, training, pollination management, and fruit protection. | Time trellises; prune hygienically; train vines and branches; diagnose and manage pollination; support developing fruit. | **Maintain crop structure and canopy health**; **Protect pollination, fruit set, and market quality** | Both lessons complete and module check passed at 80% or above. |
 | **28. Harvesting and post-harvest handling** | Protecting vegetable value through market-ready maturity, low-damage harvest, cooling, sorting, grading, safe handling, and food-safety controls. | Set maturity and timing; harvest without injury; remove field heat safely; sort and grade; protect food safety from field to market. | **Harvest at market-ready maturity without damage**; **Run a safe post-harvest loss-control chain** | Both lessons complete and module check passed at 80% or above. |
 | **29. Field diagnosis in vegetable crops** | Diagnosing vegetable health problems through structured observation, biotic–abiotic elimination, evidence-led questioning, and responsible IPM recommendations. | Inspect plants and patterns; compare causes; qualify evidence; assess severity; make IPM-aligned, prevention-focused recommendations. | **Diagnose by observation and elimination**; **Turn evidence into responsible recommendations** | Both lessons complete and module check passed at 80% or above. |
+| **30. Disease identification and management** | Identifying disease through symptoms, signs, patterns, and cause categories, then preventing and managing disease through host, pathogen, environment, and IPM evidence. | Scout and classify disease; distinguish look-alikes; manage fungal, bacterial, viral, and nematode risks; use prevention and lawful IPM. | **Identify disease with symptoms, signs, and patterns**; **Manage disease through prevention and IPM** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -108,6 +109,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Run a safe post-harvest loss-control chain** | Move from collection through cleaning, curing or cooling, sorting, grading, and food-safety safeguards. | Loss prevention requires an unbroken chain of quality, temperature, separation, sanitation, and contamination controls. |
 | **Diagnose by observation and elimination** | Inspect symptoms, signs, roots, patterns, crop stages, soil, climate, field history, and inputs to test biotic and abiotic hypotheses. | A visible symptom starts an investigation; it does not prove one cause. |
 | **Turn evidence into responsible recommendations** | State diagnostic evidence and uncertainty, assess severity, apply IPM, protect beneficials, prevent recurrence, seek support, and use farmer feedback. | Recommendations should be proportionate, transparent, legal, prevention-oriented, and reviewable. |
+| **Identify disease with symptoms, signs, and patterns** | Scout affected plants; compare symptoms, signs, plant parts, incidence, pattern, field history, and biotic–abiotic alternatives. | Field evidence must establish a qualified disease hypothesis before management begins. |
+| **Manage disease through prevention and IPM** | Match prevention and lawful IPM to fungal, bacterial, viral, water-mould, or nematode risks through material quality, sanitation, water, canopy, rotation, vector, and record controls. | Management changes disease-conducive conditions and spread pathways; a product decision does not replace diagnosis or prevention. |
 
 ## Assessment package
 
@@ -144,7 +147,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Field-care-and-maintenance check** | Crop support, trellising timing, pruning purpose and hygiene, vine and branch training, pollination, fruit-set diagnosis, manual pollination, and fruit support. | 4 | 80% | Unlocks the integrated final assessment only after both Module 27 lessons are complete and the check is passed. |
 | **Harvesting-and-post-harvest-handling check** | Harvest maturity, market acceptability, timing, tools, gentle handling, cooling, sorting, grading, food safety, and post-harvest loss control. | 4 | 80% | Unlocks the integrated final assessment only after both Module 28 lessons are complete and the check is passed. |
 | **Field-diagnosis-in-vegetable-crops check** | Symptoms, signs, roots, incidence, distribution, crop and input history, biotic and abiotic causes, severity, IPM, prevention, and feedback. | 4 | 80% | Unlocks the integrated final assessment only after both Module 29 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, and evidence-led field diagnosis. | 30 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Disease-identification-and-management check** | Scouting, disease symptoms and signs, plant-part and infection patterns, abiotic look-alikes, disease categories, prevention, sanitation, IPM, and lawful crop-protection decisions. | 4 | 80% | Unlocks the integrated final assessment only after both Module 30 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, and integrated disease management. | 31 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -187,6 +191,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Recover a stressed cucurbit block through field care** | Ground-crawling vines, crowded canopy, low set, deformed fruit, and fruit damaged by soil contact. | Connects early support, training, hygienic pruning, pollination diagnosis, water and nutrient conditions, and fruit support. | Crop care works as a coordinated quality-protection system, not isolated maintenance actions. |
 | **Protect value from harvest to market** | Inconsistent maturity, rough containers, sunlight and soil exposure, damaged-produce mixing, and livestock-affected water used for cleaning. | Connects market maturity, gentle harvesting, shade, sorting, cooling, containers, water safety, pesticide intervals, sanitation, and contamination control. | Post-harvest performance reflects each protection point in the chain, not a single downstream correction. |
 | **Resolve a yellowing-and-stunting complaint** | Patchy yellowing and stunting after an irrigation change and new chemical input. | Connects symptoms, signs, roots, group patterns, crop history, water, chemical inputs, soil, climate, severity, IPM, uncertainty, and prevention. | Eliminate cause categories with evidence before naming a problem or recommending an intervention. |
+| **Manage a wet-weather wilt and spot outbreak** | Spreading wilt and leaf spots under persistent wet conditions, with a request for an immediate product decision. | Connects disease diagnosis, abiotic look-alikes, pathogen category, sanitation, drainage, canopy, clean material, rotation, resistance, IPM, and lawful label-directed action. | Disease management begins by verifying the cause and breaking spread pathways, not by selecting a product in isolation. |
 
 ## Certificate template specification
 
@@ -324,13 +329,17 @@ flowchart TD
   CK --> CL[Module 29 lessons and assessment]
   CL --> CM{Module 29 passed?}
   CM -- No --> CL
-  CM -- Yes --> CN[Unlock integrated final assessment]
-  CN --> CO{Final score at least 80%?}
-  CO -- No --> CP[Feedback and final retake available]
-  CP --> CN
-  CO -- Yes --> CQ[Create credential record]
-  CQ --> CR[Notify platform owner]
-  CR --> CS[Enable certificate download]
+  CM -- Yes --> CN[Unlock Module 30]
+  CN --> CO[Module 30 lessons and assessment]
+  CO --> CP{Module 30 passed?}
+  CP -- No --> CO
+  CP -- Yes --> CQ[Unlock integrated final assessment]
+  CQ --> CR{Final score at least 80%?}
+  CR -- No --> CS[Feedback and final retake available]
+  CS --> CQ
+  CR -- Yes --> CT[Create credential record]
+  CT --> CU[Notify platform owner]
+  CU --> CV[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -404,6 +413,8 @@ Module 28 is derived from the supplied *Harvesting and Post-Harvest Handling* tr
 
 Module 29 is derived from the supplied *Field Diagnosis in Vegetable Crops* training document. Its instructional structure retains biotic and abiotic cause categories, systematic plant and field observation, symptom-and-sign evidence, root and distribution assessment, farmer and crop-history questions, cause elimination, diagnostic uncertainty, severity judgement, IPM, resistance-management awareness, beneficial-insect protection, prevention planning, support-seeking, and feedback. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [26]
 
+Module 30 is derived from the supplied *Disease Identification and Management* training document. Its instructional structure retains field scouting, symptoms and signs, plant-part and infection-pattern analysis, abiotic look-alikes, fungal and water-mould, bacterial, viral, and nematode categories, host–pathogen–environment conditions, resistance, clean planting material, sanitation, drainage, crop rotation, vector management, and lawful IPM-oriented crop protection. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [27]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -457,3 +468,5 @@ Module 29 is derived from the supplied *Field Diagnosis in Vegetable Crops* trai
 [25] [REVISED_PRD-012. *Harvesting and Post-Harvest Handling* (user-supplied training document, 24 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-012.HarvestingandPost-HarvestHandling_05242023.pdf)
 
 [26] [REVISED_PRT-001. *Field Diagnosis in Vegetable Crops* (user-supplied training document, 4 April 2023)](file:///home/ubuntu/upload/REVISED_PRT-001.FieldDiagnosisinVegetableCrops_04042023.pdf)
+
+[27] [REVISED_PRT-002. *Disease Identification and Management* (user-supplied training document, 10 April 2023)](file:///home/ubuntu/upload/REVISED_PRT-002.DiseaseIdentificationandManagement_04102023.pdf)
