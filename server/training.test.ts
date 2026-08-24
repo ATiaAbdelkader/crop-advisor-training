@@ -3,6 +3,7 @@ import { cropAdvisorCourse } from "../shared/curriculum";
 import { documentModuleFieldBriefs } from "../shared/moduleFieldBriefs";
 import { documentAssessmentAlignment } from "../shared/assessmentAlignment";
 import { moduleVisuals } from "../shared/moduleVisuals";
+import { fieldRecordByModuleId, fieldRecordTemplates } from "../shared/fieldRecordTemplates";
 import {
   buildTrainingOverview,
   isAssessmentAccessible,
@@ -56,6 +57,27 @@ describe("crop-advisor progression", () => {
       expect(visual.alt.length).toBeGreaterThan(40);
       expect(visual.caption.length).toBeGreaterThan(40);
     });
+  });
+
+  it("provides exactly three printable, decision-focused field records for water, fertilisation, and IPM", () => {
+    const expectedModuleIds = ["water-management", "vegetable-fertilisation", "integrated-pest-management"];
+    const expectedRecordIds = ["water-management-record", "fertilisation-record", "integrated-pest-management-record"];
+
+    expect(Object.keys(fieldRecordTemplates)).toEqual(expectedRecordIds);
+    expect(Object.keys(fieldRecordByModuleId)).toEqual(expectedModuleIds);
+    expectedModuleIds.forEach(moduleId => {
+      const record = fieldRecordByModuleId[moduleId];
+      expect(record).toBeDefined();
+      expect(cropAdvisorCourse.modules.some(module => module.id === record.moduleId)).toBe(true);
+      expect(record.setupFields.length).toBeGreaterThanOrEqual(5);
+      expect(record.recordColumns.length).toBe(6);
+      expect(record.reviewPrompts).toHaveLength(2);
+      expect(record.safetyNote.length).toBeGreaterThan(100);
+    });
+
+    expect(fieldRecordTemplates["water-management-record"].recordColumns.join(" ")).toContain("Root-zone moisture");
+    expect(fieldRecordTemplates["fertilisation-record"].recordColumns.join(" ")).toContain("Right rate");
+    expect(fieldRecordTemplates["integrated-pest-management-record"].recordColumns.join(" ")).toContain("Beneficials");
   });
 
   it("provides a complete source-grounded applied field brief for every document-derived module", () => {

@@ -8,8 +8,9 @@ import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
 import { cropAdvisorCourse } from "@shared/curriculum";
 import { documentModuleFieldBriefs } from "@shared/moduleFieldBriefs";
+import { fieldRecordByModuleId } from "@shared/fieldRecordTemplates";
 import { moduleVisuals } from "@shared/moduleVisuals";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock3, ImageOff, LockKeyhole, NotebookPen, Target } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -51,6 +52,7 @@ export default function Course() {
   const allLessonsComplete = module.lessons.every(lesson => overview?.completedLessonIds.includes(lesson.id));
   const assessmentReady = overview?.availableAssessmentIds.includes(module.assessment.id) ?? false;
   const fieldBrief = documentModuleFieldBriefs[module.id];
+  const fieldRecord = fieldRecordByModuleId[module.id];
   const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
@@ -189,6 +191,15 @@ export default function Course() {
           <aside className="space-y-4 xl:sticky xl:top-24 xl:h-fit">
             <div className="rounded-[22px] border border-[#dce6d6] bg-[#edf4e9] p-5"><NotebookPen className="h-4 w-4 text-[#4c7e57]" /><p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Field note</p><p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">{activeLesson.sections[0].callout ?? "Build decisions from field evidence, not isolated symptoms."}</p></div>
             <div className="rounded-[22px] border border-[#e0e6dc] bg-[#fcfcf8] p-5"><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#7d8b7c]">Module standard</p><p className="mt-2 font-serif text-2xl font-semibold text-[#2c4333]">{module.assessment.passMark}%</p><p className="mt-1 text-xs leading-5 text-[#748073]">Pass the scored module check to unlock the next requirement.</p></div>
+            {fieldRecord && (
+              <div className="rounded-[22px] border border-[#d9e6d5] bg-[#f7fbf4] p-5">
+                <FileText className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Field record template</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">{fieldRecord.shortTitle}</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Open a blank, print-ready record for this module’s field decision.</p>
+                <Button variant="outline" onClick={() => setLocation(`/records/${fieldRecord.id}`)} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><FileText className="mr-1.5 h-3.5 w-3.5" />Open printable record</Button>
+              </div>
+            )}
           </aside>
         </div>
       </main>

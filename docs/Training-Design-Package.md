@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.2  
+**Version:** 4.3  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -50,6 +50,8 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **34. Weed management** | Diagnosing weed pressure, identifying weed groups and persistence, protecting critical crop stages, and combining integrated weed-management measures. | Scout and quantify weed pressure; interpret critical interference periods; classify grass, sedge, and broadleaf weeds; match control to life cycle and regeneration; apply lawful herbicide safeguards when justified. | **Diagnose weed pressure and critical interference**; **Identify and manage weeds integratively** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. In addition, every document-derived module includes a **source-grounded applied field brief** with context, task, evidence to record, and a quality standard. The interface preserves lesson order within a module and gives learners a visible record of completion.
+
+Modules 23, 26, and 32 additionally link their learner pages to a print-ready, blank field record alongside their applied field briefs. These compact resources support water-management observation and review, 4R fertilisation documentation, and IPM scouting-to-evaluation records without storing farm or learner data. The printable-template implementation, field requirements, and safeguards are specified in [`Field-Record-Templates.md`](./Field-Record-Templates.md).
 
 ## Applied field-brief standard
 

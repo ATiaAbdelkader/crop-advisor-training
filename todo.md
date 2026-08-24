@@ -68,3 +68,4 @@
 - [x] Extend Modules 01–03 with applied field briefs, four-question checks, and semantic final-competency alignment to meet the reviewed standards.
 - [x] Review Modules 11–20 against source-grounding, instructional depth, applied practice, assessment alignment, accessibility, and visual-support standards.
 - [x] Review Modules 21–31 against source-grounding, instructional depth, applied practice, assessment alignment, accessibility, and visual-support standards.
+- [x] Create and link printable water-management, fertilisation, and integrated pest-management field-record templates in their respective modules.

@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Assessment from "@/pages/Assessment";
 import Certificate from "@/pages/Certificate";
 import Course from "@/pages/Course";
+import FieldRecord from "@/pages/FieldRecord";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -17,6 +18,7 @@ function Router() {
       <Route path="/dashboard" component={Home} />
       <Route path="/progress" component={ProgressDashboard} />
       <Route path="/course/:moduleId" component={Course} />
+      <Route path="/records/:recordId" component={FieldRecord} />
       <Route path="/assessment/:assessmentId" component={Assessment} />
       <Route path="/certificate" component={Certificate} />
       <Route path="/404" component={NotFound} />
