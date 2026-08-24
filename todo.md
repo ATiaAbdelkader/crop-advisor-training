@@ -54,5 +54,5 @@
 - [x] Analyse REVISED_PRT-006.Weed Management and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Audit and upgrade Modules 04–34 against their source documents for stronger instructional depth, applied practice, assessment alignment, progression consistency, and LMS-ready documentation.
 - [x] Validate applied assessment alignment for Modules 04–34 and the corresponding final competencies.
-- [ ] Save a validated checkpoint for the full Modules 04–34 curriculum-upgrade pass.
+- [x] Save a validated checkpoint for the full Modules 04–34 curriculum-upgrade pass.
 - [x] Define and regression-test semantic source-theme alignment between every Module 04–34 assessment and its corresponding final competency.
