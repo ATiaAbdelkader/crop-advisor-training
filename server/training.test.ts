@@ -649,6 +649,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds weed management after responsible pesticide use", () => {
+    const weedModule = cropAdvisorCourse.modules.find(
+      module => module.id === "weed-management"
+    );
+    const previousModule = cropAdvisorCourse.modules[32];
+
+    expect(weedModule?.lessons).toHaveLength(2);
+    expect(weedModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(weedModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

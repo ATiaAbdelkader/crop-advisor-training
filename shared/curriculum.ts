@@ -4549,12 +4549,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "weed-management",
+      index: 34,
+      title: "Weed management",
+      eyebrow: "Module 34",
+      description:
+        "Diagnose weed pressure, identify weed groups and life-cycle risks, protect critical crop stages, and combine physical, cultural, biological, and lawful chemical measures within integrated weed management.",
+      lessons: [
+        {
+          id: "diagnose-weed-pressure-and-critical-interference",
+          title: "Diagnose weed pressure and critical interference",
+          duration: "43 min",
+          kicker: "Scout early, quantify risk, and protect the crop when competition matters most",
+          summary:
+            "Use field scouting, weed density, crop stage, and weed-host evidence to explain why a weed population matters and to time management before preventable yield and crop-protection losses occur.",
+          outcomes: [
+            "Explain how weeds reduce crop performance through competition for water, sunlight, nutrients, and field-management capacity.",
+            "Use weed density and crop-stage evidence to prioritise control during the critical period of weed interference.",
+            "Assess when weeds create additional pest, disease, operational, or soil-protection risks and opportunities.",
+          ],
+          sections: [
+            {
+              heading: "Start with a field record, not a general complaint",
+              body:
+                "The source begins with a field exercise: select a weedy field, collect weeds from a 1 m × 1 m area, and list five to ten weeds present locally. This establishes a decision-ready baseline before control begins. Scout early and frequently because crops are particularly susceptible to competition early in the season. Walk the full field in a zigzag pattern, inspect edges where weed populations may be high, and record weed type, density, crop stage, distribution, and whether weeds are flowering, seeding, or regrowing. The record makes it possible to distinguish a few isolated plants from a population that threatens the crop or the next crop cycle.",
+              callout:
+                "A weed-management decision starts by documenting what is present, where it is concentrated, how dense it is, and whether it can reproduce or regrow before selecting a control method.",
+            },
+            {
+              heading: "Protect the crop during the critical interference period",
+              body:
+                "The source explains that weeds compete with crops for water, sunlight, and nutrients and can reduce yield, while higher weed density creates a larger negative yield effect. It gives purple nutsedge in tomato and pepper as an example of measurable loss even at relatively low density. Timing therefore matters. The critical period of weed interference differs by crop: the source shows early periods after planting for cabbage and cucumber, a broader early window for direct-seeded tomato and onion, and the first four weeks for yellow squash. Use crop-stage and field evidence to keep the crop weed-free when competition is most damaging rather than treating control as a calendar task that is identical for every crop.",
+            },
+            {
+              heading: "Look beyond competition alone",
+              body:
+                "Weeds also affect water management, crop care, and harvest efficiency. The source notes that weeds can act as alternate hosts for insect pests such as whiteflies and aphids and for viral diseases, illustrating miniature marigold and downy thornapple as field examples. Flowering weeds can, however, harbour pollinators and predators, while certain weed cover can reduce erosion and contribute organic matter after decomposition. The key question is whether a species is growing faster than the crop, reproducing, hosting a crop threat, or serving a useful ecological function that can be managed without allowing competition or disease risk. This turns weed management into a crop-system decision rather than automatic removal of every non-crop plant.",
+            },
+          ],
+        },
+        {
+          id: "identify-and-manage-weeds-integratively",
+          title: "Identify and manage weeds integratively",
+          duration: "45 min",
+          kicker: "Match control to morphology, life cycle, regeneration structures, and field conditions",
+          summary:
+            "Classify weeds as grasses, sedges, or broadleaves, identify life-cycle and regrowth risks, and combine physical, cultural, biological, and carefully constrained chemical measures to stop seed and tuber persistence.",
+          outcomes: [
+            "Classify grass, sedge, and broadleaf weeds from visible field characteristics before choosing a control method.",
+            "Match annual, biennial, and perennial life-cycle and regeneration evidence to timely removal, suppression, or follow-up action.",
+            "Build an integrated weed-management response using physical, cultural, biological, and lawful, label-directed chemical options when justified.",
+          ],
+          sections: [
+            {
+              heading: "Identify the group before choosing the method",
+              body:
+                "The source says correct identification is needed to know which method can control a weed’s growth and regrowth. Grasses have narrow leaves, parallel veins, round stems, visible nodes, and stems that are often hollow between nodes. Sedges may look grass-like but have a triangular stem cross-section and leaves in groups of three. Broadleaves have broad leaves, two cotyledons, and a central main vein. Use these field clues alongside local names and, where necessary, comparison samples or local expertise. Do not assume that a grass-like plant can be managed like an annual grass: a sedge or perennial species may rely on underground structures that require a different plan.",
+              callout:
+                "Identification is not a naming exercise. It tells the advisor whether removal, cutting, mulch, tillage, solarisation, biological control, or a lawful herbicide decision can stop both present growth and future regrowth.",
+            },
+            {
+              heading: "Break seed, tuber, and regrowth cycles",
+              body:
+                "The source stresses life cycle—annual, biennial, or perennial—and reproduction as the basis for timing. Uproot or control weeds with flowers and seeds before flowering or seed dispersal, remove weeds regularly, and take advantage of moist soil when young weeds can be uprooted more fully. The *Cyperus rotundus* example shows why top-growth cutting alone can fail: it is a perennial sedge with an extensive tuber system, and rhizomes or tubers left in the field can regrow. In contrast, the source presents *Eleusine indica* as an annual grass that can be addressed early through hoeing, hand removal, mulch, and cultural suppression. The management action must reach the plant’s actual persistence mechanism, not simply make the field look clean temporarily.",
+            },
+            {
+              heading: "Build an integrated weed-management package",
+              body:
+                "The source organises weed control as physical, cultural, biological, and chemical measures. Physical options include hand weeding, hoeing, collecting tubers, and mulching. Cultural options include timely tillage or solarisation where suitable; the source illustrates plastic-cover solarisation for goosegrass and purslane. Biological control may fit specific weeds, such as purslane sawfly in the source example, but must match the verified target and local availability. Chemical control is not a substitute for identification or prevention. When a herbicide is justified, follow the registered product label for dose, mixing, disposal, crop and target fit, and protective equipment; use it only when necessary; check wind direction; control drift with appropriate nozzle, pressure, larger droplets, or a nozzle hood where label-compatible; and check sprayers before use. These constraints retain herbicide use within integrated weed management and the responsible-pesticide-use principles learned earlier.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "weed-management-check",
+        title: "Weed-management check",
+        description:
+          "Apply early scouting, density and crop-stage interpretation, weed identification, life-cycle reasoning, integrated control, and lawful herbicide safeguards to vegetable-field weed decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "wm-1",
+            prompt: "Why does the source prioritise early, frequent weed scouting and control during crop-specific critical interference periods?",
+            options: [
+              { id: "a", label: "Because weeds compete for water, sunlight, and nutrients when crops are especially vulnerable early in the season; density and crop stage determine how urgently control protects yield." },
+              { id: "b", label: "Because weeds only affect harvest appearance and never influence yield, crop care, water management, or crop protection." },
+              { id: "c", label: "Because the same weed-control timing applies to every crop regardless of planting method, crop stage, weed density, or field pattern." },
+              { id: "d", label: "Because weeds should always be ignored until they flower so that their life cycle can be observed without intervention." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source connects early crop vulnerability, weed density, and crop-specific critical interference periods with timely action to prevent yield loss.", incorrect: "Weed pressure is a crop-stage and density decision. Scout early and use crop-specific critical interference evidence to control weeds before competition, seed set, or regrowth creates avoidable loss." },
+          },
+          {
+            id: "wm-2",
+            prompt: "A grass-like weed has a triangular stem cross-section and leaves in groups of three. Which identification and management implication best follows the source?",
+            options: [
+              { id: "a", label: "Classify it as a sedge and investigate its life cycle and underground regenerative structures before choosing a method, because it may not respond like an annual grass." },
+              { id: "b", label: "Classify it as a broadleaf because all grass-like plants have a central main vein and two cotyledons." },
+              { id: "c", label: "Assume any grass-like plant is an annual and use only surface cutting without checking for tubers, rhizomes, or regrowth." },
+              { id: "d", label: "Skip identification because physical, cultural, biological, and chemical measures work identically for every weed species." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source identifies triangular stems and leaves in groups of three as sedge clues and links identification with the choice of a control that addresses actual regrowth risk.", incorrect: "Use morphology before selecting control. A sedge may be grass-like in appearance but can have different life-cycle and underground persistence risks that must shape the management plan." },
+          },
+          {
+            id: "wm-3",
+            prompt: "Why can repeated cutting or shallow hand pulling fail against *Cyperus rotundus*?",
+            options: [
+              { id: "a", label: "Because it is a perennial sedge with an extensive tuber system; rhizomes or tubers left in the field can regrow, so management must address the regenerative structures." },
+              { id: "b", label: "Because the plant has no underground structures and only reproduces through one short-lived seedling stage." },
+              { id: "c", label: "Because seed dispersal is always the only source of its persistence, so tuber collection is unnecessary." },
+              { id: "d", label: "Because weed management should wait until the crop harvest instead of responding to reproduction or regrowth evidence." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source explains that *Cyperus rotundus* regenerates through its tuber system; control must interrupt that persistence mechanism rather than only remove visible shoots.", incorrect: "A temporary clean appearance is not reliable control. For a perennial sedge, assess and address the structures that enable regrowth, then follow up within an integrated management plan." },
+          },
+          {
+            id: "wm-4",
+            prompt: "Which herbicide-use plan is most consistent with the source’s integrated weed-management and responsible-use principles?",
+            options: [
+              { id: "a", label: "Identify the weed and assess physical, cultural, or biological options first; if a herbicide is justified, use only a registered label-directed crop-target fit, wear PPE, check the sprayer, account for wind, and use drift-reducing nozzle and pressure practices." },
+              { id: "b", label: "Use herbicide as the first answer to every weed, ignore weed type and life cycle, spray in any wind, and use any nozzle or pressure without checking the sprayer." },
+              { id: "c", label: "Apply a broad-leaf herbicide without considering crop fit, target, label, wind direction, drift, PPE, dosage, mixing, disposal, or persistence." },
+              { id: "d", label: "Avoid scouting and use a high pressure setting in wind to create fine droplets because drift cannot affect nearby crops or people." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source places herbicide inside an integrated management package and requires product directions, necessary use, PPE, sprayer checks, wind awareness, and drift control.", incorrect: "Herbicide use must follow verified identification and integrated options. If justified, use a registered label-directed crop-target fit, protective equipment, maintained equipment, and drift-aware weather, nozzle, and pressure practices." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, integrated pest-management decision making, and responsible pesticide stewardship to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, integrated pest-management decision making, responsible pesticide stewardship, and integrated weed management to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -5113,6 +5245,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The response protects the grower, consumers, water, crop, beneficial organisms, and future control options through IPM, label literacy, legal product fit, PPE, dedicated measurement, equipment safety, weather-aware application, and review.",
           incorrect: "Responsible pesticide stewardship starts before mixing: verify the problem and alternatives, use only a labelled legal crop-target fit, follow the label and PHI, protect people and water, maintain and calibrate equipment, select safe weather and coverage, and review the result within IPM.",
+        },
+      },
+      {
+        id: "final-35",
+        prompt:
+          "A direct-seeded tomato field has patchy early-season weeds, flowering purslane along a watercourse, grass-like plants with triangular stems, and a few persistent nutsedge patches. The grower proposes a broad herbicide spray in wind without identifying weeds or checking the sprayer. Which response is most defensible?",
+        options: [
+          { id: "a", label: "Scout and map the weeds, density, crop stage, edges, flowering and seed-set risk, and pest or disease-host context; classify the sedge and other weeds; protect the crop during its critical interference period; combine timely hand removal, mulch, tuber-aware follow-up, cultural or biological options where suitable, and use a herbicide only if justified with a registered label-directed crop-target fit, PPE, maintained equipment, and drift control." },
+          { id: "b", label: "Apply the broad herbicide immediately because weed type, crop stage, flower and seed risk, tubers, alternative-host role, wind, nozzle, pressure, registration, and equipment condition do not affect responsible management." },
+          { id: "c", label: "Cut all visible tops once, leave tubers and flowering weeds in place, and avoid further scouting because any short-term clean appearance proves long-term control." },
+          { id: "d", label: "Wait until harvest before controlling weeds because early competition and weed density cannot affect tomato yield, crop care, pest risk, or water management." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response uses source-grounded scouting, crop-stage timing, identification, reproduction and regrowth evidence, integrated controls, and responsible herbicide safeguards.",
+          incorrect: "Integrated weed management starts with identification, crop-stage and density evidence, and prevention of seed or tuber persistence. Use physical, cultural, or biological controls where suitable; when herbicide is justified, follow the legal label, PPE, equipment, weather, and drift safeguards.",
         },
       },
     ],

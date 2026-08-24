@@ -51,3 +51,4 @@
 - [x] Analyse REVISED_PRT-003.Insect Pests and Mites Identification and Management and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRT-004.Integrated Pest Management and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRT-005.Responsible Use of Pesticides and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_PRT-006.Weed Management and integrate its source-grounded module, assessments, progression, and design documentation.
