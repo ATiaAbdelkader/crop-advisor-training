@@ -118,16 +118,28 @@ describe("crop-advisor progression", () => {
     expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 1 })).toBe("ready");
   });
 
-  it("provides three source-aligned scenario practices without changing formal assessment rules", () => {
+  it("provides nine source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
     expect(Object.keys(appliedScenarios)).toEqual([
       "water-root-zone-decision",
       "fertilisation-limiting-factor-decision",
       "ipm-scout-to-action-decision",
+      "drip-uniformity-and-water-quality-decision",
+      "harvest-quality-and-food-safety-decision",
+      "qualified-field-diagnosis-decision",
+      "disease-cycle-and-escalation-decision",
+      "pesticide-stewardship-stop-decision",
+      "weed-persistence-and-control-decision",
     ]);
     expect(Object.keys(appliedScenarioByModuleId)).toEqual([
       "water-management",
       "vegetable-fertilisation",
       "integrated-pest-management",
+      "drip-irrigation-system",
+      "harvesting-and-post-harvest-handling",
+      "field-diagnosis-in-vegetable-crops",
+      "disease-identification-and-management",
+      "responsible-use-of-pesticides",
+      "weed-management",
     ]);
     Object.values(appliedScenarios).forEach(scenario => {
       expect(cropAdvisorCourse.modules.some(module => module.id === scenario.moduleId)).toBe(true);
@@ -137,6 +149,10 @@ describe("crop-advisor progression", () => {
       expect(scoreAppliedScenario(scenario, perfectAnswers)).toMatchObject({ score: 100, passed: true, correctCount: 3 });
       expect(scoreAppliedScenario(scenario, {}).passed).toBe(false);
     });
+    expect(appliedScenarios["pesticide-stewardship-stop-decision"].questions[0].options.find(option => option.id === "b")?.label).toContain("Stop");
+    expect(appliedScenarios["harvest-quality-and-food-safety-decision"].evidenceChecklist.join(" ")).toContain("interval");
+    expect(appliedScenarios["disease-cycle-and-escalation-decision"].questions[2].feedback).toContain("Legal fit");
+    expect(appliedScenarios["weed-persistence-and-control-decision"].evidenceChecklist.join(" ")).toContain("drift");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

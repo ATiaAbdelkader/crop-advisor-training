@@ -78,3 +78,4 @@
 - [x] Add learner-controlled supervisor or peer review sharing for saved field records.
 - [x] Add offline draft recovery for digital field records.
 - [x] Add a competency portfolio combining progress, field records, scenario practice, and learner reflections.
+- [x] Expand evidence-based decision scenarios to additional high-risk crop-advisory modules.
