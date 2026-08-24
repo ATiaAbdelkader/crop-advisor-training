@@ -8,7 +8,8 @@ import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
 import { cropAdvisorCourse } from "@shared/curriculum";
 import { documentModuleFieldBriefs } from "@shared/moduleFieldBriefs";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock3, LockKeyhole, NotebookPen, Target } from "lucide-react";
+import { moduleVisuals } from "@shared/moduleVisuals";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock3, ImageOff, LockKeyhole, NotebookPen, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -22,6 +23,7 @@ export default function Course() {
   const overviewQuery = trpc.training.overview.useQuery(undefined, { enabled: isAuthenticated });
   const overview = overviewQuery.data;
   const [activeLessonId, setActiveLessonId] = useState(module.lessons[0].id);
+  const [moduleVisualUnavailable, setModuleVisualUnavailable] = useState(false);
   const activeLesson = module.lessons.find(lesson => lesson.id === activeLessonId) ?? module.lessons[0];
   const currentIndex = module.lessons.findIndex(lesson => lesson.id === activeLesson.id);
   const completeLesson = trpc.training.completeLesson.useMutation({
@@ -37,6 +39,10 @@ export default function Course() {
     setActiveLessonId(firstAvailable?.id ?? module.lessons[0].id);
   }, [module.id, overview?.availableLessonIds]);
 
+  useEffect(() => {
+    setModuleVisualUnavailable(false);
+  }, [module.id]);
+
   const activeAccessible = useMemo(
     () => !isAuthenticated || !overview || overview.availableLessonIds.includes(activeLesson.id) || overview.completedLessonIds.includes(activeLesson.id),
     [activeLesson.id, isAuthenticated, overview]
@@ -45,6 +51,7 @@ export default function Course() {
   const allLessonsComplete = module.lessons.every(lesson => overview?.completedLessonIds.includes(lesson.id));
   const assessmentReady = overview?.availableAssessmentIds.includes(module.assessment.id) ?? false;
   const fieldBrief = documentModuleFieldBriefs[module.id];
+  const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
     if (!isAuthenticated) {
@@ -115,6 +122,18 @@ export default function Course() {
             <div className="flex flex-wrap items-center gap-3"><Badge className="border-0 bg-[#e8f0e4] px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.15em] text-[#417052] hover:bg-[#e8f0e4]">{activeLesson.kicker}</Badge><span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#758374]"><Clock3 className="h-3.5 w-3.5" />{activeLesson.duration}</span></div>
             <h2 className="mt-5 max-w-3xl font-serif text-3xl font-semibold leading-[1.05] tracking-[-0.045em] text-[#263a2d] sm:text-[40px]">{activeLesson.title}</h2>
             <p className="mt-5 max-w-3xl text-[15px] leading-7 text-[#5e6f60]">{activeLesson.summary}</p>
+            {moduleVisual && !moduleVisualUnavailable && (
+              <figure className="mt-7 overflow-hidden rounded-2xl border border-[#d9e3d5] bg-[#f3f7f0]">
+                <img src={moduleVisual.src} alt={moduleVisual.alt} onError={() => setModuleVisualUnavailable(true)} className="aspect-[16/7] w-full object-cover" />
+                <figcaption className="border-t border-[#dce7d8] px-5 py-3 text-xs leading-5 text-[#58705b]">{moduleVisual.caption}</figcaption>
+              </figure>
+            )}
+            {moduleVisual && moduleVisualUnavailable && (
+              <aside className="mt-7 flex gap-3 rounded-2xl border border-[#dbe5d7] bg-[#f4f8f1] px-5 py-4 text-sm leading-6 text-[#4f6552]" aria-live="polite">
+                <ImageOff className="mt-0.5 h-4 w-4 shrink-0 text-[#668468]" />
+                <p><span className="font-bold text-[#36563d]">Instructional visual unavailable.</span> Continue with the lesson summary, outcomes, and field evidence below; the visual is a supporting cue, not a required source of learning content.</p>
+              </aside>
+            )}
 
             <div className="mt-9 rounded-2xl bg-[#f0f4ed] p-5 sm:p-6">
               <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#658064]">By the end of this lesson, you can</p>

@@ -56,3 +56,10 @@
 - [x] Validate applied assessment alignment for Modules 04–34 and the corresponding final competencies.
 - [x] Save a validated checkpoint for the full Modules 04–34 curriculum-upgrade pass.
 - [x] Define and regression-test semantic source-theme alignment between every Module 04–34 assessment and its corresponding final competency.
+- [x] Build a learner dashboard view that tracks lesson completion and assessment scores across all 31 upgraded document-derived modules.
+- [x] Add failed-overview retry handling and authenticated-state validation to the learner-progress dashboard.
+- [ ] Confirm the signed-in learner-progress dashboard renders real completion, score, phase, and next-action states.
+- [x] Generate and integrate source-aligned instructional visuals for Modules 01–10 with accessible descriptions and learner-route validation.
+- [x] Add resilient fallback handling for failed Module 01–10 instructional image assets.
+- [x] Confirm and document all ten final instructional visuals as live learner-route images after fallback integration.
+- [x] Verify every Module 01–10 route after fallback integration and record final asset availability per module.

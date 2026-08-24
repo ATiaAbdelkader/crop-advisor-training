@@ -5,6 +5,7 @@ import Certificate from "@/pages/Certificate";
 import Course from "@/pages/Course";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
+import ProgressDashboard from "@/pages/ProgressDashboard";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -14,6 +15,7 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/dashboard" component={Home} />
+      <Route path="/progress" component={ProgressDashboard} />
       <Route path="/course/:moduleId" component={Course} />
       <Route path="/assessment/:assessmentId" component={Assessment} />
       <Route path="/certificate" component={Certificate} />

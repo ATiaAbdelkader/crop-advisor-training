@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { cropAdvisorCourse } from "../shared/curriculum";
 import { documentModuleFieldBriefs } from "../shared/moduleFieldBriefs";
 import { documentAssessmentAlignment } from "../shared/assessmentAlignment";
+import { moduleVisuals } from "../shared/moduleVisuals";
 import {
   buildTrainingOverview,
   isAssessmentAccessible,
@@ -12,6 +13,22 @@ import {
 } from "../shared/trainingLogic";
 
 describe("crop-advisor progression", () => {
+  it("provides a distinct accessible instructional visual for each of the first ten modules", () => {
+    const firstTenModules = cropAdvisorCourse.modules.filter(module => module.index <= 10);
+    const visualSources = firstTenModules.map(module => moduleVisuals[module.id]?.src);
+
+    expect(Object.keys(moduleVisuals)).toHaveLength(10);
+    expect(firstTenModules).toHaveLength(10);
+    expect(new Set(visualSources).size).toBe(10);
+    firstTenModules.forEach(module => {
+      const visual = moduleVisuals[module.id];
+      expect(visual).toBeDefined();
+      expect(visual.src).toMatch(/^\/manus-storage\/module-\d{2}-.+\.jpg$/);
+      expect(visual.alt.length).toBeGreaterThan(40);
+      expect(visual.caption.length).toBeGreaterThan(40);
+    });
+  });
+
   it("provides a complete source-grounded applied field brief for every document-derived module", () => {
     const documentModules = cropAdvisorCourse.modules.filter(module => module.index >= 4);
 
@@ -80,6 +97,30 @@ describe("crop-advisor progression", () => {
         },
       ])
     ).toBe(true);
+  });
+
+  it("exposes completion states and latest scores for all 31 upgraded document-derived modules", () => {
+    const firstDocumentModule = cropAdvisorCourse.modules.find(module => module.index === 4)!;
+    const overview = buildTrainingOverview({
+      enrolled: true,
+      completedLessonIds: firstDocumentModule.lessons.map(lesson => lesson.id),
+      attempts: [{
+        assessmentId: firstDocumentModule.assessment.id,
+        score: 100,
+        passed: true,
+        submittedAt: new Date(),
+      }],
+      certificate: null,
+    });
+    const documentStates = overview.moduleStates.filter(module => module.id !== "advisory-practice" && module.id !== "soil-and-nutrition" && module.id !== "crop-observation");
+
+    expect(documentStates).toHaveLength(31);
+    expect(overview.latestScores[firstDocumentModule.assessment.id]).toBe(100);
+    expect(documentStates.find(module => module.id === firstDocumentModule.id)).toMatchObject({
+      completedLessons: 2,
+      lessonCount: 2,
+      assessmentPassed: true,
+    });
   });
 
   it("unlocks the final only after every module assessment has been passed", () => {
