@@ -4,11 +4,13 @@ import {
   assessmentAttempts,
   certificates,
   courseEnrollments,
+  fieldRecords,
   InsertUser,
   lessonCompletions,
   users,
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
+import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -168,4 +170,73 @@ export async function issueCertificateIfNeeded(input: {
     .where(eq(certificates.credentialId, credentialId))
     .limit(1);
   return { certificate: issued[0], newlyIssued: true };
+}
+
+type StoredFieldRecord = Omit<typeof fieldRecords.$inferSelect, "payloadJson"> & {
+  payload: FieldRecordPayload;
+};
+
+function toStoredFieldRecord(record: typeof fieldRecords.$inferSelect): StoredFieldRecord {
+  return { ...record, payload: JSON.parse(record.payloadJson) as FieldRecordPayload };
+}
+
+export async function listFieldRecords(userId: number, templateId: string) {
+  const db = await requireDb();
+  return db
+    .select({
+      id: fieldRecords.id,
+      title: fieldRecords.title,
+      templateId: fieldRecords.templateId,
+      createdAt: fieldRecords.createdAt,
+      updatedAt: fieldRecords.updatedAt,
+    })
+    .from(fieldRecords)
+    .where(and(eq(fieldRecords.userId, userId), eq(fieldRecords.templateId, templateId)))
+    .orderBy(desc(fieldRecords.updatedAt));
+}
+
+export async function getFieldRecord(userId: number, id: number) {
+  const db = await requireDb();
+  const rows = await db
+    .select()
+    .from(fieldRecords)
+    .where(and(eq(fieldRecords.id, id), eq(fieldRecords.userId, userId)))
+    .limit(1);
+  return rows[0] ? toStoredFieldRecord(rows[0]) : null;
+}
+
+export async function saveFieldRecord(input: {
+  id?: number;
+  userId: number;
+  templateId: string;
+  title: string;
+  payload: FieldRecordPayload;
+}) {
+  const db = await requireDb();
+  const values = {
+    templateId: input.templateId,
+    title: input.title,
+    payloadJson: JSON.stringify(input.payload),
+    updatedAt: new Date(),
+  };
+
+  if (input.id) {
+    const result = await db
+      .update(fieldRecords)
+      .set(values)
+      .where(and(eq(fieldRecords.id, input.id), eq(fieldRecords.userId, input.userId)));
+    if (result[0].affectedRows === 0) return null;
+    return getFieldRecord(input.userId, input.id);
+  }
+
+  const result = await db.insert(fieldRecords).values({ userId: input.userId, ...values });
+  return getFieldRecord(input.userId, Number(result[0].insertId));
+}
+
+export async function deleteFieldRecord(userId: number, id: number) {
+  const db = await requireDb();
+  const result = await db
+    .delete(fieldRecords)
+    .where(and(eq(fieldRecords.id, id), eq(fieldRecords.userId, userId)));
+  return result[0].affectedRows > 0;
 }

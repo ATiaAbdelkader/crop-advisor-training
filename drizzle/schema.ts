@@ -1,5 +1,6 @@
 import {
   int,
+  index,
   mysqlEnum,
   mysqlTable,
   text,
@@ -149,6 +150,23 @@ export const certificates = mysqlTable(
     issuedAt: timestamp("issuedAt").defaultNow().notNull(),
   },
   table => [uniqueIndex("certificate_course_user_unique").on(table.userId, table.courseSlug)]
+);
+
+/** Private digital field records are visible only to their owning learner. */
+export const fieldRecords = mysqlTable(
+  "fieldRecords",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    templateId: varchar("templateId", { length: 96 }).notNull(),
+    title: varchar("title", { length: 160 }).notNull(),
+    payloadJson: text("payloadJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("field_record_owner_template_updated_idx").on(table.userId, table.templateId, table.updatedAt)]
 );
 
 export type User = typeof users.$inferSelect;

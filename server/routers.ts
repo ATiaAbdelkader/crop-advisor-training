@@ -2,6 +2,13 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { cropAdvisorCourse, getAssessmentById, getLessonById } from "../shared/curriculum";
 import {
+  MAX_FIELD_RECORD_ENTRIES,
+  MAX_FIELD_RECORD_TITLE_LENGTH,
+  MAX_FIELD_RECORD_VALUE_LENGTH,
+  type FieldRecordPayload,
+} from "../shared/digitalFieldRecords";
+import { fieldRecordTemplates } from "../shared/fieldRecordTemplates";
+import {
   buildTrainingOverview,
   scoreAssessment,
   shouldIssueCertificate,
@@ -9,10 +16,14 @@ import {
 } from "../shared/trainingLogic";
 import {
   enrollLearner,
+  deleteFieldRecord,
+  getFieldRecord,
   getLearningRecords,
   issueCertificateIfNeeded,
   markLessonComplete,
   recordAssessmentAttempt,
+  listFieldRecords,
+  saveFieldRecord,
 } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
@@ -40,6 +51,27 @@ async function getOverviewForLearner(userId: number) {
         }
       : null,
   });
+}
+
+const fieldRecordPayloadInput = z.object({
+  setup: z.record(z.string().max(160), z.string().max(MAX_FIELD_RECORD_VALUE_LENGTH)),
+  entries: z.array(z.record(z.string().max(160), z.string().max(MAX_FIELD_RECORD_VALUE_LENGTH))).max(MAX_FIELD_RECORD_ENTRIES),
+  review: z.array(z.string().max(MAX_FIELD_RECORD_VALUE_LENGTH)).max(2),
+});
+
+function requireFieldRecordTemplate(templateId: string) {
+  const template = fieldRecordTemplates[templateId];
+  if (!template) throw new TRPCError({ code: "NOT_FOUND", message: "Field record template not found." });
+  return template;
+}
+
+function normaliseFieldRecordPayload(templateId: string, payload: z.infer<typeof fieldRecordPayloadInput>): FieldRecordPayload {
+  const template = requireFieldRecordTemplate(templateId);
+  return {
+    setup: Object.fromEntries(template.setupFields.map(field => [field, payload.setup[field]?.trim() ?? ""])),
+    entries: payload.entries.map(entry => Object.fromEntries(template.recordColumns.map(column => [column, entry[column]?.trim() ?? ""]))),
+    review: template.reviewPrompts.map((_, index) => payload.review[index]?.trim() ?? ""),
+  };
 }
 
 export const appRouter = router({
@@ -137,6 +169,47 @@ export const appRouter = router({
           ownerNotified,
           overview: await getOverviewForLearner(ctx.user.id),
         };
+      }),
+  }),
+  fieldRecords: router({
+    list: protectedProcedure
+      .input(z.object({ templateId: z.string().min(1).max(96) }))
+      .query(({ ctx, input }) => {
+        requireFieldRecordTemplate(input.templateId);
+        return listFieldRecords(ctx.user.id, input.templateId);
+      }),
+    get: protectedProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .query(async ({ ctx, input }) => {
+        const record = await getFieldRecord(ctx.user.id, input.id);
+        if (!record) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
+        return record;
+      }),
+    save: protectedProcedure
+      .input(z.object({
+        id: z.number().int().positive().optional(),
+        templateId: z.string().min(1).max(96),
+        title: z.string().trim().max(MAX_FIELD_RECORD_TITLE_LENGTH).optional(),
+        payload: fieldRecordPayloadInput,
+      }))
+      .mutation(async ({ ctx, input }) => {
+        const template = requireFieldRecordTemplate(input.templateId);
+        const record = await saveFieldRecord({
+          id: input.id,
+          userId: ctx.user.id,
+          templateId: template.id,
+          title: input.title?.trim() || template.shortTitle,
+          payload: normaliseFieldRecordPayload(template.id, input.payload),
+        });
+        if (!record) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
+        return record;
+      }),
+    delete: protectedProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        const deleted = await deleteFieldRecord(ctx.user.id, input.id);
+        if (!deleted) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
+        return { success: true } as const;
       }),
   }),
 });

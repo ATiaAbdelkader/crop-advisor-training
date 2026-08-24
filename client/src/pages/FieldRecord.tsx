@@ -1,7 +1,7 @@
 import TrainingShell from "@/components/TrainingShell";
 import { Button } from "@/components/ui/button";
 import { fieldRecordTemplates } from "@shared/fieldRecordTemplates";
-import { ArrowLeft, ClipboardList, Printer } from "lucide-react";
+import { ArrowLeft, ClipboardList, FileText, Printer } from "lucide-react";
 import { useLocation, useParams } from "wouter";
 
 const blankRows = Array.from({ length: 5 }, (_, index) => index + 1);
@@ -40,7 +40,7 @@ export default function FieldRecord() {
       <main className="mx-auto max-w-6xl px-5 py-7 sm:px-8 lg:py-10">
         <div className="record-screen-only mb-6 flex flex-wrap items-center justify-between gap-4">
           <button type="button" onClick={() => setLocation(`/course/${template.moduleId}`)} className="inline-flex items-center gap-1 text-xs font-bold text-[#69806d] transition-colors hover:text-[#1f4a37]"><ArrowLeft className="h-3.5 w-3.5" />Return to linked module</button>
-          <Button onClick={() => window.print()} className="rounded-full bg-[#315f47] px-5 text-xs font-bold shadow-none hover:bg-[#214d36]"><Printer className="mr-2 h-3.5 w-3.5" />Print blank record</Button>
+          <div className="flex flex-wrap gap-2"><Button variant="outline" onClick={() => setLocation(`/records/${template.id}/entry`)} className="rounded-full px-5 text-xs font-bold"><FileText className="mr-2 h-3.5 w-3.5" />Fill online</Button><Button onClick={() => window.print()} className="rounded-full bg-[#315f47] px-5 text-xs font-bold shadow-none hover:bg-[#214d36]"><Printer className="mr-2 h-3.5 w-3.5" />Print blank record</Button></div>
         </div>
 
         <article className="record-print-sheet rounded-[26px] border border-[#dfe8da] bg-[#fcfcf8] p-6 shadow-[0_10px_26px_rgba(39,67,47,.05)] sm:p-10">

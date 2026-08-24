@@ -1,7 +1,7 @@
 # Printable Field-Record Templates
 
-**Status:** Implemented learner resource.  
-**Access:** Linked from the learner module pages for Modules 23, 26, and 32, alongside their applied field briefs, and available as public print-ready routes.
+**Status:** Implemented learner resource with private digital entry and PDF export.  
+**Access:** Linked from the learner module pages for Modules 23, 26, and 32, alongside their applied field briefs. Blank print-ready routes remain public; digital entry requires sign-in.
 
 ## Purpose
 
@@ -17,6 +17,14 @@ The printable records convert three high-consequence crop-management decisions i
 
 Each template has a field-and-crop header, five blank observation/action rows, two decision-review prompts, and a clear safety and stewardship note. The records are accessible as ordinary responsive pages, retain a return link to the linked module, and expose a visible **Print blank record** control. Print styles hide navigation and interface controls, set an A4 portrait page, and preserve the table, review prompts, and safety note as usable paper elements.
 
+## Digital entry, privacy, and PDF export
+
+The **Fill online** action opens an authenticated learner workspace at `/records/:templateId/entry`. It uses the same field labels, log columns, review prompts, and safeguards as the blank record. Learners can add up to twelve event rows, save a named record, reopen records associated with the same template, start a new record without overwriting a prior one, and delete a saved record only after an explicit confirmation.
+
+Saved data are isolated by learner account. Record retrieval, update, listing, and deletion checks the authenticated owner before returning or changing a row. The platform stores only the structured form content and record title needed for the learner’s own documentation; it does not make farm records visible in the progress dashboard or to other learners.
+
+The **Export PDF** control creates a downloadable A4 landscape PDF directly in the browser from the current form values. A learner may export a completed record before saving it, and exporting does not transmit the record to a separate PDF service. The blank paper template is retained for users who prefer offline completion.
+
 > **Decision boundary:** A record is evidence for a bounded next action, not a prescription. The field user must still check local requirements, labels, crop suitability, safety conditions, and the need for specialist support.
 
 ## Module-specific safeguards
@@ -29,4 +37,4 @@ Each template has a field-and-crop header, five blank observation/action rows, t
 
 ## Validation standard
 
-Regression coverage verifies that the implementation exposes **exactly three** templates, maps each one to the intended module, provides the necessary setup, log, review, and safety fields, and retains water root-zone, fertilisation 4R, and IPM-beneficial-organism terminology. Route, print-layout, TypeScript, test, and production-build checks are recorded in the checkpoint validation step.
+Regression coverage verifies that the implementation exposes **exactly three** templates, maps each one to the intended module, provides the necessary setup, log, review, and safety fields, retains water root-zone, fertilisation 4R, and IPM-beneficial-organism terminology, and creates template-aligned digital defaults with a bounded row capacity. Route, print-layout, TypeScript, test, production-build, and owner-isolated record-workflow checks are recorded in the checkpoint validation step.

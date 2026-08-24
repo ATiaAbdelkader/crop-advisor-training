@@ -4,6 +4,9 @@ import { documentModuleFieldBriefs } from "../shared/moduleFieldBriefs";
 import { documentAssessmentAlignment } from "../shared/assessmentAlignment";
 import { moduleVisuals } from "../shared/moduleVisuals";
 import { fieldRecordByModuleId, fieldRecordTemplates } from "../shared/fieldRecordTemplates";
+import { createEmptyFieldRecordPayload, MAX_FIELD_RECORD_ENTRIES, MAX_FIELD_RECORD_TITLE_LENGTH } from "../shared/digitalFieldRecords";
+import { createFieldRecordPdf } from "../client/src/lib/fieldRecordPdf";
+import { getSavedRecordListState } from "../client/src/lib/fieldRecordViewState";
 import {
   buildTrainingOverview,
   isAssessmentAccessible,
@@ -78,6 +81,38 @@ describe("crop-advisor progression", () => {
     expect(fieldRecordTemplates["water-management-record"].recordColumns.join(" ")).toContain("Root-zone moisture");
     expect(fieldRecordTemplates["fertilisation-record"].recordColumns.join(" ")).toContain("Right rate");
     expect(fieldRecordTemplates["integrated-pest-management-record"].recordColumns.join(" ")).toContain("Beneficials");
+  });
+
+  it("creates template-aligned private digital record defaults with bounded entry capacity", () => {
+    expect(MAX_FIELD_RECORD_ENTRIES).toBe(12);
+    expect(MAX_FIELD_RECORD_TITLE_LENGTH).toBe(160);
+
+    Object.values(fieldRecordTemplates).forEach(template => {
+      const payload = createEmptyFieldRecordPayload(template);
+      expect(Object.keys(payload.setup)).toEqual(template.setupFields);
+      expect(payload.entries).toHaveLength(3);
+      payload.entries.forEach(entry => expect(Object.keys(entry)).toEqual(template.recordColumns));
+      expect(payload.review).toEqual(template.reviewPrompts.map(() => ""));
+    });
+  });
+
+  it("builds a downloadable PDF document from a completed digital water record", async () => {
+    const template = fieldRecordTemplates["water-management-record"];
+    const payload = createEmptyFieldRecordPayload(template);
+    payload.setup["Farm or grower"] = "Learner demonstration field";
+    payload.entries[0]["Date / time"] = "2026-08-24 07:00";
+    payload.entries[0]["Rainfall or irrigation event"] = "Checked after irrigation";
+    const pdf = await createFieldRecordPdf({ template, title: "Water review", payload, exportedAt: new Date("2026-08-24T07:00:00Z") });
+    const header = new TextDecoder().decode(new Uint8Array(pdf.output("arraybuffer") as ArrayBuffer).slice(0, 4));
+
+    expect(header).toBe("%PDF");
+  });
+
+  it("keeps failed saved-record loading distinct from an empty record list", () => {
+    expect(getSavedRecordListState({ isLoading: true, isError: false, recordCount: 0 })).toBe("loading");
+    expect(getSavedRecordListState({ isLoading: false, isError: true, recordCount: 0 })).toBe("error");
+    expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 0 })).toBe("empty");
+    expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 1 })).toBe("ready");
   });
 
   it("provides a complete source-grounded applied field brief for every document-derived module", () => {
