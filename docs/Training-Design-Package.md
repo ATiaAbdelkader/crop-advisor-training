@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.1  
+**Version:** 4.2  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -49,7 +49,18 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **33. Responsible use of pesticides** | Applying label literacy, safe handling, calibrated application, resistance-aware stewardship, and environmental safeguards when pesticide use is justified within IPM. | Read labels and hazards; match product to legal crop and target use; mix and measure safely; calibrate and apply precisely; prevent exposure, drift, residues, contamination, and resistance. | **Read labels and select products responsibly**; **Mix, apply, and maintain sprayers safely** | Both lessons complete and module check passed at 80% or above. |
 | **34. Weed management** | Diagnosing weed pressure, identifying weed groups and persistence, protecting critical crop stages, and combining integrated weed-management measures. | Scout and quantify weed pressure; interpret critical interference periods; classify grass, sedge, and broadleaf weeds; match control to life cycle and regeneration; apply lawful herbicide safeguards when justified. | **Diagnose weed pressure and critical interference**; **Identify and manage weeds integratively** | Both lessons complete and module check passed at 80% or above. |
 
-Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
+Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. In addition, every document-derived module includes a **source-grounded applied field brief** with context, task, evidence to record, and a quality standard. The interface preserves lesson order within a module and gives learners a visible record of completion.
+
+## Applied field-brief standard
+
+The applied field brief upgrades every document-derived module from source summary to observable practice. It appears in the learner route after the authenticated lesson content so it reinforces, rather than bypasses, the existing learning and progression sequence. Each brief connects the source document’s central decision to evidence that a learner can collect, a bounded action, and an explicit quality standard.
+
+| Brief component | Learner purpose | Design constraint |
+|---|---|---|
+| **Context** | Recognise the field, nursery, soil, water, crop-protection, or market situation that activates the module’s capability. | Must reflect the source-derived module theme; no invented outcomes or customer data. |
+| **Task** | Practise a decision-relevant action such as mapping, sampling, comparing, calculating, inspecting, diagnosing, planning, verifying, or reviewing. | Must be observable and appropriate to an adult agricultural practitioner. |
+| **Evidence to record** | Identify the field observations, measurements, maps, labels, records, or comparisons needed before action. | Must preserve the programme’s evidence-led, uncertainty-aware advisory standard. |
+| **Quality standard** | Explain what makes the resulting recommendation safe, constrained, traceable, and reviewable. | Must retain legal, label, safety, environmental, and escalation conditions where relevant. |
 
 ## Authored lesson content map
 

@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
 import { cropAdvisorCourse } from "@shared/curriculum";
+import { documentModuleFieldBriefs } from "@shared/moduleFieldBriefs";
 import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock3, LockKeyhole, NotebookPen, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -43,6 +44,7 @@ export default function Course() {
   const activeComplete = overview?.completedLessonIds.includes(activeLesson.id) ?? false;
   const allLessonsComplete = module.lessons.every(lesson => overview?.completedLessonIds.includes(lesson.id));
   const assessmentReady = overview?.availableAssessmentIds.includes(module.assessment.id) ?? false;
+  const fieldBrief = documentModuleFieldBriefs[module.id];
 
   const goToLesson = (lessonId: string) => {
     if (!isAuthenticated) {
@@ -133,6 +135,25 @@ export default function Course() {
                     {section.callout && <blockquote className="mt-5 border-l-[3px] border-[#77a266] bg-[#f1f6ed] px-5 py-4 text-sm leading-6 text-[#3c5d43]">{section.callout}</blockquote>}
                   </section>
                 ))}
+                {fieldBrief && (
+                  <section className="max-w-3xl rounded-2xl border border-[#dbe7d5] bg-[#f7fbf4] p-5 sm:p-6">
+                    <div className="flex items-start gap-3">
+                      <NotebookPen className="mt-0.5 h-5 w-5 shrink-0 text-[#477a53]" />
+                      <div>
+                        <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Applied field brief</p>
+                        <h3 className="mt-2 font-serif text-2xl font-semibold tracking-[-0.035em] text-[#2b3e31]">{fieldBrief.title}</h3>
+                      </div>
+                    </div>
+                    <dl className="mt-5 grid gap-4 sm:grid-cols-2">
+                      {[["Context", fieldBrief.context], ["Task", fieldBrief.task], ["Evidence to record", fieldBrief.evidence], ["Quality standard", fieldBrief.standard]].map(([label, value]) => (
+                        <div key={label} className="rounded-xl border border-[#e0ebdc] bg-white/65 p-4">
+                          <dt className="text-[10px] font-bold uppercase tracking-[0.15em] text-[#6b876a]">{label}</dt>
+                          <dd className="mt-2 text-sm leading-6 text-[#456047]">{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </section>
+                )}
               </div>
             )}
 

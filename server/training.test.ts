@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { cropAdvisorCourse } from "../shared/curriculum";
+import { documentModuleFieldBriefs } from "../shared/moduleFieldBriefs";
+import { documentAssessmentAlignment } from "../shared/assessmentAlignment";
 import {
   buildTrainingOverview,
   isAssessmentAccessible,
@@ -10,6 +12,57 @@ import {
 } from "../shared/trainingLogic";
 
 describe("crop-advisor progression", () => {
+  it("provides a complete source-grounded applied field brief for every document-derived module", () => {
+    const documentModules = cropAdvisorCourse.modules.filter(module => module.index >= 4);
+
+    expect(Object.keys(documentModuleFieldBriefs)).toHaveLength(documentModules.length);
+    documentModules.forEach(module => {
+      const brief = documentModuleFieldBriefs[module.id];
+      expect(brief).toBeDefined();
+      expect(brief.title.length).toBeGreaterThan(12);
+      expect(brief.context.length).toBeGreaterThan(40);
+      expect(brief.task.length).toBeGreaterThan(40);
+      expect(brief.evidence.length).toBeGreaterThan(40);
+      expect(brief.standard.length).toBeGreaterThan(40);
+    });
+  });
+
+  it("keeps every document-derived module check aligned to an applied final competency", () => {
+    const documentModules = cropAdvisorCourse.modules.filter(module => module.index >= 4);
+    const finalItems = new Map(
+      cropAdvisorCourse.finalAssessment.questions.map(question => [question.id, question])
+    );
+
+    expect(Object.keys(documentAssessmentAlignment)).toHaveLength(documentModules.length);
+    documentModules.forEach(module => {
+      const alignment = documentAssessmentAlignment[module.id];
+      expect(alignment).toBeDefined();
+      expect(alignment.sourceTheme.length).toBeGreaterThan(20);
+      expect(module.assessment.passMark).toBe(80);
+      expect(module.assessment.questions).toHaveLength(4);
+      module.assessment.questions.forEach(question => {
+        expect(question.prompt.length).toBeGreaterThan(25);
+        expect(question.options).toHaveLength(4);
+        expect(question.correctOptionId).toBeTruthy();
+        expect(question.feedback.correct.length).toBeGreaterThan(70);
+        expect(question.feedback.incorrect.length).toBeGreaterThan(70);
+      });
+
+      const finalCompetency = finalItems.get(`final-${module.index + 1}`);
+      expect(finalCompetency).toBeDefined();
+      expect(finalCompetency?.prompt.length).toBeGreaterThan(100);
+      expect(finalCompetency?.options).toHaveLength(4);
+      expect(finalCompetency?.feedback.correct.length).toBeGreaterThan(70);
+      expect(finalCompetency?.feedback.incorrect.length).toBeGreaterThan(70);
+      expect(
+        module.assessment.questions.some(question =>
+          question.prompt.toLowerCase().includes(alignment.moduleAssessmentAnchor)
+        )
+      ).toBe(true);
+      expect(finalCompetency?.prompt.toLowerCase()).toContain(alignment.finalCompetencyAnchor);
+    });
+  });
+
   it("keeps the next module locked until the prior module assessment is passed", () => {
     const firstModule = cropAdvisorCourse.modules[0];
     const secondModule = cropAdvisorCourse.modules[1];
