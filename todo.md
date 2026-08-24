@@ -48,3 +48,4 @@
 - [x] Analyse REVISED_PRD-012.Harvesting and Post-Harvest Handling and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRT-001.Field Diagnosis in Vegetable Crops and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRT-002.Disease Identification and Management and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_PRT-003.Insect Pests and Mites Identification and Management and integrate its source-grounded module, assessments, progression, and design documentation.

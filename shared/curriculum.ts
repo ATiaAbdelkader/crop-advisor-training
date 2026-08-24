@@ -4153,12 +4153,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "insect-pests-and-mites-identification-and-management",
+      index: 31,
+      title: "Insect pests and mites identification and management",
+      eyebrow: "Module 31",
+      description:
+        "Identify insect pests and mites through life cycle, damaging stage, feeding pattern, crop part, and vector risk, then manage them through source-grounded integrated pest management.",
+      lessons: [
+        {
+          id: "recognise-pest-life-cycles-and-damage-patterns",
+          title: "Recognise pest life cycles and damage patterns",
+          duration: "42 min",
+          kicker: "Use life stage, feeding pattern, crop part, and vector risk to guide a defensible pest diagnosis",
+          summary:
+            "Distinguish complete and incomplete metamorphosis, link pests and mites to the crop parts they affect, and use damage patterns and field scouting to separate chewing, mining, sucking, boring, and mite injury.",
+          outcomes: [
+            "Distinguish complete metamorphosis from incomplete metamorphosis and identify the damaging stage relevant to scouting.",
+            "Classify crop injury from chewing, mining or boring, sucking, and mite pests using plant-part and pattern evidence.",
+            "Record pest presence, life stage, crop part affected, field distribution, and vector-linked risk before selecting management.",
+          ],
+          sections: [
+            {
+              heading: "Start with the pest life cycle and damaging stage",
+              body:
+                "The source distinguishes complete metamorphosis—egg, larva, pupa, and adult—from incomplete metamorphosis—egg, nymph, and adult. Caterpillars, leaf miners, fruit flies, *Tuta absoluta*, and many beetles are presented as complete-metamorphosis examples; whiteflies, aphids, cotton stainers, green leafhoppers, and mealybugs are presented as incomplete-metamorphosis examples. This is not taxonomy for its own sake: control must be matched to the stage that is present and causing harm. A larva inside a leaf, fruit, shoot, or pod creates a different scouting and management question from an exposed adult, nymph, or egg mass.",
+              callout:
+                "Field discipline: record the stage you actually observe. Do not assume the adult seen on the crop is the stage causing the injury.",
+            },
+            {
+              heading: "Read feeding patterns in crop context",
+              body:
+                "The source groups visible injury into sucking insects, miners and borers, and chewing insects. Chewing larvae and beetles can leave holes, skeletonised tissue, or missing leaf area; leaf miners create tunnels; borers damage shoots, fruit, or pods; and mites can affect leaves, branches, and fruit. Use crop and plant part to narrow the question: examples in the source include fruit flies in cucurbit and solanaceous fruit, *Liriomyza* leaf miner in leaves, *Tuta absoluta* on tomato leaves and fruit, caterpillar damage in brassicas and legumes, beetle shot holes on brassicas and solanaceous crops, and red or broad mite injury across vegetables. Feeding damage is a clue, not a substitute for finding the pest or its life stage.",
+            },
+            {
+              heading: "Treat sucking pests as a crop-health and vector question",
+              body:
+                "The source warns that sucking-insect damage is not always easy to evaluate because direct tissue damage may appear limited while virus transmission can carry serious consequences. Whiteflies, aphids, and thrips therefore require inspection of growing points, shoot tips, leaf undersides, and the field pattern as well as crop symptoms. The source links whitefly, aphid, and thrips contexts to virus-affected crops and advises removal of whole plants when viral symptoms are present. Record pest presence, natural enemies, plant symptoms, nearby weeds or host plants, crop stage, and affected area so that management can protect the crop rather than react only to the most visible insects.",
+            },
+          ],
+        },
+        {
+          id: "manage-pests-and-mites-with-integrated-ipm",
+          title: "Manage pests and mites with integrated IPM",
+          duration: "41 min",
+          kicker: "Break pest build-up and virus spread with sanitation, exclusion, biological control, and proportionate action",
+          summary:
+            "Build an IPM response around monitoring, clean cultivation, crop and canopy management, trap and barrier selection, natural enemies, botanical or biological tools, and lawful label-directed escalation when justified.",
+          outcomes: [
+            "Select cultural, mechanical, physical, biological, and host-resistance measures that fit the observed pest and crop context.",
+            "Use sanitation, weed management, reflective mulch, netting, and carefully selected traps to reduce pest pressure and vector risk.",
+            "Position botanical, biological, and synthetic crop-protection options as evidence-led, crop-guide and label-directed parts of IPM.",
+          ],
+          sections: [
+            {
+              heading: "Remove sources and favourable conditions before escalating",
+              body:
+                "The source begins crop management with cultural control: crop rotation, intercropping, mulch, weed management, removal and disposal of virus-infected and insect-infested plants or plant parts away from the field, appropriate crop density, aeration, and end-of-cycle crop-residue removal. It also advises scouting growing points, shoot tips, and leaf undersides; avoiding work in wet conditions; and using repellent or attractant plants and bird perches where appropriate to support a more resilient field system. For pest groups that pupate in soil, the source identifies ploughing and harrowing as a way to reduce pupation opportunity. These actions reduce pest sources and spread pathways; they should be planned from the crop, pest biology, field history, and season rather than copied as a universal checklist.",
+              callout:
+                "IPM starts before a spray decision: remove infested material, manage weeds and crop residues, and reduce the conditions that allow pests or vectors to build up.",
+            },
+            {
+              heading: "Use barriers, traps, and natural enemies with a target in mind",
+              body:
+                "The source includes reflective plastic mulch and protective netting to reduce or exclude vector pests; yellow and blue sticky traps for relevant low-flying insects; pheromone traps for target moths and fruit flies; light traps; fruit bagging; and direct collection or removal of adults, larvae, and pupae on small areas. Trap type, placement, target pest, and field observation must agree. The source cautions that sweet, sticky, and light traps can also capture beneficial insects, and notes that pheromone trapping can improve target specificity where available. It also identifies parasitoids, predators such as lady beetles, spiders, and earwigs, and insect pathogens such as NPV, *Beauveria*, *Metarhizium*, and *Bacillus thuringiensis* as biological-control resources for keeping pest populations at tolerable levels.",
+            },
+            {
+              heading: "Keep product decisions lawful, precise, and integrated",
+              body:
+                "The source presents biopesticides and botanical options including neem extract, botanical sprays, plant ash, and microbial products, while its pest pages repeatedly direct learners to crop guides for pest-specific product choices. When a crop-protection action is needed, confirm the pest and life stage, crop and crop stage, field severity, locally legal registration, label instructions, personal protection, pre-harvest interval, resistance management, and non-target effects. A botanical, biological, or synthetic product is not a replacement for monitoring, sanitation, exclusion, or protection of natural enemies. Use the least disruptive lawful option that fits the verified problem, and record the outcome for the next scouting decision.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "insect-pests-and-mites-identification-and-management-check",
+        title: "Insect-pests and mites identification and management check",
+        description:
+          "Apply life-cycle, damage-pattern, vector-risk, scouting, and integrated pest-management evidence to vegetable insect-pest and mite decisions.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "im-1",
+            prompt: "Why does distinguishing complete from incomplete metamorphosis improve a field pest-management decision?",
+            options: [
+              { id: "a", label: "It helps the advisor identify the life stage present and match scouting or management to the stage causing injury, such as a larva, nymph, adult, or pupa." },
+              { id: "b", label: "It means all adults, larvae, and nymphs cause identical crop injury and need identical management." },
+              { id: "c", label: "It removes the need to inspect plant parts, damage patterns, crop stage, or field distribution." },
+              { id: "d", label: "It proves that an insect found on the crop must be the sole cause of every symptom." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source connects life cycle to the damaging stage, allowing scouting and IPM actions to be targeted rather than assumed.", incorrect: "Life-cycle knowledge matters because the stage seen and the stage causing injury may differ. Match inspection and management to the actual pest stage, crop part, and field evidence." },
+          },
+          {
+            id: "im-2",
+            prompt: "A cucurbit crop has leaf curling, scattered whiteflies on leaf undersides, nearby weeds, and plants with virus-like symptoms. Which response best reflects the source’s management logic?",
+            options: [
+              { id: "a", label: "Scout and record vector presence and symptoms; remove virus-symptomatic plants and host weeds where appropriate; use reflective mulch or exclusion netting and relevant traps; protect natural enemies; and consider only lawful, label-directed IPM action if justified." },
+              { id: "b", label: "Ignore the virus-like symptoms because sucking pests only matter when leaf tissue is completely missing." },
+              { id: "c", label: "Keep symptomatic plants and weeds in place, then apply a product without checking crop registration, vector pressure, or non-target effects." },
+              { id: "d", label: "Treat every curled leaf as a nutrient problem without inspecting pests, crop history, or disease-vector risk." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Whiteflies can create a vector-management question even when feeding damage appears limited; sanitation, host-weed control, exclusion, monitoring, beneficial-insect protection, and lawful IPM work together.", incorrect: "The source treats whiteflies and other sucking pests as possible virus vectors. Combine scouting, removal of symptomatic sources and host weeds where appropriate, barriers or mulch, target-aware traps, and careful lawful IPM rather than relying on one isolated action." },
+          },
+          {
+            id: "im-3",
+            prompt: "A brassica crop has shot-hole leaf damage and flea beetles are confirmed. Which management plan is most consistent with the source?",
+            options: [
+              { id: "a", label: "Monitor the crop, collect adults and larvae where practical, consider ploughing or harrowing to reduce pupae, and use a crop-guide and label-directed botanical or synthetic option only when justified within IPM." },
+              { id: "b", label: "Assume all holes are caused by a pathogen and avoid inspecting or recording beetle activity." },
+              { id: "c", label: "Apply an unverified product immediately and ignore crop, label, life stage, natural enemies, and cultural controls." },
+              { id: "d", label: "Increase weed pressure and retain damaged residues because field sanitation cannot affect pest build-up." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source’s flea-beetle guidance combines regular monitoring, collection, soil-stage disruption, and crop-guide-led product choices rather than a single unverified treatment.", incorrect: "Use the confirmed damage and pest identity to guide monitoring, practical removal, soil-stage management where appropriate, and only lawful crop-guide or label-directed intervention within an IPM plan." },
+          },
+          {
+            id: "im-4",
+            prompt: "What is the most responsible role for traps and biological tools in the source’s IPM framework?",
+            options: [
+              { id: "a", label: "Use target-appropriate traps and conservation or use of natural enemies alongside scouting, sanitation, and crop management, while checking non-target effects because sticky, sweet, and light traps can capture beneficial insects." },
+              { id: "b", label: "Use the same trap at the same placement for every pest and assume it cannot affect beneficial organisms." },
+              { id: "c", label: "Replace pest identification and field scouting with any available light or sticky trap." },
+              { id: "d", label: "Exclude biological control because natural enemies and insect pathogens have no role in managing pest populations." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source presents traps and biological control as targeted, integrated tools and explicitly warns that some traps can also catch beneficial insects.", incorrect: "Trap choice must match the target pest and be combined with monitoring, sanitation, barriers, crop management, and biological control. Protect beneficial organisms and do not treat a trap as a stand-alone diagnosis or solution." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, and integrated disease management to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, and insect-pest and mite identification and IPM to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4669,6 +4801,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The response verifies the cause category, manages wet-condition disease drivers and spread pathways, uses prevention and IPM, and treats legal label-directed crop protection as one justified component rather than the whole plan.",
           incorrect: "Disease management starts with a qualified diagnosis. Use symptoms, signs, pattern, field context, and support or testing to identify likely causes, then integrate prevention, sanitation, water and canopy management, resistant material, rotation, IPM, and lawful label-directed action where justified.",
+        },
+      },
+      {
+        id: "final-32",
+        prompt:
+          "A tomato field has curled, yellowing new leaves, whiteflies on leaf undersides, weeds along the border, and several plants with virus-like symptoms. Yellow sticky traps are also catching beneficial insects. Which advisory response best reflects the source’s insect-pest and mite management framework?",
+        options: [
+          { id: "a", label: "Confirm and record the pest stage, symptoms, crop part, distribution, host weeds, and natural enemies; remove virus-symptomatic plants and weed hosts where appropriate; use sanitation, reflective mulch or netting, target-aware trapping, and biological conservation; then use only technically justified, locally lawful, label-directed crop protection within IPM." },
+          { id: "b", label: "Ignore the vector and virus evidence because visible feeding injury is limited, keep symptomatic plants and weeds, and continue any trap regardless of beneficial-insect capture." },
+          { id: "c", label: "Assume every curled leaf is nutritional, omit field scouting and pest identification, and select a product without checking crop registration, label, non-target effects, or sanitation." },
+          { id: "d", label: "Treat whiteflies, aphids, thrips, caterpillars, beetles, mites, and disease symptoms with one identical action because pest biology and vector risk do not change management." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response combines evidence-led vector diagnosis with removal of infection sources and host weeds where appropriate, sanitation, exclusion, target-aware trapping, natural-enemy protection, and lawful label-directed IPM.",
+          incorrect: "The source requires a pest- and context-specific IPM plan. Verify the pest and symptoms, remove virus sources and host weeds where appropriate, use barriers and target-aware traps without disregarding beneficial insects, and treat crop-protection action as a justified lawful component rather than the entire strategy.",
         },
       },
     ],
