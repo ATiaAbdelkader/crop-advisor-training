@@ -4417,12 +4417,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "responsible-use-of-pesticides",
+      index: 33,
+      title: "Responsible use of pesticides",
+      eyebrow: "Module 33",
+      description:
+        "Use label literacy, safe handling, calibrated application, stewardship, and resistance-aware decision making to minimize health and environmental risks when pesticide use is justified.",
+      lessons: [
+        {
+          id: "read-labels-and-select-products-responsibly",
+          title: "Read labels and select products responsibly",
+          duration: "44 min",
+          kicker: "Confirm target fit, hazard information, and legal instructions before a pesticide is opened",
+          summary:
+            "Read the label as a decision and safety document, distinguish product types, active ingredients, and modes of action, and select only a justified, registered, target-effective, and least-disruptive option within IPM.",
+          outcomes: [
+            "Extract crop, target-pest, dose, frequency, PHI, re-entry, safety, environmental, storage, and expiry instructions from a pesticide label.",
+            "Interpret hazard colour bars and pictograms as action prompts for personal protection, hygiene, storage, and environmental protection.",
+            "Distinguish pesticide type, active ingredient, formulation, and mode of action when considering a responsible product decision and resistance risk.",
+          ],
+          sections: [
+            {
+              heading: "Treat the label as the first safety and fit check",
+              body:
+                "The source’s first golden rule is to read and understand the label. Before use, check the recommended crop, target pest, environmental precautions, dose, frequency, pre-harvest interval, active ingredient, storage advice, re-entry time, safety advice, hazard class, expiry date, and mode of action. A pesticide is intended to prevent, destroy, or control a harmful organism or disease, but pesticide type must fit the target: for example, fungicides target fungi, insecticides insects, herbicides weeds, nematicides nematodes, and acaricides or miticides spiders or mites. A product name or a visible symptom is not enough evidence for use; confirm the target, crop, local legal registration, and label instructions first.",
+              callout:
+                "A pesticide decision is incomplete until the crop, verified target, local registration, label, pre-harvest interval, safety requirements, and environmental precautions all agree.",
+            },
+            {
+              heading: "Read hazard communication as an instruction to act",
+              body:
+                "The source presents hazard colour bars from extremely and highly hazardous through moderately and slightly hazardous to acute hazard unlikely, alongside pictograms. These indicators are not decoration. They communicate risk and actions such as wearing long sleeves and trousers, gloves, face protection, and boots; washing hands after use; protecting animals and aquatic life; and keeping chemicals locked away from children. The source also warns that different body areas vary in pesticide absorption and instructs users to stop spraying immediately if they develop fatigue, headache, nausea, or dizziness and to seek appropriate medical assistance rather than continuing work.",
+            },
+            {
+              heading: "Select for need, specificity, and stewardship",
+              body:
+                "The source distinguishes active ingredient—the component that controls or repels the target—from inert formulation ingredients such as carriers, stickers, spreaders, emulsifiers, and anti-foam agents. It also distinguishes systemic, contact, stomach, and repellent action, and links product choice to registration, target effectiveness, effect on beneficial insects, and user and consumer safety. Use a pesticide only when justified within IPM and select the least toxic, most selective legally registered option that fits the verified target. Prevent resistance by using non-chemical methods where possible, applying only when necessary at the advised rate, avoiding unverified mixes, and alternating different mode-of-action groups according to the label and locally relevant resistance-management guidance.",
+            },
+          ],
+        },
+        {
+          id: "mix-apply-and-maintain-sprayers-safely",
+          title: "Mix, apply, and maintain sprayers safely",
+          duration: "45 min",
+          kicker: "Protect people, water, crops, and beneficial organisms through controlled mixing and precise application",
+          summary:
+            "Use personal protection, hygiene, measuring discipline, water-source safeguards, weather-aware timing, coverage, nozzle selection, calibration, and equipment maintenance to make a justified application safer and more effective.",
+          outcomes: [
+            "Prepare, measure, mix, and clean pesticide equipment without avoidable exposure or water contamination.",
+            "Choose weather, coverage, nozzle, and calibration practices that reduce drift, waste, residue, and control failure.",
+            "Maintain hygiene, sprayer condition, and post-application review as part of responsible pesticide stewardship.",
+          ],
+          sections: [
+            {
+              heading: "Mix and measure without creating a second hazard",
+              body:
+                "The source requires protective clothing, gloves, and a mask during handling, mixing, and measuring. Keep clean water available; avoid dust and splashing; use a stick for mixing; replace the pesticide lid immediately; use proper measuring tools; and never reuse pesticide measuring devices to prepare food. Do not eat, drink, or smoke while handling pesticides. Never mix or fill sprayers close to water sources. When containers are empty, follow the source’s triple-rinse procedure and use the rinse water only as directed in the spray tank before disposing of packaging carefully under applicable local rules. Mix only compatible products that the label or authoritative local guidance permits, following the source’s solid-before-liquid sequence and maintaining agitation where the formulation requires it.",
+              callout:
+                "Accurate measurement protects more than the crop: too much raises cost, residues, and exposure; too little can fail to control the target and can increase resistance risk.",
+            },
+            {
+              heading: "Match application to weather, target location, and equipment",
+              body:
+                "The source explains that a product is only as good as its application. Spray effectiveness depends on weather, water quality, pest life cycle, equipment condition, operator technique, crop stage, and whether spray reaches the target. Cooler early morning or late afternoon conditions are generally preferred; avoid windy conditions, avoid rain expected within two to three hours, and use a light breeze only when its direction can be read. Many pests and diseases occur on leaf undersides, so coverage and target placement matter. Choose nozzle pattern for the product type, keep nozzle height and movement steady, and balance droplet size: smaller droplets can improve coverage but create drift risk. Spreaders and stickers can change coverage, adhesion, and rainfastness, so use them only as label-compatible, evidence-led components of the application.",
+            },
+            {
+              heading: "Calibrate, clean, protect, and review",
+              body:
+                "The source instructs users to check sprayers for leaks with clean water before use, calibrate output at least once per season, inspect nozzles for even and uniform application, clean equipment after each use, and replace nozzles frequently. Walking speed, pressure, lance height, nozzle choice, and crop stage all affect output. Poor calibration can create dangerous residues, pest resurgence, environmental and health risks, product failure, and wasted money. After application, wash hands, wash contaminated clothing separately, rinse splashes immediately, and do not clear nozzles by blowing. Record what was used, where, why, conditions, and outcome so the next IPM decision can assess control, safety, and resistance risk rather than repeating an unreviewed practice.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "responsible-use-of-pesticides-check",
+        title: "Responsible use of pesticides check",
+        description:
+          "Apply label interpretation, personal and environmental safety, precise mixing and application, equipment calibration, and resistance-aware pesticide stewardship to a crop-protection decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "rp-1",
+            prompt: "Which label-review sequence is essential before a pesticide is used on a crop?",
+            options: [
+              { id: "a", label: "Verify the recommended crop and target, local registration, dose and frequency, PHI and re-entry requirements, active ingredient and mode of action, hazard and safety advice, environmental precautions, storage, and expiry date." },
+              { id: "b", label: "Check only the trade name because crop fit, target, safety, PHI, registration, and expiry do not affect responsible use." },
+              { id: "c", label: "Use the product whenever pests are visible without reading the label or comparing the target and crop." },
+              { id: "d", label: "Ignore hazard, environmental, storage, and re-entry information if the grower has used a similar container before." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source requires a full label check that connects crop and target fit with legal, safety, environmental, timing, and stewardship requirements.", incorrect: "Read the complete label before use. Responsible application depends on crop and target fit, registration, rate, timing, PHI, hazard, safety, environmental, storage, expiry, active-ingredient, and mode-of-action information." },
+          },
+          {
+            id: "rp-2",
+            prompt: "A worker plans to measure and mix pesticide beside an irrigation canal using a food measuring cup, no gloves, and a high water pour that creates splashes. What is the most responsible correction?",
+            options: [
+              { id: "a", label: "Move away from the water source; wear required protective clothing, gloves, and mask; use dedicated accurate measuring tools and a stick for mixing; avoid dust and splashing; close containers promptly; and keep pesticide tools separate from food preparation." },
+              { id: "b", label: "Continue beside the canal because water makes mixing safer and food cups are accurate enough for pesticide handling." },
+              { id: "c", label: "Increase the pour height so the container fills faster and remove gloves to improve hand control." },
+              { id: "d", label: "Use an arbitrary quantity because exact measurement only changes cost, not safety, residues, efficacy, or resistance risk." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source requires water-source safeguards, PPE, dedicated measurement tools, controlled mixing, splash prevention, and prompt container handling.", incorrect: "Never mix or fill close to a water source. Use PPE and dedicated accurate measuring tools, mix carefully with a stick, prevent dust and splashes, and keep pesticide equipment out of food use." },
+          },
+          {
+            id: "rp-3",
+            prompt: "A grower wants to spray during hot, windy conditions with rain expected in two hours. The target is on leaf undersides, and the sprayer has not been calibrated this season. Which plan best follows the source?",
+            options: [
+              { id: "a", label: "Delay application; inspect leaks with clean water, calibrate output and nozzle uniformity, then spray only in suitable lower-stress weather with no near-term rain or strong wind, directing coverage to the verified target while controlling drift." },
+              { id: "b", label: "Spray immediately because weather, drift, rain, crop stage, target location, coverage, nozzle choice, and calibration do not affect results." },
+              { id: "c", label: "Increase pressure as much as possible in wind because smaller droplets cannot drift and calibration is unnecessary." },
+              { id: "d", label: "Apply only to upper leaf surfaces even when the target is underneath, then repeat at a higher rate if control fails." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source connects weather, target location, coverage, nozzle condition, calibration, drift prevention, and even application to safe and effective crop protection.", incorrect: "Do not spray in unsuitable heat, wind, or near-term rain. First inspect and calibrate the sprayer, then apply in appropriate conditions with correct coverage and nozzle use that reaches the verified target without avoidable drift." },
+          },
+          {
+            id: "rp-4",
+            prompt: "Which pesticide-stewardship approach best reduces resistance and protects beneficial organisms when a pesticide is justified within IPM?",
+            options: [
+              { id: "a", label: "Use non-chemical controls where possible; apply only when necessary; choose a registered, target-effective, selective, less-toxic option; use the advised rate; avoid unverified mixes; and alternate appropriate mode-of-action groups according to label and local guidance." },
+              { id: "b", label: "Use the same broad-spectrum product repeatedly at any rate because active ingredient and mode of action do not influence resistance or beneficial insects." },
+              { id: "c", label: "Mix several products of unknown compatibility and lower every dose so the label, target effectiveness, and resistance guidance no longer matter." },
+              { id: "d", label: "Choose products only by immediate knockdown and ignore registration, selectivity, target fit, user safety, PHI, environmental effects, and mode of action." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source pairs necessary, target-effective, selective pesticide use with correct rate, non-chemical options, compatibility discipline, mode-of-action rotation, and protection of beneficial organisms.", incorrect: "Responsible stewardship begins with IPM. When pesticide use is justified, select a registered and target-effective least-disruptive option, follow the advised rate and label, avoid unverified mixes, and use appropriate mode-of-action diversity with local guidance." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, and integrated pest-management decision making to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, evidence-led field diagnosis, integrated disease management, insect-pest and mite identification and management, integrated pest-management decision making, and responsible pesticide stewardship to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4965,6 +5097,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The response follows prevention, monitoring, target-specific intervention, biological conservation, and carefully constrained, lawful last-resort chemical stewardship followed by evaluation.",
           incorrect: "The source treats IPM as an observation-analysis-decision process. Diagnose and quantify the field problem, reduce pest-conducive conditions, protect or use biological control, choose target-specific actions, and reserve lawful label-directed chemicals for a justified last step that is reviewed afterward.",
+        },
+      },
+      {
+        id: "final-34",
+        prompt:
+          "A grower wants to spray an unlabeled leftover product on tomatoes during a hot, windy afternoon with rain expected later. The sprayer is leaking, has not been calibrated, and will be filled beside a drainage ditch. The grower plans to use a food cup for measuring and no protective clothing. Which advisory response is most defensible?",
+        options: [
+          { id: "a", label: "Do not use the unlabeled product. First verify the crop problem and IPM alternatives; select only a locally registered, labelled product that fits the crop and verified target; read crop, dose, PHI, hazard, PPE, environmental, storage, expiry, and mode-of-action instructions; repair and calibrate the sprayer; mix away from water with PPE and dedicated measuring tools; apply only in suitable weather with target coverage and drift control; then clean, record, and review the outcome." },
+          { id: "b", label: "Use the leftover product immediately because hot wind and near-term rain improve coverage, the ditch provides convenient mixing water, and labels, PPE, calibration, crop registration, PHI, and target fit are optional." },
+          { id: "c", label: "Increase the dose until control is visible, measure with the food cup, and spray through a leaking uncalibrated nozzle because safety and residue risks only matter after harvest." },
+          { id: "d", label: "Choose any broad-spectrum product before identifying the problem, use it regardless of mode of action or beneficial insects, and repeat it without reviewing weather, equipment, coverage, resistance, or outcome." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response protects the grower, consumers, water, crop, beneficial organisms, and future control options through IPM, label literacy, legal product fit, PPE, dedicated measurement, equipment safety, weather-aware application, and review.",
+          incorrect: "Responsible pesticide stewardship starts before mixing: verify the problem and alternatives, use only a labelled legal crop-target fit, follow the label and PHI, protect people and water, maintain and calibrate equipment, select safe weather and coverage, and review the result within IPM.",
         },
       },
     ],

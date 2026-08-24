@@ -629,6 +629,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds responsible pesticide use after integrated pest management", () => {
+    const pesticideModule = cropAdvisorCourse.modules.find(
+      module => module.id === "responsible-use-of-pesticides"
+    );
+    const previousModule = cropAdvisorCourse.modules[31];
+
+    expect(pesticideModule?.lessons).toHaveLength(2);
+    expect(pesticideModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(pesticideModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(
