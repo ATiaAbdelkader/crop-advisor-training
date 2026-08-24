@@ -45,3 +45,4 @@
 - [x] Analyse REVISED_PRD-009.Drip Irrigation System and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-010.Fertilization of Vegetables and integrate its source-grounded module, assessments, progression, and design documentation.
 - [x] Analyse REVISED_PRD-011.Field Care and Maintenance of Vegetable Crops and integrate its source-grounded module, assessments, progression, and design documentation.
+- [x] Analyse REVISED_PRD-012.Harvesting and Post-Harvest Handling and integrate its source-grounded module, assessments, progression, and design documentation.

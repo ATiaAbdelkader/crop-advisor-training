@@ -3757,12 +3757,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "harvesting-and-post-harvest-handling",
+      index: 28,
+      title: "Harvesting and post-harvest handling",
+      eyebrow: "Module 28",
+      description:
+        "Protect vegetable value from harvest through handling by choosing the right maturity, time, method, cooling and sorting sequence, and food-safety safeguards.",
+      lessons: [
+        {
+          id: "harvest-at-market-ready-maturity-without-damage",
+          title: "Harvest at market-ready maturity without damage",
+          duration: "38 min",
+          kicker: "Harvest quality is decided before the produce reaches a container",
+          summary:
+            "Choose the right age, time, and method for harvest, then protect produce from physical injury, heat, soil contact, and contamination in the field.",
+          outcomes: [
+            "Distinguish physiological maturity, commercial maturity, and market acceptability when setting a harvest decision.",
+            "Choose a crop- and weather-appropriate harvest time that manages field heat, water status, and spoilage risk.",
+            "Use tools, containers, and careful handling practices that prevent injury, contamination, and quality loss.",
+          ],
+          sections: [
+            {
+              heading: "Set harvest age from maturity and market purpose",
+              body:
+                "The source frames harvesting around four linked decisions: right age, right time, right way of harvesting, and right post-harvest handling. Harvest maturity is critical because too-young and too-old produce does not keep long. Physiological maturity means the plant has completed natural growth and development and may continue to develop after harvest; commercial maturity reflects the stage a buyer wants for a specific purpose. Market acceptability can differ by locality, crop use, colour, size, and consumer preference. Use maturity or harvest indices—such as crop stage, days after planting, marketable size, colour, fullness, gloss, leaf condition, or crop-specific indicators—to define a repeatable standard, then verify it with the target market, variety, purpose, and delivery plan.",
+              callout:
+                "Maturity is not one fixed date. Align crop development with the market specification, intended use, shelf-life requirement, and transport path before harvesting starts.",
+            },
+            {
+              heading: "Choose harvest time around heat, moisture, and crop type",
+              body:
+                "The source recommends harvesting during cooler parts of the day to reduce heat loading, while noting that plants can be brittle in early morning and must be handled carefully. It advises against harvesting during or immediately after rain to reduce spoilage risk. It presents early morning as useful for fruit vegetables to minimise field heat and late afternoon as useful for leafy vegetables because daytime photosynthesis can increase sugars and slow yellowing. Harvest planning also connects with field water status for many fruit-bearing crops, crop-specific guidance, weather, labour, transport, and the next cooling or market step.",
+            },
+            {
+              heading: "Harvest and collect without creating hidden losses",
+              body:
+                "Use sharp, clean tools and small collection containers where appropriate. Avoid pulling fruit when cutting is required, avoid damage at the peduncle, and use scissors or knives where they protect the crop and worker. Protect harvested produce with liners where they prevent abrasion from rough surfaces, and use clean food-grade containers such as plastic crates. Avoid dropping or throwing produce into containers, dragging containers, exposing produce to sunlight, or leaving it in contact with soil. Do not sit or stand on harvested vegetables. These details matter because physical injuries become entry points for spoilage and shorten shelf life.",
+            },
+          ],
+        },
+        {
+          id: "run-a-safe-post-harvest-loss-control-chain",
+          title: "Run a safe post-harvest loss-control chain",
+          duration: "37 min",
+          kicker: "Move from field heat to market quality with control points",
+          summary:
+            "Use cleaning, curing, cooling, sorting, grading, storage, handling, and food-safety safeguards to reduce loss and preserve saleable produce.",
+          outcomes: [
+            "Sequence post-harvest handling from collection through cleaning, curing or cooling, sorting, grading, and market preparation.",
+            "Choose handling and cooling practices that fit commodity sensitivity and prevent cross-contamination or deterioration.",
+            "Apply food-safety safeguards around manure, water, pesticide intervals, soil contact, equipment, and approved treatments.",
+          ],
+          sections: [
+            {
+              heading: "Build a handling chain that removes field hazards early",
+              body:
+                "The source defines post-harvest as beginning where production ends and identifies its purpose as reducing losses, maintaining saleable quality, extending shelf life, and protecting farm income. Use containers to collect harvest for cleaning and sorting. Cleaning can remove adhering soil and debris, remove damaged leaves, trim crop-specific stems, or use a clean soft cloth on suitable commodities. Curing is relevant for products such as onion, garlic, and potatoes; it uses warm, well-ventilated conditions so outer layers dry and harden. Sorting separates damaged or poor-quality produce from sound produce to avoid cross-contamination and early deterioration. Grading then classifies sound produce into defined quality, size, maturity, or market classes. Sorting removes risk; grading matches saleable produce to a market standard.",
+              callout:
+                "Post-harvest loss control begins at collection. Every delay in shade, cleaning, sorting, or safe separation can turn a small field injury into a larger quality or contamination problem.",
+            },
+            {
+              heading: "Remove field heat without damaging water-sensitive crops",
+              body:
+                "Post-harvest cooling can remove field heat and preserve quality, but the source treats it as crop-dependent. Hydro-cooling is a rapid method for commodities that tolerate wet conditions; some crops are sensitive to post-harvest water and can rot if soaked, so they require another cooling approach. The source presents improvised options such as charcoal coolers and zero-energy cooling chambers. Select cooling from commodity sensitivity, field temperature, expected holding time, available water quality, sanitation, packaging, and local infrastructure. Once cooling is used, protect the temperature benefit through shade, clean handling, suitable packaging, timely transport, and avoidance of repeated heat exposure.",
+            },
+            {
+              heading: "Keep food safety inside the post-harvest plan",
+              body:
+                "The source directs growers not to apply raw dairy or chicken manure in produce areas, to clean equipment used for manure before another area, not to use livestock-affected farm-pond water, to observe pesticide pre-harvest intervals, and not to lay harvested produce directly on soil—especially where manure is scattered or animals graze. It also presents food-grade and plant-extract treatment examples. Treat these as context-specific options, not universal recipes: use only approved treatments under local food-safety rules, verified commodity suitability, safe water, sanitation, and buyer requirements. Protect clean tools, containers, water, surfaces, separation of damaged produce, and traceable harvest practices before adding any treatment.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "harvesting-and-post-harvest-handling-check",
+        title: "Harvesting and post-harvest handling check",
+        description:
+          "Apply maturity, timing, field handling, cooling, sorting, food-safety, and post-harvest loss-control principles to a vegetable market decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "ph-1",
+            prompt: "What is the most defensible basis for setting a vegetable harvest standard?",
+            options: [
+              { id: "a", label: "Use maturity indices together with crop purpose, variety, market preference, intended use, shelf-life needs, and delivery plan." },
+              { id: "b", label: "Harvest every crop on the same calendar day regardless of maturity, buyer preference, or intended market." },
+              { id: "c", label: "Harvest only when every crop reaches the same colour because commercial maturity never varies by market." },
+              { id: "d", label: "Ignore crop development and harvest only when field labour happens to be available." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source distinguishes physiological maturity from commercial maturity and market acceptability, so the harvest standard must connect crop development with intended market and use.", incorrect: "Harvest maturity must be linked to crop development and market purpose. Use reliable maturity indices together with buyer, variety, use, shelf-life, and transport requirements." },
+          },
+          {
+            id: "ph-2",
+            prompt: "Which field-harvest practice best protects vegetable quality?",
+            options: [
+              { id: "a", label: "Use sharp clean tools and clean food-grade containers; minimise pulling, abrasion, drops, sunlight exposure, and soil contact; and handle produce gently." },
+              { id: "b", label: "Throw harvested produce into rough containers and leave it in direct sun to speed field work." },
+              { id: "c", label: "Drag containers through soil and stand on produce so fewer crates are needed." },
+              { id: "d", label: "Use dirty blunt tools because harvest injuries do not affect spoilage or shelf life." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Clean cutting, gentle collection, suitable containers, shade, and avoidance of soil contact protect produce from injuries and contamination that cause later losses.", incorrect: "Quality loss often begins as harvest damage. Use clean sharp tools, gentle handling, protective containers, shade, and separation from soil and contamination." },
+          },
+          {
+            id: "ph-3",
+            prompt: "How do sorting and grading differ in a loss-control chain?",
+            options: [
+              { id: "a", label: "Sorting removes damaged or poor produce to reduce contamination and deterioration; grading classifies sound produce into defined quality, size, maturity, or market categories." },
+              { id: "b", label: "Sorting and grading both mean leaving damaged and sound produce mixed together." },
+              { id: "c", label: "Grading is only done before harvest, while sorting is never used after harvest." },
+              { id: "d", label: "Sorting is a cooling method and grading is a pesticide treatment." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Sorting removes deterioration risks; grading matches sound produce to an agreed quality or market standard.", incorrect: "Separate poor or damaged produce early through sorting, then grade sound produce by the relevant market quality, size, maturity, or class criteria." },
+          },
+          {
+            id: "ph-4",
+            prompt: "Which practice best follows the source food-safety guidance after harvest?",
+            options: [
+              { id: "a", label: "Use clean equipment and safe water, observe pesticide pre-harvest intervals, keep produce off soil and animal-contaminated areas, and use only approved commodity-suitable treatments." },
+              { id: "b", label: "Place harvested produce directly on livestock-affected soil and use any nearby pond water without checking contamination risk." },
+              { id: "c", label: "Ignore pesticide pre-harvest intervals because washing always removes every residue risk." },
+              { id: "d", label: "Move equipment from raw-manure areas into harvest areas without cleaning it." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Food safety is built from clean tools and water, controlled manure and soil contact, pesticide-interval compliance, and approved crop-suitable practices.", incorrect: "Protect food safety through clean equipment, safe water, pre-harvest interval compliance, separation from manure and animal contamination, and verified commodity-suitable handling or treatment practices." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, and field-care and maintenance decisions to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, and harvest and post-harvest loss control to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4225,6 +4357,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The response connects crop support, hygienic canopy care, diagnostic pollination management, fruit support, and underlying water and nutrient conditions.",
           incorrect: "High-quality field care is integrated: support and train the crop early, prune hygienically, diagnose fruit-set constraints before manual pollination, protect fruit from soil contact, and manage water and nutrition alongside crop structure.",
+        },
+      },
+      {
+        id: "final-29",
+        prompt:
+          "A harvest team picks vegetables at an inconsistent maturity, drops produce into rough containers, leaves crates in direct sun and soil contact, mixes damaged produce with sound produce, and uses livestock-affected pond water for cleaning. Which corrective plan is most defensible?",
+        options: [
+          { id: "a", label: "Set crop- and market-specific maturity standards; harvest at an appropriate cool period; use clean sharp tools and food-grade containers; move produce to shade; sort out damage; select commodity-suitable cooling; and protect food safety through safe water, clean equipment, pre-harvest interval compliance, and separation from soil and animal contamination." },
+          { id: "b", label: "Increase harvest speed while keeping the same maturity, rough handling, sun exposure, damaged-produce mixing, and unsafe water source." },
+          { id: "c", label: "Rely on a later treatment to correct every field injury, contamination risk, maturity inconsistency, and heat-loading problem." },
+          { id: "d", label: "Leave produce on soil until all picking is finished, then grade damaged and sound produce together for a uniform market class." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The plan connects market-ready maturity, gentle harvest, shade, sorting, crop-suitable cooling, and food-safety controls across the complete post-harvest chain.",
+          incorrect: "Post-harvest loss prevention is cumulative. Control maturity, timing, harvest injury, field heat, containers, sorting, cooling, water and equipment hygiene, pesticide intervals, and contamination risks from the start.",
         },
       },
     ],

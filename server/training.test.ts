@@ -529,6 +529,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds harvesting and post-harvest handling after field care", () => {
+    const harvestModule = cropAdvisorCourse.modules.find(
+      module => module.id === "harvesting-and-post-harvest-handling"
+    );
+    const previousModule = cropAdvisorCourse.modules[26];
+
+    expect(harvestModule?.lessons).toHaveLength(2);
+    expect(harvestModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(harvestModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

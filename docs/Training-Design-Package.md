@@ -1,12 +1,12 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 3.4  
+**Version:** 3.5  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
 
-Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-seven required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
+Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pathway for agricultural practitioners who need a repeatable approach to field observation, soil context, crop diagnosis, vegetable-production planning, cost planning, crop-and-variety selection, crop-yield factors, climatic risk, topographic risk, edaphic soil health, soil-protection planning, balanced plant nutrition, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, and defensible recommendation-making. The programme is designed around applied judgement rather than product selection. Learners proceed through twenty-eight required modules, complete scored module assessments, and then pass an integrated final assessment before a credential is issued.
 
 > **Credential standard:** A learner must complete every lesson, pass each module assessment, and score at least **80%** on the final integrated assessment before a certificate is created.
 
@@ -41,6 +41,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 | **25. Drip irrigation system** | Planning, installing, controlling, monitoring, and maintaining a uniform root-zone drip system. | Design zones and capacity; specify components and filtration; install and verify distribution; prevent clogs, leaks, and pressure loss; maintain safely. | **Plan a drip system around field demand**; **Install, monitor, and maintain uniform drip delivery** | Both lessons complete and module check passed at 80% or above. |
 | **26. Fertilisation of vegetables** | Building soil- and crop-grounded nutrient plans through nutrient uptake, the 4Rs, source selection, nutrient analysis, effective placement, and responsible decision-making. | Diagnose limiting factors; assess soil supply and crop demand; apply the 4Rs; compare sources; interpret labels; choose an effective application method. | **Build a 4R plan from soil and crop demand**; **Select sources and place nutrients effectively** | Both lessons complete and module check passed at 80% or above. |
 | **27. Field care and maintenance of vegetable crops** | Maintaining crop structure, canopy health, fruit set, and market quality through support, pruning, training, pollination management, and fruit protection. | Time trellises; prune hygienically; train vines and branches; diagnose and manage pollination; support developing fruit. | **Maintain crop structure and canopy health**; **Protect pollination, fruit set, and market quality** | Both lessons complete and module check passed at 80% or above. |
+| **28. Harvesting and post-harvest handling** | Protecting vegetable value through market-ready maturity, low-damage harvest, cooling, sorting, grading, safe handling, and food-safety controls. | Set maturity and timing; harvest without injury; remove field heat safely; sort and grade; protect food safety from field to market. | **Harvest at market-ready maturity without damage**; **Run a safe post-harvest loss-control chain** | Both lessons complete and module check passed at 80% or above. |
 
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. The interface preserves the lesson order within a module and gives learners a visible record of completion.
 
@@ -102,6 +103,8 @@ Each lesson contains a short applied introduction, three substantial content sec
 | **Select sources and place nutrients effectively** | Compare organic and inorganic sources, interpret nutrient labels, and match placement method to roots, timing, field conditions, and crop safety. | Product choice only becomes efficient when its nutrient analysis, application method, and soil effects fit the field plan. |
 | **Maintain crop structure and canopy health** | Time support installation; prune for crop purpose; use sanitation; and train vines or branches to protect crop structure, airflow, and field access. | Structural crop care is preventive management of wind, disease, fruit contact, canopy crowding, and labour access. |
 | **Protect pollination, fruit set, and market quality** | Diagnose pollination constraints, use manual pollination when justified, and support fruit to preserve clean, high-quality produce. | Fruit-set and quality problems require biological, crop-health, and field-condition diagnosis before intervention. |
+| **Harvest at market-ready maturity without damage** | Set maturity and timing from crop and market evidence, then use low-injury harvesting and field handling practices. | Quality is protected by maturity, timing, tools, containers, shade, and gentle handling before the crop leaves the field. |
+| **Run a safe post-harvest loss-control chain** | Move from collection through cleaning, curing or cooling, sorting, grading, and food-safety safeguards. | Loss prevention requires an unbroken chain of quality, temperature, separation, sanitation, and contamination controls. |
 
 ## Assessment package
 
@@ -136,7 +139,8 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Drip-irrigation-system check** | Drip design, pump capacity, zones, components, filtration, installation, uniformity, pressure, flushing, clogging, leakage, and prevention-focused maintenance. | 4 | 80% | Unlocks the integrated final assessment only after both Module 25 lessons are complete and the check is passed. |
 | **Vegetable-fertilisation check** | Soil condition and limiting factors, crop uptake and removal, soil testing, pH, nutrient sources, label interpretation, application methods, and the 4Rs. | 4 | 80% | Unlocks the integrated final assessment only after both Module 26 lessons are complete and the check is passed. |
 | **Field-care-and-maintenance check** | Crop support, trellising timing, pruning purpose and hygiene, vine and branch training, pollination, fruit-set diagnosis, manual pollination, and fruit support. | 4 | 80% | Unlocks the integrated final assessment only after both Module 27 lessons are complete and the check is passed. |
-| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, and field-care and maintenance decisions. | 28 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
+| **Harvesting-and-post-harvest-handling check** | Harvest maturity, market acceptability, timing, tools, gentle handling, cooling, sorting, grading, food safety, and post-harvest loss control. | 4 | 80% | Unlocks the integrated final assessment only after both Module 28 lessons are complete and the check is passed. |
+| **Final integrated assessment** | Advisory sequence, soil context, management-zone evidence, uncertainty management, whole-system vegetable planning, cost-based revision decisions, crop-and-variety selection, genetic-environmental yield fit, crop-stage climatic-risk management, topographic site interpretation, complete edaphic soil assessment, integrated soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, and harvest and post-harvest loss control. | 29 | 80% | Issues certificate after a pass; a new certificate event triggers an owner notification. |
 
 ### Scoring rubric
 
@@ -177,6 +181,7 @@ The assessment design uses unambiguous, single-best-answer multiple-choice items
 | **Recover uniform drip delivery** | Near-tank wetting, dry far lines, silty water, neglected filters, unflushed ends, and no pressure checks. | Diagnoses pump and zone design, filtration, pressure, far-end flow, emitters, wetting, leaks, and maintenance records. | Investigate the whole water path before changing the irrigation schedule or replacing components. |
 | **Correct a universal fertiliser schedule** | Low soil potassium, large nitrogen doses throughout the cycle, and the same product and rate broadcast in every field. | Connects limiting factors, soil NPK and pH, crop uptake and removal, stage, label analysis, root access, nutrient antagonism, losses, and the 4Rs. | Efficient fertilisation corrects the field’s limiting factor and matches source, rate, timing, and placement to evidence. |
 | **Recover a stressed cucurbit block through field care** | Ground-crawling vines, crowded canopy, low set, deformed fruit, and fruit damaged by soil contact. | Connects early support, training, hygienic pruning, pollination diagnosis, water and nutrient conditions, and fruit support. | Crop care works as a coordinated quality-protection system, not isolated maintenance actions. |
+| **Protect value from harvest to market** | Inconsistent maturity, rough containers, sunlight and soil exposure, damaged-produce mixing, and livestock-affected water used for cleaning. | Connects market maturity, gentle harvesting, shade, sorting, cooling, containers, water safety, pesticide intervals, sanitation, and contamination control. | Post-harvest performance reflects each protection point in the chain, not a single downstream correction. |
 
 ## Certificate template specification
 
@@ -306,13 +311,17 @@ flowchart TD
   CE --> CF[Module 27 lessons and assessment]
   CF --> CG{Module 27 passed?}
   CG -- No --> CF
-  CG -- Yes --> CH[Unlock integrated final assessment]
-  CH --> CI{Final score at least 80%?}
-  CI -- No --> CJ[Feedback and final retake available]
-  CJ --> CH
-  CI -- Yes --> CK[Create credential record]
-  CK --> CL[Notify platform owner]
-  CL --> CM[Enable certificate download]
+  CG -- Yes --> CH[Unlock Module 28]
+  CH --> CI[Module 28 lessons and assessment]
+  CI --> CJ{Module 28 passed?}
+  CJ -- No --> CI
+  CJ -- Yes --> CK[Unlock integrated final assessment]
+  CK --> CL{Final score at least 80%?}
+  CL -- No --> CM[Feedback and final retake available]
+  CM --> CK
+  CL -- Yes --> CN[Create credential record]
+  CN --> CO[Notify platform owner]
+  CO --> CP[Enable certificate download]
 ```
 
 ## Platform UI and UX direction
@@ -382,6 +391,8 @@ Module 26 is derived from the supplied *Fertilization of Vegetables* training do
 
 Module 27 is derived from the supplied *Field Care and Maintenance of Vegetable Crops* training document. Its instructional structure retains crop-family support timing, trellising materials and construction, canopy and disease-management pruning, tool hygiene, crop training, pollination biology and diagnosis, careful manual pollination, fruit-set constraints, and fruit support for market quality. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [24]
 
+Module 28 is derived from the supplied *Harvesting and Post-Harvest Handling* training document. Its instructional structure retains commercial and physiological maturity, crop-specific harvest indices, harvest timing, low-injury tools and containers, shade and soil-contact safeguards, cleaning, curing, crop-suitable cooling, sorting and grading, approved post-harvest options, and food-safety controls for manure, water, pesticide intervals, surfaces, and equipment. The platform renders these themes as two adult-learning lessons, four applied assessment items, a module gate, and one final-assessment item. [25]
+
 ## References
 
 [1] [REVISED_ECN-001. *Importance of Planning in Vegetable Production* (user-supplied training document, 4 March 2023)](file:///home/ubuntu/upload/REVISED_ECN-001.ImportanceofPlanninginVegetableProduction_04032023.pdf)
@@ -431,3 +442,5 @@ Module 27 is derived from the supplied *Field Care and Maintenance of Vegetable 
 [23] [REVISED_PRD-010. *Fertilization of Vegetables* (user-supplied training document, 11 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-010.FertilizationofVegetables_05112023.pdf)
 
 [24] [REVISED_PRD-011. *Field Care and Maintenance of Vegetable Crops* (user-supplied training document, 12 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-011.FieldCareandMaintenanceofVegetableCrops_05122023.pdf)
+
+[25] [REVISED_PRD-012. *Harvesting and Post-Harvest Handling* (user-supplied training document, 24 May 2023)](file:///home/ubuntu/upload/REVISED_PRD-012.HarvestingandPost-HarvestHandling_05242023.pdf)
