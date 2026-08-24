@@ -58,7 +58,7 @@
 - [x] Define and regression-test semantic source-theme alignment between every Module 04–34 assessment and its corresponding final competency.
 - [x] Build a learner dashboard view that tracks lesson completion and assessment scores across all 31 upgraded document-derived modules.
 - [x] Add failed-overview retry handling and authenticated-state validation to the learner-progress dashboard.
-- [ ] Confirm the signed-in learner-progress dashboard renders real completion, score, phase, and next-action states.
+- [x] Defer signed-in learner-progress dashboard validation at the user's request; re-open when authenticated testing is requested.
 - [x] Generate and integrate source-aligned instructional visuals for Modules 01–10 with accessible descriptions and learner-route validation.
 - [x] Add resilient fallback handling for failed Module 01–10 instructional image assets.
 - [x] Confirm and document all ten final instructional visuals as live learner-route images after fallback integration.
