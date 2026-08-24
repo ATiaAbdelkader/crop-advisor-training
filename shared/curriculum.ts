@@ -196,6 +196,24 @@ export const cropAdvisorCourse: CourseDefinition = {
                 "Advice should be deferred or escalated when the evidence is inadequate for the risk or specialised competence is required.",
             },
           },
+          {
+            id: "ap-4",
+            prompt:
+              "What makes a follow-up plan useful for testing whether an advisory recommendation worked?",
+            options: [
+              { id: "a", label: "A promise to revisit at harvest, without defining what will be checked." },
+              { id: "b", label: "A named outcome indicator, field location, review timing, and condition that would require the advice to change." },
+              { id: "c", label: "The grower’s original yield target without any field observations." },
+              { id: "d", label: "A product name recorded after the visit has ended." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. A defensible follow-up specifies what will be observed, where and when it will be checked, and what evidence would trigger a revised decision.",
+              incorrect:
+                "A follow-up must make the recommendation testable by defining the observation, location, timing, and condition that would require the plan to be reviewed.",
+            },
+          },
         ],
       },
     },
@@ -334,6 +352,24 @@ export const cropAdvisorCourse: CourseDefinition = {
                 "Avoid localised nutrient sources such as fertiliser bands or manure accumulation areas unless that is the specific investigation.",
             },
           },
+          {
+            id: "sn-4",
+            prompt:
+              "A soil report suggests a nutrient shortfall, but the sampled zone was wet and roots were shallow. What is the most defensible next step?",
+            options: [
+              { id: "a", label: "Apply the highest nutrient rate immediately because the report is precise." },
+              { id: "b", label: "Check drainage and root-zone constraints, retain the zone context, and then decide whether nutrient action is likely to help." },
+              { id: "c", label: "Ignore soil physical conditions because a laboratory result is always conclusive." },
+              { id: "d", label: "Mix the wet-zone result with other zones until one average recommendation is obtained." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. The report needs to be interpreted alongside drainage and rooting conditions because poor aeration or shallow roots can limit response even when a nutrient value is low.",
+              incorrect:
+                "Interpret a nutrient result in its root-zone context; verify wetness and rooting limits before assuming an application will correct the crop response.",
+            },
+          },
         ],
       },
     },
@@ -470,6 +506,24 @@ export const cropAdvisorCourse: CourseDefinition = {
                 "Correct. The statement connects the evidence, a plausible explanation, and a proportionate next verification step.",
               incorrect:
                 "A professional diagnosis distinguishes what is observed, what is likely, and what needs verification before a high-risk response.",
+            },
+          },
+          {
+            id: "co-4",
+            prompt:
+              "Which scouting record best allows a later advisor to compare a developing problem with the original observation?",
+            options: [
+              { id: "a", label: "A photograph without location, crop stage, or date." },
+              { id: "b", label: "Mapped or identified locations, crop stage, incidence and severity, healthy comparisons, and recent weather or management context." },
+              { id: "c", label: "A note that the crop looked poor somewhere in the field." },
+              { id: "d", label: "Only the suspected cause, recorded before plant or soil observations." },
+            ],
+            correctOptionId: "b",
+            feedback: {
+              correct:
+                "Correct. A comparable scouting record preserves location, stage, distribution, severity, healthy contrasts, and the field context needed to test whether the pattern changed.",
+              incorrect:
+                "A useful follow-up record preserves where and when the issue was seen, how widely and severely it occurred, and the crop, weather, and management context.",
             },
           },
         ],

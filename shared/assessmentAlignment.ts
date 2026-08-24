@@ -5,6 +5,9 @@ export type AssessmentAlignment = {
 };
 
 export const documentAssessmentAlignment: Record<string, AssessmentAlignment> = {
+  "advisory-practice": { sourceTheme: "Evidence-led advisory process, uncertainty, and risk-aware follow-up", moduleAssessmentAnchor: "follow-up plan", finalCompetencyAnchor: "disciplined advisory process" },
+  "soil-and-nutrition": { sourceTheme: "Root-zone context and representative soil-sampling decisions", moduleAssessmentAnchor: "soil conditions", finalCompetencyAnchor: "distinct management zones" },
+  "crop-observation": { sourceTheme: "Growth-stage scouting and evidence-limited field diagnosis", moduleAssessmentAnchor: "field diagnosis", finalCompetencyAnchor: "plausible diagnosis" },
   "vegetable-production-planning": { sourceTheme: "Rich-picture planning and site appraisal", moduleAssessmentAnchor: "rich picture", finalCompetencyAnchor: "planning approach" },
   "cost-planning-and-decisions": { sourceTheme: "Cost planning and return-based revision", moduleAssessmentAnchor: "cost plan", finalCompetencyAnchor: "production cost" },
   "crop-and-variety-selection": { sourceTheme: "Market fit and local variety adaptation", moduleAssessmentAnchor: "market acceptability", finalCompetencyAnchor: "expected season and elevation" },

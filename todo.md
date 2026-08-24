@@ -63,3 +63,7 @@
 - [x] Add resilient fallback handling for failed Module 01–10 instructional image assets.
 - [x] Confirm and document all ten final instructional visuals as live learner-route images after fallback integration.
 - [x] Verify every Module 01–10 route after fallback integration and record final asset availability per module.
+- [x] Cancelled at the user's request: Module 11–20 instructional image generation will not be completed in this scope.
+- [x] Review Modules 01–10 against source-grounding, instructional depth, applied practice, assessment alignment, accessibility, and visual-integration standards.
+- [x] Extend Modules 01–03 with applied field briefs, four-question checks, and semantic final-competency alignment to meet the reviewed standards.
+- [x] Review Modules 11–20 against source-grounding, instructional depth, applied practice, assessment alignment, accessibility, and visual-support standards.

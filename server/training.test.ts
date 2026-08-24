@@ -13,6 +13,35 @@ import {
 } from "../shared/trainingLogic";
 
 describe("crop-advisor progression", () => {
+  it("applies the complete field-brief and semantic assessment standard to the first three foundation modules", () => {
+    const foundationModules = cropAdvisorCourse.modules.filter(module => module.index <= 3);
+    const finalItems = new Map(
+      cropAdvisorCourse.finalAssessment.questions.map(question => [question.id, question])
+    );
+
+    expect(foundationModules).toHaveLength(3);
+    foundationModules.forEach(module => {
+      const brief = documentModuleFieldBriefs[module.id];
+      const alignment = documentAssessmentAlignment[module.id];
+      const finalCompetency = finalItems.get(`final-${module.index + 1}`);
+
+      expect(brief).toBeDefined();
+      expect(brief.context.length).toBeGreaterThan(40);
+      expect(brief.task.length).toBeGreaterThan(40);
+      expect(brief.evidence.length).toBeGreaterThan(40);
+      expect(brief.standard.length).toBeGreaterThan(40);
+      expect(module.assessment.questions).toHaveLength(4);
+      expect(module.assessment.passMark).toBe(80);
+      expect(alignment).toBeDefined();
+      expect(
+        module.assessment.questions.some(question =>
+          question.prompt.toLowerCase().includes(alignment.moduleAssessmentAnchor)
+        )
+      ).toBe(true);
+      expect(finalCompetency?.prompt.toLowerCase()).toContain(alignment.finalCompetencyAnchor);
+    });
+  });
+
   it("provides a distinct accessible instructional visual for each of the first ten modules", () => {
     const firstTenModules = cropAdvisorCourse.modules.filter(module => module.index <= 10);
     const visualSources = firstTenModules.map(module => moduleVisuals[module.id]?.src);
@@ -32,7 +61,7 @@ describe("crop-advisor progression", () => {
   it("provides a complete source-grounded applied field brief for every document-derived module", () => {
     const documentModules = cropAdvisorCourse.modules.filter(module => module.index >= 4);
 
-    expect(Object.keys(documentModuleFieldBriefs)).toHaveLength(documentModules.length);
+    expect(Object.keys(documentModuleFieldBriefs)).toHaveLength(cropAdvisorCourse.modules.length);
     documentModules.forEach(module => {
       const brief = documentModuleFieldBriefs[module.id];
       expect(brief).toBeDefined();
@@ -50,7 +79,7 @@ describe("crop-advisor progression", () => {
       cropAdvisorCourse.finalAssessment.questions.map(question => [question.id, question])
     );
 
-    expect(Object.keys(documentAssessmentAlignment)).toHaveLength(documentModules.length);
+    expect(Object.keys(documentAssessmentAlignment)).toHaveLength(cropAdvisorCourse.modules.length);
     documentModules.forEach(module => {
       const alignment = documentAssessmentAlignment[module.id];
       expect(alignment).toBeDefined();
