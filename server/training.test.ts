@@ -509,6 +509,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds field care after vegetable fertilisation", () => {
+    const fieldCareModule = cropAdvisorCourse.modules.find(
+      module => module.id === "field-care-and-maintenance"
+    );
+    const previousModule = cropAdvisorCourse.modules[25];
+
+    expect(fieldCareModule?.lessons).toHaveLength(2);
+    expect(fieldCareModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(fieldCareModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

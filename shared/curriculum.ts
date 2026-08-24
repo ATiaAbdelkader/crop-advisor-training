@@ -3625,12 +3625,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "field-care-and-maintenance",
+      index: 27,
+      title: "Field care and maintenance of vegetable crops",
+      eyebrow: "Module 27",
+      description:
+        "Maintain crop structure, canopy health, fruit set, and market quality through timely support, pruning, training, pollination management, and fruit protection.",
+      lessons: [
+        {
+          id: "maintain-crop-structure-and-canopy-health",
+          title: "Maintain crop structure and canopy health",
+          duration: "38 min",
+          kicker: "Support, shape, and sanitise the crop before stress escalates",
+          summary:
+            "Use crop-timed trellising, pruning, and vine or branch training to protect plants from wind and ground contact while improving light, airflow, access, and disease management.",
+          outcomes: [
+            "Select a timely, strong, crop-appropriate support system that fits growth habit and field conditions.",
+            "Prune for plant size, health, branching, fruit quality, light, air, and manageable crop operations.",
+            "Train vines and tie branches to protect crop structure, field access, and plant health without creating new disease risks.",
+          ],
+          sections: [
+            {
+              heading: "Install crop support before it becomes a rescue operation",
+              body:
+                "The source defines a trellis as a light wooden or metal framework that supports shrub and climbing vegetables. It notes that trellising has already been addressed in the field-preparation module, then adds timing guidance for maintenance. Cucurbits and legumes are best supplied with a trellis before transplanting so they have a ready vertical crawling area and do not experience stress from late vine training after crawling on the ground. Solanaceous crops can be trellised soon after transplanting, with the source recommending rapid installation within 7 to 14 days to support growth, protect against wind, and avoid disturbing flowers later. Strong materials, suitable pole distance and height, secure posts, and practical net, string, bamboo, or wire systems are essential. Close pole spacing may improve support in windy or monsoon conditions. A good trellis supports field work, improves light and air movement, keeps fruit off soil, aids monitoring, and simplifies harvest and pruning.",
+              callout:
+                "Support systems are preventive crop care. Put them in place around crop growth habit and weather risk before vines, branches, flowers, or fruit become vulnerable.",
+            },
+            {
+              heading: "Prune to balance growth, health, and access",
+              body:
+                "The source describes pruning as trimming or cutting dead plant parts or new shoots to encourage lateral branching. Its purposes include controlling plant size, avoiding disease spread, encouraging productive branching, improving fruit size and quality, simplifying crop management, and improving light and air circulation within plants. Examples include top pruning to stimulate branching, removing diseased plant parts, and removing leaves or branches below early flower or fruit clusters in eggplant. These examples illustrate a principle rather than a universal pattern: prune for a documented crop purpose, plant stage, and field condition. Avoid unnecessary removal that reduces crop capacity or exposes plants to avoidable stress.",
+            },
+            {
+              heading: "Keep pruning and training clean, timely, and safe",
+              body:
+                "The source instructs growers to use clean, sharp scissors, carry a collecting pail, and dispose of pruned material away from the field—especially diseased material. Avoid pruning in wet conditions because cuts can become conducive entry points for fungal and bacterial infection. Begin vine training or branch tying promptly, within two weeks after transplanting where needed, and continue as crop growth requires. Bamboo clips can hold vines in the right crawling area during strong wind. Proper training directs branches, keeps them off the ground, secures plants, and clears alleys or canals. Use tools and materials that hold the plant without constricting, breaking, or damaging tender tissue, and revisit supports as plant weight increases.",
+            },
+          ],
+        },
+        {
+          id: "protect-pollination-fruit-set-and-market-quality",
+          title: "Protect pollination, fruit set, and market quality",
+          duration: "35 min",
+          kicker: "Secure fruit set before protecting fruit finish",
+          summary:
+            "Assess pollination risks, use manual pollination only when appropriate, maintain conditions that support fruit set, and use fruit support to protect clean, saleable produce.",
+          outcomes: [
+            "Distinguish natural and artificial pollination and identify when crop families require different management.",
+            "Diagnose common causes of poor pollination, fruit abortion, and deformation before intervening.",
+            "Use careful manual pollination and fruit support practices to improve fruit set, cleanliness, and market quality.",
+          ],
+          sections: [
+            {
+              heading: "Match pollination management to crop biology and field conditions",
+              body:
+                "Pollination is transfer of pollen from the anther of a male flower to the stigma of a female flower. The source contrasts natural pollination by insects or wind with artificial pollination by human intervention. Most solanaceous crops are primarily self-pollinated and do not normally require manual pollination; when fruit abortion occurs, the source directs attention to heat stress, drought, irrigation, and soil moisture during flowering and fruiting. Cucurbits are more dependent on cross-pollination and may need manual support when male flowers are scarce, fruit set is low, or fruits become deformed. Do not treat every poor fruit as a pollination problem—first observe crop family, flower production, water status, temperature, plant density, and pest or disease condition.",
+              callout:
+                "Before hand pollination, diagnose the cause of poor set. Water stress, heat, crop density, poor pollinator activity, and nutrition can each reduce fruit quality or set.",
+            },
+            {
+              heading: "Use manual pollination carefully when it is justified",
+              body:
+                "For artificial pollination, the source describes an early-morning procedure: collect an open male flower, remove petals to expose mature anthers and pollen, identify a yellowish closed female flower, and brush pollen onto the receptive stigma. This procedure is relevant to crop and field situations where manual pollination is justified, particularly cross-pollinated cucurbits. Work gently and use clean hands or tools to avoid damaging flowers or transferring disease. Record the crop, date, flower condition, weather, and field location so fruit-set results can be compared with the suspected pollination limitation rather than relying on memory.",
+            },
+            {
+              heading: "Protect fruit quality from set through harvest",
+              body:
+                "The source links insufficient pollination with deformed fruit. It identifies low insect activity, temperature extremes, insufficient male flowers, crop density that prevents pollinator movement, and excessive nitrogen as potential causes of pollination failure or deformation. Excess nitrogen can maintain vegetative growth and interfere with potassium uptake needed in flowering and fruiting. Fruit support then protects developing fruit from soil contact. The source encourages practical, creative support materials that keep fruit clean and blemish-free because clean, high-quality fruits command better market value. Combine fruit support with trellising, canopy care, soil-moisture management, and timely harvest so quality gains are preserved beyond pollination.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "field-care-and-maintenance-check",
+        title: "Field-care and maintenance check",
+        description:
+          "Apply crop-support, pruning, training, pollination, fruit-set, and fruit-protection principles to a practical vegetable field-care decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "fc-1",
+            prompt: "Why does the source recommend preparing a trellis before transplanting for cucurbits and legumes?",
+            options: [
+              { id: "a", label: "It gives vines a ready crawling area and avoids the stress and disruption that can occur when support is installed after vines have spread on the ground." },
+              { id: "b", label: "Trellises are only decorative and do not affect crop support, access, fruit contact, or field work." },
+              { id: "c", label: "It allows growers to delay all crop observations until harvest." },
+              { id: "d", label: "It removes the need to consider wind, plant growth habit, pole strength, or material condition." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Early support provides a vertical growth area and avoids late-training stress, while supporting field access and crop protection.", incorrect: "Install support around crop growth habit before vines crawl on the ground. Late installation can stress plants and complicate training, flowers, and field operations." },
+          },
+          {
+            id: "fc-2",
+            prompt: "Which pruning practice best follows the source hygiene guidance?",
+            options: [
+              { id: "a", label: "Use clean, sharp tools; collect and remove pruned material from the field; avoid wet-condition pruning; and keep diseased material away from crop areas." },
+              { id: "b", label: "Prune with blunt dirty tools during wet weather and leave diseased cuttings under plants." },
+              { id: "c", label: "Remove plant parts at random without considering disease, crop purpose, growth stage, or canopy condition." },
+              { id: "d", label: "Delay all training until heavy vines block alleys and irrigation canals." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Clean sharp tools, field sanitation, and dry-condition timing reduce disease risk while preserving pruning’s crop-management benefits.", incorrect: "Pruning creates potential infection sites. Keep tools clean and sharp, collect and remove diseased material, and avoid wet conditions that favour fungal and bacterial infection." },
+          },
+          {
+            id: "fc-3",
+            prompt: "A cucurbit block has low fruit set and many deformed fruits. Which sequence is most defensible before relying on manual pollination?",
+            options: [
+              { id: "a", label: "Check flower availability, pollinator activity, temperature, irrigation and soil moisture, crop density, and nutrition; then use careful early-morning hand pollination if a pollination limitation remains likely." },
+              { id: "b", label: "Assume every deformed fruit is caused only by insects and increase nitrogen immediately." },
+              { id: "c", label: "Ignore water stress, heat, male-flower supply, crop density, and nutrient balance because they cannot affect fruit set." },
+              { id: "d", label: "Hand-pollinate all crops at any time of day without checking crop family or flower condition." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source lists multiple pollination and fruit-set constraints; diagnose them first, then use careful crop-appropriate manual pollination if justified.", incorrect: "Poor set and deformed fruit can arise from several interacting causes. Assess crop biology, flowers, pollinators, temperature, water, density, and nutrition before intervening." },
+          },
+          {
+            id: "fc-4",
+            prompt: "What is the principal field-care value of fruit support?",
+            options: [
+              { id: "a", label: "It keeps fruit off the ground so it remains cleaner and less blemished, supporting higher market quality alongside crop support and canopy care." },
+              { id: "b", label: "It replaces the need for pollination, irrigation, plant support, or crop monitoring." },
+              { id: "c", label: "It intentionally increases fruit contact with wet soil." },
+              { id: "d", label: "It is only useful after fruit has already become damaged." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Fruit support prevents ground contact and helps deliver clean, blemish-free, marketable produce.", incorrect: "Use fruit support to protect developing fruit from soil contact and preserve clean, high-quality produce; it complements rather than replaces broader crop care." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, and efficient vegetable fertilisation to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, and field-care and maintenance decisions to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4077,6 +4209,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The revision identifies the limiting condition and integrates soil, crop, source, rate, timing, placement, and root-zone evidence through the 4Rs.",
           incorrect: "A defensible fertilisation plan begins with soil and crop evidence, corrects the limiting factor, interprets nutrient analysis, and applies the right source, rate, time, and place rather than repeating a universal product schedule.",
+        },
+      },
+      {
+        id: "final-28",
+        prompt:
+          "A cucurbit field has vines crawling on wet soil, crowded canopy, low fruit set, deformed fruit, and damaged fruit touching the ground. Which integrated field-care response is most defensible?",
+        options: [
+          { id: "a", label: "Install or strengthen timely support, train vines with suitable materials, prune hygienically for airflow and access, assess flowers, pollinators, water, heat, density, and nutrient balance before manual pollination, and use fruit support to protect market quality." },
+          { id: "b", label: "Delay trellising and training until vines block field access, then prune wet plants with dirty tools and leave cuttings below the crop." },
+          { id: "c", label: "Apply more nitrogen immediately and assume it will correct every pollination, canopy, fruit-quality, and support problem." },
+          { id: "d", label: "Hand-pollinate every flower without checking crop conditions, then leave fruit in contact with soil because support does not affect quality." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response connects crop support, hygienic canopy care, diagnostic pollination management, fruit support, and underlying water and nutrient conditions.",
+          incorrect: "High-quality field care is integrated: support and train the crop early, prune hygienically, diagnose fruit-set constraints before manual pollination, protect fruit from soil contact, and manage water and nutrition alongside crop structure.",
         },
       },
     ],
