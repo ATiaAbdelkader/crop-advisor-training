@@ -549,6 +549,26 @@ describe("crop-advisor progression", () => {
     ).toBe(true);
   });
 
+  it("adds field diagnosis after harvesting and post-harvest handling", () => {
+    const diagnosisModule = cropAdvisorCourse.modules.find(
+      module => module.id === "field-diagnosis-in-vegetable-crops"
+    );
+    const previousModule = cropAdvisorCourse.modules[27];
+
+    expect(diagnosisModule?.lessons).toHaveLength(2);
+    expect(diagnosisModule?.assessment.questions).toHaveLength(4);
+    expect(
+      isLessonAccessible(diagnosisModule!.lessons[0].id, [], [
+        {
+          assessmentId: previousModule.assessment.id,
+          score: 100,
+          passed: true,
+          submittedAt: new Date(),
+        },
+      ])
+    ).toBe(true);
+  });
+
   it("scores answers and returns focused feedback", () => {
     const assessment = cropAdvisorCourse.modules[0].assessment;
     const perfectAnswers = Object.fromEntries(

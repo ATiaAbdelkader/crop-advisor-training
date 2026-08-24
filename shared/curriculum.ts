@@ -3889,12 +3889,144 @@ export const cropAdvisorCourse: CourseDefinition = {
         ],
       },
     },
+    {
+      id: "field-diagnosis-in-vegetable-crops",
+      index: 29,
+      title: "Field diagnosis in vegetable crops",
+      eyebrow: "Module 29",
+      description:
+        "Diagnose vegetable health problems through structured observation, a biotic–abiotic process of elimination, evidence-led questioning, and responsible IPM-aligned recommendations.",
+      lessons: [
+        {
+          id: "diagnose-by-observation-and-elimination",
+          title: "Diagnose by observation and elimination",
+          duration: "40 min",
+          kicker: "Observe the plant, plot, pattern, and production history before naming a cause",
+          summary:
+            "Use a disciplined field-visit sequence to distinguish symptoms from signs, connect patterns with possible causes, and eliminate hypotheses without guessing.",
+          outcomes: [
+            "Inspect affected plants, roots, groups of plants, and field patterns systematically during a diagnosis visit.",
+            "Differentiate biotic from abiotic cause categories and link symptoms to multiple plausible causes.",
+            "Gather farmer, crop-history, soil, climate, input, and pattern evidence before narrowing a diagnosis.",
+          ],
+          sections: [
+            {
+              heading: "Start with a process of elimination, not a product decision",
+              body:
+                "The source defines field diagnosis as diagnosing a plant-health problem through a process of elimination. It separates possible causes into biotic categories—such as insect pests, mites, viruses, bacteria, fungi, water moulds, nematodes, and phytoplasma—and abiotic categories such as water, temperature, nutrients, and chemical injury. A similar symptom can arise from more than one cause, and more than one problem can occur in the same plant. Therefore, symptoms such as wilt, leaf or fruit spots, yellowing, mosaic, distortion, little leaf, galls, drying, necrosis, or blight are starting points for investigation, not proof of a single causal agent.",
+              callout:
+                "Do not turn a visible symptom into a diagnosis. Use it to build a shortlist of causes that must be tested against field evidence.",
+            },
+            {
+              heading: "Follow the four-part field-visit sequence",
+              body:
+                "The source’s field-visit sequence begins by getting close: identify affected plant parts, changes in shape, colour, and growth, and visible signs such as insects, fungi, or other pests. Next, examine the whole plant and roots, locating symptoms within the plant, identifying affected growth stages, and assessing severity. Then examine a group of plants: determine incidence, distribution, and whether the pattern is random, at plot edges, in patches, or aligned with machinery or a field operation. Finally, speak to farmers and local extension workers to determine when the problem appeared, whether it is new, how soil type and climate patterns may matter, which varieties were used, and what chemical or other inputs were recently applied.",
+            },
+            {
+              heading: "Use plant patterns to refine the diagnostic question",
+              body:
+                "The source advises linking symptoms with possible causes and refining the diagnosis by asking more questions and scouting the field. Compare localised versus symmetrical symptoms, isolated versus widespread incidence, plant age, variety, crop management, field history, and root condition. Where appropriate, examine internal symptoms by cutting the specimen. A pattern of symptoms can be influenced by nutrient status, water moulds, fungi, bacteria, nematodes, insects, mites, viruses, phytoplasma, or physical and herbicide injury. Use photos, crop guides, technical guides, and experienced support to test hypotheses. If information is lacking, visit the field where possible rather than making a remote guess.",
+            },
+          ],
+        },
+        {
+          id: "turn-evidence-into-responsible-recommendations",
+          title: "Turn evidence into responsible recommendations",
+          duration: "36 min",
+          kicker: "Recommend from evidence, severity, and prevention—not certainty theatre",
+          summary:
+            "Translate a carefully qualified diagnosis into an IPM-aligned recommendation, a prevention plan, and a clear feedback loop with the farmer and specialist support where needed.",
+          outcomes: [
+            "State a diagnosis with appropriate confidence, uncertainty, supporting evidence, and next verification steps.",
+            "Use severity, the source’s Big 5 review, and IPM principles to select proportionate recommendations.",
+            "Build prevention, resistance-management, beneficial-insect protection, and farmer feedback into the recommendation.",
+          ],
+          sections: [
+            {
+              heading: "Collect enough evidence to make a qualified recommendation",
+              body:
+                "The source’s diagnosis summary calls for careful specimen examination, additional information gathering, inspection of internal symptoms where appropriate, comparison of symmetrical and localised patterns, field visits when information is lacking, use of photos, guides, and experience, consideration of multiple problems in one plant, and detailed cause descriptions. It explicitly says not to guess and to seek support from others. A professional recommendation should therefore record observed symptoms and signs, field pattern, crop stage, likely cause categories, evidence for and against the leading hypotheses, severity, any missing information, and the next verification action. This makes the recommendation auditable and reduces the risk of treating the wrong problem.",
+              callout:
+                "A useful diagnosis may conclude that more evidence is needed. Naming uncertainty and the next observation is safer and more professional than a confident unsupported guess.",
+            },
+            {
+              heading: "Apply IPM and severity to choose proportionate actions",
+              body:
+                "The source’s recommendation summary directs advisors to consider the Big 5, assess severity, use personal judgement wisely, and ensure IPM principles are applied. Recommendations should therefore start with the verified cause category and the severity, distribution, crop stage, and economic or quality risk. Link immediate actions with cultural, sanitation, water, nutrition, crop-management, and monitoring options before considering any crop-protection intervention. When a crop-protection product is legally and technically appropriate, follow local labels and registration requirements, use the correct resistance-management approach, and do not promote restricted materials or products that harm beneficial insects. The source specifically encourages alternation of mode-of-action groups and avoidance of red-listed pesticides and harmful effects on beneficial insects.",
+            },
+            {
+              heading: "Close the loop through prevention and farmer feedback",
+              body:
+                "The source asks advisors to provide prevention advice for the next season, seek specialist support rather than guess, and obtain farmer feedback for sharing with others. Convert the diagnosis into a prevention plan that may include crop rotation or hygiene where relevant, variety choice, water or drainage changes, soil or nutrient correction, safer input records, pest and disease monitoring, protected beneficial organisms, and early reporting triggers. Record what was recommended, why, when it was applied, and what happened afterward. Feedback from the farmer helps distinguish an effective intervention from a coincidental improvement and builds a stronger local diagnostic record for future advisory work.",
+            },
+          ],
+        },
+      ],
+      assessment: {
+        id: "field-diagnosis-in-vegetable-crops-check",
+        title: "Vegetable field-diagnosis check",
+        description:
+          "Apply systematic observation, symptom-and-cause elimination, evidence gathering, severity assessment, IPM, and prevention principles to a vegetable field-diagnosis decision.",
+        kind: "module",
+        passMark: 80,
+        questions: [
+          {
+            id: "fd-1",
+            prompt: "What is the source’s central principle for diagnosing plant-health problems?",
+            options: [
+              { id: "a", label: "Use a process of elimination that compares biotic and abiotic causes against symptoms, signs, field patterns, history, and further evidence." },
+              { id: "b", label: "Treat the first visible symptom as proof of one pest or disease without examining the crop or field." },
+              { id: "c", label: "Assume every yellow leaf is caused by the same nutrient shortage in every crop and season." },
+              { id: "d", label: "Select a pesticide before gathering any plant, field, farmer, or crop-history evidence." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source frames diagnosis as a process of elimination between biotic and abiotic causes using plant, field, and production-history evidence.", incorrect: "Symptoms are not proof. Build and test a cause shortlist using observations, signs, roots, patterns, crop history, farmer information, and further inspection." },
+          },
+          {
+            id: "fd-2",
+            prompt: "Which sequence best follows the source’s field-visit steps?",
+            options: [
+              { id: "a", label: "Inspect affected parts closely; examine the whole plant and roots; assess incidence and distribution across plants; then interview farmers and extension workers about timing, variety, inputs, soil, and climate." },
+              { id: "b", label: "Ask for a product preference first, then inspect only one leaf and leave without checking roots, patterns, or field history." },
+              { id: "c", label: "Ignore distribution and farmer history because symptoms always have one identical cause." },
+              { id: "d", label: "Inspect only the most damaged plant after choosing a treatment for the entire field." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The sequence moves from close inspection through whole-plant and root assessment to population pattern and field-history evidence.", incorrect: "A sound visit gathers evidence at several scales: affected parts, whole plant and roots, groups and distribution, then crop and management history from people who know the field." },
+          },
+          {
+            id: "fd-3",
+            prompt: "A field shows yellowing in scattered patches, but the farmer recently changed water management and applied a new chemical input. What is the most defensible next step?",
+            options: [
+              { id: "a", label: "Inspect symptom distribution, plant and root condition, timing, crop stage, water pattern, input history, and possible signs; compare both biotic and abiotic hypotheses before recommending action." },
+              { id: "b", label: "Assume a virus immediately because yellowing always proves viral infection." },
+              { id: "c", label: "Apply a crop-protection product without checking soil, water, chemical injury, nutrient status, roots, or field pattern." },
+              { id: "d", label: "Ignore the new management history because plant symptoms are unrelated to field operations." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. Yellowing has multiple possible causes; the new water and chemical history is diagnostic evidence that must be assessed alongside biotic possibilities.", incorrect: "Do not diagnose from colour alone. Examine patterns, roots, timing, water, input history, signs, and crop context to eliminate both biotic and abiotic hypotheses." },
+          },
+          {
+            id: "fd-4",
+            prompt: "Which recommendation best follows the source’s responsible advisory approach?",
+            options: [
+              { id: "a", label: "State evidence and uncertainty, assess severity, apply IPM, include prevention and monitoring, alternate appropriate mode-of-action groups when legally relevant, protect beneficial insects, seek support when needed, and obtain farmer feedback." },
+              { id: "b", label: "Make a certain diagnosis without evidence, skip prevention, and recommend any available product regardless of restrictions or beneficial insects." },
+              { id: "c", label: "Treat every crop problem with the same intervention and never record outcome or farmer feedback." },
+              { id: "d", label: "Ignore severity, crop stage, distribution, legal labels, and the possibility that more evidence is needed." },
+            ],
+            correctOptionId: "a",
+            feedback: { correct: "Correct. The source requires evidence-led recommendations, severity judgement, IPM, prevention, mode-of-action awareness, beneficial-insect protection, support-seeking, and feedback.", incorrect: "Responsible recommendations are proportionate and transparent. Ground them in evidence and severity, follow IPM and local legal requirements, prevent recurrence, protect beneficials, and seek support or feedback when needed." },
+          },
+        ],
+      },
+    },
   ],
   finalAssessment: {
     id: "crop-advisor-final",
     title: "Crop Advisor Foundations final assessment",
     description:
-      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, and harvest and post-harvest loss control to qualify for certification.",
+      "Integrate advisory practice, soil context, crop observation, vegetable-production planning, cost-based decisions, crop-and-variety selection, crop-yield factors, climatic-risk management, topographic site interpretation, complete edaphic soil assessment, soil-protection planning, balanced plant-nutrition decisions, integrated nutrient management, acid-soil management, soil-health promotion, representative soil-sample collection, protected vegetable-nursery management, open-field bare-root seedling production, protected cellular seedling production, seedling-production planning, field preparation, mulching, trellising, transplanting, water management, irrigation-system selection, drip-system planning and maintenance, efficient vegetable fertilisation, field-care and maintenance decisions, harvest and post-harvest loss control, and evidence-led field diagnosis to qualify for certification.",
     kind: "final",
     passMark: 80,
     questions: [
@@ -4373,6 +4505,22 @@ export const cropAdvisorCourse: CourseDefinition = {
         feedback: {
           correct: "Correct. The plan connects market-ready maturity, gentle harvest, shade, sorting, crop-suitable cooling, and food-safety controls across the complete post-harvest chain.",
           incorrect: "Post-harvest loss prevention is cumulative. Control maturity, timing, harvest injury, field heat, containers, sorting, cooling, water and equipment hygiene, pesticide intervals, and contamination risks from the start.",
+        },
+      },
+      {
+        id: "final-30",
+        prompt:
+          "A grower reports yellowing and stunting in patches after changing irrigation and applying a new chemical input. Which advisory response is most defensible?",
+        options: [
+          { id: "a", label: "Inspect affected parts, whole plants and roots, group patterns, severity, crop stage, water and chemical history, soil and climate context, and possible signs; compare biotic and abiotic causes, state uncertainty, apply IPM, seek support if needed, and set prevention and monitoring actions." },
+          { id: "b", label: "Diagnose a virus from yellowing alone and recommend a product without checking roots, patterns, irrigation, chemical history, or legal requirements." },
+          { id: "c", label: "Ignore the new irrigation and chemical history because field operations cannot influence plant symptoms." },
+          { id: "d", label: "Apply the same intervention to every plant problem without considering severity, distribution, beneficial insects, mode of action, prevention, or feedback." },
+        ],
+        correctOptionId: "a",
+        feedback: {
+          correct: "Correct. The response uses the source’s field-diagnosis process of elimination, gathers evidence at plant and field scales, compares cause categories, and links a qualified diagnosis to IPM and prevention.",
+          incorrect: "Yellowing and stunting have multiple possible causes. Gather plant, root, field-pattern, history, water, input, soil, climate, and symptom-sign evidence before making an IPM-aligned, legally compliant, and preventively useful recommendation.",
         },
       },
     ],
