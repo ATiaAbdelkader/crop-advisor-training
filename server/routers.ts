@@ -10,6 +10,13 @@ import {
 } from "../shared/digitalFieldRecords";
 import { fieldRecordTemplates } from "../shared/fieldRecordTemplates";
 import {
+  capstoneCases,
+  fieldPracticumFields,
+  fieldReadinessRubric,
+  type CapstoneSubmissionPayload,
+  type FieldPracticumPayload,
+} from "../shared/fieldReadiness";
+import {
   buildTrainingOverview,
   scoreAssessment,
   shouldIssueCertificate,
@@ -18,20 +25,26 @@ import {
 import {
   enrollLearner,
   deleteFieldRecord,
+  deleteFieldPracticumEntry,
   createFieldRecordReviewShare,
   getActiveFieldRecordReviewShare,
   getFieldRecord,
+  getFieldPracticumEntry,
   getFieldRecordsForOwner,
   getLearningRecords,
   issueCertificateIfNeeded,
   markLessonComplete,
   recordAssessmentAttempt,
   listFieldRecords,
+  listFieldPracticumEntries,
   listAllFieldRecords,
   listFieldRecordReviewShares,
   listLearnerReflections,
   listScenarioAttempts,
   saveFieldRecord,
+  saveFieldPracticumEntry,
+  saveCapstoneSubmission,
+  listCapstoneSubmissions,
   recordScenarioAttempt,
   revokeFieldRecordReviewShare,
   submitFieldRecordReview,
@@ -83,6 +96,48 @@ function normaliseFieldRecordPayload(templateId: string, payload: z.infer<typeof
     setup: Object.fromEntries(template.setupFields.map(field => [field, payload.setup[field]?.trim() ?? ""])),
     entries: payload.entries.map(entry => Object.fromEntries(template.recordColumns.map(column => [column, entry[column]?.trim() ?? ""]))),
     review: template.reviewPrompts.map((_, index) => payload.review[index]?.trim() ?? ""),
+  };
+}
+
+const fieldPracticumPayloadInput = z.object({
+  visitDate: z.string().trim().max(32),
+  visitVerification: z.string().trim().max(2400),
+  localityAndProductionContext: z.string().trim().max(4000),
+  growerQuestion: z.string().trim().max(2400),
+  growerInterviewNotes: z.string().trim().max(4000),
+  observationAndEvidence: z.string().trim().max(5000),
+  competingExplanations: z.string().trim().max(4000),
+  provisionalDiagnosis: z.string().trim().max(4000),
+  recommendationAndRationale: z.string().trim().max(5000),
+  communicationPlan: z.string().trim().max(3200),
+  economicsAndRiskCheck: z.string().trim().max(3200),
+  followUpTrigger: z.string().trim().max(2400),
+  followUpOutcome: z.string().trim().max(3200),
+  referralOrEscalationBoundary: z.string().trim().max(2400),
+  localSourcesChecked: z.string().trim().max(3200),
+  rubric: z.record(z.string().max(96), z.number().int().min(0).max(4)),
+});
+
+function normaliseFieldPracticumPayload(payload: z.infer<typeof fieldPracticumPayloadInput>): FieldPracticumPayload {
+  return {
+    ...Object.fromEntries(fieldPracticumFields.map(field => [field.key, payload[field.key]?.trim() ?? ""])),
+    rubric: Object.fromEntries(fieldReadinessRubric.map(criterion => [criterion.id, payload.rubric[criterion.id] ?? 0])),
+  } as FieldPracticumPayload;
+}
+
+const capstonePayloadInput = z.object({
+  responses: z.array(z.string().trim().max(4000)).max(5),
+  selfReview: z.string().trim().max(4000),
+  rubric: z.record(z.string().max(96), z.number().int().min(0).max(4)),
+});
+
+function normaliseCapstonePayload(capstoneId: string, payload: z.infer<typeof capstonePayloadInput>): CapstoneSubmissionPayload {
+  const capstone = capstoneCases[capstoneId];
+  if (!capstone) throw new TRPCError({ code: "NOT_FOUND", message: "Capstone case not found." });
+  return {
+    responses: capstone.responsePrompts.map((_, index) => payload.responses[index]?.trim() ?? ""),
+    selfReview: payload.selfReview.trim(),
+    rubric: Object.fromEntries(fieldReadinessRubric.map(criterion => [criterion.id, payload.rubric[criterion.id] ?? 0])),
   };
 }
 
@@ -249,6 +304,42 @@ export const appRouter = router({
         });
         return result;
       }),
+  }),
+  fieldReadiness: router({
+    practicum: router({
+      list: protectedProcedure.query(({ ctx }) => listFieldPracticumEntries(ctx.user.id)),
+      get: protectedProcedure
+        .input(z.object({ id: z.number().int().positive() }))
+        .query(async ({ ctx, input }) => {
+          const entry = await getFieldPracticumEntry(ctx.user.id, input.id);
+          if (!entry) throw new TRPCError({ code: "NOT_FOUND", message: "Practicum entry not found." });
+          return entry;
+        }),
+      save: protectedProcedure
+        .input(z.object({ id: z.number().int().positive().optional(), title: z.string().trim().min(3).max(160), payload: fieldPracticumPayloadInput }))
+        .mutation(async ({ ctx, input }) => {
+          const entry = await saveFieldPracticumEntry({ id: input.id, userId: ctx.user.id, title: input.title, payload: normaliseFieldPracticumPayload(input.payload) });
+          if (!entry) throw new TRPCError({ code: "NOT_FOUND", message: "Practicum entry not found." });
+          return entry;
+        }),
+      delete: protectedProcedure
+        .input(z.object({ id: z.number().int().positive() }))
+        .mutation(async ({ ctx, input }) => {
+          const deleted = await deleteFieldPracticumEntry(ctx.user.id, input.id);
+          if (!deleted) throw new TRPCError({ code: "NOT_FOUND", message: "Practicum entry not found." });
+          return { success: true } as const;
+        }),
+    }),
+    capstones: router({
+      list: protectedProcedure.query(({ ctx }) => listCapstoneSubmissions(ctx.user.id)),
+      save: protectedProcedure
+        .input(z.object({ capstoneId: z.string().min(1).max(128), payload: capstonePayloadInput }))
+        .mutation(({ ctx, input }) => saveCapstoneSubmission({ userId: ctx.user.id, capstoneId: input.capstoneId, payload: normaliseCapstonePayload(input.capstoneId, input.payload) })),
+    }),
+    overview: protectedProcedure.query(async ({ ctx }) => {
+      const [practicums, capstones] = await Promise.all([listFieldPracticumEntries(ctx.user.id), listCapstoneSubmissions(ctx.user.id)]);
+      return { practicums, capstones };
+    }),
   }),
   reviewShares: router({
     list: protectedProcedure

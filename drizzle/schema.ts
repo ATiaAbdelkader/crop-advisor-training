@@ -224,5 +224,37 @@ export const fieldRecordReviewShares = mysqlTable(
   table => [index("field_record_share_owner_record_idx").on(table.ownerUserId, table.recordId, table.revokedAt)]
 );
 
+/** Private field-visit evidence supports field-readiness self-review without altering formal course certification. */
+export const fieldPracticumEntries = mysqlTable(
+  "fieldPracticumEntries",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: varchar("title", { length: 160 }).notNull(),
+    payloadJson: text("payloadJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("field_practicum_owner_updated_idx").on(table.userId, table.updatedAt)]
+);
+
+/** One learner-owned response per integrated capstone preserves the latest field-readiness self-review. */
+export const capstoneSubmissions = mysqlTable(
+  "capstoneSubmissions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    capstoneId: varchar("capstoneId", { length: 128 }).notNull(),
+    payloadJson: text("payloadJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [uniqueIndex("capstone_submission_owner_case_unique").on(table.userId, table.capstoneId)]
+);
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;

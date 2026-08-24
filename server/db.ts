@@ -2,8 +2,10 @@ import { and, desc, eq, inArray, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   assessmentAttempts,
+  capstoneSubmissions,
   certificates,
   courseEnrollments,
+  fieldPracticumEntries,
   fieldRecords,
   fieldRecordReviewShares,
   InsertUser,
@@ -14,6 +16,7 @@ import {
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
 import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
+import type { CapstoneSubmissionPayload, FieldPracticumPayload } from "../shared/fieldReadiness";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -378,4 +381,87 @@ export async function submitFieldRecordReview(input: { shareToken: string; revie
     .set({ reviewerName: input.reviewerName, reviewComment: input.reviewComment, reviewedAt: new Date() })
     .where(and(eq(fieldRecordReviewShares.shareToken, input.shareToken), isNull(fieldRecordReviewShares.revokedAt)));
   return result[0].affectedRows > 0;
+}
+
+type StoredFieldPracticum = Omit<typeof fieldPracticumEntries.$inferSelect, "payloadJson"> & {
+  payload: FieldPracticumPayload;
+};
+
+function toStoredFieldPracticum(entry: typeof fieldPracticumEntries.$inferSelect): StoredFieldPracticum {
+  return { ...entry, payload: JSON.parse(entry.payloadJson) as FieldPracticumPayload };
+}
+
+export async function listFieldPracticumEntries(userId: number) {
+  const db = await requireDb();
+  const entries = await db
+    .select()
+    .from(fieldPracticumEntries)
+    .where(eq(fieldPracticumEntries.userId, userId))
+    .orderBy(desc(fieldPracticumEntries.updatedAt));
+  return entries.map(toStoredFieldPracticum);
+}
+
+export async function getFieldPracticumEntry(userId: number, id: number) {
+  const db = await requireDb();
+  const entries = await db
+    .select()
+    .from(fieldPracticumEntries)
+    .where(and(eq(fieldPracticumEntries.id, id), eq(fieldPracticumEntries.userId, userId)))
+    .limit(1);
+  return entries[0] ? toStoredFieldPracticum(entries[0]) : null;
+}
+
+export async function saveFieldPracticumEntry(input: { id?: number; userId: number; title: string; payload: FieldPracticumPayload }) {
+  const db = await requireDb();
+  const values = { title: input.title, payloadJson: JSON.stringify(input.payload), updatedAt: new Date() };
+  if (input.id) {
+    const result = await db
+      .update(fieldPracticumEntries)
+      .set(values)
+      .where(and(eq(fieldPracticumEntries.id, input.id), eq(fieldPracticumEntries.userId, input.userId)));
+    if (result[0].affectedRows === 0) return null;
+    return getFieldPracticumEntry(input.userId, input.id);
+  }
+  const result = await db.insert(fieldPracticumEntries).values({ userId: input.userId, ...values });
+  return getFieldPracticumEntry(input.userId, Number(result[0].insertId));
+}
+
+export async function deleteFieldPracticumEntry(userId: number, id: number) {
+  const db = await requireDb();
+  const result = await db
+    .delete(fieldPracticumEntries)
+    .where(and(eq(fieldPracticumEntries.id, id), eq(fieldPracticumEntries.userId, userId)));
+  return result[0].affectedRows > 0;
+}
+
+type StoredCapstoneSubmission = Omit<typeof capstoneSubmissions.$inferSelect, "payloadJson"> & {
+  payload: CapstoneSubmissionPayload;
+};
+
+function toStoredCapstoneSubmission(submission: typeof capstoneSubmissions.$inferSelect): StoredCapstoneSubmission {
+  return { ...submission, payload: JSON.parse(submission.payloadJson) as CapstoneSubmissionPayload };
+}
+
+export async function listCapstoneSubmissions(userId: number) {
+  const db = await requireDb();
+  const submissions = await db
+    .select()
+    .from(capstoneSubmissions)
+    .where(eq(capstoneSubmissions.userId, userId))
+    .orderBy(desc(capstoneSubmissions.updatedAt));
+  return submissions.map(toStoredCapstoneSubmission);
+}
+
+export async function saveCapstoneSubmission(input: { userId: number; capstoneId: string; payload: CapstoneSubmissionPayload }) {
+  const db = await requireDb();
+  await db
+    .insert(capstoneSubmissions)
+    .values({ userId: input.userId, capstoneId: input.capstoneId, payloadJson: JSON.stringify(input.payload) })
+    .onDuplicateKeyUpdate({ set: { payloadJson: JSON.stringify(input.payload), updatedAt: new Date() } });
+  const rows = await db
+    .select()
+    .from(capstoneSubmissions)
+    .where(and(eq(capstoneSubmissions.userId, input.userId), eq(capstoneSubmissions.capstoneId, input.capstoneId)))
+    .limit(1);
+  return toStoredCapstoneSubmission(rows[0]!);
 }

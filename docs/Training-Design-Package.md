@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.6  
+**Version:** 4.7  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -53,7 +53,7 @@ Each lesson contains a short applied introduction, three substantial content sec
 
 Modules 23, 26, and 32 additionally link their learner pages to field records alongside their applied field briefs. Learners can retain the public, print-ready blank template or sign in to complete a private digital record, save it to their own account, reopen it, and export its current values as a PDF. These compact resources support water-management observation and review, 4R fertilisation documentation, and IPM scouting-to-evaluation records while preserving owner-isolated farm documentation. The record implementation, field requirements, safeguards, and export boundary are specified in [`Field-Record-Templates.md`](./Field-Record-Templates.md).
 
-The learner-support layer now adds voluntary applied scenario practice for water, drip irrigation, fertilisation, post-harvest handling, field diagnosis, disease management, IPM, pesticide stewardship, and weed management; targeted remediation after a non-passing module assessment; an owner-scoped record library; optional learner-controlled record-review sharing; local offline draft recovery; and a private competency portfolio. High-risk scenarios make verification, prevention, lawful label direction, and escalation boundaries explicit without changing the sequential pathway, formal module assessments, 80% pass mark, final certification rules, or owner-notification requirements. The implementation and privacy boundaries are specified in [`Learner-Experience-Enhancements.md`](./Learner-Experience-Enhancements.md).
+The learner-support layer now adds voluntary applied scenario practice for water, drip irrigation, fertilisation, post-harvest handling, field diagnosis, disease management, IPM, pesticide stewardship, and weed management; targeted remediation after a non-passing module assessment; an owner-scoped record library; optional learner-controlled record-review sharing; local offline draft recovery; a private competency portfolio; and a Field Readiness Portfolio. The field-readiness layer provides a structured practicum visit record, five integrated capstones, local-intelligence prompts, economics and communication checks, climate and risk reasoning, digital evidence habits, referral boundaries, and practical self-review targets. High-risk scenarios and field-readiness work make verification, prevention, lawful label direction, and escalation boundaries explicit without changing the sequential pathway, formal module assessments, 80% pass mark, final certification rules, or owner-notification requirements. The implementation and privacy boundaries are specified in [`Learner-Experience-Enhancements.md`](./Learner-Experience-Enhancements.md) and [`Field-Readiness-Design.md`](./Field-Readiness-Design.md).
 
 ## Applied field-brief standard
 

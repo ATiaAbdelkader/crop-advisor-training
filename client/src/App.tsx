@@ -9,6 +9,9 @@ import ScenarioPractice from "@/pages/ScenarioPractice";
 import RecordsDashboard from "@/pages/RecordsDashboard";
 import ReviewShare from "@/pages/ReviewShare";
 import CompetencyPortfolio from "@/pages/CompetencyPortfolio";
+import FieldReadinessHub from "@/pages/FieldReadinessHub";
+import FieldPracticum from "@/pages/FieldPracticum";
+import CapstonePractice from "@/pages/CapstonePractice";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -24,6 +27,10 @@ function Router() {
       <Route path="/progress" component={ProgressDashboard} />
       <Route path="/records" component={RecordsDashboard} />
       <Route path="/portfolio" component={CompetencyPortfolio} />
+      <Route path="/field-readiness" component={FieldReadinessHub} />
+      <Route path="/practicum/:entryId" component={FieldPracticum} />
+      <Route path="/practicum" component={FieldPracticum} />
+      <Route path="/capstone/:capstoneId" component={CapstonePractice} />
       <Route path="/review/:shareToken" component={ReviewShare} />
       <Route path="/course/:moduleId" component={Course} />
       <Route path="/scenario/:scenarioId" component={ScenarioPractice} />

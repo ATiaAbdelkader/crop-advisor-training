@@ -79,3 +79,13 @@
 - [x] Add offline draft recovery for digital field records.
 - [x] Add a competency portfolio combining progress, field records, scenario practice, and learner reflections.
 - [x] Expand evidence-based decision scenarios to additional high-risk crop-advisory modules.
+- [x] Add a field advisory practicum with verified visit, observation, interview, diagnosis, recommendation, and follow-up evidence.
+- [x] Add integrated capstone farm cases combining agronomy, water, nutrition, crop protection, economics, risk, and review decisions.
+- [x] Add Algeria-relevant production, seasonal, climate, market, and regulatory learning anchors with clear localisation boundaries.
+- [x] Add decision thresholds, uncertainty, referral, and escalation standards for field advisors.
+- [x] Add farm-economics, adviser communication, ethics, and digital field-method resources to the field-readiness curriculum.
+- [x] Upgrade the competency portfolio into a Field Readiness Portfolio with practical evidence and rubric-based self-review.
+- [x] Add practicum verification, interview, provisional diagnosis, and follow-up outcome evidence fields.
+- [x] Surface the Algeria-relevant local-intelligence method and localisation boundaries directly in learner-facing field-readiness content.
+- [x] Add dedicated field-readiness resources for farm economics, adviser communication, ethics, confidentiality, and digital field methods.
+- [x] Add structured criterion-level rubric self-review for practicum and capstone evidence.

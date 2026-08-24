@@ -1,7 +1,7 @@
 # Learner Experience Enhancements
 
 **Status:** Implemented learner-support layer.  
-**Scope:** Applied practice, targeted assessment remediation, private field-record organisation and review sharing, local draft recovery, and a competency portfolio.
+**Scope:** Applied practice, targeted assessment remediation, private field-record organisation and review sharing, local draft recovery, a competency portfolio, and Field Readiness Portfolio evidence.
 
 ## Design boundary
 
@@ -15,6 +15,7 @@ These features strengthen the learner’s ability to apply, revisit, organise, a
 | Review sharing | Create, copy, and revoke a link for one saved record | Optional reviewer feedback | The learner creates and revokes each opaque link; it exposes only the selected record. |
 | Offline field mode | Continue a new field record while disconnected | Local device draft | The draft remains local until the learner reconnects and deliberately saves it. |
 | Competency portfolio | Review progress, records, scenario practice, and a written reflection | Private personal evidence view | Portfolio items do not change certification eligibility. |
+| Field Readiness Portfolio | Complete practicum visits, integrated capstones, local-intelligence checks, and practical self-review | Private visit and capstone evidence | Field-readiness targets are developmental; they do not alter formal certification eligibility. |
 
 ## Applied practice and remediation
 
@@ -34,8 +35,14 @@ New record forms and offline edits to a reopened saved record create a debounced
 
 The **Portfolio** route combines passed-module count, field-record count, successful latest scenario outcomes, pathway progress, recent evidence, and a learner-owned reflection. The reflection asks the learner to connect an observation, decision, and revision condition, reinforcing the platform’s field-evidence standard. The portfolio is a private development view rather than a new credential or public profile.
 
+## Field Readiness Portfolio
+
+The **Field Ready** route turns the portfolio into a structured practical-development pathway. Learners can create private practicum visit records that require visit verification or supervision status, a grower question and interview notes, locality and production context, direct observations, competing explanations, a provisional diagnosis, recommendation rationale, communication plan, economics and risk check, review trigger and outcome evidence, referral boundary, and dated local-source check. Five capstones ask learners to combine water, soil, crop stage, diagnosis, crop protection, economics, climate, harvest handling, communication, and review logic in one advisory response.
+
+The route includes a learner-facing local-intelligence method: record the place, season, market condition, safety source, and review condition rather than applying a fixed national calendar or assumed local price. It also provides dedicated field-method resources for farm economics, adviser communication and confidentiality, and traceable digital evidence. Both practicum and capstone evidence now use the same six criterion-level rubric alongside a written reflection. The underlying design and current-source verification guardrails are documented in [`Field-Readiness-Design.md`](./Field-Readiness-Design.md). Practicum and capstone submissions are visible only to the authenticated learner. They support a self-review target of three substantive visits, two capstones, two digital records, four passed scenarios, and a professional reflection; this remains separate from the platform’s formal certificate.
+
 ## Validation standard
 
-Regression coverage verifies the three defined scenarios, their module mappings, their evidence prompts, perfect and non-passing scoring behaviour, local-draft structural validation, printable-record behaviour, PDF generation, saved-list error states, and two-record comparison selection and setup-field summaries. Database procedures scope record, reflection, scenario, comparison, and review-share data to the authenticated owner, except for the deliberately learner-created active review token route.
+Regression coverage verifies scenario mappings and scoring, local-draft structural validation, printable-record behaviour, PDF generation, saved-list error states, two-record comparison selection and setup-field summaries, practicum completion, capstone completeness, and the non-gating field-readiness boundary. Database procedures scope record, reflection, scenario, comparison, practicum, capstone, and review-share data to the authenticated owner, except for the deliberately learner-created active review token route.
 
 Visual route validation confirmed the water-management learner page, applied scenario entry, responsible-pesticide module scenario card, pesticide-stewardship scenario page, empty record-library state, private portfolio, digital water-record workspace, and unavailable-review-link state. Desktop and 375 px mobile checks retained readable scenario context, record filters, and portfolio evidence cards. The portfolio renders formal module evidence separately from voluntary record, scenario, and reflection evidence.

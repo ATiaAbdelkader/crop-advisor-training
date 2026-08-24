@@ -10,7 +10,7 @@ const navigation = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Progress", href: "/progress", icon: BarChart3 },
   { label: "Records", href: "/records", icon: ClipboardList },
-  { label: "Portfolio", href: "/portfolio", icon: Medal },
+  { label: "Field Ready", href: "/field-readiness", icon: Medal },
   { label: "Curriculum", href: "/course/advisory-practice", icon: BookOpenCheck },
   { label: "Credential", href: "/certificate", icon: Award },
 ];

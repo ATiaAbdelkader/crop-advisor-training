@@ -11,6 +11,18 @@ import { fieldRecordDraftStorageKey, parseFieldRecordDraft } from "../client/src
 import { comparisonSetupFields, toggleComparisonSelection } from "../client/src/lib/fieldRecordComparison";
 import { appliedScenarioByModuleId, appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import {
+  capstoneCases,
+  createEmptyCapstoneSubmissionPayload,
+  createEmptyFieldPracticumPayload,
+  fieldReadinessResources,
+  fieldReadinessRubric,
+  localIntelligenceSteps,
+  fieldPracticumFields,
+  fieldReadinessRequirements,
+  isCompleteCapstoneSubmission,
+  isCompleteFieldPracticum,
+} from "../shared/fieldReadiness";
+import {
   buildTrainingOverview,
   isAssessmentAccessible,
   isLessonAccessible,
@@ -177,6 +189,39 @@ describe("crop-advisor progression", () => {
     expect(toggleComparisonSelection([11, 22], 11)).toEqual([22]);
     expect(comparisonSetupFields([{ payload: waterPayload }, { payload: fertilisationPayload }])).toContain("Farm or grower");
     expect(comparisonSetupFields([{ payload: waterPayload }, { payload: fertilisationPayload }])).toContain("Soil-test or limiting-factor evidence");
+  });
+
+  it("defines complete, non-gating field-readiness practicum and capstone evidence for integrated advisory work", () => {
+    const practicum = createEmptyFieldPracticumPayload();
+    fieldPracticumFields.forEach(field => { practicum[field.key] = `Substantive evidence for ${field.label} with a local source and review condition.`; });
+    practicum.visitDate = "2026-08-24";
+    practicum.rubric = Object.fromEntries(fieldReadinessRubric.map(criterion => [criterion.id, 3]));
+
+    expect(fieldPracticumFields).toHaveLength(15);
+    expect(fieldPracticumFields.map(field => field.key)).toEqual(expect.arrayContaining(["visitVerification", "growerInterviewNotes", "provisionalDiagnosis", "followUpOutcome"]));
+    expect(isCompleteFieldPracticum(practicum)).toBe(true);
+    expect(Object.keys(capstoneCases)).toEqual([
+      "water-market-resilience",
+      "diagnosis-to-ipm",
+      "safe-input-and-economics",
+      "harvest-chain-and-buyer",
+      "climate-soil-and-weed-resilience",
+    ]);
+    Object.values(capstoneCases).forEach(capstone => {
+      const submission = createEmptyCapstoneSubmissionPayload(capstone);
+      submission.responses = capstone.responsePrompts.map(prompt => `A substantive response to ${prompt} that identifies evidence, uncertainty, a safe action, and a review trigger.`);
+      submission.selfReview = "This response distinguishes observation from inference and identifies evidence or supervision needed before revising the recommendation.";
+      submission.rubric = Object.fromEntries(fieldReadinessRubric.map(criterion => [criterion.id, 3]));
+      expect(capstone.evidencePack.length).toBeGreaterThanOrEqual(4);
+      expect(capstone.requiredDecisions.length).toBeGreaterThanOrEqual(4);
+      expect(isCompleteCapstoneSubmission(submission, capstone)).toBe(true);
+    });
+    expect(fieldReadinessRequirements.note).toContain("do not modify");
+    expect(fieldReadinessRequirements.minimumPracticumVisits).toBe(3);
+    expect(fieldReadinessRequirements.minimumIntegratedCapstones).toBe(2);
+    expect(fieldReadinessRubric).toHaveLength(6);
+    expect(localIntelligenceSteps).toHaveLength(5);
+    expect(fieldReadinessResources.map(resource => resource.id)).toEqual(["economics", "communication", "digital"]);
   });
 
   it("provides a complete source-grounded applied field brief for every document-derived module", () => {
