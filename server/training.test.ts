@@ -10,6 +10,7 @@ import { getSavedRecordListState } from "../client/src/lib/fieldRecordViewState"
 import { fieldRecordDraftStorageKey, parseFieldRecordDraft } from "../client/src/lib/fieldRecordDrafts";
 import { comparisonSetupFields, toggleComparisonSelection } from "../client/src/lib/fieldRecordComparison";
 import { appliedScenarioByModuleId, appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
+import { fieldMeasurementCards, fieldMeasurementCardsByModuleId, getFieldMeasurementCard } from "../shared/fieldMeasurementCards";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -165,6 +166,30 @@ describe("crop-advisor progression", () => {
     expect(appliedScenarios["harvest-quality-and-food-safety-decision"].evidenceChecklist.join(" ")).toContain("interval");
     expect(appliedScenarios["disease-cycle-and-escalation-decision"].questions[2].feedback).toContain("Legal fit");
     expect(appliedScenarios["weed-persistence-and-control-decision"].evidenceChecklist.join(" ")).toContain("drift");
+  });
+
+  it("provides six source-grounded measurement and decision routines with evidence, review, and referral boundaries", () => {
+    expect(fieldMeasurementCards.map(card => card.id)).toEqual([
+      "representative-soil-sample-chain",
+      "root-zone-moisture-and-air-check",
+      "water-quality-screen",
+      "drip-uniformity-check",
+      "nutrient-plan-evidence-check",
+      "sprayer-pre-use-and-calibration-check",
+    ]);
+    fieldMeasurementCards.forEach(card => {
+      expect(card.prepare.length).toBeGreaterThanOrEqual(3);
+      expect(card.routine.length).toBeGreaterThanOrEqual(3);
+      expect(card.record.length).toBeGreaterThanOrEqual(4);
+      expect(card.decide.length).toBeGreaterThanOrEqual(3);
+      expect(card.review.length).toBeGreaterThan(80);
+      expect(card.refer.length).toBeGreaterThan(80);
+      card.moduleIds.forEach(moduleId => expect(cropAdvisorCourse.modules.some(module => module.id === moduleId)).toBe(true));
+    });
+    expect(fieldMeasurementCardsByModuleId["water-management"].map(card => card.id)).toEqual(["root-zone-moisture-and-air-check", "water-quality-screen"]);
+    expect(fieldMeasurementCardsByModuleId["responsible-use-of-pesticides"][0].shortTitle).toBe("Sprayer safety check");
+    expect(getFieldMeasurementCard("missing-card").id).toBe("representative-soil-sample-chain");
+    expect(getFieldMeasurementCard("sprayer-pre-use-and-calibration-check").decide.join(" ")).toContain("Stop work");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

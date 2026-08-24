@@ -12,6 +12,7 @@ import CompetencyPortfolio from "@/pages/CompetencyPortfolio";
 import FieldReadinessHub from "@/pages/FieldReadinessHub";
 import FieldPracticum from "@/pages/FieldPracticum";
 import CapstonePractice from "@/pages/CapstonePractice";
+import MeasurementCards from "@/pages/MeasurementCards";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/records" component={RecordsDashboard} />
       <Route path="/portfolio" component={CompetencyPortfolio} />
       <Route path="/field-readiness" component={FieldReadinessHub} />
+      <Route path="/measurements" component={MeasurementCards} />
       <Route path="/practicum/:entryId" component={FieldPracticum} />
       <Route path="/practicum" component={FieldPracticum} />
       <Route path="/capstone/:capstoneId" component={CapstonePractice} />

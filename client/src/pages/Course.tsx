@@ -10,8 +10,9 @@ import { cropAdvisorCourse } from "@shared/curriculum";
 import { documentModuleFieldBriefs } from "@shared/moduleFieldBriefs";
 import { fieldRecordByModuleId } from "@shared/fieldRecordTemplates";
 import { appliedScenarioByModuleId } from "@shared/appliedScenarios";
+import { fieldMeasurementCardsByModuleId } from "@shared/fieldMeasurementCards";
 import { moduleVisuals } from "@shared/moduleVisuals";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Target } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Ruler, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -55,6 +56,7 @@ export default function Course() {
   const fieldBrief = documentModuleFieldBriefs[module.id];
   const fieldRecord = fieldRecordByModuleId[module.id];
   const scenario = appliedScenarioByModuleId[module.id];
+  const measurementCards = fieldMeasurementCardsByModuleId[module.id] ?? [];
   const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
@@ -210,6 +212,15 @@ export default function Course() {
                 <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">Decision practice</p>
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Test an evidence-led response to a realistic field situation. Practice does not change your module gate.</p>
                 <Button variant="outline" onClick={() => isAuthenticated ? setLocation(`/scenario/${scenario.id}`) : startLogin()} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><ClipboardCheck className="mr-1.5 h-3.5 w-3.5" />Practise the decision</Button>
+              </div>
+            )}
+            {measurementCards.length > 0 && (
+              <div className="rounded-[22px] border border-[#dbe7d5] bg-[#f7fbf4] p-5">
+                <Ruler className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Field measurement routine</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">{measurementCards.length === 1 ? measurementCards[0].shortTitle : "Linked measurement cards"}</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Use a source-grounded routine to prepare, observe, record, decide, review, and refer without relying on unsupported thresholds.</p>
+                <Button variant="outline" onClick={() => setLocation(`/measurements?card=${measurementCards[0].id}`)} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><Ruler className="mr-1.5 h-3.5 w-3.5" />Open measurement card{measurementCards.length > 1 ? "s" : ""}</Button>
               </div>
             )}
           </aside>
