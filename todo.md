@@ -71,3 +71,10 @@
 - [x] Create and link printable water-management, fertilisation, and integrated pest-management field-record templates in their respective modules.
 - [x] Add authenticated digital entry, record management, and PDF export for the water, fertilisation, and IPM field records.
 - [x] Add explicit saved-record loading error and retry handling to the digital field-record workspace.
+- [x] Add module-aligned scenario practice with evidence-based decision feedback.
+- [x] Add targeted remediation guidance after unsuccessful module assessments.
+- [x] Add a learner dashboard for finding and comparing saved field records.
+- [x] Add side-by-side saved-field-record comparison with regression coverage.
+- [x] Add learner-controlled supervisor or peer review sharing for saved field records.
+- [x] Add offline draft recovery for digital field records.
+- [x] Add a competency portfolio combining progress, field records, scenario practice, and learner reflections.

@@ -2,13 +2,15 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { startLogin } from "@/const";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Award, BarChart3, BookOpenCheck, Leaf, LayoutDashboard, LogOut } from "lucide-react";
+import { Award, BarChart3, BookOpenCheck, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal } from "lucide-react";
 import type { ReactNode } from "react";
 import { useLocation } from "wouter";
 
 const navigation = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "Progress", href: "/progress", icon: BarChart3 },
+  { label: "Records", href: "/records", icon: ClipboardList },
+  { label: "Portfolio", href: "/portfolio", icon: Medal },
   { label: "Curriculum", href: "/course/advisory-practice", icon: BookOpenCheck },
   { label: "Credential", href: "/certificate", icon: Award },
 ];

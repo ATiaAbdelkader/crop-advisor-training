@@ -7,6 +7,9 @@ import { fieldRecordByModuleId, fieldRecordTemplates } from "../shared/fieldReco
 import { createEmptyFieldRecordPayload, MAX_FIELD_RECORD_ENTRIES, MAX_FIELD_RECORD_TITLE_LENGTH } from "../shared/digitalFieldRecords";
 import { createFieldRecordPdf } from "../client/src/lib/fieldRecordPdf";
 import { getSavedRecordListState } from "../client/src/lib/fieldRecordViewState";
+import { fieldRecordDraftStorageKey, parseFieldRecordDraft } from "../client/src/lib/fieldRecordDrafts";
+import { comparisonSetupFields, toggleComparisonSelection } from "../client/src/lib/fieldRecordComparison";
+import { appliedScenarioByModuleId, appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import {
   buildTrainingOverview,
   isAssessmentAccessible,
@@ -113,6 +116,51 @@ describe("crop-advisor progression", () => {
     expect(getSavedRecordListState({ isLoading: false, isError: true, recordCount: 0 })).toBe("error");
     expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 0 })).toBe("empty");
     expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 1 })).toBe("ready");
+  });
+
+  it("provides three source-aligned scenario practices without changing formal assessment rules", () => {
+    expect(Object.keys(appliedScenarios)).toEqual([
+      "water-root-zone-decision",
+      "fertilisation-limiting-factor-decision",
+      "ipm-scout-to-action-decision",
+    ]);
+    expect(Object.keys(appliedScenarioByModuleId)).toEqual([
+      "water-management",
+      "vegetable-fertilisation",
+      "integrated-pest-management",
+    ]);
+    Object.values(appliedScenarios).forEach(scenario => {
+      expect(cropAdvisorCourse.modules.some(module => module.id === scenario.moduleId)).toBe(true);
+      expect(scenario.questions).toHaveLength(3);
+      expect(scenario.evidenceChecklist.length).toBeGreaterThanOrEqual(4);
+      const perfectAnswers = Object.fromEntries(scenario.questions.map(question => [question.id, question.correctOptionId]));
+      expect(scoreAppliedScenario(scenario, perfectAnswers)).toMatchObject({ score: 100, passed: true, correctCount: 3 });
+      expect(scoreAppliedScenario(scenario, {}).passed).toBe(false);
+    });
+  });
+
+  it("recovers only a structurally valid local field-record draft for the intended template", () => {
+    const template = fieldRecordTemplates["water-management-record"];
+    const payload = createEmptyFieldRecordPayload(template);
+    const rawDraft = JSON.stringify({ title: "Field draft", payload });
+
+    expect(fieldRecordDraftStorageKey(template.id)).toBe("crop-advisor-field-record-draft:water-management-record");
+    expect(fieldRecordDraftStorageKey(`${template.id}:42`)).toBe("crop-advisor-field-record-draft:water-management-record:42");
+    expect(parseFieldRecordDraft(rawDraft)).toMatchObject({ title: "Field draft", payload });
+    expect(parseFieldRecordDraft("not json")).toBeNull();
+    expect(parseFieldRecordDraft(JSON.stringify({ title: "Incomplete" }))).toBeNull();
+  });
+
+  it("supports private two-record comparison selection and a union of their setup evidence fields", () => {
+    const waterPayload = createEmptyFieldRecordPayload(fieldRecordTemplates["water-management-record"]);
+    const fertilisationPayload = createEmptyFieldRecordPayload(fieldRecordTemplates["fertilisation-record"]);
+
+    expect(toggleComparisonSelection([], 11)).toEqual([11]);
+    expect(toggleComparisonSelection([11], 22)).toEqual([11, 22]);
+    expect(toggleComparisonSelection([11, 22], 33)).toEqual([11, 22]);
+    expect(toggleComparisonSelection([11, 22], 11)).toEqual([22]);
+    expect(comparisonSetupFields([{ payload: waterPayload }, { payload: fertilisationPayload }])).toContain("Farm or grower");
+    expect(comparisonSetupFields([{ payload: waterPayload }, { payload: fertilisationPayload }])).toContain("Soil-test or limiting-factor evidence");
   });
 
   it("provides a complete source-grounded applied field brief for every document-derived module", () => {

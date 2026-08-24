@@ -9,8 +9,9 @@ import { startLogin } from "@/const";
 import { cropAdvisorCourse } from "@shared/curriculum";
 import { documentModuleFieldBriefs } from "@shared/moduleFieldBriefs";
 import { fieldRecordByModuleId } from "@shared/fieldRecordTemplates";
+import { appliedScenarioByModuleId } from "@shared/appliedScenarios";
 import { moduleVisuals } from "@shared/moduleVisuals";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Target } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -53,6 +54,7 @@ export default function Course() {
   const assessmentReady = overview?.availableAssessmentIds.includes(module.assessment.id) ?? false;
   const fieldBrief = documentModuleFieldBriefs[module.id];
   const fieldRecord = fieldRecordByModuleId[module.id];
+  const scenario = appliedScenarioByModuleId[module.id];
   const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
@@ -199,6 +201,15 @@ export default function Course() {
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Fill, save, reopen, and export a private digital record for this field decision.</p>
                 <Button onClick={() => setLocation(`/records/${fieldRecord.id}/entry`)} className="mt-4 w-full rounded-full bg-[#315f47] text-xs font-bold hover:bg-[#214d36]"><FileText className="mr-1.5 h-3.5 w-3.5" />Start digital record</Button>
                 <button type="button" onClick={() => setLocation(`/records/${fieldRecord.id}`)} className="mt-3 w-full text-center text-[11px] font-bold text-[#54705a] hover:text-[#1f4a37]">View blank printable template</button>
+              </div>
+            )}
+            {scenario && (
+              <div className="rounded-[22px] border border-[#dce6d6] bg-[#fcfcf8] p-5">
+                <ClipboardCheck className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Applied scenario</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">Decision practice</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Test an evidence-led response to a realistic field situation. Practice does not change your module gate.</p>
+                <Button variant="outline" onClick={() => isAuthenticated ? setLocation(`/scenario/${scenario.id}`) : startLogin()} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><ClipboardCheck className="mr-1.5 h-3.5 w-3.5" />Practise the decision</Button>
               </div>
             )}
           </aside>

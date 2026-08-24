@@ -169,5 +169,60 @@ export const fieldRecords = mysqlTable(
   table => [index("field_record_owner_template_updated_idx").on(table.userId, table.templateId, table.updatedAt)]
 );
 
+/** Applied scenario attempts provide additional practice without changing the formal 80% progression gate. */
+export const scenarioAttempts = mysqlTable(
+  "scenarioAttempts",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    moduleId: varchar("moduleId", { length: 128 }).notNull(),
+    scenarioId: varchar("scenarioId", { length: 128 }).notNull(),
+    score: int("score").notNull(),
+    passed: mysqlEnum("passed", ["yes", "no"]).notNull(),
+    answersJson: text("answersJson").notNull(),
+    submittedAt: timestamp("submittedAt").defaultNow().notNull(),
+  },
+  table => [index("scenario_attempt_owner_scenario_idx").on(table.userId, table.scenarioId, table.submittedAt)]
+);
+
+/** A learner can maintain one private reflection for each named competency focus. */
+export const learnerReflections = mysqlTable(
+  "learnerReflections",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    focus: varchar("focus", { length: 96 }).notNull(),
+    reflection: text("reflection").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [uniqueIndex("learner_reflection_owner_focus_unique").on(table.userId, table.focus)]
+);
+
+/** Learners create and revoke opaque share links for a single saved field record. */
+export const fieldRecordReviewShares = mysqlTable(
+  "fieldRecordReviewShares",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    recordId: int("recordId")
+      .notNull()
+      .references(() => fieldRecords.id, { onDelete: "cascade" }),
+    ownerUserId: int("ownerUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    shareToken: varchar("shareToken", { length: 64 }).notNull().unique(),
+    reviewerName: varchar("reviewerName", { length: 160 }),
+    reviewComment: text("reviewComment"),
+    reviewedAt: timestamp("reviewedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    revokedAt: timestamp("revokedAt"),
+  },
+  table => [index("field_record_share_owner_record_idx").on(table.ownerUserId, table.recordId, table.revokedAt)]
+);
+
 export type User = typeof users.$inferSelect;
 export type InsertUser = typeof users.$inferInsert;

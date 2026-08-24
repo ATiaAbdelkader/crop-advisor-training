@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
 import { getAssessmentById, getModuleForAssessment } from "@shared/curriculum";
+import { appliedScenarioByModuleId } from "@shared/appliedScenarios";
 import { Award, CheckCircle2, ChevronLeft, ChevronRight, CircleAlert, LockKeyhole, RotateCcw, Target } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -55,6 +56,7 @@ export default function Assessment() {
   const accessible = overview?.availableAssessmentIds.includes(assessment.id) ?? false;
   const canSubmit = assessment.questions.every(question => answers[question.id]);
   const sourceModule = getModuleForAssessment(assessment.id);
+  const remediationScenario = sourceModule ? appliedScenarioByModuleId[sourceModule.id] : undefined;
   const returnPath = assessment.kind === "final" ? "/dashboard" : `/course/${sourceModule?.id ?? "advisory-practice"}`;
 
   const handleSubmit = () => {
@@ -86,6 +88,7 @@ export default function Assessment() {
                 {result.certificate && <div className="mt-6 flex items-start gap-3 rounded-xl border border-[#c5dec0] bg-white/65 p-4"><Award className="mt-0.5 h-4 w-4 shrink-0 text-[#4d8a56]" /><p className="text-xs leading-5 text-[#426046]">Your Crop Advisor Foundations Certificate has been issued. {result.ownerNotified ? "The platform owner has also been notified." : "It is ready to view in your credential area."}</p></div>}
               </div>
               <div className="mt-8 space-y-4"><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#819080]">Response feedback</p>{assessment.questions.map((question, index) => { const item = result.results.find(entry => entry.questionId === question.id); return <div key={question.id} className={cn("rounded-2xl border p-5", item?.correct ? "border-[#d8e7d5] bg-[#fbfdf9]" : "border-[#eadccf] bg-[#fffcf8]")}><div className="flex gap-3"><span className={cn("grid h-6 w-6 shrink-0 place-items-center rounded-full text-[10px] font-extrabold", item?.correct ? "bg-[#dff0da] text-[#357243]" : "bg-[#f5e2d2] text-[#a66230]")}>{item?.correct ? <CheckCircle2 className="h-3.5 w-3.5" /> : String(index + 1)}</span><div><p className="text-sm font-bold leading-6 text-[#344838]">{question.prompt}</p><p className="mt-2 text-xs leading-5 text-[#617162]">{item?.feedback}</p></div></div></div>; })}</div>
+              {!result.passed && sourceModule && <section className="mt-8 rounded-2xl border border-[#d9e6d5] bg-[#f7fbf4] p-5 sm:p-6"><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Targeted refresh</p><h3 className="mt-2 font-serif text-2xl font-semibold text-[#2d4934]">Rebuild the evidence before your next attempt.</h3><p className="mt-2 text-sm leading-6 text-[#58705a]">Return to <span className="font-bold">{sourceModule.lessons[0]?.title}</span> and use the response feedback above to identify the observation, constraint, or decision rule that needs attention.</p><div className="mt-5 flex flex-wrap gap-3"><Button variant="outline" onClick={() => setLocation(`/course/${sourceModule.id}`)} className="rounded-full border-[#bdd0b9] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><ChevronLeft className="mr-1.5 h-3.5 w-3.5" />Review linked lesson</Button>{remediationScenario && <Button onClick={() => setLocation(`/scenario/${remediationScenario.id}`)} className="rounded-full bg-[#315f47] text-xs font-bold hover:bg-[#214d36]"><Target className="mr-1.5 h-3.5 w-3.5" />Practise the decision</Button>}</div></section>}
               <div className="mt-8 flex flex-wrap justify-between gap-3"><Button variant="outline" onClick={() => { setResult(null); setAnswers({}); }} className="rounded-full border-[#c9d7c5] bg-transparent text-xs font-bold text-[#426045] hover:bg-[#edf3ea]"><RotateCcw className="mr-1.5 h-3.5 w-3.5" />Retake assessment</Button><Button onClick={() => setLocation(result.passed ? result.overview.nextAction.href : returnPath)} className="rounded-full bg-[#315f47] px-5 text-xs font-bold shadow-none hover:bg-[#214d36]">{result.passed ? result.overview.nextAction.title : "Review learning"}<ChevronRight className="ml-1 h-3.5 w-3.5" /></Button></div>
             </div>
           ) : (

@@ -1,6 +1,7 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { cropAdvisorCourse, getAssessmentById, getLessonById } from "../shared/curriculum";
+import { appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import {
   MAX_FIELD_RECORD_ENTRIES,
   MAX_FIELD_RECORD_TITLE_LENGTH,
@@ -17,13 +18,24 @@ import {
 import {
   enrollLearner,
   deleteFieldRecord,
+  createFieldRecordReviewShare,
+  getActiveFieldRecordReviewShare,
   getFieldRecord,
+  getFieldRecordsForOwner,
   getLearningRecords,
   issueCertificateIfNeeded,
   markLessonComplete,
   recordAssessmentAttempt,
   listFieldRecords,
+  listAllFieldRecords,
+  listFieldRecordReviewShares,
+  listLearnerReflections,
+  listScenarioAttempts,
   saveFieldRecord,
+  recordScenarioAttempt,
+  revokeFieldRecordReviewShare,
+  submitFieldRecordReview,
+  upsertLearnerReflection,
 } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
@@ -185,6 +197,13 @@ export const appRouter = router({
         if (!record) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
         return record;
       }),
+    compare: protectedProcedure
+      .input(z.object({ ids: z.array(z.number().int().positive()).length(2).refine(ids => new Set(ids).size === 2, "Choose two different records.") }))
+      .query(async ({ ctx, input }) => {
+        const records = await getFieldRecordsForOwner(ctx.user.id, input.ids);
+        if (!records) throw new TRPCError({ code: "NOT_FOUND", message: "One or more selected field records are unavailable." });
+        return records;
+      }),
     save: protectedProcedure
       .input(z.object({
         id: z.number().int().positive().optional(),
@@ -211,6 +230,79 @@ export const appRouter = router({
         if (!deleted) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
         return { success: true } as const;
       }),
+  }),
+  scenarios: router({
+    list: publicProcedure.query(() => Object.values(appliedScenarios)),
+    submit: protectedProcedure
+      .input(z.object({ scenarioId: z.string().min(1).max(128), answers: z.record(z.string(), z.string()) }))
+      .mutation(async ({ ctx, input }) => {
+        const scenario = appliedScenarios[input.scenarioId];
+        if (!scenario) throw new TRPCError({ code: "NOT_FOUND", message: "Scenario not found." });
+        const result = scoreAppliedScenario(scenario, input.answers);
+        await recordScenarioAttempt({
+          userId: ctx.user.id,
+          moduleId: scenario.moduleId,
+          scenarioId: scenario.id,
+          score: result.score,
+          passed: result.passed,
+          answers: input.answers,
+        });
+        return result;
+      }),
+  }),
+  reviewShares: router({
+    list: protectedProcedure
+      .input(z.object({ recordId: z.number().int().positive() }))
+      .query(async ({ ctx, input }) => {
+        const shares = await listFieldRecordReviewShares(ctx.user.id, input.recordId);
+        if (!shares) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
+        return shares;
+      }),
+    create: protectedProcedure
+      .input(z.object({ recordId: z.number().int().positive(), reviewerName: z.string().trim().max(160).optional() }))
+      .mutation(async ({ ctx, input }) => {
+        const share = await createFieldRecordReviewShare({ ownerUserId: ctx.user.id, ...input });
+        if (!share) throw new TRPCError({ code: "NOT_FOUND", message: "Field record not found." });
+        return share;
+      }),
+    revoke: protectedProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        const revoked = await revokeFieldRecordReviewShare(ctx.user.id, input.id);
+        if (!revoked) throw new TRPCError({ code: "NOT_FOUND", message: "Active review share not found." });
+        return { success: true } as const;
+      }),
+    open: publicProcedure
+      .input(z.object({ shareToken: z.string().min(24).max(64) }))
+      .query(async ({ input }) => {
+        const share = await getActiveFieldRecordReviewShare(input.shareToken);
+        if (!share) throw new TRPCError({ code: "NOT_FOUND", message: "This review link is unavailable." });
+        return share;
+      }),
+    submitReview: publicProcedure
+      .input(z.object({ shareToken: z.string().min(24).max(64), reviewerName: z.string().trim().min(2).max(160), reviewComment: z.string().trim().min(10).max(4000) }))
+      .mutation(async ({ input }) => {
+        const submitted = await submitFieldRecordReview(input);
+        if (!submitted) throw new TRPCError({ code: "NOT_FOUND", message: "This review link is unavailable." });
+        return { success: true } as const;
+      }),
+  }),
+  reflections: router({
+    list: protectedProcedure.query(({ ctx }) => listLearnerReflections(ctx.user.id)),
+    save: protectedProcedure
+      .input(z.object({ focus: z.string().trim().min(2).max(96), reflection: z.string().trim().min(20).max(4000) }))
+      .mutation(({ ctx, input }) => upsertLearnerReflection({ userId: ctx.user.id, ...input })),
+  }),
+  portfolio: router({
+    overview: protectedProcedure.query(async ({ ctx }) => {
+      const [overview, records, attempts, reflections] = await Promise.all([
+        getOverviewForLearner(ctx.user.id),
+        listAllFieldRecords(ctx.user.id),
+        listScenarioAttempts(ctx.user.id),
+        listLearnerReflections(ctx.user.id),
+      ]);
+      return { overview, records, attempts, reflections };
+    }),
   }),
 });
 

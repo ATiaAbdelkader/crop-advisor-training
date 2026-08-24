@@ -1,12 +1,15 @@
-import { and, desc, eq } from "drizzle-orm";
+import { and, desc, eq, inArray, isNull } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   assessmentAttempts,
   certificates,
   courseEnrollments,
   fieldRecords,
+  fieldRecordReviewShares,
   InsertUser,
+  learnerReflections,
   lessonCompletions,
+  scenarioAttempts,
   users,
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
@@ -205,6 +208,19 @@ export async function getFieldRecord(userId: number, id: number) {
   return rows[0] ? toStoredFieldRecord(rows[0]) : null;
 }
 
+export async function getFieldRecordsForOwner(userId: number, ids: number[]) {
+  const uniqueIds = Array.from(new Set(ids));
+  if (uniqueIds.length !== 2) return null;
+  const db = await requireDb();
+  const rows = await db
+    .select()
+    .from(fieldRecords)
+    .where(and(eq(fieldRecords.userId, userId), inArray(fieldRecords.id, uniqueIds)));
+  if (rows.length !== uniqueIds.length) return null;
+  const recordsById = new Map(rows.map(record => [record.id, toStoredFieldRecord(record)]));
+  return uniqueIds.map(id => recordsById.get(id)!);
+}
+
 export async function saveFieldRecord(input: {
   id?: number;
   userId: number;
@@ -238,5 +254,128 @@ export async function deleteFieldRecord(userId: number, id: number) {
   const result = await db
     .delete(fieldRecords)
     .where(and(eq(fieldRecords.id, id), eq(fieldRecords.userId, userId)));
+  return result[0].affectedRows > 0;
+}
+
+export async function listAllFieldRecords(userId: number) {
+  const db = await requireDb();
+  return db
+    .select({
+      id: fieldRecords.id,
+      title: fieldRecords.title,
+      templateId: fieldRecords.templateId,
+      createdAt: fieldRecords.createdAt,
+      updatedAt: fieldRecords.updatedAt,
+    })
+    .from(fieldRecords)
+    .where(eq(fieldRecords.userId, userId))
+    .orderBy(desc(fieldRecords.updatedAt));
+}
+
+export async function recordScenarioAttempt(input: {
+  userId: number;
+  moduleId: string;
+  scenarioId: string;
+  score: number;
+  passed: boolean;
+  answers: Record<string, string>;
+}) {
+  const db = await requireDb();
+  await db.insert(scenarioAttempts).values({
+    userId: input.userId,
+    moduleId: input.moduleId,
+    scenarioId: input.scenarioId,
+    score: input.score,
+    passed: input.passed ? "yes" : "no",
+    answersJson: JSON.stringify(input.answers),
+  });
+}
+
+export async function listScenarioAttempts(userId: number) {
+  const db = await requireDb();
+  return db
+    .select()
+    .from(scenarioAttempts)
+    .where(eq(scenarioAttempts.userId, userId))
+    .orderBy(desc(scenarioAttempts.submittedAt));
+}
+
+export async function listLearnerReflections(userId: number) {
+  const db = await requireDb();
+  return db
+    .select()
+    .from(learnerReflections)
+    .where(eq(learnerReflections.userId, userId))
+    .orderBy(desc(learnerReflections.updatedAt));
+}
+
+export async function upsertLearnerReflection(input: { userId: number; focus: string; reflection: string }) {
+  const db = await requireDb();
+  await db
+    .insert(learnerReflections)
+    .values(input)
+    .onDuplicateKeyUpdate({ set: { reflection: input.reflection, updatedAt: new Date() } });
+  const rows = await db
+    .select()
+    .from(learnerReflections)
+    .where(and(eq(learnerReflections.userId, input.userId), eq(learnerReflections.focus, input.focus)))
+    .limit(1);
+  return rows[0];
+}
+
+export async function createFieldRecordReviewShare(input: { ownerUserId: number; recordId: number; reviewerName?: string }) {
+  const record = await getFieldRecord(input.ownerUserId, input.recordId);
+  if (!record) return null;
+  const db = await requireDb();
+  const shareToken = crypto.randomUUID().replace(/-/g, "");
+  const result = await db.insert(fieldRecordReviewShares).values({
+    recordId: input.recordId,
+    ownerUserId: input.ownerUserId,
+    shareToken,
+    reviewerName: input.reviewerName?.trim() || null,
+  });
+  const rows = await db.select().from(fieldRecordReviewShares).where(eq(fieldRecordReviewShares.id, Number(result[0].insertId))).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function listFieldRecordReviewShares(ownerUserId: number, recordId: number) {
+  const record = await getFieldRecord(ownerUserId, recordId);
+  if (!record) return null;
+  const db = await requireDb();
+  return db
+    .select()
+    .from(fieldRecordReviewShares)
+    .where(and(eq(fieldRecordReviewShares.ownerUserId, ownerUserId), eq(fieldRecordReviewShares.recordId, recordId)))
+    .orderBy(desc(fieldRecordReviewShares.createdAt));
+}
+
+export async function revokeFieldRecordReviewShare(ownerUserId: number, id: number) {
+  const db = await requireDb();
+  const result = await db
+    .update(fieldRecordReviewShares)
+    .set({ revokedAt: new Date() })
+    .where(and(eq(fieldRecordReviewShares.id, id), eq(fieldRecordReviewShares.ownerUserId, ownerUserId), isNull(fieldRecordReviewShares.revokedAt)));
+  return result[0].affectedRows > 0;
+}
+
+export async function getActiveFieldRecordReviewShare(shareToken: string) {
+  const db = await requireDb();
+  const shares = await db
+    .select()
+    .from(fieldRecordReviewShares)
+    .where(and(eq(fieldRecordReviewShares.shareToken, shareToken), isNull(fieldRecordReviewShares.revokedAt)))
+    .limit(1);
+  const share = shares[0];
+  if (!share) return null;
+  const record = await getFieldRecord(share.ownerUserId, share.recordId);
+  return record ? { share, record } : null;
+}
+
+export async function submitFieldRecordReview(input: { shareToken: string; reviewerName: string; reviewComment: string }) {
+  const db = await requireDb();
+  const result = await db
+    .update(fieldRecordReviewShares)
+    .set({ reviewerName: input.reviewerName, reviewComment: input.reviewComment, reviewedAt: new Date() })
+    .where(and(eq(fieldRecordReviewShares.shareToken, input.shareToken), isNull(fieldRecordReviewShares.revokedAt)));
   return result[0].affectedRows > 0;
 }

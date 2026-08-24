@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.4  
+**Version:** 4.5  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -52,6 +52,8 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 Each lesson contains a short applied introduction, three substantial content sections, an explicit learning-outcome panel, a field-practice callout, contextual navigation, and a completion control. In addition, every document-derived module includes a **source-grounded applied field brief** with context, task, evidence to record, and a quality standard. The interface preserves lesson order within a module and gives learners a visible record of completion.
 
 Modules 23, 26, and 32 additionally link their learner pages to field records alongside their applied field briefs. Learners can retain the public, print-ready blank template or sign in to complete a private digital record, save it to their own account, reopen it, and export its current values as a PDF. These compact resources support water-management observation and review, 4R fertilisation documentation, and IPM scouting-to-evaluation records while preserving owner-isolated farm documentation. The record implementation, field requirements, safeguards, and export boundary are specified in [`Field-Record-Templates.md`](./Field-Record-Templates.md).
+
+The learner-support layer now adds voluntary applied scenario practice for these same decision domains, targeted remediation after a non-passing module assessment, an owner-scoped record library, optional learner-controlled record-review sharing, local offline draft recovery, and a private competency portfolio. These enhancements preserve the sequential pathway, formal module assessments, 80% pass mark, final certification rules, and owner-notification requirements. The implementation and privacy boundaries are specified in [`Learner-Experience-Enhancements.md`](./Learner-Experience-Enhancements.md).
 
 ## Applied field-brief standard
 

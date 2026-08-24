@@ -5,6 +5,10 @@ import Certificate from "@/pages/Certificate";
 import Course from "@/pages/Course";
 import FieldRecord from "@/pages/FieldRecord";
 import FieldRecordEntry from "@/pages/FieldRecordEntry";
+import ScenarioPractice from "@/pages/ScenarioPractice";
+import RecordsDashboard from "@/pages/RecordsDashboard";
+import ReviewShare from "@/pages/ReviewShare";
+import CompetencyPortfolio from "@/pages/CompetencyPortfolio";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -18,7 +22,11 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/dashboard" component={Home} />
       <Route path="/progress" component={ProgressDashboard} />
+      <Route path="/records" component={RecordsDashboard} />
+      <Route path="/portfolio" component={CompetencyPortfolio} />
+      <Route path="/review/:shareToken" component={ReviewShare} />
       <Route path="/course/:moduleId" component={Course} />
+      <Route path="/scenario/:scenarioId" component={ScenarioPractice} />
       <Route path="/records/:recordId/entry/:entryId" component={FieldRecordEntry} />
       <Route path="/records/:recordId/entry" component={FieldRecordEntry} />
       <Route path="/records/:recordId" component={FieldRecord} />
