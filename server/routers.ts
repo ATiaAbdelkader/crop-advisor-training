@@ -5,6 +5,7 @@ import { appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenari
 import { annotationLabelOptions, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationCases, type AnnotationLabel, type CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import { competencyPerformanceLevels, moduleCompetencyByModuleId } from "../shared/competencyFramework";
 import { competencyScoreOptions, competencyScoringRequirements, type CompetencyEvidenceAttachment, type CompetencyEvidenceSubmissionPayload, type CompetencyScorecard } from "../shared/competencyScoring";
+import { scorecardReflectionRequirements, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
 import { buildLearnerExperience } from "../shared/learnerExperience";
 import {
   MAX_FIELD_RECORD_ENTRIES,
@@ -35,6 +36,8 @@ import {
   createCompetencyAssessmentSubmission,
   getActiveFieldRecordReviewShare,
   getFieldRecord,
+  getScorecardReflectionForLearner,
+  getScorecardReflectionForSupervisor,
   getFieldPracticumEntry,
   getFieldRecordsForOwner,
   getLearningRecords,
@@ -50,6 +53,7 @@ import {
   listLearnerReflections,
   listScenarioAttempts,
   saveFieldRecord,
+  saveScorecardReflectionForLearner,
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
   listCapstoneSubmissions,
@@ -219,6 +223,16 @@ const competencyPhotoUploadInput = z.object({
   contentType: z.enum(competencyScoringRequirements.acceptedEvidencePhotoTypes),
   dataUrl: z.string().min(32).max(Math.ceil(competencyScoringRequirements.maximumEvidencePhotoBytes * 1.4) + 128),
 });
+
+const scorecardReflectionInput = z.object({
+  feedbackObservation: z.string().trim().min(scorecardReflectionRequirements.minimumResponseLength).max(scorecardReflectionRequirements.maximumResponseLength),
+  revisedAction: z.string().trim().min(scorecardReflectionRequirements.minimumResponseLength).max(scorecardReflectionRequirements.maximumResponseLength),
+  nextEvidence: z.string().trim().min(scorecardReflectionRequirements.minimumResponseLength).max(scorecardReflectionRequirements.maximumResponseLength),
+});
+
+function normaliseScorecardReflection(input: z.infer<typeof scorecardReflectionInput>): ScorecardReflectionPayload {
+  return { feedbackObservation: input.feedbackObservation.trim(), revisedAction: input.revisedAction.trim(), nextEvidence: input.nextEvidence.trim() };
+}
 
 function decodeCompetencyPhoto(input: z.infer<typeof competencyPhotoUploadInput>) {
   const match = input.dataUrl.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/=]+)$/);
@@ -445,6 +459,23 @@ export const appRouter = router({
         if (!saved) throw new TRPCError({ code: "NOT_FOUND", message: "Competency evidence request not found." });
         return { success: true } as const;
       }),
+    reflection: protectedProcedure
+      .input(z.object({ assessmentId: z.number().int().positive() }))
+      .query(async ({ ctx, input }) => {
+        const result = await getScorecardReflectionForLearner(ctx.user.id, input.assessmentId);
+        if (!result) throw new TRPCError({ code: "NOT_FOUND", message: "This private scorecard was not found." });
+        return result;
+      }),
+    saveReflection: protectedProcedure
+      .input(z.object({ assessmentId: z.number().int().positive(), reflection: scorecardReflectionInput }))
+      .mutation(async ({ ctx, input }) => {
+        const reflection = await saveScorecardReflectionForLearner({ userId: ctx.user.id, assessmentId: input.assessmentId, reflection: normaliseScorecardReflection(input.reflection) });
+        if (!reflection) throw new TRPCError({ code: "NOT_FOUND", message: "A scored private scorecard is required before saving this reflection." });
+        return reflection;
+      }),
+    supervisorReflection: adminProcedure
+      .input(z.object({ assessmentId: z.number().int().positive() }))
+      .query(({ input }) => getScorecardReflectionForSupervisor(input.assessmentId)),
   }),
   competencyNotifications: router({
     list: protectedProcedure.query(({ ctx }) => listCompetencyAssessmentNotificationStates(ctx.user.id)),

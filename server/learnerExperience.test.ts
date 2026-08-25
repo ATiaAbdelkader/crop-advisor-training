@@ -30,6 +30,7 @@ describe("learner experience insight rules", () => {
     expect(water?.developingCount).toBe(1);
     expect(experience.evidenceLibrary.find(item => item.id === "competency-photos")?.count).toBe(2);
     expect(experience.evidenceLibrary.find(item => item.id === "reflections")?.count).toBe(1);
+    expect(experience.evidenceLibrary.find(item => item.id === "reflections")?.href).toBe("/competency-reflections");
   });
 
   it("creates in-app spaced retrieval prompts from passed checks rather than a scheduled gate", () => {

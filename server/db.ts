@@ -20,6 +20,7 @@ import { ENV } from "./_core/env";
 import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
 import type { CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import type { CompetencyEvidenceSubmissionPayload, CompetencyScorecard } from "../shared/competencyScoring";
+import { parseScorecardReflection, scorecardReflectionFocus, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
 import type { CapstoneSubmissionPayload, FieldPracticumPayload } from "../shared/fieldReadiness";
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -544,6 +545,35 @@ export async function markCompetencyAssessmentFeedbackRead(userId: number, ids?:
     .set({ feedbackReadAt: new Date(), updatedAt: new Date() })
     .where(buildCompetencyAssessmentFeedbackReadFilter(userId, ids));
   return result[0].affectedRows;
+}
+
+export async function getScorecardReflectionForLearner(userId: number, assessmentId: number) {
+  const db = await requireDb();
+  const assessmentRows = await db.select().from(competencyAssessments).where(and(eq(competencyAssessments.id, assessmentId), eq(competencyAssessments.userId, userId))).limit(1);
+  const assessment = assessmentRows[0];
+  if (!assessment) return null;
+  const reflectionRows = await db.select().from(learnerReflections).where(and(eq(learnerReflections.userId, userId), eq(learnerReflections.focus, scorecardReflectionFocus(assessmentId)))).limit(1);
+  return { assessment: toStoredCompetencyAssessment(assessment), reflection: parseScorecardReflection(reflectionRows[0]?.reflection) };
+}
+
+export async function saveScorecardReflectionForLearner(input: { userId: number; assessmentId: number; reflection: ScorecardReflectionPayload }) {
+  const db = await requireDb();
+  const assessmentRows = await db.select({ id: competencyAssessments.id, scorecardJson: competencyAssessments.scorecardJson, feedback: competencyAssessments.feedback }).from(competencyAssessments).where(and(eq(competencyAssessments.id, input.assessmentId), eq(competencyAssessments.userId, input.userId))).limit(1);
+  const assessment = assessmentRows[0];
+  if (!assessment || !assessment.scorecardJson || !assessment.feedback) return null;
+  const focus = scorecardReflectionFocus(input.assessmentId);
+  await db.insert(learnerReflections).values({ userId: input.userId, focus, reflection: JSON.stringify(input.reflection) }).onDuplicateKeyUpdate({ set: { reflection: JSON.stringify(input.reflection), updatedAt: new Date() } });
+  const rows = await db.select().from(learnerReflections).where(and(eq(learnerReflections.userId, input.userId), eq(learnerReflections.focus, focus))).limit(1);
+  return rows[0] ? parseScorecardReflection(rows[0].reflection) : null;
+}
+
+export async function getScorecardReflectionForSupervisor(assessmentId: number) {
+  const db = await requireDb();
+  const assessmentRows = await db.select({ userId: competencyAssessments.userId }).from(competencyAssessments).where(eq(competencyAssessments.id, assessmentId)).limit(1);
+  const assessment = assessmentRows[0];
+  if (!assessment) return null;
+  const rows = await db.select().from(learnerReflections).where(and(eq(learnerReflections.userId, assessment.userId), eq(learnerReflections.focus, scorecardReflectionFocus(assessmentId)))).limit(1);
+  return rows[0] ? parseScorecardReflection(rows[0].reflection) : null;
 }
 
 type StoredFieldPracticum = Omit<typeof fieldPracticumEntries.$inferSelect, "payloadJson"> & {

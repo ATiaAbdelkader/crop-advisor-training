@@ -109,3 +109,12 @@
 - [x] Add a secure supervisor competency-scoring workflow for every module using Prepare, Perform, and Review and refer evidence, written feedback, learner-visible status, and unchanged formal progression rules.
 - [x] Add personalised remediation, an eight-domain competency transcript, competency-score alerts, expanded field simulations, an integrated evidence library, supervisor calibration guidance, and in-app spaced review prompts without altering formal progression, certification, privacy, or crop-safety boundaries.
 - [x] Add optional learner-owned photo evidence to competency submissions, with bounded image upload, secure ownership checks, and supervisor-only review access.
+- [x] Add private scorecard-linked learner reflection prompts for observation, revised action, and next evidence, with supervisor context access and no effect on formal progression.
+- [x] Display scorecard-linked learner reflections in the administrator competency review workspace using the protected supervisor reflection procedure.
+- [x] Add regression and visual validation for administrator reflection context while preserving non-admin denial.
+- [x] Add explicit loading, error, empty, and retry handling for protected supervisor scorecard-reflection context.
+- [x] Add regression coverage for supervisor reflection-context state mapping, including protected-query failure handling.
+- [x] Validate supervisor reflection content and non-admin supervisor-workspace denial without fabricating learner evidence.
+- [x] Add integration-style regression coverage for a protected supervisor reflection-query failure and retry state in the workspace flow.
+- [x] Add safe fixture-based visual validation of rendered supervisor reflection content and a non-admin supervisor-workspace denial state.
+- [x] Add a workspace-level fixture regression proving protected supervisor reflection-query failure renders retry UI rather than the empty reflection state.

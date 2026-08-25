@@ -118,7 +118,7 @@ export function buildLearnerExperience(input: LearnerExperienceInput) {
     { id: "competency-evidence", title: "Competency evidence", count: input.evidenceCount.competencySubmissions, description: "Private evidence submitted for supervisor scoring.", href: "/competencies" },
     { id: "competency-photos", title: "Field photo evidence", count: input.evidenceCount.competencyPhotos, description: "Learner-owned photos attached to module competency evidence.", href: "/competencies" },
     { id: "field-readiness", title: "Field readiness", count: input.evidenceCount.practicum + input.evidenceCount.capstones, description: "Practicum visits and integrated capstone evidence.", href: "/field-readiness" },
-    { id: "reflections", title: "Competency reflections", count: input.evidenceCount.reflections, description: "Private reflections connected to competency and field-readiness development.", href: "/portfolio" },
+    { id: "reflections", title: "Competency reflections", count: input.evidenceCount.reflections, description: "Private scorecard and field-readiness reflections connected to competency development.", href: "/competency-reflections" },
     { id: "diagnosis-annotation", title: "Visual diagnosis reasoning", count: input.evidenceCount.annotations, description: "Completed photo-annotation evidence and feedback.", href: "/diagnosis-annotation" },
   ];
 
