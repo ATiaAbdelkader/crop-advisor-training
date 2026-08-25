@@ -11,6 +11,7 @@ import { fieldRecordDraftStorageKey, parseFieldRecordDraft } from "../client/src
 import { comparisonSetupFields, toggleComparisonSelection } from "../client/src/lib/fieldRecordComparison";
 import { appliedScenarioByModuleId, appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import { fieldMeasurementCards, fieldMeasurementCardsByModuleId, getFieldMeasurementCard } from "../shared/fieldMeasurementCards";
+import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurseryToStandQualityRoutines } from "../shared/nurseryToStandQuality";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -190,6 +191,31 @@ describe("crop-advisor progression", () => {
     expect(fieldMeasurementCardsByModuleId["responsible-use-of-pesticides"][0].shortTitle).toBe("Sprayer safety check");
     expect(getFieldMeasurementCard("missing-card").id).toBe("representative-soil-sample-chain");
     expect(getFieldMeasurementCard("sprayer-pre-use-and-calibration-check").decide.join(" ")).toContain("Stop work");
+  });
+
+  it("provides four source-grounded nursery-to-stand quality routines with accept-or-hold and follow-up boundaries", () => {
+    expect(nurseryToStandQualityRoutines.map(routine => routine.id)).toEqual([
+      "seed-and-batch-traceability",
+      "daily-nursery-hygiene-and-environment",
+      "hardening-and-transplant-acceptance",
+      "transplant-and-early-stand-recovery",
+    ]);
+    nurseryToStandQualityRoutines.forEach(routine => {
+      expect(routine.prepare.length).toBeGreaterThanOrEqual(3);
+      expect(routine.inspect.length).toBeGreaterThanOrEqual(3);
+      expect(routine.acceptOrHold.length).toBeGreaterThanOrEqual(3);
+      expect(routine.record.length).toBeGreaterThanOrEqual(4);
+      expect(routine.followUp.length).toBeGreaterThan(80);
+      expect(routine.refer.length).toBeGreaterThan(80);
+      routine.moduleIds.forEach(moduleId => expect(cropAdvisorCourse.modules.some(module => module.id === moduleId)).toBe(true));
+    });
+    expect(nurseryToStandQualityByModuleId["nursery-for-vegetable-production"].map(routine => routine.id)).toEqual([
+      "seed-and-batch-traceability",
+      "daily-nursery-hygiene-and-environment",
+    ]);
+    expect(nurseryToStandQualityByModuleId.transplanting).toHaveLength(2);
+    expect(getNurseryToStandQualityRoutine("missing-routine").id).toBe("seed-and-batch-traceability");
+    expect(getNurseryToStandQualityRoutine("hardening-and-transplant-acceptance").acceptOrHold.join(" ")).toContain("Hold");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

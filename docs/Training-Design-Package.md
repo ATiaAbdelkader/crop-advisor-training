@@ -59,6 +59,8 @@ The next source-grounded content priority is documented in [`Uploaded-Source-Con
 
 The first of those operating layers is now available as six learner-facing **Field Measurement and Decision Cards** for representative soil sampling, root-zone moisture, water-quality screening, drip uniformity, nutrient-plan evidence, and sprayer pre-use/calibration. The cards are connected to their relevant modules and preserve explicit review and referral boundaries. Their content and validation record are maintained in [`Field-Measurement-Decision-Cards.md`](./Field-Measurement-Decision-Cards.md).
 
+The early-establishment quality layer is now available as the **Nursery-to-Stand Quality Pack**. Its four routines cover traceable seed and batch planning, daily nursery hygiene and environment, hardening and transplant acceptance, and transplant/early-stand recovery. The pack is linked from Modules 17–20 and 22 and requires learners to accept, hold, separate, record, follow up, or refer based on evidence rather than a calendar date. Its content and validation record are maintained in [`Nursery-to-Stand-Quality-Pack.md`](./Nursery-to-Stand-Quality-Pack.md).
+
 ## Applied field-brief standard
 
 The applied field brief upgrades every document-derived module from source summary to observable practice. It appears in the learner route after the authenticated lesson content so it reinforces, rather than bypasses, the existing learning and progression sequence. Each brief connects the source document’s central decision to evidence that a learner can collect, a bounded action, and an explicit quality standard.

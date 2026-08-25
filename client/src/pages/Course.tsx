@@ -11,8 +11,9 @@ import { documentModuleFieldBriefs } from "@shared/moduleFieldBriefs";
 import { fieldRecordByModuleId } from "@shared/fieldRecordTemplates";
 import { appliedScenarioByModuleId } from "@shared/appliedScenarios";
 import { fieldMeasurementCardsByModuleId } from "@shared/fieldMeasurementCards";
+import { nurseryToStandQualityByModuleId } from "@shared/nurseryToStandQuality";
 import { moduleVisuals } from "@shared/moduleVisuals";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Ruler, Target } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Ruler, Sprout, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -57,6 +58,7 @@ export default function Course() {
   const fieldRecord = fieldRecordByModuleId[module.id];
   const scenario = appliedScenarioByModuleId[module.id];
   const measurementCards = fieldMeasurementCardsByModuleId[module.id] ?? [];
+  const nurseryQualityRoutines = nurseryToStandQualityByModuleId[module.id] ?? [];
   const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
@@ -221,6 +223,15 @@ export default function Course() {
                 <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">{measurementCards.length === 1 ? measurementCards[0].shortTitle : "Linked measurement cards"}</p>
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Use a source-grounded routine to prepare, observe, record, decide, review, and refer without relying on unsupported thresholds.</p>
                 <Button variant="outline" onClick={() => setLocation(`/measurements?card=${measurementCards[0].id}`)} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><Ruler className="mr-1.5 h-3.5 w-3.5" />Open measurement card{measurementCards.length > 1 ? "s" : ""}</Button>
+              </div>
+            )}
+            {nurseryQualityRoutines.length > 0 && (
+              <div className="rounded-[22px] border border-[#dbe7d5] bg-[#f7fbf4] p-5">
+                <Sprout className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Nursery-to-stand quality</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">{nurseryQualityRoutines.length === 1 ? nurseryQualityRoutines[0].shortTitle : "Linked quality routines"}</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Use an evidence-led routine to protect seedling quality, decide whether to accept or hold plants, and investigate early stand losses.</p>
+                <Button variant="outline" onClick={() => setLocation(`/nursery-quality?routine=${nurseryQualityRoutines[0].id}`)} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><Sprout className="mr-1.5 h-3.5 w-3.5" />Open quality pack</Button>
               </div>
             )}
           </aside>

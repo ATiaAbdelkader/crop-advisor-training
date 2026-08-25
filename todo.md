@@ -91,3 +91,4 @@
 - [x] Add structured criterion-level rubric self-review for practicum and capstone evidence.
 - [x] Audit the current curriculum against all uploaded agricultural training files and identify source-grounded content gaps for field-ready graduates.
 - [x] Add six source-grounded Field Measurement and Decision Cards for soil sampling, root-zone moisture, drip uniformity, water-quality screening, nutrient-plan checks, and sprayer pre-use/calibration.
+- [x] Add a source-grounded Nursery-to-Stand Quality Pack covering seedling batch, hygiene, hardening, transplant acceptance, stand-count, early-loss, and follow-up routines.
