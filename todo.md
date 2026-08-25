@@ -94,3 +94,4 @@
 - [x] Add a source-grounded Nursery-to-Stand Quality Pack covering seedling batch, hygiene, hardening, transplant acceptance, stand-count, early-loss, and follow-up routines.
 - [x] Add a source-grounded Pesticide Incident Drill covering stop-work, exposure and water protection, area control, label-led response, incident documentation, and current-channel referral or reporting.
 - [x] Add a source-grounded Quantified Scouting Protocol for consistent sampling, field-pattern evidence, incidence/severity reasoning, beneficial-organism observation, decision rationale, follow-up, and referral.
+- [x] Add a printable Quantified Scouting Sheet with sampling, observation, incidence/severity, beneficial, field-pattern, decision, recheck, and referral evidence fields.

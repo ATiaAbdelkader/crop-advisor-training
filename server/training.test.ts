@@ -14,6 +14,7 @@ import { fieldMeasurementCards, fieldMeasurementCardsByModuleId, getFieldMeasure
 import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurseryToStandQualityRoutines } from "../shared/nurseryToStandQuality";
 import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesticideIncidentDrillStages } from "../shared/pesticideIncidentDrill";
 import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedScoutingStages } from "../shared/quantifiedScoutingProtocol";
+import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -270,6 +271,25 @@ describe("crop-advisor progression", () => {
     expect(quantifiedScoutingByModuleId["weed-management"].map(stage => stage.id)).toContain("turn-scouting-into-a-reviewable-ipm-decision");
     expect(getQuantifiedScoutingStage("missing-stage").id).toBe("define-the-scouting-question-and-sample");
     expect(getQuantifiedScoutingStage("protect-beneficials-and-measure-pest-pressure").decisionBoundary).toContain("chemical control");
+  });
+
+  it("provides a printable quantified scouting sheet with complete sampling, observation, decision, review, and referral fields", () => {
+    expect(quantifiedScoutingSheet.id).toBe("quantified-scouting-sheet");
+    expect(quantifiedScoutingSheet.setupFields).toHaveLength(6);
+    expect(quantifiedScoutingSheet.columns).toHaveLength(8);
+    expect(quantifiedScoutingSheet.reviewPrompts).toHaveLength(3);
+    expect(quantifiedScoutingSheet.useSteps).toHaveLength(4);
+    expect(quantifiedScoutingSheet.linkedModuleIds).toEqual([
+      "field-diagnosis-in-vegetable-crops",
+      "disease-identification-and-management",
+      "insect-pests-and-mites-identification-and-management",
+      "integrated-pest-management",
+      "weed-management",
+    ]);
+    expect(quantifiedScoutingSheet.linkedModuleIds.every(moduleId => cropAdvisorCourse.modules.some(module => module.id === moduleId))).toBe(true);
+    expect(quantifiedScoutingSheet.columns.join(" ")).toContain("Incidence / severity");
+    expect(quantifiedScoutingSheet.columns.join(" ")).toContain("Beneficials / traps");
+    expect(quantifiedScoutingSheet.boundary).toContain("universal treatment threshold");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {
