@@ -3,6 +3,8 @@ import { z } from "zod";
 import { cropAdvisorCourse, getAssessmentById, getLessonById } from "../shared/curriculum";
 import { appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import { annotationLabelOptions, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationCases, type AnnotationLabel, type CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
+import { competencyPerformanceLevels, moduleCompetencyByModuleId } from "../shared/competencyFramework";
+import { competencyScoreOptions, competencyScoringRequirements, type CompetencyEvidenceSubmissionPayload, type CompetencyScorecard } from "../shared/competencyScoring";
 import {
   MAX_FIELD_RECORD_ENTRIES,
   MAX_FIELD_RECORD_TITLE_LENGTH,
@@ -29,6 +31,7 @@ import {
   deleteFieldPracticumEntry,
   createFieldRecordReviewShare,
   createCropDiagnosisAnnotationReviewSubmission,
+  createCompetencyAssessmentSubmission,
   getActiveFieldRecordReviewShare,
   getFieldRecord,
   getFieldPracticumEntry,
@@ -50,11 +53,14 @@ import {
   listCapstoneSubmissions,
   listCropDiagnosisAnnotationNotificationStates,
   listCropDiagnosisAnnotationReviewsForSupervisor,
+  listCompetencyAssessmentsForSupervisor,
+  listMyCompetencyAssessments,
   listMyCropDiagnosisAnnotationReviews,
   recordScenarioAttempt,
   revokeFieldRecordReviewShare,
   submitFieldRecordReview,
   submitCropDiagnosisAnnotationSupervisorFeedback,
+  submitSupervisorCompetencyScore,
   upsertLearnerReflection,
 } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
@@ -173,6 +179,30 @@ function normaliseAnnotationReviewPayload(payload: z.infer<typeof annotationRevi
       return { caseId: caseDefinition.id, answer: submitted.answer, pins: submitted.pins.map(pin => ({ x: pin.x, y: pin.y, label: pin.label as AnnotationLabel })) };
     }),
   };
+}
+
+const competencyEvidenceSubmissionInput = z.object({
+  moduleId: z.string().min(1).max(128),
+  evidenceSummary: z.string().trim().min(competencyScoringRequirements.minimumEvidenceSummaryLength).max(5000),
+  taskContext: z.string().trim().min(competencyScoringRequirements.minimumTaskContextLength).max(3000),
+  reviewOrReferral: z.string().trim().min(competencyScoringRequirements.minimumReviewBoundaryLength).max(3000),
+});
+
+const competencyScorecardInput = z.object(Object.fromEntries(competencyPerformanceLevels.map(level => [level.id, z.enum(competencyScoreOptions.map(option => option.id) as [string, ...string[]])])) as Record<string, z.ZodTypeAny>);
+
+function requireModuleCompetency(moduleId: string) {
+  const competency = moduleCompetencyByModuleId[moduleId];
+  if (!competency) throw new TRPCError({ code: "NOT_FOUND", message: "Module competency not found." });
+  return competency;
+}
+
+function normaliseCompetencyEvidenceSubmission(payload: z.infer<typeof competencyEvidenceSubmissionInput>): CompetencyEvidenceSubmissionPayload {
+  requireModuleCompetency(payload.moduleId);
+  return { evidenceSummary: payload.evidenceSummary.trim(), taskContext: payload.taskContext.trim(), reviewOrReferral: payload.reviewOrReferral.trim() };
+}
+
+function normaliseCompetencyScorecard(scorecard: z.infer<typeof competencyScorecardInput>): CompetencyScorecard {
+  return Object.fromEntries(competencyPerformanceLevels.map(level => [level.id, scorecard[level.id]])) as CompetencyScorecard;
 }
 
 export const appRouter = router({
@@ -362,6 +392,24 @@ export const appRouter = router({
     markRead: protectedProcedure
       .input(z.object({ ids: z.array(z.number().int().positive()).min(1).max(50).optional() }).optional())
       .mutation(async ({ ctx, input }) => ({ updated: await markCropDiagnosisAnnotationFeedbackRead(ctx.user.id, input?.ids) })),
+  }),
+  competencyAssessments: router({
+    mine: protectedProcedure.query(({ ctx }) => listMyCompetencyAssessments(ctx.user.id)),
+    submit: protectedProcedure
+      .input(competencyEvidenceSubmissionInput)
+      .mutation(async ({ ctx, input }) => {
+        const assessment = await createCompetencyAssessmentSubmission({ userId: ctx.user.id, moduleId: input.moduleId, payload: normaliseCompetencyEvidenceSubmission(input) });
+        if (!assessment) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to save this competency evidence request." });
+        return assessment;
+      }),
+    queue: adminProcedure.query(() => listCompetencyAssessmentsForSupervisor()),
+    score: adminProcedure
+      .input(z.object({ id: z.number().int().positive(), status: z.enum(["scored", "revision_requested"]), scorecard: competencyScorecardInput, feedback: z.string().trim().min(competencyScoringRequirements.minimumSupervisorFeedbackLength).max(5000) }))
+      .mutation(async ({ ctx, input }) => {
+        const saved = await submitSupervisorCompetencyScore({ id: input.id, supervisorUserId: ctx.user.id, supervisorName: ctx.user.name?.trim() || "Course supervisor", status: input.status, scorecard: normaliseCompetencyScorecard(input.scorecard), feedback: input.feedback.trim() });
+        if (!saved) throw new TRPCError({ code: "NOT_FOUND", message: "Competency evidence request not found." });
+        return { success: true } as const;
+      }),
   }),
   fieldReadiness: router({
     practicum: router({

@@ -106,3 +106,4 @@
 - [x] Add database-filter regression coverage proving only unread feedback rows are marked read, excluding already-read and feedback-less review rows.
 - [x] Add an actual database-query regression test for owner-scoped unread-feedback filtering in the mark-read helper.
 - [x] Audit all course modules for competency-based alignment and define a source-grounded field-competency framework with observable performance, evidence, proficiency criteria, remediation, and non-prescriptive safety boundaries.
+- [x] Add a secure supervisor competency-scoring workflow for every module using Prepare, Perform, and Review and refer evidence, written feedback, learner-visible status, and unchanged formal progression rules.

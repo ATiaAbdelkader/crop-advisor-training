@@ -20,6 +20,8 @@ import ScoutingSheet from "@/pages/ScoutingSheet";
 import CropDiagnosisAnnotation from "@/pages/CropDiagnosisAnnotation";
 import AnnotationSupervisorReviews from "@/pages/AnnotationSupervisorReviews";
 import CompetencyMap from "@/pages/CompetencyMap";
+import CompetencyReview from "@/pages/CompetencyReview";
+import SupervisorCompetencyReviews from "@/pages/SupervisorCompetencyReviews";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -43,6 +45,8 @@ function Router() {
       <Route path="/scouting-sheet" component={ScoutingSheet} />
       <Route path="/diagnosis-annotation" component={CropDiagnosisAnnotation} />
       <Route path="/competencies" component={CompetencyMap} />
+      <Route path="/competency-review/:moduleId" component={CompetencyReview} />
+      <Route path="/supervisor/competency-reviews" component={SupervisorCompetencyReviews} />
       <Route path="/supervisor/annotation-reviews" component={AnnotationSupervisorReviews} />
       <Route path="/practicum/:entryId" component={FieldPracticum} />
       <Route path="/practicum" component={FieldPracticum} />

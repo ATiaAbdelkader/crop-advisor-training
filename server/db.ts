@@ -4,6 +4,7 @@ import {
   assessmentAttempts,
   capstoneSubmissions,
   certificates,
+  competencyAssessments,
   courseEnrollments,
   cropDiagnosisAnnotationReviews,
   fieldPracticumEntries,
@@ -18,6 +19,7 @@ import {
 import { ENV } from "./_core/env";
 import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
 import type { CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
+import type { CompetencyEvidenceSubmissionPayload, CompetencyScorecard } from "../shared/competencyScoring";
 import type { CapstoneSubmissionPayload, FieldPracticumPayload } from "../shared/fieldReadiness";
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -458,6 +460,51 @@ export async function submitCropDiagnosisAnnotationSupervisorFeedback(input: { i
     .update(cropDiagnosisAnnotationReviews)
     .set({ status: input.status, supervisorUserId: input.supervisorUserId, supervisorName: input.supervisorName, feedback: input.feedback, feedbackReadAt: null, reviewedAt: new Date(), updatedAt: new Date() })
     .where(eq(cropDiagnosisAnnotationReviews.id, input.id));
+  return result[0].affectedRows > 0;
+}
+
+type StoredCompetencyAssessment = Omit<typeof competencyAssessments.$inferSelect, "payloadJson" | "scorecardJson"> & {
+  payload: CompetencyEvidenceSubmissionPayload;
+  scorecard: CompetencyScorecard | null;
+};
+
+function toStoredCompetencyAssessment(entry: typeof competencyAssessments.$inferSelect): StoredCompetencyAssessment {
+  return {
+    ...entry,
+    payload: JSON.parse(entry.payloadJson) as CompetencyEvidenceSubmissionPayload,
+    scorecard: entry.scorecardJson ? JSON.parse(entry.scorecardJson) as CompetencyScorecard : null,
+  };
+}
+
+export async function createCompetencyAssessmentSubmission(input: { userId: number; moduleId: string; payload: CompetencyEvidenceSubmissionPayload }) {
+  const db = await requireDb();
+  const result = await db.insert(competencyAssessments).values({ userId: input.userId, moduleId: input.moduleId, payloadJson: JSON.stringify(input.payload) });
+  const rows = await db.select().from(competencyAssessments).where(eq(competencyAssessments.id, Number(result[0].insertId))).limit(1);
+  return rows[0] ? toStoredCompetencyAssessment(rows[0]) : null;
+}
+
+export async function listMyCompetencyAssessments(userId: number) {
+  const db = await requireDb();
+  const entries = await db.select().from(competencyAssessments).where(eq(competencyAssessments.userId, userId)).orderBy(desc(competencyAssessments.submittedAt));
+  return entries.map(toStoredCompetencyAssessment);
+}
+
+export async function listCompetencyAssessmentsForSupervisor() {
+  const db = await requireDb();
+  const rows = await db
+    .select({ assessment: competencyAssessments, learnerName: users.name, learnerEmail: users.email })
+    .from(competencyAssessments)
+    .innerJoin(users, eq(competencyAssessments.userId, users.id))
+    .orderBy(desc(competencyAssessments.submittedAt));
+  return rows.map(row => ({ ...toStoredCompetencyAssessment(row.assessment), learnerName: row.learnerName, learnerEmail: row.learnerEmail }));
+}
+
+export async function submitSupervisorCompetencyScore(input: { id: number; supervisorUserId: number; supervisorName: string; status: "scored" | "revision_requested"; scorecard: CompetencyScorecard; feedback: string }) {
+  const db = await requireDb();
+  const result = await db
+    .update(competencyAssessments)
+    .set({ status: input.status, scorecardJson: JSON.stringify(input.scorecard), supervisorUserId: input.supervisorUserId, supervisorName: input.supervisorName, feedback: input.feedback, feedbackReadAt: null, reviewedAt: new Date(), updatedAt: new Date() })
+    .where(eq(competencyAssessments.id, input.id));
   return result[0].affectedRows > 0;
 }
 

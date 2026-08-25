@@ -17,6 +17,7 @@ import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedSco
 import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
 import { annotationDashboardNotificationRequirements, annotationLabelOptions, annotationSupervisorReviewCriteria, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases, isUnreadAnnotationFeedbackForLearner, sortAnnotationReviewNotifications } from "../shared/cropDiagnosisAnnotation";
 import { competencyDomains, competencyPerformanceLevels, moduleCompetencies, moduleCompetencyByModuleId } from "../shared/competencyFramework";
+import { competencyScoreOptions, competencyScoringRequirements, createEmptyCompetencyScorecard } from "../shared/competencyScoring";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -83,6 +84,16 @@ describe("crop-advisor progression", () => {
       expect(competency.remediationFocus.length).toBeGreaterThan(35);
       expect(competency.safetyBoundary.length).toBeGreaterThan(60);
     });
+  });
+
+  it("defines supervisor scorecards for each competency level without changing formal progression rules", () => {
+    const scorecard = createEmptyCompetencyScorecard();
+    expect(Object.keys(scorecard)).toEqual(competencyPerformanceLevels.map(level => level.id));
+    expect(Object.values(scorecard)).toEqual(["not_yet", "not_yet", "not_yet"]);
+    expect(competencyScoreOptions.map(option => option.id)).toEqual(["not_yet", "developing", "demonstrated"]);
+    expect(competencyScoringRequirements.minimumEvidenceSummaryLength).toBeGreaterThanOrEqual(80);
+    expect(competencyScoringRequirements.minimumSupervisorFeedbackLength).toBeGreaterThanOrEqual(40);
+    expect(competencyScoringRequirements.nonGatingBoundary).toContain("does not change module assessment scores");
   });
 
   it("provides a distinct accessible instructional visual for each of the first ten modules", () => {

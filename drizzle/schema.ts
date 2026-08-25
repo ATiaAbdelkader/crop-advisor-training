@@ -248,6 +248,32 @@ export const cropDiagnosisAnnotationReviews = mysqlTable(
   ]
 );
 
+/** Learner-owned module competency evidence is privately scored by course administrators without changing formal assessment progression. */
+export const competencyAssessments = mysqlTable(
+  "competencyAssessments",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    moduleId: varchar("moduleId", { length: 128 }).notNull(),
+    payloadJson: text("payloadJson").notNull(),
+    status: mysqlEnum("status", ["submitted", "scored", "revision_requested"]).default("submitted").notNull(),
+    scorecardJson: text("scorecardJson"),
+    supervisorUserId: int("supervisorUserId").references(() => users.id, { onDelete: "set null" }),
+    supervisorName: varchar("supervisorName", { length: 160 }),
+    feedback: text("feedback"),
+    feedbackReadAt: timestamp("feedbackReadAt"),
+    submittedAt: timestamp("submittedAt").defaultNow().notNull(),
+    reviewedAt: timestamp("reviewedAt"),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("competency_assessment_learner_module_idx").on(table.userId, table.moduleId, table.submittedAt),
+    index("competency_assessment_status_submitted_idx").on(table.status, table.submittedAt),
+  ]
+);
+
 /** Private field-visit evidence supports field-readiness self-review without altering formal course certification. */
 export const fieldPracticumEntries = mysqlTable(
   "fieldPracticumEntries",

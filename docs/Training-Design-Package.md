@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 5.1  
+**Version:** 5.2  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -569,3 +569,9 @@ The framework applies the competency-based emphasis on demonstration, transparen
 [32] [UNESCO-UNEVOC, *Competency-based education*](https://connect.unevoc.unesco.org/home/TVETipedia+Glossary/lang=en/show=term/lang=en/term=Competency-based+education)
 
 [33] [FAO, *Making extension and advisory services market-oriented* (2021)](https://openknowledge.fao.org/handle/20.500.14283/cb4395en)
+
+## Supervisor competency scoring
+
+Administrators can now assess a learner’s submitted module evidence using the three competency levels already embedded in the course: **Prepare**, **Perform**, and **Review and refer**. For each level, the supervisor selects **Not yet evidenced**, **Developing**, or **Demonstrated**, then provides written feedback or requests revision. Learners submit an evidence summary, task context, and review/referral boundary from the relevant module’s performance task; they can view only their own scorecard and feedback.
+
+The workflow is private, administrator-gated, and developmental. It does not alter the existing 80% formal module checks, sequential progression, certification, or owner-notification rules. It must be used with module criteria and submitted evidence, not as authority to prescribe products, rates, diagnoses, legal actions, or other high-consequence advice. Full workflow, privacy, and scoring guidance is documented in [`Supervisor-Competency-Scoring.md`](./Supervisor-Competency-Scoring.md).
