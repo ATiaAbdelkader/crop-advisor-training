@@ -63,6 +63,8 @@ The early-establishment quality layer is now available as the **Nursery-to-Stand
 
 The pesticide-safety operating layer is now available as the **Pesticide Incident Drill**. Its four stages train learners to stop unsafe work, protect people and water, use current label-led escalation and authorised channels, then document and prevent recurrence. The drill is deliberately non-prescriptive about medical care, cleanup, disposal, legal reporting, and local requirements; it directs learners to current product, employer, and authorised local instructions. Its content and validation record are maintained in [`Pesticide-Incident-Drill.md`](./Pesticide-Incident-Drill.md).
 
+The field-assessment operating layer is now available as the **Quantified Scouting Protocol**. Its four stages train learners to define a repeatable sample route, interpret affected/unaffected patterns and contributing conditions, retain pest and beneficial-organism evidence separately, and build a reasoned recheck and referral condition. The protocol does not prescribe thresholds, treatments, or diagnosis; it requires current local, label, legal, and specialist verification where those are needed. Its content and validation record are maintained in [`Quantified-Scouting-Protocol.md`](./Quantified-Scouting-Protocol.md).
+
 ## Applied field-brief standard
 
 The applied field brief upgrades every document-derived module from source summary to observable practice. It appears in the learner route after the authenticated lesson content so it reinforces, rather than bypasses, the existing learning and progression sequence. Each brief connects the source document’s central decision to evidence that a learner can collect, a bounded action, and an explicit quality standard.

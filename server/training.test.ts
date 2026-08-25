@@ -13,6 +13,7 @@ import { appliedScenarioByModuleId, appliedScenarios, scoreAppliedScenario } fro
 import { fieldMeasurementCards, fieldMeasurementCardsByModuleId, getFieldMeasurementCard } from "../shared/fieldMeasurementCards";
 import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurseryToStandQualityRoutines } from "../shared/nurseryToStandQuality";
 import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesticideIncidentDrillStages } from "../shared/pesticideIncidentDrill";
+import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedScoutingStages } from "../shared/quantifiedScoutingProtocol";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -242,6 +243,33 @@ describe("crop-advisor progression", () => {
     expect(pesticideIncidentDrillByModuleId["water-management"][0].id).toBe("protect-people-water-and-area");
     expect(getPesticideIncidentDrillStage("missing-stage").id).toBe("recognise-and-stop");
     expect(getPesticideIncidentDrillStage("label-led-escalation").boundary).toContain("current product label");
+  });
+
+  it("provides four quantified scouting stages with comparable evidence, beneficial safeguards, review, and referral boundaries", () => {
+    expect(quantifiedScoutingStages.map(stage => stage.id)).toEqual([
+      "define-the-scouting-question-and-sample",
+      "separate-pattern-cause-and-contributing-conditions",
+      "protect-beneficials-and-measure-pest-pressure",
+      "turn-scouting-into-a-reviewable-ipm-decision",
+    ]);
+    quantifiedScoutingStages.forEach(stage => {
+      expect(stage.prepare.length).toBeGreaterThanOrEqual(3);
+      expect(stage.observe.length).toBeGreaterThanOrEqual(3);
+      expect(stage.quantify.length).toBeGreaterThanOrEqual(3);
+      expect(stage.record.length).toBeGreaterThanOrEqual(3);
+      expect(stage.decisionBoundary.length).toBeGreaterThan(180);
+      expect(stage.review.length).toBeGreaterThan(100);
+      expect(stage.refer.length).toBeGreaterThan(120);
+      expect(stage.moduleIds.every(moduleId => cropAdvisorCourse.modules.some(module => module.id === moduleId))).toBe(true);
+    });
+    expect(quantifiedScoutingByModuleId["integrated-pest-management"]).toHaveLength(4);
+    expect(quantifiedScoutingByModuleId["insect-pests-and-mites-identification-and-management"].map(stage => stage.id)).toEqual([
+      "define-the-scouting-question-and-sample",
+      "protect-beneficials-and-measure-pest-pressure",
+    ]);
+    expect(quantifiedScoutingByModuleId["weed-management"].map(stage => stage.id)).toContain("turn-scouting-into-a-reviewable-ipm-decision");
+    expect(getQuantifiedScoutingStage("missing-stage").id).toBe("define-the-scouting-question-and-sample");
+    expect(getQuantifiedScoutingStage("protect-beneficials-and-measure-pest-pressure").decisionBoundary).toContain("chemical control");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {
