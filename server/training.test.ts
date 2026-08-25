@@ -15,7 +15,7 @@ import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurse
 import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesticideIncidentDrillStages } from "../shared/pesticideIncidentDrill";
 import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedScoutingStages } from "../shared/quantifiedScoutingProtocol";
 import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
-import { annotationLabelOptions, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases } from "../shared/cropDiagnosisAnnotation";
+import { annotationLabelOptions, annotationSupervisorReviewCriteria, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases } from "../shared/cropDiagnosisAnnotation";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -321,6 +321,17 @@ describe("crop-advisor progression", () => {
     expect(cropDiagnosisAnnotationByModuleId["disease-identification-and-management"].id).toBe("leaf-symptoms-and-uncertainty");
     expect(cropDiagnosisAnnotationByModuleId["integrated-pest-management"]).toBeDefined();
     expect(cropDiagnosisAnnotationCases[2].safeNextStep).toContain("beneficial");
+  });
+
+  it("defines secure, admin-only supervisor-review standards for completed annotation reasoning without changing formal learner gates", () => {
+    expect(annotationSupervisorReviewRequirements.supervisorRole).toBe("admin");
+    expect(annotationSupervisorReviewRequirements.minimumRationaleLength).toBe(80);
+    expect(annotationSupervisorReviewRequirements.minimumFeedbackLength).toBe(20);
+    expect(annotationSupervisorReviewRequirements.statuses).toEqual(["submitted", "reviewed", "revision_requested"]);
+    expect(annotationSupervisorReviewRequirements.formalGateBoundary).toContain("does not alter lesson progression");
+    expect(annotationSupervisorReviewCriteria).toHaveLength(3);
+    expect(annotationSupervisorReviewCriteria.join(" ")).toContain("visible evidence from a confirmed cause");
+    expect(annotationSupervisorReviewCriteria.join(" ")).toContain("unsupported treatment");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

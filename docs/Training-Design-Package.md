@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.8  
+**Version:** 4.9  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -68,6 +68,8 @@ The field-assessment operating layer is now available as the **Quantified Scouti
 The field-documentation layer now includes a **Printable Quantified Scouting Sheet**. It provides an A4 landscape blank form for scouting setup, zone-level observations, sampled/affected counts, incidence and severity class, pest and beneficial evidence, field conditions, decision rationale, recheck, and referral. The sheet is available from the scouting protocol and Modules 29–32 and 34, with browser print/save-as-PDF support; it does not replace the existing digital IPM field record or change formal progression requirements. Its content and validation record are maintained in [`Printable-Quantified-Scouting-Sheet.md`](./Printable-Quantified-Scouting-Sheet.md).
 
 The field-observation layer now includes a voluntary **Crop-Diagnosis Photo Annotation Exercise**. Learners place evidence pins on three simulated crop photographs, mark field pattern, symptom/sign, pest or beneficial evidence, contributing conditions, and uncertainty, then select evidence-led next steps. It is connected from Field Readiness and Modules 29–32, complements the Quantified Scouting Protocol, and explicitly avoids image-only diagnosis, thresholds, treatments, products, rates, and legal claims. Its learner flow, boundaries, module connections, and validation record are maintained in [`Crop-Diagnosis-Photo-Annotation.md`](./Crop-Diagnosis-Photo-Annotation.md).
+
+The photo-annotation layer now includes **Supervisor Review**. A learner can privately submit a completed evidence-pinned exercise, selected responses, and a written rationale for feedback. Course administrators access a protected review queue, inspect the saved evidence and rationale, then mark the request reviewed or request revision with written feedback. The workflow is deliberately developmental and does not affect formal gates, scores, certification, or owner alerts. Its privacy model, feedback criteria, and validation record are maintained in [`Crop-Diagnosis-Annotation-Supervisor-Review.md`](./Crop-Diagnosis-Annotation-Supervisor-Review.md).
 
 ## Applied field-brief standard
 

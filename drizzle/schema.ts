@@ -224,6 +224,29 @@ export const fieldRecordReviewShares = mysqlTable(
   table => [index("field_record_share_owner_record_idx").on(table.ownerUserId, table.recordId, table.revokedAt)]
 );
 
+/** A completed photo-annotation attempt remains private to the learner and assigned course administrators. */
+export const cropDiagnosisAnnotationReviews = mysqlTable(
+  "cropDiagnosisAnnotationReviews",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    payloadJson: text("payloadJson").notNull(),
+    status: mysqlEnum("status", ["submitted", "reviewed", "revision_requested"]).default("submitted").notNull(),
+    supervisorUserId: int("supervisorUserId").references(() => users.id, { onDelete: "set null" }),
+    supervisorName: varchar("supervisorName", { length: 160 }),
+    feedback: text("feedback"),
+    submittedAt: timestamp("submittedAt").defaultNow().notNull(),
+    reviewedAt: timestamp("reviewedAt"),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [
+    index("annotation_review_learner_submitted_idx").on(table.userId, table.submittedAt),
+    index("annotation_review_status_submitted_idx").on(table.status, table.submittedAt),
+  ]
+);
+
 /** Private field-visit evidence supports field-readiness self-review without altering formal course certification. */
 export const fieldPracticumEntries = mysqlTable(
   "fieldPracticumEntries",

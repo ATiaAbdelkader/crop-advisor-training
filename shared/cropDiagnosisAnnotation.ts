@@ -88,3 +88,32 @@ export const cropDiagnosisAnnotationCases: CropDiagnosisAnnotationCase[] = [
 export const cropDiagnosisAnnotationByModuleId = Object.fromEntries(
   cropDiagnosisAnnotationCases.flatMap(caseItem => caseItem.moduleIds.map(moduleId => [moduleId, caseItem]))
 ) as Record<string, CropDiagnosisAnnotationCase>;
+
+export type CropDiagnosisAnnotationPin = {
+  x: number;
+  y: number;
+  label: AnnotationLabel;
+};
+
+export type CropDiagnosisAnnotationReviewPayload = {
+  rationale: string;
+  cases: Array<{
+    caseId: string;
+    answer: string;
+    pins: CropDiagnosisAnnotationPin[];
+  }>;
+};
+
+export const annotationSupervisorReviewCriteria = [
+  "Pins distinguish field pattern, symptom or sign, pest or beneficial evidence, contributing conditions, and uncertainty where the case requires them.",
+  "The learner’s rationale separates visible evidence from a confirmed cause and identifies an appropriate recheck or referral boundary.",
+  "The next-step judgement protects evidence quality and does not introduce an unsupported treatment, product, rate, threshold, or legal claim.",
+] as const;
+
+export const annotationSupervisorReviewRequirements = {
+  supervisorRole: "admin",
+  minimumRationaleLength: 80,
+  minimumFeedbackLength: 20,
+  statuses: ["submitted", "reviewed", "revision_requested"] as const,
+  formalGateBoundary: "Supervisor review is private developmental feedback and does not alter lesson progression, formal assessment scores, certificate issuance, or owner-alert rules.",
+} as const;

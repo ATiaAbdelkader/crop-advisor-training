@@ -1,13 +1,22 @@
 import TrainingShell from "@/components/TrainingShell";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { useAuth } from "@/_core/hooks/useAuth";
+import { startLogin } from "@/const";
+import { trpc } from "@/lib/trpc";
 import { annotationLabelOptions, cropDiagnosisAnnotationCases, type AnnotationLabel } from "@shared/cropDiagnosisAnnotation";
-import { ArrowLeft, CheckCircle2, CircleHelp, Eye, ImageOff, MapPin, RotateCcw, Search, ShieldAlert, Tags, X } from "lucide-react";
+import { ArrowLeft, CheckCircle2, CircleHelp, Eye, ImageOff, MapPin, MessageSquareText, RotateCcw, Search, ShieldAlert, Tags, UserRoundCheck, X } from "lucide-react";
 import { useMemo, useState, type MouseEvent } from "react";
+import { toast } from "sonner";
 import { useLocation } from "wouter";
 
 type Pin = { id: number; x: number; y: number; label: AnnotationLabel };
 type PinsByCase = Record<string, Pin[]>;
 type Answers = Record<string, string>;
+
+function reviewStatusLabel(status: "submitted" | "reviewed" | "revision_requested") {
+  return status === "reviewed" ? "Supervisor feedback received" : status === "revision_requested" ? "Revision requested" : "Awaiting supervisor feedback";
+}
 
 export default function CropDiagnosisAnnotation() {
   const [, setLocation] = useLocation();
@@ -17,6 +26,18 @@ export default function CropDiagnosisAnnotation() {
   const [answers, setAnswers] = useState<Answers>({});
   const [imageFailed, setImageFailed] = useState<Record<string, boolean>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [reviewRationale, setReviewRationale] = useState("");
+  const { isAuthenticated, user } = useAuth();
+  const utils = trpc.useUtils();
+  const myReviewsQuery = trpc.annotationReviews.mine.useQuery(undefined, { enabled: isAuthenticated });
+  const submitForSupervisorReview = trpc.annotationReviews.submit.useMutation({
+    onSuccess: async () => {
+      await utils.annotationReviews.mine.invalidate();
+      setReviewRationale("");
+      toast.success("Supervisor review requested", { description: "Your evidence pins, chosen next steps, and rationale are now available to course supervisors." });
+    },
+    onError: error => toast.error("Unable to request supervisor review", { description: error.message }),
+  });
   const currentCase = cropDiagnosisAnnotationCases[caseIndex];
   const currentPins = pinsByCase[currentCase.id] ?? [];
 
@@ -56,7 +77,20 @@ export default function CropDiagnosisAnnotation() {
     setCaseIndex(0);
     setPinsByCase({});
     setAnswers({});
+    setReviewRationale("");
     setSubmitted(false);
+  }
+
+  function requestSupervisorReview() {
+    if (!isAuthenticated) return startLogin();
+    submitForSupervisorReview.mutate({
+      rationale: reviewRationale,
+      cases: cropDiagnosisAnnotationCases.map(caseItem => ({
+        caseId: caseItem.id,
+        answer: answers[caseItem.id] ?? "",
+        pins: (pinsByCase[caseItem.id] ?? []).map(pin => ({ x: pin.x, y: pin.y, label: pin.label })),
+      })),
+    });
   }
 
   return (
@@ -69,6 +103,7 @@ export default function CropDiagnosisAnnotation() {
           <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#b9d3c1]">Crop-diagnosis photo annotation</p>
           <h1 className="mt-3 max-w-4xl font-serif text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">See the clue. Mark the uncertainty. Choose the safe next step.</h1>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-[#d7e8dc]">These are simulated visual-evidence cases, not diagnostic photographs. Place labelled pins on visible clues, then practise the evidence and next-step judgement that should accompany a real field observation.</p>
+          {user?.role === "admin" && <Button variant="outline" onClick={() => setLocation("/supervisor/annotation-reviews")} className="mt-5 rounded-full border-white/30 bg-white/10 text-xs font-bold text-white hover:bg-white/20 hover:text-white"><UserRoundCheck className="mr-1.5 h-3.5 w-3.5" />Open supervisor review queue</Button>}
         </header>
 
         {!submitted ? (
@@ -155,6 +190,8 @@ export default function CropDiagnosisAnnotation() {
                 <article key={caseItem.id} className="rounded-2xl border border-[#dce8dc] bg-white p-5"><div className="flex gap-3"><Search className="mt-0.5 h-4 w-4 shrink-0 text-[#4f8660]" /><div><p className="font-serif text-lg font-semibold text-[#34543c]">{caseItem.title}</p><p className="mt-2 text-sm leading-6 text-[#58705d]">{answers[caseItem.id] === caseItem.correctOptionId ? "Your selected next step protects evidence quality. " : "Review the safer evidence-led response. "}{caseItem.feedback}</p><p className="mt-3 rounded-xl bg-[#f1f8f0] p-3 text-xs leading-5 text-[#4c6d53]"><strong>Safe next step:</strong> {caseItem.safeNextStep}</p></div></div></article>
               ))}
             </div>
+            <section className="mt-7 rounded-2xl border border-[#d7e6d8] bg-[#f2f8f1] p-5"><div className="flex items-start gap-3"><MessageSquareText className="mt-0.5 h-5 w-5 shrink-0 text-[#467b54]" /><div><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#5d7f63]">Optional supervisor review</p><h3 className="mt-2 font-serif text-xl font-semibold text-[#31503a]">Request feedback on your reasoning</h3><p className="mt-2 text-xs leading-5 text-[#5c725f]">A supervisor will see this completed exercise, your evidence pins, selected next steps, and your rationale. Review feedback is private and does not affect course progression, assessment scores, certification, or owner alerts.</p></div></div><label className="mt-5 block text-xs font-bold text-[#45624b]">Evidence-to-judgment rationale <span className="font-normal text-[#718471]">(minimum 80 characters)</span><Textarea value={reviewRationale} onChange={event => setReviewRationale(event.target.value)} maxLength={4000} rows={5} className="mt-2 bg-white text-sm" placeholder="Describe the evidence you would verify in the field, the uncertainty you retained, and the recheck or referral condition that protects the next decision." /></label><div className="mt-3 flex flex-wrap items-center justify-between gap-3"><p className="text-[11px] text-[#6c816e]">{reviewRationale.trim().length}/80 minimum characters</p><Button disabled={isAuthenticated ? reviewRationale.trim().length < 80 || submitForSupervisorReview.isPending : false} onClick={requestSupervisorReview} className="rounded-full bg-[#356c48] text-xs font-bold hover:bg-[#27583a]"><UserRoundCheck className="mr-1.5 h-3.5 w-3.5" />{!isAuthenticated ? "Sign in to request review" : submitForSupervisorReview.isPending ? "Sending request" : "Request supervisor review"}</Button></div></section>
+            {isAuthenticated && <section className="mt-5 rounded-2xl border border-[#e0e9de] bg-white p-5"><p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#66806b]">My review requests</p>{myReviewsQuery.isLoading ? <p className="mt-3 text-xs text-[#728274]">Loading your private review status…</p> : myReviewsQuery.isError ? <Button variant="ghost" onClick={() => myReviewsQuery.refetch()} className="mt-3 h-auto p-0 text-xs font-bold text-[#9a593d] hover:bg-transparent">Retry loading review status</Button> : myReviewsQuery.data?.length ? <div className="mt-3 space-y-3">{myReviewsQuery.data.map(review => <article key={review.id} className="rounded-xl border border-[#e1e9df] bg-[#fbfdf9] p-4"><div className="flex flex-wrap items-center justify-between gap-2"><p className="text-xs font-bold text-[#3e5d45]">{reviewStatusLabel(review.status)}</p><p className="text-[10px] text-[#768477]">Requested {new Date(review.submittedAt).toLocaleDateString()}</p></div>{review.feedback ? <div className="mt-3 border-t border-[#e3ebe0] pt-3"><p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#68826b]">{review.supervisorName || "Course supervisor"}</p><p className="mt-1 text-xs leading-5 text-[#536653]">{review.feedback}</p></div> : <p className="mt-2 text-xs leading-5 text-[#647765]">Your request is visible only to authorised course supervisors until feedback is added.</p>}</article>)}</div> : <p className="mt-3 text-xs leading-5 text-[#718071]">No supervisor review requests yet.</p>}</section>}
             <div className="mt-7 flex flex-wrap gap-3"><Button onClick={restart} className="rounded-full bg-[#356c48] text-xs font-bold hover:bg-[#27583a]"><RotateCcw className="mr-2 h-3.5 w-3.5" />Practise again</Button><Button variant="outline" onClick={() => setLocation("/scouting-protocol")} className="rounded-full text-xs font-bold">Open scouting protocol</Button></div>
           </section>
         )}

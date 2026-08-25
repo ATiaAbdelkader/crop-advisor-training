@@ -2,6 +2,7 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { cropAdvisorCourse, getAssessmentById, getLessonById } from "../shared/curriculum";
 import { appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
+import { annotationLabelOptions, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationCases, type AnnotationLabel, type CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import {
   MAX_FIELD_RECORD_ENTRIES,
   MAX_FIELD_RECORD_TITLE_LENGTH,
@@ -27,6 +28,7 @@ import {
   deleteFieldRecord,
   deleteFieldPracticumEntry,
   createFieldRecordReviewShare,
+  createCropDiagnosisAnnotationReviewSubmission,
   getActiveFieldRecordReviewShare,
   getFieldRecord,
   getFieldPracticumEntry,
@@ -45,15 +47,18 @@ import {
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
   listCapstoneSubmissions,
+  listCropDiagnosisAnnotationReviewsForSupervisor,
+  listMyCropDiagnosisAnnotationReviews,
   recordScenarioAttempt,
   revokeFieldRecordReviewShare,
   submitFieldRecordReview,
+  submitCropDiagnosisAnnotationSupervisorFeedback,
   upsertLearnerReflection,
 } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
 import { systemRouter } from "./_core/systemRouter";
-import { protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { COOKIE_NAME } from "@shared/const";
 
 async function getOverviewForLearner(userId: number) {
@@ -138,6 +143,33 @@ function normaliseCapstonePayload(capstoneId: string, payload: z.infer<typeof ca
     responses: capstone.responsePrompts.map((_, index) => payload.responses[index]?.trim() ?? ""),
     selfReview: payload.selfReview.trim(),
     rubric: Object.fromEntries(fieldReadinessRubric.map(criterion => [criterion.id, payload.rubric[criterion.id] ?? 0])),
+  };
+}
+
+const annotationPinInput = z.object({
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+  label: z.enum(annotationLabelOptions.map(option => option.id) as [string, ...string[]]),
+});
+
+const annotationReviewPayloadInput = z.object({
+  rationale: z.string().trim().min(annotationSupervisorReviewRequirements.minimumRationaleLength).max(4000),
+  cases: z.array(z.object({ caseId: z.string().min(1).max(128), answer: z.string().min(1).max(64), pins: z.array(annotationPinInput).min(1).max(24) })).length(cropDiagnosisAnnotationCases.length),
+});
+
+function normaliseAnnotationReviewPayload(payload: z.infer<typeof annotationReviewPayloadInput>): CropDiagnosisAnnotationReviewPayload {
+  const submittedByCaseId = new Map(payload.cases.map(caseItem => [caseItem.caseId, caseItem]));
+  if (submittedByCaseId.size !== cropDiagnosisAnnotationCases.length) throw new TRPCError({ code: "BAD_REQUEST", message: "Include one completed response for every visual case." });
+  return {
+    rationale: payload.rationale.trim(),
+    cases: cropDiagnosisAnnotationCases.map(caseDefinition => {
+      const submitted = submittedByCaseId.get(caseDefinition.id);
+      if (!submitted) throw new TRPCError({ code: "BAD_REQUEST", message: "A visual case is missing from this submission." });
+      if (!caseDefinition.options.some(option => option.id === submitted.answer)) throw new TRPCError({ code: "BAD_REQUEST", message: "An annotation answer is invalid." });
+      const labels = new Set(submitted.pins.map(pin => pin.label));
+      if (caseDefinition.requiredLabels.some(label => !labels.has(label))) throw new TRPCError({ code: "BAD_REQUEST", message: "Mark every required evidence category before requesting review." });
+      return { caseId: caseDefinition.id, answer: submitted.answer, pins: submitted.pins.map(pin => ({ x: pin.x, y: pin.y, label: pin.label as AnnotationLabel })) };
+    }),
   };
 }
 
@@ -303,6 +335,24 @@ export const appRouter = router({
           answers: input.answers,
         });
         return result;
+      }),
+  }),
+  annotationReviews: router({
+    mine: protectedProcedure.query(({ ctx }) => listMyCropDiagnosisAnnotationReviews(ctx.user.id)),
+    submit: protectedProcedure
+      .input(annotationReviewPayloadInput)
+      .mutation(async ({ ctx, input }) => {
+        const review = await createCropDiagnosisAnnotationReviewSubmission({ userId: ctx.user.id, payload: normaliseAnnotationReviewPayload(input) });
+        if (!review) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to save this review request." });
+        return review;
+      }),
+    queue: adminProcedure.query(() => listCropDiagnosisAnnotationReviewsForSupervisor()),
+    provideFeedback: adminProcedure
+      .input(z.object({ id: z.number().int().positive(), status: z.enum(["reviewed", "revision_requested"]), feedback: z.string().trim().min(annotationSupervisorReviewRequirements.minimumFeedbackLength).max(4000) }))
+      .mutation(async ({ ctx, input }) => {
+        const saved = await submitCropDiagnosisAnnotationSupervisorFeedback({ id: input.id, supervisorUserId: ctx.user.id, supervisorName: ctx.user.name?.trim() || "Course supervisor", status: input.status, feedback: input.feedback.trim() });
+        if (!saved) throw new TRPCError({ code: "NOT_FOUND", message: "Annotation review request not found." });
+        return { success: true } as const;
       }),
   }),
   fieldReadiness: router({

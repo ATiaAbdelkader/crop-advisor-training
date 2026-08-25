@@ -96,3 +96,4 @@
 - [x] Add a source-grounded Quantified Scouting Protocol for consistent sampling, field-pattern evidence, incidence/severity reasoning, beneficial-organism observation, decision rationale, follow-up, and referral.
 - [x] Add a printable Quantified Scouting Sheet with sampling, observation, incidence/severity, beneficial, field-pattern, decision, recheck, and referral evidence fields.
 - [x] Add a source-grounded crop-diagnosis photo annotation exercise with visual-evidence prompts, uncertainty, safe-next-step feedback, and module links.
+- [x] Add secure supervisor review, written feedback, and learner-visible status for completed crop-diagnosis annotation reasoning without changing formal progression gates.

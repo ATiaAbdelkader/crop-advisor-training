@@ -5,6 +5,7 @@ import {
   capstoneSubmissions,
   certificates,
   courseEnrollments,
+  cropDiagnosisAnnotationReviews,
   fieldPracticumEntries,
   fieldRecords,
   fieldRecordReviewShares,
@@ -16,6 +17,7 @@ import {
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
 import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
+import type { CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import type { CapstoneSubmissionPayload, FieldPracticumPayload } from "../shared/fieldReadiness";
 
 let _db: ReturnType<typeof drizzle> | null = null;
@@ -380,6 +382,46 @@ export async function submitFieldRecordReview(input: { shareToken: string; revie
     .update(fieldRecordReviewShares)
     .set({ reviewerName: input.reviewerName, reviewComment: input.reviewComment, reviewedAt: new Date() })
     .where(and(eq(fieldRecordReviewShares.shareToken, input.shareToken), isNull(fieldRecordReviewShares.revokedAt)));
+  return result[0].affectedRows > 0;
+}
+
+type StoredCropDiagnosisAnnotationReview = Omit<typeof cropDiagnosisAnnotationReviews.$inferSelect, "payloadJson"> & {
+  payload: CropDiagnosisAnnotationReviewPayload;
+};
+
+function toStoredCropDiagnosisAnnotationReview(entry: typeof cropDiagnosisAnnotationReviews.$inferSelect): StoredCropDiagnosisAnnotationReview {
+  return { ...entry, payload: JSON.parse(entry.payloadJson) as CropDiagnosisAnnotationReviewPayload };
+}
+
+export async function createCropDiagnosisAnnotationReviewSubmission(input: { userId: number; payload: CropDiagnosisAnnotationReviewPayload }) {
+  const db = await requireDb();
+  const result = await db.insert(cropDiagnosisAnnotationReviews).values({ userId: input.userId, payloadJson: JSON.stringify(input.payload) });
+  const rows = await db.select().from(cropDiagnosisAnnotationReviews).where(eq(cropDiagnosisAnnotationReviews.id, Number(result[0].insertId))).limit(1);
+  return rows[0] ? toStoredCropDiagnosisAnnotationReview(rows[0]) : null;
+}
+
+export async function listMyCropDiagnosisAnnotationReviews(userId: number) {
+  const db = await requireDb();
+  const entries = await db.select().from(cropDiagnosisAnnotationReviews).where(eq(cropDiagnosisAnnotationReviews.userId, userId)).orderBy(desc(cropDiagnosisAnnotationReviews.submittedAt));
+  return entries.map(toStoredCropDiagnosisAnnotationReview);
+}
+
+export async function listCropDiagnosisAnnotationReviewsForSupervisor() {
+  const db = await requireDb();
+  const rows = await db
+    .select({ review: cropDiagnosisAnnotationReviews, learnerName: users.name, learnerEmail: users.email })
+    .from(cropDiagnosisAnnotationReviews)
+    .innerJoin(users, eq(cropDiagnosisAnnotationReviews.userId, users.id))
+    .orderBy(desc(cropDiagnosisAnnotationReviews.submittedAt));
+  return rows.map(row => ({ ...toStoredCropDiagnosisAnnotationReview(row.review), learnerName: row.learnerName, learnerEmail: row.learnerEmail }));
+}
+
+export async function submitCropDiagnosisAnnotationSupervisorFeedback(input: { id: number; supervisorUserId: number; supervisorName: string; status: "reviewed" | "revision_requested"; feedback: string }) {
+  const db = await requireDb();
+  const result = await db
+    .update(cropDiagnosisAnnotationReviews)
+    .set({ status: input.status, supervisorUserId: input.supervisorUserId, supervisorName: input.supervisorName, feedback: input.feedback, reviewedAt: new Date(), updatedAt: new Date() })
+    .where(eq(cropDiagnosisAnnotationReviews.id, input.id));
   return result[0].affectedRows > 0;
 }
 
