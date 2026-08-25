@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 5.0  
+**Version:** 5.1  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -555,3 +555,17 @@ Module 34 is derived from the supplied *Weed Management* training document. Its 
 [30] [REVISED_PRT-005. *Responsible Use of Pesticides: Good Practices to Minimize Health and Environmental Risks* (user-supplied training document, 6 February 2023)](file:///home/ubuntu/upload/REVISED_PRT-005.ResponsibleUseofPesticides_06022023.pdf)
 
 [31] [REVISED_PRT-006. *Weed Management* (user-supplied training document, 29 May 2023)](file:///home/ubuntu/upload/REVISED_PRT-006.WeedManagement_05292023.pdf)
+
+## Competency-based curriculum layer
+
+The programme now uses a **competency-based education** layer across all thirty-four current modules. Each module explicitly presents one observable field competency, a performance task, evidence to retain, three criterion-referenced quality statements, targeted remediation, and a high-consequence safety or referral boundary. The course map groups these competencies into eight field domains: advisory judgement; site, soil, and crop-performance analysis; farm planning and economics; soil and nutrient stewardship; nursery and establishment; water and irrigation; crop care and market quality; and crop health/IPM/pesticide stewardship.
+
+The learner-facing **Competencies** route provides the complete map, filters by field domain, and links every performance task back to its source-grounded module. The generic module page now exposes the module’s competency statement, evidence standard, and criteria, including on pages where formal lesson content remains gated. The formal 80% assessment page identifies the competency the check supports and, after an unsuccessful result, gives the learner a competency-specific evidence and practice focus before reattempting.
+
+> **Progression boundary:** Existing lesson gates, 80% formal checks, final certificate rules, and owner notifications remain unchanged. Performance evidence from briefs, records, routines, scenarios, practicum, capstones, annotations, and portfolio work is developmental evidence for field readiness; it does not itself award a formal pass or permit an unsupported advisory action.
+
+The framework applies the competency-based emphasis on demonstration, transparent standards, and attained competency in authentic contexts.[32] It also widens agricultural-advisory competence beyond input selection to include production, risk, business, communication, and market context.[33] These design choices are documented in [`Competency-Based-Curriculum-Audit.md`](./Competency-Based-Curriculum-Audit.md).
+
+[32] [UNESCO-UNEVOC, *Competency-based education*](https://connect.unevoc.unesco.org/home/TVETipedia+Glossary/lang=en/show=term/lang=en/term=Competency-based+education)
+
+[33] [FAO, *Making extension and advisory services market-oriented* (2021)](https://openknowledge.fao.org/handle/20.500.14283/cb4395en)

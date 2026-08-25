@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { startLogin } from "@/const";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Award, BarChart3, BookOpenCheck, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal } from "lucide-react";
+import { Award, BarChart3, BookOpenCheck, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal, Target } from "lucide-react";
 import type { ReactNode } from "react";
 import { useLocation } from "wouter";
 
@@ -11,6 +11,7 @@ const navigation = [
   { label: "Progress", href: "/progress", icon: BarChart3 },
   { label: "Records", href: "/records", icon: ClipboardList },
   { label: "Field Ready", href: "/field-readiness", icon: Medal },
+  { label: "Competencies", href: "/competencies", icon: Target },
   { label: "Curriculum", href: "/course/advisory-practice", icon: BookOpenCheck },
   { label: "Credential", href: "/certificate", icon: Award },
 ];

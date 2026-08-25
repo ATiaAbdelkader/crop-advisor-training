@@ -16,6 +16,7 @@ import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesti
 import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedScoutingStages } from "../shared/quantifiedScoutingProtocol";
 import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
 import { annotationDashboardNotificationRequirements, annotationLabelOptions, annotationSupervisorReviewCriteria, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases, isUnreadAnnotationFeedbackForLearner, sortAnnotationReviewNotifications } from "../shared/cropDiagnosisAnnotation";
+import { competencyDomains, competencyPerformanceLevels, moduleCompetencies, moduleCompetencyByModuleId } from "../shared/competencyFramework";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -64,6 +65,23 @@ describe("crop-advisor progression", () => {
         )
       ).toBe(true);
       expect(finalCompetency?.prompt.toLowerCase()).toContain(alignment.finalCompetencyAnchor);
+    });
+  });
+
+  it("maps every course module to an observable competency with evidence, criteria, remediation, and a safe field boundary", () => {
+    expect(moduleCompetencies).toHaveLength(cropAdvisorCourse.modules.length);
+    expect(competencyPerformanceLevels.map(level => level.id)).toEqual(["prepare", "perform", "review-refer"]);
+    cropAdvisorCourse.modules.forEach(module => {
+      const competency = moduleCompetencyByModuleId[module.id];
+      expect(competency).toBeDefined();
+      expect(competencyDomains.some(domain => domain.id === competency.domainId)).toBe(true);
+      expect(competency.competencyStatement.length).toBeGreaterThan(60);
+      expect(competency.performanceTask.length).toBeGreaterThan(40);
+      expect(competency.evidence.length).toBeGreaterThan(40);
+      expect(competency.criteria).toHaveLength(3);
+      expect(competency.criteria.every(criterion => criterion.length > 15)).toBe(true);
+      expect(competency.remediationFocus.length).toBeGreaterThan(35);
+      expect(competency.safetyBoundary.length).toBeGreaterThan(60);
     });
   });
 
