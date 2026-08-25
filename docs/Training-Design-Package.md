@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 5.2  
+**Version:** 5.3  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -575,3 +575,7 @@ The framework applies the competency-based emphasis on demonstration, transparen
 Administrators can now assess a learner’s submitted module evidence using the three competency levels already embedded in the course: **Prepare**, **Perform**, and **Review and refer**. For each level, the supervisor selects **Not yet evidenced**, **Developing**, or **Demonstrated**, then provides written feedback or requests revision. Learners submit an evidence summary, task context, and review/referral boundary from the relevant module’s performance task; they can view only their own scorecard and feedback.
 
 The workflow is private, administrator-gated, and developmental. It does not alter the existing 80% formal module checks, sequential progression, certification, or owner-notification rules. It must be used with module criteria and submitted evidence, not as authority to prescribe products, rates, diagnoses, legal actions, or other high-consequence advice. Full workflow, privacy, and scoring guidance is documented in [`Supervisor-Competency-Scoring.md`](./Supervisor-Competency-Scoring.md).
+
+## Integrated learner experience
+
+The programme now includes a private Learning Experience hub that combines personalised remediation, an eight-domain competency transcript, competency-score alerts, spaced retrieval prompts, and evidence-library links. It uses learner-owned formal checks, scenario attempts, competency scorecards, records, practicum/capstone work, visual diagnosis evidence, and reflections. Learners can optionally attach bounded, learner-owned field photos to competency submissions; authorised supervisors view these images in the protected scoring workspace. Five additional field simulations cover crop-pattern triage, irrigation performance, nutrient evidence, harvest hand-offs, and pest-beneficial scouting. The administrator calibration guide supports consistent three-level developmental scoring. All enhancements preserve existing formal-gate, privacy, and high-consequence crop-safety boundaries. See [`Learner-Experience-Enhancements.md`](./Learner-Experience-Enhancements.md).

@@ -67,8 +67,17 @@ describe("supervisor competency scoring access", () => {
         evidenceSummary: evidencePayload.evidenceSummary,
         taskContext: evidencePayload.taskContext,
         reviewOrReferral: evidencePayload.reviewOrReferral,
+        attachments: [],
       },
     });
+  });
+
+  it("rejects photo evidence outside the authenticated learner and module storage path", async () => {
+    await expect(createCaller(73).competencyAssessments.submit({
+      ...evidencePayload,
+      attachments: [{ name: "field.jpg", key: "competency-evidence/9/advisory-practice/field.jpg", url: "/manus-storage/competency-evidence/9/advisory-practice/field.jpg" }],
+    })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    expect(competencyMocks.create).not.toHaveBeenCalled();
   });
 
   it("lists only the authenticated learner's competency assessments", async () => {

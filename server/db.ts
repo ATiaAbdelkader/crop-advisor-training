@@ -469,9 +469,10 @@ type StoredCompetencyAssessment = Omit<typeof competencyAssessments.$inferSelect
 };
 
 function toStoredCompetencyAssessment(entry: typeof competencyAssessments.$inferSelect): StoredCompetencyAssessment {
+  const payload = JSON.parse(entry.payloadJson) as Partial<CompetencyEvidenceSubmissionPayload>;
   return {
     ...entry,
-    payload: JSON.parse(entry.payloadJson) as CompetencyEvidenceSubmissionPayload,
+    payload: { evidenceSummary: payload.evidenceSummary ?? "", taskContext: payload.taskContext ?? "", reviewOrReferral: payload.reviewOrReferral ?? "", attachments: payload.attachments ?? [] },
     scorecard: entry.scorecardJson ? JSON.parse(entry.scorecardJson) as CompetencyScorecard : null,
   };
 }
@@ -506,6 +507,43 @@ export async function submitSupervisorCompetencyScore(input: { id: number; super
     .set({ status: input.status, scorecardJson: JSON.stringify(input.scorecard), supervisorUserId: input.supervisorUserId, supervisorName: input.supervisorName, feedback: input.feedback, feedbackReadAt: null, reviewedAt: new Date(), updatedAt: new Date() })
     .where(eq(competencyAssessments.id, input.id));
   return result[0].affectedRows > 0;
+}
+
+export async function listCompetencyAssessmentNotificationStates(userId: number) {
+  const db = await requireDb();
+  return db
+    .select({
+      id: competencyAssessments.id,
+      moduleId: competencyAssessments.moduleId,
+      status: competencyAssessments.status,
+      supervisorName: competencyAssessments.supervisorName,
+      feedback: competencyAssessments.feedback,
+      feedbackReadAt: competencyAssessments.feedbackReadAt,
+      submittedAt: competencyAssessments.submittedAt,
+      reviewedAt: competencyAssessments.reviewedAt,
+    })
+    .from(competencyAssessments)
+    .where(eq(competencyAssessments.userId, userId))
+    .orderBy(desc(sql`COALESCE(${competencyAssessments.reviewedAt}, ${competencyAssessments.submittedAt})`));
+}
+
+export function buildCompetencyAssessmentFeedbackReadFilter(userId: number, ids?: number[]) {
+  const conditions = [
+    eq(competencyAssessments.userId, userId),
+    isNotNull(competencyAssessments.feedback),
+    isNull(competencyAssessments.feedbackReadAt),
+  ];
+  if (ids?.length) conditions.push(inArray(competencyAssessments.id, ids));
+  return and(...conditions);
+}
+
+export async function markCompetencyAssessmentFeedbackRead(userId: number, ids?: number[]) {
+  const db = await requireDb();
+  const result = await db
+    .update(competencyAssessments)
+    .set({ feedbackReadAt: new Date(), updatedAt: new Date() })
+    .where(buildCompetencyAssessmentFeedbackReadFilter(userId, ids));
+  return result[0].affectedRows;
 }
 
 type StoredFieldPracticum = Omit<typeof fieldPracticumEntries.$inferSelect, "payloadJson"> & {

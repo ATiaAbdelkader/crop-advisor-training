@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { cropAdvisorCourse } from "@shared/curriculum";
 import { sortAnnotationReviewNotifications } from "@shared/cropDiagnosisAnnotation";
-import { AlertTriangle, Award, BellRing, BookOpen, CheckCircle2, ChevronRight, Clock3, LockKeyhole, MessageSquareText, Play, RefreshCw, Sprout, Target } from "lucide-react";
+import { AlertTriangle, Award, BellRing, BookOpen, CheckCircle2, ChevronRight, Clock3, LockKeyhole, MessageSquareText, Play, RefreshCw, Sparkles, Sprout, Target } from "lucide-react";
 import { useLocation } from "wouter";
 
 const heroImage = "/manus-storage/vegetable-planning-field-hero_325e5a88.jpg";
@@ -27,17 +27,23 @@ export default function Home() {
   const utils = trpc.useUtils();
   const overviewQuery = trpc.training.overview.useQuery(undefined, { enabled: isAuthenticated });
   const annotationNotificationsQuery = trpc.annotationNotifications.list.useQuery(undefined, { enabled: isAuthenticated });
+  const competencyNotificationsQuery = trpc.competencyNotifications.list.useQuery(undefined, { enabled: isAuthenticated });
   const enroll = trpc.training.enroll.useMutation({
     onSuccess: () => utils.training.overview.invalidate(),
   });
   const markAnnotationFeedbackRead = trpc.annotationNotifications.markRead.useMutation({
     onSuccess: () => utils.annotationNotifications.list.invalidate(),
   });
+  const markCompetencyFeedbackRead = trpc.competencyNotifications.markRead.useMutation({
+    onSuccess: () => utils.competencyNotifications.list.invalidate(),
+  });
   const overview = overviewQuery.data;
   const annotationNotifications = sortAnnotationReviewNotifications(annotationNotificationsQuery.data ?? []);
   const annotationFeedback = annotationNotifications.filter(notification => Boolean(notification.feedback));
   const unreadAnnotationFeedback = annotationFeedback.filter(notification => !notification.feedbackReadAt);
   const latestAnnotationReview = annotationNotifications[0];
+  const competencyFeedback = (competencyNotificationsQuery.data ?? []).filter(notification => Boolean(notification.feedback));
+  const unreadCompetencyFeedback = competencyFeedback.filter(notification => !notification.feedbackReadAt);
   const progress = overview?.progressPercent ?? 0;
   const action = overview?.nextAction;
   const ActionIcon = getActionIcon(action?.type ?? "lesson");
@@ -56,6 +62,12 @@ export default function Home() {
       markAnnotationFeedbackRead.mutate({ ids: [id] });
     }
     setLocation("/diagnosis-annotation");
+  };
+  const openCompetencyFeedback = (id: number, moduleId: string) => {
+    if (unreadCompetencyFeedback.some(notification => notification.id === id)) {
+      markCompetencyFeedbackRead.mutate({ ids: [id] });
+    }
+    setLocation(`/competency-review/${moduleId}`);
   };
 
   if (isAuthenticated && overviewQuery.isLoading) {
@@ -176,6 +188,15 @@ export default function Home() {
                 <div className="mt-4 space-y-3">{annotationFeedback.slice(0, 3).map(notification => <button key={notification.id} type="button" onClick={() => openAnnotationFeedback(notification.id)} className={`w-full rounded-xl border p-3 text-left transition-colors ${notification.feedbackReadAt ? "border-[#e2e8e0] bg-[#fafcf9] hover:bg-[#f4f9f3]" : notification.status === "revision_requested" ? "border-[#eacdaf] bg-[#fff8f0] hover:bg-[#fff3e7]" : "border-[#cfe3d1] bg-[#f2faf2] hover:bg-[#e9f6e8]"}`}><div className="flex items-start gap-2"><span className={`mt-1 h-2 w-2 shrink-0 rounded-full ${notification.feedbackReadAt ? "bg-[#bcc9ba]" : notification.status === "revision_requested" ? "bg-[#c56a43]" : "bg-[#4b9a5b]"}`} /><div className="min-w-0 flex-1"><p className="text-xs font-bold text-[#3c5842]">{notification.status === "revision_requested" ? "Supervisor requested a revision" : "Supervisor feedback received"}</p><p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#657765]">{notification.feedback}</p><p className="mt-2 text-[10px] text-[#7c8a7d]">{notification.supervisorName || "Course supervisor"} · {notification.reviewedAt ? new Date(notification.reviewedAt).toLocaleDateString() : "New update"}</p></div></div></button>)}</div>
               </section>
             )}
+
+            {isAuthenticated && (competencyFeedback.length > 0 || competencyNotificationsQuery.isLoading || competencyNotificationsQuery.isError) && (
+              <section className="rounded-[22px] border border-[#dbe6d9] bg-[#fcfcf8] p-5 shadow-[0_9px_24px_rgba(39,67,47,.035)]">
+                <div className="flex items-center justify-between gap-3"><div className="flex items-center gap-2"><Target className="h-4 w-4 text-[#4f8063]" /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#5a745f]">Competency scorecards</p></div>{unreadCompetencyFeedback.length > 0 && <span className="rounded-full bg-[#ba5536] px-2 py-0.5 text-[10px] font-bold text-white">{unreadCompetencyFeedback.length} new</span>}</div>
+                {competencyNotificationsQuery.isLoading ? <p className="mt-4 text-xs leading-5 text-[#647764]">Checking private competency scorecard updates…</p> : competencyNotificationsQuery.isError ? <><p className="mt-4 text-sm font-bold text-[#805237]">Competency scorecards are unavailable</p><Button variant="ghost" onClick={() => competencyNotificationsQuery.refetch()} className="mt-3 h-auto p-0 text-xs font-bold text-[#8d563d] hover:bg-transparent">Retry updates</Button></> : <div className="mt-4 space-y-3">{competencyFeedback.slice(0, 2).map(notification => <button key={notification.id} type="button" onClick={() => openCompetencyFeedback(notification.id, notification.moduleId)} className={`w-full rounded-xl border p-3 text-left ${notification.feedbackReadAt ? "border-[#e2e8e0] bg-[#fafcf9]" : notification.status === "revision_requested" ? "border-[#eacdaf] bg-[#fff8f0]" : "border-[#cfe3d1] bg-[#f2faf2]"}`}><p className="text-xs font-bold text-[#3c5842]">{notification.status === "revision_requested" ? "Supervisor requested a revision" : "Competency scorecard received"}</p><p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#657765]">{notification.feedback}</p></button>)}</div>}
+              </section>
+            )}
+
+            {isAuthenticated && <section className="rounded-[22px] border border-[#d9e5d4] bg-[#f2f8ef] p-5"><div className="flex items-start gap-3"><Sparkles className="mt-0.5 h-5 w-5 text-[#4c8054]" /><div><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#668167]">Learning experience</p><h3 className="mt-1 font-serif text-xl font-semibold text-[#304d38]">Connect evidence, feedback, and retrieval practice.</h3><p className="mt-2 text-xs leading-5 text-[#617762]">Open your private next-step recommendations, eight-domain transcript, spaced review prompts, and integrated evidence library.</p><Button variant="ghost" onClick={() => setLocation("/learning-experience")} className="mt-4 h-auto p-0 text-xs font-bold text-[#2d6844] hover:bg-transparent">Open learning experience<ChevronRight className="ml-1 h-3.5 w-3.5" /></Button></div></div></section>}
             <div className="rounded-[22px] border border-[#dfe6d9] bg-[#edf3e9] p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>

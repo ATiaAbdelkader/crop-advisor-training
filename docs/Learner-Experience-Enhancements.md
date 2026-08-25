@@ -46,3 +46,19 @@ The route includes a learner-facing local-intelligence method: record the place,
 Regression coverage verifies scenario mappings and scoring, local-draft structural validation, printable-record behaviour, PDF generation, saved-list error states, two-record comparison selection and setup-field summaries, practicum completion, capstone completeness, and the non-gating field-readiness boundary. Database procedures scope record, reflection, scenario, comparison, practicum, capstone, and review-share data to the authenticated owner, except for the deliberately learner-created active review token route.
 
 Visual route validation confirmed the water-management learner page, applied scenario entry, responsible-pesticide module scenario card, pesticide-stewardship scenario page, empty record-library state, private portfolio, digital water-record workspace, and unavailable-review-link state. Desktop and 375 px mobile checks retained readable scenario context, record filters, and portfolio evidence cards. The portfolio renders formal module evidence separately from voluntary record, scenario, and reflection evidence.
+
+## Integrated learning experience and scorecard alerts
+
+The **Learning Experience** route now combines a private priority list, an eight-domain competency transcript, competency-scorecard alerts, in-app spaced retrieval prompts, and an evidence-library index. The priority list considers a learner’s own supervisor revision request, scorecard gap, unsuccessful formal check, and unsuccessful scenario attempt. It links to the relevant module, private scorecard, or decision practice; it does not alter assessment scores, locking, certification, or owner alerts.
+
+The transcript distinguishes passed formal module checks from supervisor-scored evidence and reports Demonstrated, Developing, and Not yet evidenced counts across the programme’s eight competency domains. Counts make coverage visible but do not claim independent field mastery. Competency scorecard alerts are scoped to the authenticated learner, support individual and bulk read state, and preserve scorecard chronology when read state changes.
+
+Spaced prompts are shown **in-app only** after a successful module check. They invite a learner to retrieve and apply a method after time has elapsed; they are not scheduled background work, new mandatory tasks, or additional progression gates.
+
+## Evidence photos, simulation expansion, and supervisor calibration
+
+Competency submissions now support up to four optional learner-owned JPEG, PNG, or WEBP images, each capped at 1.5 MB. An uploaded image is stored under a learner- and module-specific storage key, and the submission procedure rejects any attachment outside that authenticated ownership path. The learner can remove an attachment before submitting; an administrator sees submitted images only inside the protected competency-scoring workspace. Written evidence, task context, and review/referral boundary remain mandatory because a photograph alone cannot confirm a diagnosis, cause, product choice, rate, or high-consequence action.
+
+Five further simulations now add crop-pattern triage, source-to-field irrigation performance, nutrient evidence and loss risk, harvest traceability hand-off, and pest-beneficial evidence to the original nine cases. Each preserves uncertainty, current-source, authorised-referral, and non-prescriptive crop-protection limits.
+
+The administrator-only **Supervisor Calibration Guide** provides scoring anchors for Prepare, Perform, and Review and refer at Not yet evidenced, Developing, and Demonstrated levels. It asks reviewers to use module criteria and submitted evidence rather than writing style or access to equipment, then name a strength, evidence gap, and realistic next action. It does not authorise supervisors to provide diagnosis, product, rate, medical, legal, emergency, or local regulatory advice outside current authorised sources and competence.

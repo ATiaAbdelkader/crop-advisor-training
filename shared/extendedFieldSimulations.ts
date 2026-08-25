@@ -1,0 +1,74 @@
+import type { AppliedScenario } from "./appliedScenarios";
+
+export const extendedFieldSimulations: Readonly<Record<string, AppliedScenario>> = {
+  "diagnosis-pattern-triage": {
+    id: "diagnosis-pattern-triage",
+    moduleId: "crop-observation",
+    title: "Simulation: Separate a crop pattern from a diagnosis",
+    context: "After transplanting, a vegetable block develops yellowing in a low corner and scattered weaker plants along a wheel track. A grower calls it a disease and asks for an immediate product. Root-zone checks have not yet been made, the irrigation change was recent, and unaffected comparison plants are available nearby.",
+    decisionPrompt: "Choose the next evidence step that preserves competing explanations and avoids turning a visible pattern into a diagnosis.",
+    evidenceChecklist: ["Affected and unaffected comparison plants", "Distribution, low-area and wheel-track pattern", "Roots, root-zone moisture, and soil condition", "Recent irrigation, weather, and field-operation history"],
+    reflectionPrompt: "What observation would weaken your leading explanation, and what would trigger qualified referral?",
+    questions: [
+      { id: "triage-q1", prompt: "What should be recorded before naming a cause?", options: [{ id: "a", label: "Only the leaf colour" }, { id: "b", label: "The pattern, comparison plants, root-zone condition, and relevant recent changes" }, { id: "c", label: "The product the grower expects" }, { id: "d", label: "A diagnosis label without a map" }], correctOptionId: "b", feedback: "The pattern and contrasting plants can test several explanations. A leaf symptom alone cannot distinguish water, soil, operational, nutrient, or disease causes." },
+      { id: "triage-q2", prompt: "Which next step is most defensible?", options: [{ id: "a", label: "Guarantee disease and recommend a product" }, { id: "b", label: "Compare roots and soil conditions across zones, document recent changes, and state the current uncertainty" }, { id: "c", label: "Ignore the low corner because a few plants are weak elsewhere" }, { id: "d", label: "Wait without taking a record" }], correctOptionId: "b", feedback: "A comparison and contextual record can reduce uncertainty safely before any intervention is considered." },
+      { id: "triage-q3", prompt: "What makes the follow-up decision reviewable?", options: [{ id: "a", label: "A promise that the crop will recover" }, { id: "b", label: "A stated recheck indicator and condition for revising or referring the explanation" }, { id: "c", label: "A single photograph without notes" }, { id: "d", label: "A product brand name" }], correctOptionId: "b", feedback: "A qualified field decision names what will be rechecked and what evidence would change the current explanation." },
+    ],
+  },
+  "irrigation-source-performance-decision": {
+    id: "irrigation-source-performance-decision",
+    moduleId: "irrigation-systems",
+    title: "Simulation: Check source-to-field delivery before changing irrigation",
+    context: "An irrigation system delivers uneven water after a source change. Operators report lower pressure late in the run, sediment is visible near the intake, and one management zone dries faster than another. The grower asks to extend all irrigation runs without checking source, filter, pressure, or distribution.",
+    decisionPrompt: "Trace evidence from the source through delivery to the root zone before deciding whether schedule, maintenance, or system conditions need attention.",
+    evidenceChecklist: ["Source condition and intake observations", "Filter or maintenance state", "Pressure and delivery comparison points", "Root-zone and crop response by management zone"],
+    reflectionPrompt: "Which linked observation would show whether a longer run solves the cause or only changes the symptom?",
+    questions: [
+      { id: "source-q1", prompt: "Why is extending every run not the strongest first response?", options: [{ id: "a", label: "Run time never affects crops" }, { id: "b", label: "Uneven delivery may arise from source, filtration, pressure, or distribution conditions that need evidence first" }, { id: "c", label: "Sediment always improves irrigation" }, { id: "d", label: "All zones must remain dry" }], correctOptionId: "b", feedback: "A schedule change can worsen wet areas while leaving source-to-field delivery causes unresolved." },
+      { id: "source-q2", prompt: "What comparison best supports a reviewable decision?", options: [{ id: "a", label: "Only the time the pump operated" }, { id: "b", label: "Source, filter, pressure, delivery point, root-zone response, and zone pattern observations" }, { id: "c", label: "The grower’s preferred duration only" }, { id: "d", label: "A general note that water was applied" }], correctOptionId: "b", feedback: "Connected evidence allows the learner to test where delivery changes and whether crop-zone conditions respond." },
+      { id: "source-q3", prompt: "When should design or technical support be considered?", options: [{ id: "a", label: "Whenever a system has a hose" }, { id: "b", label: "When source-to-field evidence indicates a condition beyond the learner’s competence or authority to assess safely" }, { id: "c", label: "Only after changing every setting repeatedly" }, { id: "d", label: "Never; all systems have universal settings" }], correctOptionId: "b", feedback: "System design and technical decisions require suitable evidence and competent support; the course does not supply universal specifications." },
+    ],
+  },
+  "nutrient-evidence-and-loss-risk": {
+    id: "nutrient-evidence-and-loss-risk",
+    moduleId: "nutrient-management",
+    title: "Simulation: Protect nutrient value under changing field conditions",
+    context: "A vegetable grower sees uneven green colour after heavy rain and proposes applying a routine nutrient input across every zone. One area has compacted soil and poor root exploration, another appears healthy, and a recent soil result is available but sample zones are unclear.",
+    decisionPrompt: "Use crop, soil, water, sampling, and loss-risk evidence to identify what needs verification before an input decision.",
+    evidenceChecklist: ["Sample-zone and laboratory-context check", "Crop stage and healthy versus affected comparison", "Root access, compaction, water, and recent rainfall evidence", "Source, timing, placement, and review assumptions"],
+    reflectionPrompt: "Which uncertainty must be resolved before you can claim a nutrient response is the appropriate explanation?",
+    questions: [
+      { id: "nutrient-q1", prompt: "What does the healthy-zone comparison suggest?", options: [{ id: "a", label: "Every zone needs an identical response" }, { id: "b", label: "Root access, water, or sample-zone conditions may explain part of the variation before nutrient need is assumed" }, { id: "c", label: "Laboratory context is irrelevant" }, { id: "d", label: "Colour alone confirms a deficiency" }], correctOptionId: "b", feedback: "Contrasting zones can reveal a root-zone or sampling-context constraint that a blanket response may not address." },
+      { id: "nutrient-q2", prompt: "Which evidence-led next step is strongest?", options: [{ id: "a", label: "Confirm sample context, compare zones and root conditions, review rainfall risk, then define the evidence needed for a current plan" }, { id: "b", label: "Apply an arbitrary amount before observing roots" }, { id: "c", label: "Treat the lab value as universal across the field" }, { id: "d", label: "Ignore placement and timing" }], correctOptionId: "a", feedback: "Nutrient management connects sample quality, crop demand, soil-water conditions, and current source/timing information rather than assuming one cause." },
+      { id: "nutrient-q3", prompt: "What remains outside this simulation’s authority?", options: [{ id: "a", label: "Comparing evidence by zone" }, { id: "b", label: "Selecting a product or rate without current local laboratory, label, and authorised guidance" }, { id: "c", label: "Recording a recheck trigger" }, { id: "d", label: "Stating uncertainty" }], correctOptionId: "b", feedback: "The course supports evidence-led planning, not unsupported product, rate, or legal recommendations." },
+    ],
+  },
+  "harvest-traceability-handoff": {
+    id: "harvest-traceability-handoff",
+    moduleId: "harvesting-and-post-harvest-handling",
+    title: "Simulation: Prevent quality loss at the harvest hand-off",
+    context: "Two harvest teams combine produce from different field zones into unlabelled containers. One team uses clean shaded staging; the other leaves filled containers in direct sun while waiting for transport. A buyer reports inconsistent quality but no handling record identifies the hand-off where loss occurred.",
+    decisionPrompt: "Protect crop quality by linking harvest evidence, container identity, handling conditions, and review of the weak hand-off.",
+    evidenceChecklist: ["Maturity and quality criteria", "Container condition and lot or zone identity", "Shade, timing, handling, and transport observations", "Quality outcome, rejection, or follow-up evidence"],
+    reflectionPrompt: "Which record would allow a later reviewer to distinguish field-quality variation from preventable handling loss?",
+    questions: [
+      { id: "handoff-q1", prompt: "What is the main traceability gap?", options: [{ id: "a", label: "Containers have no colour code" }, { id: "b", label: "Produce from different zones and handling conditions cannot be linked to a recorded hand-off" }, { id: "c", label: "Harvest teams are never relevant" }, { id: "d", label: "Buyer feedback should be ignored" }], correctOptionId: "b", feedback: "A usable record links crop/zone, container, handling conditions, and outcome so that loss points can be reviewed." },
+      { id: "handoff-q2", prompt: "Which immediate improvement is most defensible?", options: [{ id: "a", label: "Keep containers in sun until transport is ready" }, { id: "b", label: "Use clean identifiable containers, move produce to suitable shade promptly, and record the hand-off condition" }, { id: "c", label: "Mix all lots to hide variation" }, { id: "d", label: "Rely on downstream sorting alone" }], correctOptionId: "b", feedback: "Gentle, traceable handling and prompt protection preserve options for quality review; sorting cannot restore avoidable heat or handling injury." },
+      { id: "handoff-q3", prompt: "What should prompt a revision of the handling sequence?", options: [{ id: "a", label: "A documented quality or rejection pattern tied to a specific hand-off" }, { id: "b", label: "A calendar date alone" }, { id: "c", label: "A belief that all produce is identical" }, { id: "d", label: "The absence of any record" }], correctOptionId: "a", feedback: "The decision becomes reviewable when quality outcomes can be compared with the recorded handling sequence." },
+    ],
+  },
+  "pest-beneficial-evidence-decision": {
+    id: "pest-beneficial-evidence-decision",
+    moduleId: "insect-pests-and-mites-identification-and-management",
+    title: "Simulation: Count pest and beneficial evidence before control",
+    context: "Leaf curling is visible on a few edge rows. Sticky traps show insects, but the sample route is inconsistent and natural enemies are present on several plants. The crop is near a sensitive stage and the grower wants a product recommendation before the target, pattern, incidence, or beneficial evidence is clarified.",
+    decisionPrompt: "Use repeatable scouting to distinguish injury, pest evidence, beneficial evidence, and uncertainty before any control decision.",
+    evidenceChecklist: ["Repeatable sample unit and route", "Injury and pest-stage observation", "Beneficial organisms and non-target context", "Incidence, pattern, crop stage, and recheck boundary"],
+    reflectionPrompt: "What observation would justify changing from continued scouting to a constrained, authorised escalation discussion?",
+    questions: [
+      { id: "beneficial-q1", prompt: "What is missing from the current evidence?", options: [{ id: "a", label: "A crop name" }, { id: "b", label: "A repeatable sample route that records pest, injury, beneficial, incidence, and pattern evidence" }, { id: "c", label: "A stronger product" }, { id: "d", label: "A promise of control" }], correctOptionId: "b", feedback: "A trap observation alone cannot substitute for repeatable field evidence about pest pressure, injury, beneficials, and distribution." },
+      { id: "beneficial-q2", prompt: "Which response best protects decision quality?", options: [{ id: "a", label: "Map and repeat scouting, retain beneficial observations, address conducive conditions where appropriate, and set a recheck" }, { id: "b", label: "Treat every edge row immediately without confirming the target" }, { id: "c", label: "Ignore natural enemies because they are insects" }, { id: "d", label: "Stop observing once traps contain insects" }], correctOptionId: "a", feedback: "Quantified, repeatable scouting preserves beneficial evidence and supports prevention-led IPM before escalation is considered." },
+      { id: "beneficial-q3", prompt: "What boundary must remain explicit?", options: [{ id: "a", label: "Any insect observation automatically determines a treatment" }, { id: "b", label: "Product decisions require verified target, current local conditions, lawful crop-target fit, label direction, and authorised guidance" }, { id: "c", label: "Beneficials should never be recorded" }, { id: "d", label: "Crop stage does not matter" }], correctOptionId: "b", feedback: "The simulation does not create a universal threshold or prescription; lawful escalation requires current evidence and authorised sources." },
+    ],
+  },
+};

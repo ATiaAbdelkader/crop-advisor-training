@@ -4,7 +4,8 @@ import { cropAdvisorCourse, getAssessmentById, getLessonById } from "../shared/c
 import { appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import { annotationLabelOptions, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationCases, type AnnotationLabel, type CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import { competencyPerformanceLevels, moduleCompetencyByModuleId } from "../shared/competencyFramework";
-import { competencyScoreOptions, competencyScoringRequirements, type CompetencyEvidenceSubmissionPayload, type CompetencyScorecard } from "../shared/competencyScoring";
+import { competencyScoreOptions, competencyScoringRequirements, type CompetencyEvidenceAttachment, type CompetencyEvidenceSubmissionPayload, type CompetencyScorecard } from "../shared/competencyScoring";
+import { buildLearnerExperience } from "../shared/learnerExperience";
 import {
   MAX_FIELD_RECORD_ENTRIES,
   MAX_FIELD_RECORD_TITLE_LENGTH,
@@ -39,6 +40,7 @@ import {
   getLearningRecords,
   issueCertificateIfNeeded,
   markCropDiagnosisAnnotationFeedbackRead,
+  markCompetencyAssessmentFeedbackRead,
   markLessonComplete,
   recordAssessmentAttempt,
   listFieldRecords,
@@ -54,6 +56,7 @@ import {
   listCropDiagnosisAnnotationNotificationStates,
   listCropDiagnosisAnnotationReviewsForSupervisor,
   listCompetencyAssessmentsForSupervisor,
+  listCompetencyAssessmentNotificationStates,
   listMyCompetencyAssessments,
   listMyCropDiagnosisAnnotationReviews,
   recordScenarioAttempt,
@@ -65,6 +68,7 @@ import {
 } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { notifyOwner } from "./_core/notification";
+import { storagePut } from "./storage";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { COOKIE_NAME } from "@shared/const";
@@ -186,6 +190,7 @@ const competencyEvidenceSubmissionInput = z.object({
   evidenceSummary: z.string().trim().min(competencyScoringRequirements.minimumEvidenceSummaryLength).max(5000),
   taskContext: z.string().trim().min(competencyScoringRequirements.minimumTaskContextLength).max(3000),
   reviewOrReferral: z.string().trim().min(competencyScoringRequirements.minimumReviewBoundaryLength).max(3000),
+  attachments: z.array(z.object({ name: z.string().trim().min(1).max(120), key: z.string().min(1).max(320), url: z.string().startsWith("/manus-storage/").max(400) })).max(competencyScoringRequirements.maximumEvidencePhotos).default([]),
 });
 
 const competencyScorecardInput = z.object(Object.fromEntries(competencyPerformanceLevels.map(level => [level.id, z.enum(competencyScoreOptions.map(option => option.id) as [string, ...string[]])])) as Record<string, z.ZodTypeAny>);
@@ -196,9 +201,31 @@ function requireModuleCompetency(moduleId: string) {
   return competency;
 }
 
-function normaliseCompetencyEvidenceSubmission(payload: z.infer<typeof competencyEvidenceSubmissionInput>): CompetencyEvidenceSubmissionPayload {
+function normaliseCompetencyEvidenceSubmission(userId: number, payload: z.infer<typeof competencyEvidenceSubmissionInput>): CompetencyEvidenceSubmissionPayload {
   requireModuleCompetency(payload.moduleId);
-  return { evidenceSummary: payload.evidenceSummary.trim(), taskContext: payload.taskContext.trim(), reviewOrReferral: payload.reviewOrReferral.trim() };
+  const requiredPrefix = `competency-evidence/${userId}/${payload.moduleId}/`;
+  const attachments = payload.attachments.map(attachment => {
+    if (!attachment.key.startsWith(requiredPrefix) || attachment.url !== `/manus-storage/${attachment.key}`) {
+      throw new TRPCError({ code: "FORBIDDEN", message: "Evidence photos must belong to your current module submission." });
+    }
+    return { name: attachment.name.trim(), key: attachment.key, url: attachment.url };
+  });
+  return { evidenceSummary: payload.evidenceSummary.trim(), taskContext: payload.taskContext.trim(), reviewOrReferral: payload.reviewOrReferral.trim(), attachments };
+}
+
+const competencyPhotoUploadInput = z.object({
+  moduleId: z.string().min(1).max(128),
+  name: z.string().trim().min(1).max(120),
+  contentType: z.enum(competencyScoringRequirements.acceptedEvidencePhotoTypes),
+  dataUrl: z.string().min(32).max(Math.ceil(competencyScoringRequirements.maximumEvidencePhotoBytes * 1.4) + 128),
+});
+
+function decodeCompetencyPhoto(input: z.infer<typeof competencyPhotoUploadInput>) {
+  const match = input.dataUrl.match(/^data:(image\/(?:jpeg|png|webp));base64,([A-Za-z0-9+/=]+)$/);
+  if (!match || match[1] !== input.contentType) throw new TRPCError({ code: "BAD_REQUEST", message: "Upload a JPEG, PNG, or WEBP image." });
+  const bytes = Buffer.from(match[2], "base64");
+  if (!bytes.length || bytes.length > competencyScoringRequirements.maximumEvidencePhotoBytes) throw new TRPCError({ code: "PAYLOAD_TOO_LARGE", message: "Each evidence photo must be 1.5 MB or smaller." });
+  return bytes;
 }
 
 function normaliseCompetencyScorecard(scorecard: z.infer<typeof competencyScorecardInput>): CompetencyScorecard {
@@ -398,9 +425,17 @@ export const appRouter = router({
     submit: protectedProcedure
       .input(competencyEvidenceSubmissionInput)
       .mutation(async ({ ctx, input }) => {
-        const assessment = await createCompetencyAssessmentSubmission({ userId: ctx.user.id, moduleId: input.moduleId, payload: normaliseCompetencyEvidenceSubmission(input) });
+        const assessment = await createCompetencyAssessmentSubmission({ userId: ctx.user.id, moduleId: input.moduleId, payload: normaliseCompetencyEvidenceSubmission(ctx.user.id, input) });
         if (!assessment) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to save this competency evidence request." });
         return assessment;
+      }),
+    uploadPhoto: protectedProcedure
+      .input(competencyPhotoUploadInput)
+      .mutation(async ({ ctx, input }) => {
+        requireModuleCompetency(input.moduleId);
+        const safeName = input.name.replace(/[^a-zA-Z0-9._-]/g, "-").replace(/-+/g, "-").slice(0, 96) || "field-evidence";
+        const stored = await storagePut(`competency-evidence/${ctx.user.id}/${input.moduleId}/${safeName}`, decodeCompetencyPhoto(input), input.contentType);
+        return { name: input.name.trim(), key: stored.key, url: stored.url } satisfies CompetencyEvidenceAttachment;
       }),
     queue: adminProcedure.query(() => listCompetencyAssessmentsForSupervisor()),
     score: adminProcedure
@@ -410,6 +445,43 @@ export const appRouter = router({
         if (!saved) throw new TRPCError({ code: "NOT_FOUND", message: "Competency evidence request not found." });
         return { success: true } as const;
       }),
+  }),
+  competencyNotifications: router({
+    list: protectedProcedure.query(({ ctx }) => listCompetencyAssessmentNotificationStates(ctx.user.id)),
+    markRead: protectedProcedure
+      .input(z.object({ ids: z.array(z.number().int().positive()).min(1).max(50).optional() }).optional())
+      .mutation(async ({ ctx, input }) => ({ updated: await markCompetencyAssessmentFeedbackRead(ctx.user.id, input?.ids) })),
+  }),
+  learnerExperience: router({
+    overview: protectedProcedure.query(async ({ ctx }) => {
+      const [learningRecords, scenarioAttempts, competencyAssessments, fieldRecords, practicumEntries, capstoneEntries, annotationReviews, reflections] = await Promise.all([
+        getLearningRecords(ctx.user.id, cropAdvisorCourse.id),
+        listScenarioAttempts(ctx.user.id),
+        listMyCompetencyAssessments(ctx.user.id),
+        listAllFieldRecords(ctx.user.id),
+        listFieldPracticumEntries(ctx.user.id),
+        listCapstoneSubmissions(ctx.user.id),
+        listMyCropDiagnosisAnnotationReviews(ctx.user.id),
+        listLearnerReflections(ctx.user.id),
+      ]);
+      const overview = await getOverviewForLearner(ctx.user.id);
+      return buildLearnerExperience({
+        passedModuleIds: overview.moduleStates.filter(state => state.assessmentPassed).map(state => state.id),
+        assessmentAttempts: learningRecords.attempts,
+        scenarioAttempts,
+        competencyAssessments,
+        evidenceCount: {
+          records: fieldRecords.length,
+          scenarios: scenarioAttempts.length,
+          practicum: practicumEntries.length,
+          capstones: capstoneEntries.length,
+          annotations: annotationReviews.length,
+          competencySubmissions: competencyAssessments.length,
+          competencyPhotos: competencyAssessments.reduce((count, assessment) => count + assessment.payload.attachments.length, 0),
+          reflections: reflections.length,
+        },
+      });
+    }),
   }),
   fieldReadiness: router({
     practicum: router({

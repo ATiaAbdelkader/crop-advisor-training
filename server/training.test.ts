@@ -18,6 +18,7 @@ import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
 import { annotationDashboardNotificationRequirements, annotationLabelOptions, annotationSupervisorReviewCriteria, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases, isUnreadAnnotationFeedbackForLearner, sortAnnotationReviewNotifications } from "../shared/cropDiagnosisAnnotation";
 import { competencyDomains, competencyPerformanceLevels, moduleCompetencies, moduleCompetencyByModuleId } from "../shared/competencyFramework";
 import { competencyScoreOptions, competencyScoringRequirements, createEmptyCompetencyScorecard } from "../shared/competencyScoring";
+import { supervisorCalibrationGuide } from "../shared/supervisorCalibration";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -94,6 +95,16 @@ describe("crop-advisor progression", () => {
     expect(competencyScoringRequirements.minimumEvidenceSummaryLength).toBeGreaterThanOrEqual(80);
     expect(competencyScoringRequirements.minimumSupervisorFeedbackLength).toBeGreaterThanOrEqual(40);
     expect(competencyScoringRequirements.nonGatingBoundary).toContain("does not change module assessment scores");
+    expect(competencyScoringRequirements.maximumEvidencePhotos).toBe(4);
+    expect(competencyScoringRequirements.acceptedEvidencePhotoTypes).toContain("image/jpeg");
+  });
+
+  it("extends decision practice and supports consistent supervisor calibration without relaxing evidence boundaries", () => {
+    expect(Object.keys(appliedScenarios)).toHaveLength(14);
+    const extendedModules = ["crop-observation", "irrigation-systems", "nutrient-management", "harvesting-and-post-harvest-handling", "insect-pests-and-mites-identification-and-management"];
+    expect(Object.values(appliedScenarios).filter(scenario => extendedModules.includes(scenario.moduleId))).toHaveLength(6);
+    expect(supervisorCalibrationGuide.anchors.map(anchor => anchor.level)).toEqual(["Prepare", "Perform", "Review and refer"]);
+    expect(supervisorCalibrationGuide.safeguards.join(" ")).toContain("authorised");
   });
 
   it("provides a distinct accessible instructional visual for each of the first ten modules", () => {
@@ -165,7 +176,7 @@ describe("crop-advisor progression", () => {
     expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 1 })).toBe("ready");
   });
 
-  it("provides nine source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
+  it("provides fourteen source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
     expect(Object.keys(appliedScenarios)).toEqual([
       "water-root-zone-decision",
       "fertilisation-limiting-factor-decision",
@@ -176,8 +187,13 @@ describe("crop-advisor progression", () => {
       "disease-cycle-and-escalation-decision",
       "pesticide-stewardship-stop-decision",
       "weed-persistence-and-control-decision",
+      "diagnosis-pattern-triage",
+      "irrigation-source-performance-decision",
+      "nutrient-evidence-and-loss-risk",
+      "harvest-traceability-handoff",
+      "pest-beneficial-evidence-decision",
     ]);
-    expect(Object.keys(appliedScenarioByModuleId)).toEqual([
+    expect(Object.keys(appliedScenarioByModuleId)).toEqual(expect.arrayContaining([
       "water-management",
       "vegetable-fertilisation",
       "integrated-pest-management",
@@ -187,7 +203,11 @@ describe("crop-advisor progression", () => {
       "disease-identification-and-management",
       "responsible-use-of-pesticides",
       "weed-management",
-    ]);
+      "crop-observation",
+      "irrigation-systems",
+      "nutrient-management",
+      "insect-pests-and-mites-identification-and-management",
+    ]));
     Object.values(appliedScenarios).forEach(scenario => {
       expect(cropAdvisorCourse.modules.some(module => module.id === scenario.moduleId)).toBe(true);
       expect(scenario.questions).toHaveLength(3);

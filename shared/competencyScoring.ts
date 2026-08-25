@@ -13,6 +13,13 @@ export type CompetencyEvidenceSubmissionPayload = {
   evidenceSummary: string;
   taskContext: string;
   reviewOrReferral: string;
+  attachments: readonly CompetencyEvidenceAttachment[];
+};
+
+export type CompetencyEvidenceAttachment = {
+  name: string;
+  key: string;
+  url: string;
 };
 
 export type CompetencyScorecard = Record<CompetencyScoreLevelId, CompetencyScoreRating>;
@@ -22,6 +29,9 @@ export const competencyScoringRequirements = {
   minimumTaskContextLength: 30,
   minimumReviewBoundaryLength: 30,
   minimumSupervisorFeedbackLength: 40,
+  maximumEvidencePhotos: 4,
+  maximumEvidencePhotoBytes: 1_500_000,
+  acceptedEvidencePhotoTypes: ["image/jpeg", "image/png", "image/webp"],
   nonGatingBoundary: "Supervisor competency scoring supports developmental field-readiness review. It does not change module assessment scores, sequential gates, certification, or owner alerts.",
 } as const;
 

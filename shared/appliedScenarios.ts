@@ -6,6 +6,8 @@ export type ScenarioQuestion = {
   feedback: string;
 };
 
+import { extendedFieldSimulations } from "./extendedFieldSimulations";
+
 export type AppliedScenario = {
   id: string;
   moduleId: string;
@@ -144,6 +146,7 @@ export const appliedScenarios: Readonly<Record<string, AppliedScenario>> = {
       { id: "weed-q3", prompt: "If a herbicide decision is justified, what condition remains essential?", options: [{ id: "a", label: "Use it without checking weather or equipment" }, { id: "b", label: "Use only a lawful, label-directed option with crop and target fit, drift and weather safeguards, suitable nozzle and pressure, and maintained equipment" }, { id: "c", label: "Apply over flowering weeds because speed is all that matters" }, { id: "d", label: "Skip the follow-up weed sample" }], correctOptionId: "b", feedback: "Any herbicide action is constrained by label, target and crop fit, weather, drift, nozzle, pressure, equipment, and outcome review." },
     ],
   },
+  ...extendedFieldSimulations,
 };
 
 export const appliedScenarioByModuleId: Readonly<Record<string, AppliedScenario>> = Object.values(appliedScenarios).reduce(
