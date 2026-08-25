@@ -2,14 +2,14 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
-const mocks = vi.hoisted(() => ({ auth: vi.fn(), queue: vi.fn(), reflection: vi.fn() }));
+const mocks = vi.hoisted(() => ({ auth: vi.fn(), queue: vi.fn(), reflection: vi.fn(), comparison: vi.fn() }));
 
 vi.mock("@/_core/hooks/useAuth", () => ({ useAuth: mocks.auth }));
 vi.mock("@/components/TrainingShell", () => ({ default: ({ children }: { children: React.ReactNode }) => createElement("div", null, children) }));
 vi.mock("@/components/LearnerLoading", () => ({ default: () => createElement("div", null, "Loading") }));
 vi.mock("@/components/ui/button", () => ({ Button: ({ children }: { children: React.ReactNode }) => createElement("button", null, children) }));
 vi.mock("@/components/ui/textarea", () => ({ Textarea: () => createElement("textarea") }));
-vi.mock("@/lib/trpc", () => ({ trpc: { useUtils: () => ({ competencyAssessments: { queue: { invalidate: vi.fn() } } }), competencyAssessments: { queue: { useQuery: mocks.queue }, supervisorReflection: { useQuery: mocks.reflection }, score: { useMutation: () => ({ mutate: vi.fn(), isPending: false }) } } } }));
+vi.mock("@/lib/trpc", () => ({ trpc: { useUtils: () => ({ competencyAssessments: { queue: { invalidate: vi.fn() } } }), competencyAssessments: { queue: { useQuery: mocks.queue }, supervisorReflection: { useQuery: mocks.reflection }, supervisorComparison: { useQuery: mocks.comparison }, score: { useMutation: () => ({ mutate: vi.fn(), isPending: false }) } } } }));
 vi.mock("wouter", () => ({ useLocation: () => ["", vi.fn()] }));
 
 import SupervisorCompetencyReviews from "../client/src/pages/SupervisorCompetencyReviews";
@@ -31,6 +31,7 @@ describe("supervisor competency reflection workspace", () => {
     mocks.auth.mockReturnValue({ isAuthenticated: true, user: { role: "admin" } });
     mocks.queue.mockReturnValue({ data: [assessmentFixture], isLoading: false, isError: false, refetch: vi.fn() });
     mocks.reflection.mockReturnValue({ data: { feedbackObservation: "I noticed that the practical comparison evidence was incomplete.", revisedAction: "I will preserve the planned zone comparison and revise the record to include both sites.", nextEvidence: "I will collect a second moisture observation before the next review." }, isLoading: false, isError: false, refetch: vi.fn() });
+    mocks.comparison.mockReturnValue({ data: null, isLoading: false, isError: false, refetch: vi.fn() });
   });
 
   it("renders saved learner reflection context for an authorised supervisor fixture", () => {
@@ -53,5 +54,16 @@ describe("supervisor competency reflection workspace", () => {
     const html = renderToStaticMarkup(createElement(SupervisorCompetencyReviews));
     expect(html).toContain("Supervisor access required");
     expect(html).not.toContain("Learner scorecard reflection");
+  });
+
+  it("renders linked original and revised evidence only for an authorised supervisor fixture", () => {
+    const revised = { ...assessmentFixture, id: 16, revisionOfAssessmentId: 15, payload: { ...assessmentFixture.payload, evidenceSummary: "Rechecked both zones, added matched observations, and recorded the updated evidence." } };
+    mocks.queue.mockReturnValue({ data: [revised], isLoading: false, isError: false, refetch: vi.fn() });
+    mocks.comparison.mockReturnValue({ data: { original: assessmentFixture, revised, reflection: { feedbackObservation: "I noticed that the practical comparison evidence was incomplete.", revisedAction: "I will preserve the planned zone comparison and revise the record to include both sites.", nextEvidence: "I will collect a second moisture observation before the next review." } }, isLoading: false, isError: false, refetch: vi.fn() });
+    const html = renderToStaticMarkup(createElement(SupervisorCompetencyReviews));
+    expect(html).toContain("Original and revised evidence");
+    expect(html).toContain("Observed root-zone moisture across two zones");
+    expect(html).toContain("Rechecked both zones, added matched observations");
+    expect(html).toContain("Original supervisor feedback");
   });
 });

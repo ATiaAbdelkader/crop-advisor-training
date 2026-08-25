@@ -583,3 +583,7 @@ The programme now includes a private Learning Experience hub that combines perso
 ## Scorecard-linked reflection loop
 
 After an administrator saves a competency scorecard and written feedback, the learner can open a private, scorecard-specific reflection. The three prompts ask what the learner noticed in feedback, what they will preserve or revise, and what evidence they will collect or recheck next. Every scored module remains available from the Competency Reflections library. Reflections remain developmental, owner-scoped, and non-gating; they do not provide diagnosis, input, rate, treatment, legal, or emergency advice. See [`Scorecard-Linked-Reflections.md`](./Scorecard-Linked-Reflections.md).
+
+## Before-and-after revision comparison
+
+When a supervisor requests revision, the learner can open a private before-and-after comparison of the original evidence, feedback, reflection, and any revised evidence. The revised submission is linked to—but never overwrites—the original and is owner-verified for the same module. The comparison remains a developmental support layer rather than a second formal assessment or source of high-consequence crop advice. See [`Before-and-After-Competency-Evidence-Comparison.md`](./Before-and-After-Competency-Evidence-Comparison.md).

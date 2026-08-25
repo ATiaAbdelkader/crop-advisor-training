@@ -21,6 +21,7 @@ import CropDiagnosisAnnotation from "@/pages/CropDiagnosisAnnotation";
 import AnnotationSupervisorReviews from "@/pages/AnnotationSupervisorReviews";
 import CompetencyMap from "@/pages/CompetencyMap";
 import CompetencyReview from "@/pages/CompetencyReview";
+import CompetencyEvidenceComparison from "@/pages/CompetencyEvidenceComparison";
 import ScorecardReflection from "@/pages/ScorecardReflection";
 import ScorecardReflectionLibrary from "@/pages/ScorecardReflectionLibrary";
 import SupervisorCompetencyReviews from "@/pages/SupervisorCompetencyReviews";
@@ -52,6 +53,7 @@ function Router() {
       <Route path="/learning-experience" component={LearningExperience} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
+      <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />
       <Route path="/competency-review/:moduleId" component={CompetencyReview} />
       <Route path="/supervisor/competency-reviews" component={SupervisorCompetencyReviews} />
       <Route path="/supervisor/competency-calibration" component={SupervisorCalibration} />

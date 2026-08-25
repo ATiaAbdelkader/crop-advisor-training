@@ -7,6 +7,7 @@ import {
   timestamp,
   uniqueIndex,
   varchar,
+  type AnyMySqlColumn,
 } from "drizzle-orm/mysql-core";
 
 /** Core user table backing the Manus OAuth flow. */
@@ -257,6 +258,7 @@ export const competencyAssessments = mysqlTable(
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
     moduleId: varchar("moduleId", { length: 128 }).notNull(),
+    revisionOfAssessmentId: int("revisionOfAssessmentId").references((): AnyMySqlColumn => competencyAssessments.id, { onDelete: "set null" }),
     payloadJson: text("payloadJson").notNull(),
     status: mysqlEnum("status", ["submitted", "scored", "revision_requested"]).default("submitted").notNull(),
     scorecardJson: text("scorecardJson"),
@@ -271,6 +273,7 @@ export const competencyAssessments = mysqlTable(
   table => [
     index("competency_assessment_learner_module_idx").on(table.userId, table.moduleId, table.submittedAt),
     index("competency_assessment_status_submitted_idx").on(table.status, table.submittedAt),
+    uniqueIndex("competency_assessment_learner_revision_unique").on(table.userId, table.revisionOfAssessmentId),
   ]
 );
 

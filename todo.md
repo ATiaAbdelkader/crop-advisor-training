@@ -118,3 +118,4 @@
 - [x] Add integration-style regression coverage for a protected supervisor reflection-query failure and retry state in the workspace flow.
 - [x] Add safe fixture-based visual validation of rendered supervisor reflection content and a non-admin supervisor-workspace denial state.
 - [x] Add a workspace-level fixture regression proving protected supervisor reflection-query failure renders retry UI rather than the empty reflection state.
+- [x] Add a private before-and-after competency evidence comparison for revision requests, linking original and revised learner evidence, supervisor feedback, reflections, and authorised photo evidence without affecting formal gates.

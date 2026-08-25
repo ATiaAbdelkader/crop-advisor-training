@@ -478,11 +478,45 @@ function toStoredCompetencyAssessment(entry: typeof competencyAssessments.$infer
   };
 }
 
-export async function createCompetencyAssessmentSubmission(input: { userId: number; moduleId: string; payload: CompetencyEvidenceSubmissionPayload }) {
+export async function createCompetencyAssessmentSubmission(input: { userId: number; moduleId: string; payload: CompetencyEvidenceSubmissionPayload; revisionOfAssessmentId?: number }) {
   const db = await requireDb();
-  const result = await db.insert(competencyAssessments).values({ userId: input.userId, moduleId: input.moduleId, payloadJson: JSON.stringify(input.payload) });
+  if (input.revisionOfAssessmentId) {
+    const originals = await db.select({ id: competencyAssessments.id }).from(competencyAssessments).where(and(eq(competencyAssessments.id, input.revisionOfAssessmentId), eq(competencyAssessments.userId, input.userId), eq(competencyAssessments.moduleId, input.moduleId), eq(competencyAssessments.status, "revision_requested"))).limit(1);
+    if (!originals[0]) return null;
+    const existing = await db.select({ id: competencyAssessments.id }).from(competencyAssessments).where(and(eq(competencyAssessments.userId, input.userId), eq(competencyAssessments.revisionOfAssessmentId, input.revisionOfAssessmentId))).limit(1);
+    if (existing[0]) return null;
+  }
+  const result = await db.insert(competencyAssessments).values({ userId: input.userId, moduleId: input.moduleId, revisionOfAssessmentId: input.revisionOfAssessmentId, payloadJson: JSON.stringify(input.payload) });
   const rows = await db.select().from(competencyAssessments).where(eq(competencyAssessments.id, Number(result[0].insertId))).limit(1);
   return rows[0] ? toStoredCompetencyAssessment(rows[0]) : null;
+}
+
+export async function getCompetencyEvidenceComparisonForLearner(userId: number, assessmentId: number) {
+  const db = await requireDb();
+  const requested = await db.select().from(competencyAssessments).where(and(eq(competencyAssessments.id, assessmentId), eq(competencyAssessments.userId, userId))).limit(1);
+  const candidate = requested[0];
+  if (!candidate) return null;
+  const originalId = candidate.revisionOfAssessmentId ?? candidate.id;
+  const originalRows = await db.select().from(competencyAssessments).where(and(eq(competencyAssessments.id, originalId), eq(competencyAssessments.userId, userId), eq(competencyAssessments.status, "revision_requested"))).limit(1);
+  const original = originalRows[0];
+  if (!original) return null;
+  const revisedRows = await db.select().from(competencyAssessments).where(and(eq(competencyAssessments.userId, userId), eq(competencyAssessments.revisionOfAssessmentId, original.id))).limit(1);
+  const reflectionRows = await db.select().from(learnerReflections).where(and(eq(learnerReflections.userId, userId), eq(learnerReflections.focus, scorecardReflectionFocus(original.id)))).limit(1);
+  return { original: toStoredCompetencyAssessment(original), revised: revisedRows[0] ? toStoredCompetencyAssessment(revisedRows[0]) : null, reflection: parseScorecardReflection(reflectionRows[0]?.reflection) };
+}
+
+export async function getCompetencyEvidenceComparisonForSupervisor(assessmentId: number) {
+  const db = await requireDb();
+  const requested = await db.select().from(competencyAssessments).where(eq(competencyAssessments.id, assessmentId)).limit(1);
+  const candidate = requested[0];
+  if (!candidate) return null;
+  const originalId = candidate.revisionOfAssessmentId ?? candidate.id;
+  const originalRows = await db.select().from(competencyAssessments).where(and(eq(competencyAssessments.id, originalId), eq(competencyAssessments.status, "revision_requested"))).limit(1);
+  const original = originalRows[0];
+  if (!original) return null;
+  const revisedRows = await db.select().from(competencyAssessments).where(eq(competencyAssessments.revisionOfAssessmentId, original.id)).limit(1);
+  const reflectionRows = await db.select().from(learnerReflections).where(and(eq(learnerReflections.userId, original.userId), eq(learnerReflections.focus, scorecardReflectionFocus(original.id)))).limit(1);
+  return { original: toStoredCompetencyAssessment(original), revised: revisedRows[0] ? toStoredCompetencyAssessment(revisedRows[0]) : null, reflection: parseScorecardReflection(reflectionRows[0]?.reflection) };
 }
 
 export async function listMyCompetencyAssessments(userId: number) {

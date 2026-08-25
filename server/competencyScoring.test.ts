@@ -11,6 +11,8 @@ const competencyMocks = vi.hoisted(() => ({
   reflection: vi.fn(),
   saveReflection: vi.fn(),
   supervisorReflection: vi.fn(),
+  comparison: vi.fn(),
+  supervisorComparison: vi.fn(),
 }));
 
 vi.mock("./db", async importOriginal => {
@@ -24,6 +26,8 @@ vi.mock("./db", async importOriginal => {
     getScorecardReflectionForLearner: competencyMocks.reflection,
     saveScorecardReflectionForLearner: competencyMocks.saveReflection,
     getScorecardReflectionForSupervisor: competencyMocks.supervisorReflection,
+    getCompetencyEvidenceComparisonForLearner: competencyMocks.comparison,
+    getCompetencyEvidenceComparisonForSupervisor: competencyMocks.supervisorComparison,
   };
 });
 
@@ -65,6 +69,8 @@ describe("supervisor competency scoring access", () => {
     competencyMocks.reflection.mockResolvedValue({ assessment: { id: 15, status: "scored", scorecard: { prepare: "demonstrated", perform: "developing", "review-refer": "demonstrated" }, feedback: "Compare another representative zone and document the recheck trigger." }, reflection: null });
     competencyMocks.saveReflection.mockResolvedValue({ feedbackObservation: "The scorecard shows strong preparation but a gap in the practical comparison evidence.", revisedAction: "I will add a second comparable observation before deciding whether the field pattern is consistent.", nextEvidence: "I will record the second-zone comparison and seek authorised support if conditions remain uncertain." });
     competencyMocks.supervisorReflection.mockResolvedValue(null);
+    competencyMocks.comparison.mockResolvedValue({ original: { id: 15, moduleId: "advisory-practice", status: "revision_requested" }, revised: null, reflection: null });
+    competencyMocks.supervisorComparison.mockResolvedValue(null);
   });
 
   it("stores competency evidence under the authenticated learner identity and validates the module competency", async () => {
@@ -78,6 +84,7 @@ describe("supervisor competency scoring access", () => {
         reviewOrReferral: evidencePayload.reviewOrReferral,
         attachments: [],
       },
+      revisionOfAssessmentId: undefined,
     });
   });
 
@@ -130,5 +137,18 @@ describe("supervisor competency scoring access", () => {
   it("propagates a protected supervisor reflection lookup failure for the workspace retry state", async () => {
     competencyMocks.supervisorReflection.mockRejectedValueOnce(new Error("Private reflection lookup failed"));
     await expect(createCaller(9, "admin").competencyAssessments.supervisorReflection({ assessmentId: 15 })).rejects.toThrow("Private reflection lookup failed");
+  });
+
+  it("creates a revised evidence request with an explicit learner-owned revision link", async () => {
+    await createCaller(73).competencyAssessments.submit({ ...evidencePayload, revisionOfAssessmentId: 15 });
+    expect(competencyMocks.create).toHaveBeenLastCalledWith(expect.objectContaining({ userId: 73, moduleId: "advisory-practice", revisionOfAssessmentId: 15 }));
+  });
+
+  it("keeps revision comparison owner-scoped and restricts supervisor comparison to administrators", async () => {
+    await createCaller(73).competencyAssessments.comparison({ assessmentId: 15 });
+    expect(competencyMocks.comparison).toHaveBeenCalledWith(73, 15);
+    await expect(createCaller(73).competencyAssessments.supervisorComparison({ assessmentId: 15 })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await createCaller(9, "admin").competencyAssessments.supervisorComparison({ assessmentId: 15 });
+    expect(competencyMocks.supervisorComparison).toHaveBeenCalledWith(15);
   });
 });

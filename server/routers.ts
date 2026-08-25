@@ -36,6 +36,8 @@ import {
   createCompetencyAssessmentSubmission,
   getActiveFieldRecordReviewShare,
   getFieldRecord,
+  getCompetencyEvidenceComparisonForLearner,
+  getCompetencyEvidenceComparisonForSupervisor,
   getScorecardReflectionForLearner,
   getScorecardReflectionForSupervisor,
   getFieldPracticumEntry,
@@ -191,6 +193,7 @@ function normaliseAnnotationReviewPayload(payload: z.infer<typeof annotationRevi
 
 const competencyEvidenceSubmissionInput = z.object({
   moduleId: z.string().min(1).max(128),
+  revisionOfAssessmentId: z.number().int().positive().optional(),
   evidenceSummary: z.string().trim().min(competencyScoringRequirements.minimumEvidenceSummaryLength).max(5000),
   taskContext: z.string().trim().min(competencyScoringRequirements.minimumTaskContextLength).max(3000),
   reviewOrReferral: z.string().trim().min(competencyScoringRequirements.minimumReviewBoundaryLength).max(3000),
@@ -439,8 +442,8 @@ export const appRouter = router({
     submit: protectedProcedure
       .input(competencyEvidenceSubmissionInput)
       .mutation(async ({ ctx, input }) => {
-        const assessment = await createCompetencyAssessmentSubmission({ userId: ctx.user.id, moduleId: input.moduleId, payload: normaliseCompetencyEvidenceSubmission(ctx.user.id, input) });
-        if (!assessment) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Unable to save this competency evidence request." });
+        const assessment = await createCompetencyAssessmentSubmission({ userId: ctx.user.id, moduleId: input.moduleId, revisionOfAssessmentId: input.revisionOfAssessmentId, payload: normaliseCompetencyEvidenceSubmission(ctx.user.id, input) });
+        if (!assessment) throw new TRPCError({ code: input.revisionOfAssessmentId ? "BAD_REQUEST" : "INTERNAL_SERVER_ERROR", message: input.revisionOfAssessmentId ? "This revision request is not available or already has revised evidence." : "Unable to save this competency evidence request." });
         return assessment;
       }),
     uploadPhoto: protectedProcedure
@@ -452,6 +455,12 @@ export const appRouter = router({
         return { name: input.name.trim(), key: stored.key, url: stored.url } satisfies CompetencyEvidenceAttachment;
       }),
     queue: adminProcedure.query(() => listCompetencyAssessmentsForSupervisor()),
+    comparison: protectedProcedure.input(z.object({ assessmentId: z.number().int().positive() })).query(async ({ ctx, input }) => {
+      const comparison = await getCompetencyEvidenceComparisonForLearner(ctx.user.id, input.assessmentId);
+      if (!comparison) throw new TRPCError({ code: "NOT_FOUND", message: "This private revision comparison is not available." });
+      return comparison;
+    }),
+    supervisorComparison: adminProcedure.input(z.object({ assessmentId: z.number().int().positive() })).query(async ({ input }) => getCompetencyEvidenceComparisonForSupervisor(input.assessmentId)),
     score: adminProcedure
       .input(z.object({ id: z.number().int().positive(), status: z.enum(["scored", "revision_requested"]), scorecard: competencyScorecardInput, feedback: z.string().trim().min(competencyScoringRequirements.minimumSupervisorFeedbackLength).max(5000) }))
       .mutation(async ({ ctx, input }) => {
