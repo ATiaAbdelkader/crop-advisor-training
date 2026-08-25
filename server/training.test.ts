@@ -12,6 +12,7 @@ import { comparisonSetupFields, toggleComparisonSelection } from "../client/src/
 import { appliedScenarioByModuleId, appliedScenarios, scoreAppliedScenario } from "../shared/appliedScenarios";
 import { fieldMeasurementCards, fieldMeasurementCardsByModuleId, getFieldMeasurementCard } from "../shared/fieldMeasurementCards";
 import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurseryToStandQualityRoutines } from "../shared/nurseryToStandQuality";
+import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesticideIncidentDrillStages } from "../shared/pesticideIncidentDrill";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -216,6 +217,31 @@ describe("crop-advisor progression", () => {
     expect(nurseryToStandQualityByModuleId.transplanting).toHaveLength(2);
     expect(getNurseryToStandQualityRoutine("missing-routine").id).toBe("seed-and-batch-traceability");
     expect(getNurseryToStandQualityRoutine("hardening-and-transplant-acceptance").acceptOrHold.join(" ")).toContain("Hold");
+  });
+
+  it("provides four label-led pesticide incident stages with explicit non-improvisation and referral boundaries", () => {
+    expect(pesticideIncidentDrillStages.map(stage => stage.id)).toEqual([
+      "recognise-and-stop",
+      "protect-people-water-and-area",
+      "label-led-escalation",
+      "document-review-and-prevent-recurrence",
+    ]);
+    pesticideIncidentDrillStages.forEach(stage => {
+      expect(stage.doNow.length).toBeGreaterThanOrEqual(3);
+      expect(stage.protect.length).toBeGreaterThanOrEqual(3);
+      expect(stage.record.length).toBeGreaterThanOrEqual(3);
+      expect(stage.boundary.length).toBeGreaterThan(180);
+      expect(stage.followUp.length).toBeGreaterThan(100);
+      expect(stage.moduleIds.every(moduleId => cropAdvisorCourse.modules.some(module => module.id === moduleId))).toBe(true);
+    });
+    expect(pesticideIncidentDrillByModuleId["responsible-use-of-pesticides"]).toHaveLength(4);
+    expect(pesticideIncidentDrillByModuleId["integrated-pest-management"].map(stage => stage.id)).toEqual([
+      "recognise-and-stop",
+      "document-review-and-prevent-recurrence",
+    ]);
+    expect(pesticideIncidentDrillByModuleId["water-management"][0].id).toBe("protect-people-water-and-area");
+    expect(getPesticideIncidentDrillStage("missing-stage").id).toBe("recognise-and-stop");
+    expect(getPesticideIncidentDrillStage("label-led-escalation").boundary).toContain("current product label");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

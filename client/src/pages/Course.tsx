@@ -12,8 +12,9 @@ import { fieldRecordByModuleId } from "@shared/fieldRecordTemplates";
 import { appliedScenarioByModuleId } from "@shared/appliedScenarios";
 import { fieldMeasurementCardsByModuleId } from "@shared/fieldMeasurementCards";
 import { nurseryToStandQualityByModuleId } from "@shared/nurseryToStandQuality";
+import { pesticideIncidentDrillByModuleId } from "@shared/pesticideIncidentDrill";
 import { moduleVisuals } from "@shared/moduleVisuals";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Ruler, Sprout, Target } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Ruler, ShieldAlert, Sprout, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -59,6 +60,7 @@ export default function Course() {
   const scenario = appliedScenarioByModuleId[module.id];
   const measurementCards = fieldMeasurementCardsByModuleId[module.id] ?? [];
   const nurseryQualityRoutines = nurseryToStandQualityByModuleId[module.id] ?? [];
+  const pesticideIncidentStages = pesticideIncidentDrillByModuleId[module.id] ?? [];
   const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
@@ -232,6 +234,15 @@ export default function Course() {
                 <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">{nurseryQualityRoutines.length === 1 ? nurseryQualityRoutines[0].shortTitle : "Linked quality routines"}</p>
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Use an evidence-led routine to protect seedling quality, decide whether to accept or hold plants, and investigate early stand losses.</p>
                 <Button variant="outline" onClick={() => setLocation(`/nursery-quality?routine=${nurseryQualityRoutines[0].id}`)} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><Sprout className="mr-1.5 h-3.5 w-3.5" />Open quality pack</Button>
+              </div>
+            )}
+            {pesticideIncidentStages.length > 0 && (
+              <div className="rounded-[22px] border border-[#ecd9c5] bg-[#fffaf4] p-5">
+                <ShieldAlert className="h-4 w-4 text-[#9b6044]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#8d6a58]">Pesticide incident drill</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#593e32]">{pesticideIncidentStages.length === 1 ? pesticideIncidentStages[0].shortTitle : "Linked safety stages"}</p>
+                <p className="mt-1 text-xs leading-5 text-[#7a6255]">Practise stopping unsafe work, protecting people and water, using current label-led escalation, and documenting facts without improvising a high-risk response.</p>
+                <Button variant="outline" onClick={() => setLocation(`/pesticide-incident?stage=${pesticideIncidentStages[0].id}`)} className="mt-4 w-full rounded-full border-[#d1aa8c] bg-white text-xs font-bold text-[#7f4b35] hover:bg-[#fff2e8]"><ShieldAlert className="mr-1.5 h-3.5 w-3.5" />Open safety drill</Button>
               </div>
             )}
           </aside>

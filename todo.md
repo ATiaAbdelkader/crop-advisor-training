@@ -92,3 +92,4 @@
 - [x] Audit the current curriculum against all uploaded agricultural training files and identify source-grounded content gaps for field-ready graduates.
 - [x] Add six source-grounded Field Measurement and Decision Cards for soil sampling, root-zone moisture, drip uniformity, water-quality screening, nutrient-plan checks, and sprayer pre-use/calibration.
 - [x] Add a source-grounded Nursery-to-Stand Quality Pack covering seedling batch, hygiene, hardening, transplant acceptance, stand-count, early-loss, and follow-up routines.
+- [x] Add a source-grounded Pesticide Incident Drill covering stop-work, exposure and water protection, area control, label-led response, incident documentation, and current-channel referral or reporting.
