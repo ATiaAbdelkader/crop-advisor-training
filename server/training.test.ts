@@ -15,7 +15,7 @@ import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurse
 import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesticideIncidentDrillStages } from "../shared/pesticideIncidentDrill";
 import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedScoutingStages } from "../shared/quantifiedScoutingProtocol";
 import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
-import { annotationLabelOptions, annotationSupervisorReviewCriteria, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases } from "../shared/cropDiagnosisAnnotation";
+import { annotationDashboardNotificationRequirements, annotationLabelOptions, annotationSupervisorReviewCriteria, annotationSupervisorReviewRequirements, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases, isUnreadAnnotationFeedbackForLearner, sortAnnotationReviewNotifications } from "../shared/cropDiagnosisAnnotation";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -332,6 +332,32 @@ describe("crop-advisor progression", () => {
     expect(annotationSupervisorReviewCriteria).toHaveLength(3);
     expect(annotationSupervisorReviewCriteria.join(" ")).toContain("visible evidence from a confirmed cause");
     expect(annotationSupervisorReviewCriteria.join(" ")).toContain("unsupported treatment");
+  });
+
+  it("defines private learner dashboard notification states for supervisor feedback and revision requests", () => {
+    expect(annotationDashboardNotificationRequirements.visibleStatuses).toEqual(["submitted", "reviewed", "revision_requested"]);
+    expect(annotationDashboardNotificationRequirements.notifyStatuses).toEqual(["reviewed", "revision_requested"]);
+    expect(annotationDashboardNotificationRequirements.readState).toBe("feedbackReadAt");
+    expect(annotationDashboardNotificationRequirements.ordering).toBe("reviewedAt-or-submittedAt");
+    expect(annotationDashboardNotificationRequirements.ownershipBoundary).toContain("authenticated account");
+    expect(annotationDashboardNotificationRequirements.formalGateBoundary).toContain("do not alter lesson progression");
+    const newerSupervisorFeedback = { submittedAt: new Date("2026-08-25T10:00:00Z"), reviewedAt: new Date("2026-08-25T12:00:00Z"), feedbackReadAt: null };
+    const olderSupervisorFeedbackReadLater = { submittedAt: new Date("2026-08-25T08:00:00Z"), reviewedAt: new Date("2026-08-25T09:00:00Z"), feedbackReadAt: new Date("2026-08-25T15:00:00Z") };
+    expect(sortAnnotationReviewNotifications([olderSupervisorFeedbackReadLater, newerSupervisorFeedback])).toEqual([newerSupervisorFeedback, olderSupervisorFeedbackReadLater]);
+    const newerSupervisorFeedbackReadLater = { ...newerSupervisorFeedback, feedbackReadAt: new Date("2026-08-25T16:00:00Z") };
+    expect(sortAnnotationReviewNotifications([olderSupervisorFeedbackReadLater, newerSupervisorFeedbackReadLater])).toEqual([newerSupervisorFeedbackReadLater, olderSupervisorFeedbackReadLater]);
+  });
+
+  it("limits learner read actions to requested, learner-owned feedback that remains unread", () => {
+    const candidates = [
+      { id: 11, userId: 73, feedback: "Review the comparison evidence.", feedbackReadAt: null },
+      { id: 19, userId: 73, feedback: "Already seen feedback.", feedbackReadAt: new Date("2026-08-25T16:00:00Z") },
+      { id: 23, userId: 73, feedback: null, feedbackReadAt: null },
+      { id: 29, userId: 88, feedback: "Another learner's feedback.", feedbackReadAt: null },
+      { id: 31, userId: 73, feedback: "Unread but not requested.", feedbackReadAt: null },
+    ];
+
+    expect(candidates.filter(candidate => isUnreadAnnotationFeedbackForLearner(candidate, 73, [11, 19, 23, 29]))).toEqual([candidates[0]]);
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

@@ -35,6 +35,7 @@ import {
   getFieldRecordsForOwner,
   getLearningRecords,
   issueCertificateIfNeeded,
+  markCropDiagnosisAnnotationFeedbackRead,
   markLessonComplete,
   recordAssessmentAttempt,
   listFieldRecords,
@@ -47,6 +48,7 @@ import {
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
   listCapstoneSubmissions,
+  listCropDiagnosisAnnotationNotificationStates,
   listCropDiagnosisAnnotationReviewsForSupervisor,
   listMyCropDiagnosisAnnotationReviews,
   recordScenarioAttempt,
@@ -354,6 +356,12 @@ export const appRouter = router({
         if (!saved) throw new TRPCError({ code: "NOT_FOUND", message: "Annotation review request not found." });
         return { success: true } as const;
       }),
+  }),
+  annotationNotifications: router({
+    list: protectedProcedure.query(({ ctx }) => listCropDiagnosisAnnotationNotificationStates(ctx.user.id)),
+    markRead: protectedProcedure
+      .input(z.object({ ids: z.array(z.number().int().positive()).min(1).max(50).optional() }).optional())
+      .mutation(async ({ ctx, input }) => ({ updated: await markCropDiagnosisAnnotationFeedbackRead(ctx.user.id, input?.ids) })),
   }),
   fieldReadiness: router({
     practicum: router({

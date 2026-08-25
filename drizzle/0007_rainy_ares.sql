@@ -1,0 +1,1 @@
+ALTER TABLE `cropDiagnosisAnnotationReviews` ADD `feedbackReadAt` timestamp;

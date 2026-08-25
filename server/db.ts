@@ -1,4 +1,4 @@
-import { and, desc, eq, inArray, isNull } from "drizzle-orm";
+import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   assessmentAttempts,
@@ -406,6 +406,42 @@ export async function listMyCropDiagnosisAnnotationReviews(userId: number) {
   return entries.map(toStoredCropDiagnosisAnnotationReview);
 }
 
+export async function listCropDiagnosisAnnotationNotificationStates(userId: number) {
+  const db = await requireDb();
+  return db
+    .select({
+      id: cropDiagnosisAnnotationReviews.id,
+      status: cropDiagnosisAnnotationReviews.status,
+      supervisorName: cropDiagnosisAnnotationReviews.supervisorName,
+      feedback: cropDiagnosisAnnotationReviews.feedback,
+      feedbackReadAt: cropDiagnosisAnnotationReviews.feedbackReadAt,
+      submittedAt: cropDiagnosisAnnotationReviews.submittedAt,
+      reviewedAt: cropDiagnosisAnnotationReviews.reviewedAt,
+    })
+    .from(cropDiagnosisAnnotationReviews)
+    .where(eq(cropDiagnosisAnnotationReviews.userId, userId))
+    .orderBy(desc(sql`COALESCE(${cropDiagnosisAnnotationReviews.reviewedAt}, ${cropDiagnosisAnnotationReviews.submittedAt})`));
+}
+
+export function buildCropDiagnosisAnnotationFeedbackReadFilter(userId: number, ids?: number[]) {
+  const conditions = [
+    eq(cropDiagnosisAnnotationReviews.userId, userId),
+    isNotNull(cropDiagnosisAnnotationReviews.feedback),
+    isNull(cropDiagnosisAnnotationReviews.feedbackReadAt),
+  ];
+  if (ids?.length) conditions.push(inArray(cropDiagnosisAnnotationReviews.id, ids));
+  return and(...conditions);
+}
+
+export async function markCropDiagnosisAnnotationFeedbackRead(userId: number, ids?: number[]) {
+  const db = await requireDb();
+  const result = await db
+    .update(cropDiagnosisAnnotationReviews)
+    .set({ feedbackReadAt: new Date(), updatedAt: new Date() })
+    .where(buildCropDiagnosisAnnotationFeedbackReadFilter(userId, ids));
+  return result[0].affectedRows;
+}
+
 export async function listCropDiagnosisAnnotationReviewsForSupervisor() {
   const db = await requireDb();
   const rows = await db
@@ -420,7 +456,7 @@ export async function submitCropDiagnosisAnnotationSupervisorFeedback(input: { i
   const db = await requireDb();
   const result = await db
     .update(cropDiagnosisAnnotationReviews)
-    .set({ status: input.status, supervisorUserId: input.supervisorUserId, supervisorName: input.supervisorName, feedback: input.feedback, reviewedAt: new Date(), updatedAt: new Date() })
+    .set({ status: input.status, supervisorUserId: input.supervisorUserId, supervisorName: input.supervisorName, feedback: input.feedback, feedbackReadAt: null, reviewedAt: new Date(), updatedAt: new Date() })
     .where(eq(cropDiagnosisAnnotationReviews.id, input.id));
   return result[0].affectedRows > 0;
 }

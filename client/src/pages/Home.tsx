@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { cropAdvisorCourse } from "@shared/curriculum";
-import { Award, BookOpen, CheckCircle2, ChevronRight, Clock3, LockKeyhole, Play, Sprout, Target } from "lucide-react";
+import { sortAnnotationReviewNotifications } from "@shared/cropDiagnosisAnnotation";
+import { AlertTriangle, Award, BellRing, BookOpen, CheckCircle2, ChevronRight, Clock3, LockKeyhole, MessageSquareText, Play, RefreshCw, Sprout, Target } from "lucide-react";
 import { useLocation } from "wouter";
 
 const heroImage = "/manus-storage/vegetable-planning-field-hero_325e5a88.jpg";
@@ -25,10 +26,18 @@ export default function Home() {
   const [location, setLocation] = useLocation();
   const utils = trpc.useUtils();
   const overviewQuery = trpc.training.overview.useQuery(undefined, { enabled: isAuthenticated });
+  const annotationNotificationsQuery = trpc.annotationNotifications.list.useQuery(undefined, { enabled: isAuthenticated });
   const enroll = trpc.training.enroll.useMutation({
     onSuccess: () => utils.training.overview.invalidate(),
   });
+  const markAnnotationFeedbackRead = trpc.annotationNotifications.markRead.useMutation({
+    onSuccess: () => utils.annotationNotifications.list.invalidate(),
+  });
   const overview = overviewQuery.data;
+  const annotationNotifications = sortAnnotationReviewNotifications(annotationNotificationsQuery.data ?? []);
+  const annotationFeedback = annotationNotifications.filter(notification => Boolean(notification.feedback));
+  const unreadAnnotationFeedback = annotationFeedback.filter(notification => !notification.feedbackReadAt);
+  const latestAnnotationReview = annotationNotifications[0];
   const progress = overview?.progressPercent ?? 0;
   const action = overview?.nextAction;
   const ActionIcon = getActionIcon(action?.type ?? "lesson");
@@ -40,6 +49,13 @@ export default function Home() {
       return;
     }
     if (action?.href) setLocation(action.href);
+  };
+
+  const openAnnotationFeedback = (id: number) => {
+    if (unreadAnnotationFeedback.some(notification => notification.id === id)) {
+      markAnnotationFeedbackRead.mutate({ ids: [id] });
+    }
+    setLocation("/diagnosis-annotation");
   };
 
   if (isAuthenticated && overviewQuery.isLoading) {
@@ -144,6 +160,22 @@ export default function Home() {
           </div>
 
           <aside className="space-y-4">
+            {isAuthenticated && (
+              <section className={`rounded-[22px] border p-5 shadow-[0_9px_24px_rgba(39,67,47,.035)] ${latestAnnotationReview?.status === "revision_requested" ? "border-[#ead3bd] bg-[#fff9f2]" : latestAnnotationReview?.status === "reviewed" ? "border-[#cfe3d2] bg-[#f4faf3]" : "border-[#dfe6d9] bg-[#fbfdf9]"}`}>
+                <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-center gap-2 text-[#456f50]"><span className={`grid h-7 w-7 place-items-center rounded-full ${latestAnnotationReview?.status === "revision_requested" ? "bg-[#fff0e3] text-[#9a613f]" : "bg-[#e7f1e6] text-[#4c7e57]"}`}>{latestAnnotationReview?.status === "revision_requested" ? <AlertTriangle className="h-3.5 w-3.5" /> : <MessageSquareText className="h-3.5 w-3.5" />}</span><p className="text-[10px] font-bold uppercase tracking-[0.18em]">Supervisor review</p></div>
+                  {unreadAnnotationFeedback.length > 0 && <span className="rounded-full bg-[#ba5536] px-2 py-0.5 text-[10px] font-bold text-white">{unreadAnnotationFeedback.length} new</span>}
+                </div>
+                {annotationNotificationsQuery.isLoading ? <p className="mt-4 text-xs leading-5 text-[#647764]">Checking your private supervisor-review status…</p> : annotationNotificationsQuery.isError ? <><p className="mt-4 text-sm font-bold text-[#805237]">Supervisor review status is unavailable</p><p className="mt-2 text-xs leading-5 text-[#7c6658]">Your learning progress is unchanged. Retry to load your private feedback status.</p><Button variant="ghost" onClick={() => annotationNotificationsQuery.refetch()} className="mt-4 h-auto p-0 text-xs font-bold text-[#8d563d] hover:bg-transparent"><RefreshCw className="mr-1.5 h-3.5 w-3.5" />Retry status</Button></> : latestAnnotationReview ? <><div className="mt-4 flex items-center gap-2"><span className={`h-2 w-2 rounded-full ${latestAnnotationReview.status === "revision_requested" ? "bg-[#c56a43]" : latestAnnotationReview.status === "reviewed" ? "bg-[#4b9a5b]" : "bg-[#d2a34f]"}`} /><p className="text-sm font-bold text-[#35513b]">{latestAnnotationReview.status === "revision_requested" ? "Revision requested" : latestAnnotationReview.status === "reviewed" ? "Feedback received" : "Awaiting supervisor feedback"}</p></div><p className="mt-2 text-xs leading-5 text-[#647764]">{latestAnnotationReview.status === "revision_requested" ? "Review the requested changes, then complete a fresh annotation submission when ready." : latestAnnotationReview.status === "reviewed" ? "Your completed annotation reasoning has supervisor feedback available." : "Your completed annotation reasoning is in the private supervisor queue."}</p><Button variant="ghost" onClick={() => latestAnnotationReview.feedback ? openAnnotationFeedback(latestAnnotationReview.id) : setLocation("/diagnosis-annotation")} className="mt-4 h-auto p-0 text-xs font-bold text-[#2d6844] hover:bg-transparent hover:text-[#1c4e31]">{latestAnnotationReview.feedback ? "Open feedback" : "Open annotation review"}<ChevronRight className="ml-1 h-3.5 w-3.5" /></Button></> : <><p className="mt-4 text-sm font-bold text-[#35513b]">No annotation review submitted</p><p className="mt-2 text-xs leading-5 text-[#647764]">Complete the crop-diagnosis photo annotation exercise to request private supervisor feedback on your evidence reasoning.</p><Button variant="ghost" onClick={() => setLocation("/diagnosis-annotation")} className="mt-4 h-auto p-0 text-xs font-bold text-[#2d6844] hover:bg-transparent hover:text-[#1c4e31]">Open annotation practice<ChevronRight className="ml-1 h-3.5 w-3.5" /></Button></>}
+              </section>
+            )}
+
+            {isAuthenticated && annotationFeedback.length > 0 && (
+              <section className="rounded-[22px] border border-[#dbe6d9] bg-[#fcfcf8] p-5 shadow-[0_9px_24px_rgba(39,67,47,.035)]">
+                <div className="flex items-center justify-between gap-3"><div className="flex items-center gap-2"><BellRing className="h-4 w-4 text-[#4f8063]" /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#5a745f]">In-app feedback</p></div>{unreadAnnotationFeedback.length > 0 && <Button variant="ghost" disabled={markAnnotationFeedbackRead.isPending} onClick={() => markAnnotationFeedbackRead.mutate()} className="h-auto p-0 text-[10px] font-bold text-[#426e4d] hover:bg-transparent">Mark all read</Button>}</div>
+                <div className="mt-4 space-y-3">{annotationFeedback.slice(0, 3).map(notification => <button key={notification.id} type="button" onClick={() => openAnnotationFeedback(notification.id)} className={`w-full rounded-xl border p-3 text-left transition-colors ${notification.feedbackReadAt ? "border-[#e2e8e0] bg-[#fafcf9] hover:bg-[#f4f9f3]" : notification.status === "revision_requested" ? "border-[#eacdaf] bg-[#fff8f0] hover:bg-[#fff3e7]" : "border-[#cfe3d1] bg-[#f2faf2] hover:bg-[#e9f6e8]"}`}><div className="flex items-start gap-2"><span className={`mt-1 h-2 w-2 shrink-0 rounded-full ${notification.feedbackReadAt ? "bg-[#bcc9ba]" : notification.status === "revision_requested" ? "bg-[#c56a43]" : "bg-[#4b9a5b]"}`} /><div className="min-w-0 flex-1"><p className="text-xs font-bold text-[#3c5842]">{notification.status === "revision_requested" ? "Supervisor requested a revision" : "Supervisor feedback received"}</p><p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#657765]">{notification.feedback}</p><p className="mt-2 text-[10px] text-[#7c8a7d]">{notification.supervisorName || "Course supervisor"} · {notification.reviewedAt ? new Date(notification.reviewedAt).toLocaleDateString() : "New update"}</p></div></div></button>)}</div>
+              </section>
+            )}
             <div className="rounded-[22px] border border-[#dfe6d9] bg-[#edf3e9] p-5">
               <div className="flex items-start justify-between gap-4">
                 <div>

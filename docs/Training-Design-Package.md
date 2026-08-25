@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.9  
+**Version:** 5.0  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -70,6 +70,8 @@ The field-documentation layer now includes a **Printable Quantified Scouting She
 The field-observation layer now includes a voluntary **Crop-Diagnosis Photo Annotation Exercise**. Learners place evidence pins on three simulated crop photographs, mark field pattern, symptom/sign, pest or beneficial evidence, contributing conditions, and uncertainty, then select evidence-led next steps. It is connected from Field Readiness and Modules 29–32, complements the Quantified Scouting Protocol, and explicitly avoids image-only diagnosis, thresholds, treatments, products, rates, and legal claims. Its learner flow, boundaries, module connections, and validation record are maintained in [`Crop-Diagnosis-Photo-Annotation.md`](./Crop-Diagnosis-Photo-Annotation.md).
 
 The photo-annotation layer now includes **Supervisor Review**. A learner can privately submit a completed evidence-pinned exercise, selected responses, and a written rationale for feedback. Course administrators access a protected review queue, inspect the saved evidence and rationale, then mark the request reviewed or request revision with written feedback. The workflow is deliberately developmental and does not affect formal gates, scores, certification, or owner alerts. Its privacy model, feedback criteria, and validation record are maintained in [`Crop-Diagnosis-Annotation-Supervisor-Review.md`](./Crop-Diagnosis-Annotation-Supervisor-Review.md).
+
+The learner dashboard now includes **Supervisor Feedback Notifications**. Private visual status indicators show whether an annotation review is awaiting feedback, reviewed, or revision-requested; feedback and revision requests appear in a learner-owned in-app list with a new-count badge, individual read state, and a mark-all-read control. These notifications are developmental only and do not affect the formal learning pathway. Their read-state model, privacy boundaries, and validation record are maintained in [`Dashboard-Supervisor-Feedback-Notifications.md`](./Dashboard-Supervisor-Feedback-Notifications.md).
 
 ## Applied field-brief standard
 

@@ -97,3 +97,11 @@
 - [x] Add a printable Quantified Scouting Sheet with sampling, observation, incidence/severity, beneficial, field-pattern, decision, recheck, and referral evidence fields.
 - [x] Add a source-grounded crop-diagnosis photo annotation exercise with visual-evidence prompts, uncertainty, safe-next-step feedback, and module links.
 - [x] Add secure supervisor review, written feedback, and learner-visible status for completed crop-diagnosis annotation reasoning without changing formal progression gates.
+- [x] Add private dashboard review-status indicators and in-app notifications for supervisor feedback or revision requests, with learner-controlled read state and no impact on formal gates.
+- [x] Preserve latest supervisor-review ordering when learner read state changes, rather than sorting by notification-read updates.
+- [x] Add explicit loading, error, and retry handling for private dashboard annotation-notification data.
+- [x] Add regression coverage for stable review ordering and notification read-state safeguards.
+- [x] Add read-state-specific regression coverage proving feedbackReadAt changes cannot affect latest-review notification ordering.
+- [x] Add regression coverage for the owner-scoped unread-feedback read mutation path.
+- [x] Add database-filter regression coverage proving only unread feedback rows are marked read, excluding already-read and feedback-less review rows.
+- [x] Add an actual database-query regression test for owner-scoped unread-feedback filtering in the mark-read helper.

@@ -237,6 +237,7 @@ export const cropDiagnosisAnnotationReviews = mysqlTable(
     supervisorUserId: int("supervisorUserId").references(() => users.id, { onDelete: "set null" }),
     supervisorName: varchar("supervisorName", { length: 160 }),
     feedback: text("feedback"),
+    feedbackReadAt: timestamp("feedbackReadAt"),
     submittedAt: timestamp("submittedAt").defaultNow().notNull(),
     reviewedAt: timestamp("reviewedAt"),
     updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

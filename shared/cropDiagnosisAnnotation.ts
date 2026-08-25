@@ -117,3 +117,36 @@ export const annotationSupervisorReviewRequirements = {
   statuses: ["submitted", "reviewed", "revision_requested"] as const,
   formalGateBoundary: "Supervisor review is private developmental feedback and does not alter lesson progression, formal assessment scores, certificate issuance, or owner-alert rules.",
 } as const;
+
+export const annotationDashboardNotificationRequirements = {
+  visibleStatuses: ["submitted", "reviewed", "revision_requested"] as const,
+  notifyStatuses: ["reviewed", "revision_requested"] as const,
+  readState: "feedbackReadAt",
+  ordering: "reviewedAt-or-submittedAt",
+  ownershipBoundary: "A learner can retrieve or mark read only feedback records attached to their authenticated account.",
+  formalGateBoundary: "Dashboard review status and in-app feedback notifications are developmental only and do not alter lesson progression, formal assessment scores, certificate issuance, or owner-alert rules.",
+} as const;
+
+export type AnnotationReviewNotificationTimelineItem = {
+  submittedAt: Date;
+  reviewedAt: Date | null;
+};
+
+export function sortAnnotationReviewNotifications<T extends AnnotationReviewNotificationTimelineItem>(notifications: T[]): T[] {
+  return [...notifications].sort((left, right) => {
+    const leftTimestamp = (left.reviewedAt ?? left.submittedAt).getTime();
+    const rightTimestamp = (right.reviewedAt ?? right.submittedAt).getTime();
+    return rightTimestamp - leftTimestamp;
+  });
+}
+
+export type AnnotationFeedbackReadCandidate = {
+  id: number;
+  userId: number;
+  feedback: string | null;
+  feedbackReadAt: Date | null;
+};
+
+export function isUnreadAnnotationFeedbackForLearner(candidate: AnnotationFeedbackReadCandidate, learnerId: number, requestedIds?: number[]): boolean {
+  return candidate.userId === learnerId && Boolean(candidate.feedback) && candidate.feedbackReadAt === null && (!requestedIds?.length || requestedIds.includes(candidate.id));
+}
