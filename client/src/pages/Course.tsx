@@ -14,8 +14,9 @@ import { fieldMeasurementCardsByModuleId } from "@shared/fieldMeasurementCards";
 import { nurseryToStandQualityByModuleId } from "@shared/nurseryToStandQuality";
 import { pesticideIncidentDrillByModuleId } from "@shared/pesticideIncidentDrill";
 import { quantifiedScoutingByModuleId } from "@shared/quantifiedScoutingProtocol";
+import { cropDiagnosisAnnotationByModuleId } from "@shared/cropDiagnosisAnnotation";
 import { moduleVisuals } from "@shared/moduleVisuals";
-import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Printer, Ruler, Search, ShieldAlert, Sprout, Target } from "lucide-react";
+import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -63,6 +64,7 @@ export default function Course() {
   const nurseryQualityRoutines = nurseryToStandQualityByModuleId[module.id] ?? [];
   const pesticideIncidentStages = pesticideIncidentDrillByModuleId[module.id] ?? [];
   const scoutingStages = quantifiedScoutingByModuleId[module.id] ?? [];
+  const diagnosisCase = cropDiagnosisAnnotationByModuleId[module.id];
   const moduleVisual = moduleVisuals[module.id];
 
   const goToLesson = (lessonId: string) => {
@@ -255,6 +257,15 @@ export default function Course() {
                 <p className="mt-1 text-xs leading-5 text-[#5f7874]">Practise a repeatable sample route, comparable counts and patterns, beneficial-organism evidence, decision rationale, and a defined recheck.</p>
                 <Button variant="outline" onClick={() => setLocation(`/scouting-protocol?stage=${scoutingStages[0].id}`)} className="mt-4 w-full rounded-full border-[#9bbfb8] bg-white text-xs font-bold text-[#276d65] hover:bg-[#eaf7f3]"><Search className="mr-1.5 h-3.5 w-3.5" />Open scouting protocol</Button>
                 <button type="button" onClick={() => setLocation("/scouting-sheet")} className="mt-3 flex w-full items-center justify-center gap-1.5 text-[11px] font-bold text-[#3e746e] hover:text-[#175c55]"><Printer className="h-3 w-3" />Print blank scouting sheet</button>
+              </div>
+            )}
+            {diagnosisCase && (
+              <div className="rounded-[22px] border border-[#d9e6d5] bg-[#f7fbf4] p-5">
+                <ScanSearch className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Visual diagnosis practice</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">Crop-diagnosis photo annotation</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Place evidence pins on simulated crop photographs, describe uncertainty, and choose a safe next step without treating an image as a confirmed diagnosis.</p>
+                <Button variant="outline" onClick={() => setLocation("/diagnosis-annotation")} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><ScanSearch className="mr-1.5 h-3.5 w-3.5" />Open annotation exercise</Button>
               </div>
             )}
           </aside>

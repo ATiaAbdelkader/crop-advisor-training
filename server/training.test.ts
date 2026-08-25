@@ -15,6 +15,7 @@ import { getNurseryToStandQualityRoutine, nurseryToStandQualityByModuleId, nurse
 import { getPesticideIncidentDrillStage, pesticideIncidentDrillByModuleId, pesticideIncidentDrillStages } from "../shared/pesticideIncidentDrill";
 import { getQuantifiedScoutingStage, quantifiedScoutingByModuleId, quantifiedScoutingStages } from "../shared/quantifiedScoutingProtocol";
 import { quantifiedScoutingSheet } from "../shared/quantifiedScoutingSheet";
+import { annotationLabelOptions, cropDiagnosisAnnotationByModuleId, cropDiagnosisAnnotationCases } from "../shared/cropDiagnosisAnnotation";
 import {
   capstoneCases,
   createEmptyCapstoneSubmissionPayload,
@@ -290,6 +291,36 @@ describe("crop-advisor progression", () => {
     expect(quantifiedScoutingSheet.columns.join(" ")).toContain("Incidence / severity");
     expect(quantifiedScoutingSheet.columns.join(" ")).toContain("Beneficials / traps");
     expect(quantifiedScoutingSheet.boundary).toContain("universal treatment threshold");
+  });
+
+  it("provides three simulated crop-diagnosis photo annotation cases that test evidence, uncertainty, and safe next steps rather than image-only diagnosis", () => {
+    expect(cropDiagnosisAnnotationCases.map(caseItem => caseItem.id)).toEqual([
+      "pattern-and-water-context",
+      "leaf-symptoms-and-uncertainty",
+      "injury-pests-and-beneficials",
+    ]);
+    expect(annotationLabelOptions.map(option => option.id)).toEqual([
+      "field-pattern",
+      "affected-unaffected",
+      "symptom-sign",
+      "pest-beneficial",
+      "contributing-condition",
+      "uncertainty",
+    ]);
+    cropDiagnosisAnnotationCases.forEach(caseItem => {
+      expect(caseItem.imageSrc).toMatch(/^\/manus-storage\/diagnosis-case-.+\.jpg$/);
+      expect(caseItem.alt.length).toBeGreaterThan(70);
+      expect(caseItem.requiredLabels).toContain("uncertainty");
+      expect(caseItem.options).toHaveLength(3);
+      expect(caseItem.options.some(option => option.id === caseItem.correctOptionId)).toBe(true);
+      expect(caseItem.visualWarning.toLowerCase()).toContain("not");
+      expect(caseItem.safeNextStep.length).toBeGreaterThan(150);
+      expect(caseItem.moduleIds.every(moduleId => cropAdvisorCourse.modules.some(module => module.id === moduleId))).toBe(true);
+    });
+    expect(cropDiagnosisAnnotationByModuleId["field-diagnosis-in-vegetable-crops"]).toBeDefined();
+    expect(cropDiagnosisAnnotationByModuleId["disease-identification-and-management"].id).toBe("leaf-symptoms-and-uncertainty");
+    expect(cropDiagnosisAnnotationByModuleId["integrated-pest-management"]).toBeDefined();
+    expect(cropDiagnosisAnnotationCases[2].safeNextStep).toContain("beneficial");
   });
 
   it("recovers only a structurally valid local field-record draft for the intended template", () => {

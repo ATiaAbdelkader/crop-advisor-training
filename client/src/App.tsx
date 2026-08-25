@@ -17,6 +17,7 @@ import NurseryQualityPack from "@/pages/NurseryQualityPack";
 import PesticideIncidentDrill from "@/pages/PesticideIncidentDrill";
 import QuantifiedScoutingProtocol from "@/pages/QuantifiedScoutingProtocol";
 import ScoutingSheet from "@/pages/ScoutingSheet";
+import CropDiagnosisAnnotation from "@/pages/CropDiagnosisAnnotation";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -38,6 +39,7 @@ function Router() {
       <Route path="/pesticide-incident" component={PesticideIncidentDrill} />
       <Route path="/scouting-protocol" component={QuantifiedScoutingProtocol} />
       <Route path="/scouting-sheet" component={ScoutingSheet} />
+      <Route path="/diagnosis-annotation" component={CropDiagnosisAnnotation} />
       <Route path="/practicum/:entryId" component={FieldPracticum} />
       <Route path="/practicum" component={FieldPracticum} />
       <Route path="/capstone/:capstoneId" component={CapstonePractice} />

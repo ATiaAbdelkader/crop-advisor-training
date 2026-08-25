@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 4.7  
+**Version:** 4.8  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -66,6 +66,8 @@ The pesticide-safety operating layer is now available as the **Pesticide Inciden
 The field-assessment operating layer is now available as the **Quantified Scouting Protocol**. Its four stages train learners to define a repeatable sample route, interpret affected/unaffected patterns and contributing conditions, retain pest and beneficial-organism evidence separately, and build a reasoned recheck and referral condition. The protocol does not prescribe thresholds, treatments, or diagnosis; it requires current local, label, legal, and specialist verification where those are needed. Its content and validation record are maintained in [`Quantified-Scouting-Protocol.md`](./Quantified-Scouting-Protocol.md).
 
 The field-documentation layer now includes a **Printable Quantified Scouting Sheet**. It provides an A4 landscape blank form for scouting setup, zone-level observations, sampled/affected counts, incidence and severity class, pest and beneficial evidence, field conditions, decision rationale, recheck, and referral. The sheet is available from the scouting protocol and Modules 29–32 and 34, with browser print/save-as-PDF support; it does not replace the existing digital IPM field record or change formal progression requirements. Its content and validation record are maintained in [`Printable-Quantified-Scouting-Sheet.md`](./Printable-Quantified-Scouting-Sheet.md).
+
+The field-observation layer now includes a voluntary **Crop-Diagnosis Photo Annotation Exercise**. Learners place evidence pins on three simulated crop photographs, mark field pattern, symptom/sign, pest or beneficial evidence, contributing conditions, and uncertainty, then select evidence-led next steps. It is connected from Field Readiness and Modules 29–32, complements the Quantified Scouting Protocol, and explicitly avoids image-only diagnosis, thresholds, treatments, products, rates, and legal claims. Its learner flow, boundaries, module connections, and validation record are maintained in [`Crop-Diagnosis-Photo-Annotation.md`](./Crop-Diagnosis-Photo-Annotation.md).
 
 ## Applied field-brief standard
 
