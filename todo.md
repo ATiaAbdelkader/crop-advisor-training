@@ -132,3 +132,5 @@
 - [x] Add an administrator-managed facilitator case-conference booking board with private learner reservations, capacity safeguards, cancellation, and no effect on formal progression.
 - [x] Add optional facilitator notes and secure preparation materials to conference slots, visible only to reserving learners and authorised facilitators.
 - [x] Add a non-gating fertilisation planning lab with learner-entered crop requirements, calendar drafting, and dose calculations tied to soil-test, label, and local-authority verification.
+- [ ] Generate and integrate source-aligned instructional visuals for the remaining modules that do not yet have visual learning support.
+- [x] Produce and prioritise an expert module-by-module blueprint for the next crop-advisor content upgrades.
