@@ -121,3 +121,4 @@
 - [x] Add a private before-and-after competency evidence comparison for revision requests, linking original and revised learner evidence, supervisor feedback, reflections, and authorised photo evidence without affecting formal gates.
 - [x] Add a protected timed-quiz flow with visible remaining time, server-validated expiry, and unchanged 80% assessment and progression rules.
 - [x] Add administrator-only persisted custom time-limit settings for individual module assessments, with learner sessions using the configured values.
+- [x] Develop a distinctive, source-grounded field-learning layer across the curriculum using trusted agricultural and competency-based references without changing formal progression or safety boundaries.

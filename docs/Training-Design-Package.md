@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 5.5  
+**Version:** 5.6  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -13,6 +13,10 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 ## Timed formal-assessment delivery
 
 Module checks and the final assessment use a learner-visible timed session of **90 seconds per question**, with a five-minute minimum. The learner starts the clock explicitly; the server records the start and expiry and accepts only one unexpired submission for that session. A refresh cannot extend the deadline. When time ends, the interface submits completed responses, and the learner may begin a new attempt afterward. Course administrators can set a persisted one-to-240-minute custom limit for an individual module check; the final assessment retains its question-scaled standard, and active sessions retain the limit stored at their start. Timing does not change the 80% pass mark, lesson sequence, certificate rule, owner alert, competency scoring, or crop-safety boundaries. See [`Timed-Quizzes.md`](./Timed-Quizzes.md).
+
+## Field Inquiry Studio
+
+Every module now includes a voluntary **Field Inquiry Studio** after its applied field brief. It turns the module’s existing source-grounded context, task, evidence standard, competency, and safety boundary into a five-move rehearsal: **frame the field decision, observe and compare, interpret without overclaiming, choose a bounded next action, and recheck or refer**. The design is informed by FAO Farmer Field School principles of direct observation, discussion, decision-making, local-context analysis, and field-based experimentation, alongside work-based learning principles of practical, guided participation.[34] [35] The Studio complements the existing applied brief, simulations, field records, and practicum; it does not change formal assessments, sequential progression, certification, alerts, or competency scores. Its complete design, boundaries, and references are maintained in [`Field-Inquiry-Studio.md`](./Field-Inquiry-Studio.md).
 
 ## Module architecture
 
@@ -573,6 +577,10 @@ The framework applies the competency-based emphasis on demonstration, transparen
 [32] [UNESCO-UNEVOC, *Competency-based education*](https://connect.unevoc.unesco.org/home/TVETipedia+Glossary/lang=en/show=term/lang=en/term=Competency-based+education)
 
 [33] [FAO, *Making extension and advisory services market-oriented* (2021)](https://openknowledge.fao.org/handle/20.500.14283/cb4395en)
+
+[34] [Food and Agriculture Organization of the United Nations, *Global Farmer Field School Platform: Overview*](https://www.fao.org/farmer-field-schools/overview/en/)
+
+[35] [UNESCO-UNEVOC, *TVETipedia: Work-based learning*](https://connect.unevoc.unesco.org/home/TVETipedia+Glossary/lang=en/show=term/term=work-based+learning)
 
 ## Supervisor competency scoring
 

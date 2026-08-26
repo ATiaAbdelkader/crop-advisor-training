@@ -1,5 +1,6 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import LearnerLoading from "@/components/LearnerLoading";
+import FieldInquiryStudioCard from "@/components/FieldInquiryStudioCard";
 import TrainingShell from "@/components/TrainingShell";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ import { quantifiedScoutingByModuleId } from "@shared/quantifiedScoutingProtocol
 import { cropDiagnosisAnnotationByModuleId } from "@shared/cropDiagnosisAnnotation";
 import { moduleCompetencyByModuleId } from "@shared/competencyFramework";
 import { moduleVisuals } from "@shared/moduleVisuals";
+import { getFieldInquiryStudio } from "@shared/fieldInquiryStudio";
 import { CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
@@ -68,6 +70,7 @@ export default function Course() {
   const diagnosisCase = cropDiagnosisAnnotationByModuleId[module.id];
   const moduleVisual = moduleVisuals[module.id];
   const competency = moduleCompetencyByModuleId[module.id];
+  const fieldInquiryStudio = getFieldInquiryStudio(module.id);
 
   const goToLesson = (lessonId: string) => {
     if (!isAuthenticated) {
@@ -189,6 +192,7 @@ export default function Course() {
                     </dl>
                   </section>
                 )}
+                {fieldInquiryStudio && <FieldInquiryStudioCard studio={fieldInquiryStudio} />}
               </div>
             )}
 

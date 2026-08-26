@@ -3,6 +3,7 @@ import { cropAdvisorCourse } from "../shared/curriculum";
 import { documentModuleFieldBriefs } from "../shared/moduleFieldBriefs";
 import { documentAssessmentAlignment } from "../shared/assessmentAlignment";
 import { moduleVisuals } from "../shared/moduleVisuals";
+import { fieldInquirySourceBasis, getFieldInquiryStudio } from "../shared/fieldInquiryStudio";
 import { fieldRecordByModuleId, fieldRecordTemplates } from "../shared/fieldRecordTemplates";
 import { createEmptyFieldRecordPayload, MAX_FIELD_RECORD_ENTRIES, MAX_FIELD_RECORD_TITLE_LENGTH } from "../shared/digitalFieldRecords";
 import { createFieldRecordPdf } from "../client/src/lib/fieldRecordPdf";
@@ -41,6 +42,21 @@ import {
 } from "../shared/trainingLogic";
 
 describe("crop-advisor progression", () => {
+  it("adds a source-grounded Field Inquiry Studio to every module without changing formal progression", () => {
+    expect(fieldInquirySourceBasis).toContain("FAO Farmer Field School");
+    cropAdvisorCourse.modules.forEach(module => {
+      const studio = getFieldInquiryStudio(module.id);
+      const brief = documentModuleFieldBriefs[module.id];
+      expect(studio).toBeDefined();
+      expect(studio?.fieldSignal).toBe(brief.context);
+      expect(studio?.stages.map(stage => stage.id)).toEqual(["frame", "observe", "interpret", "decide", "recheck"]);
+      expect(studio?.stages.every(stage => stage.learnerPrompt.length > 60)).toBe(true);
+      expect(studio?.rehearsalQuestions).toHaveLength(3);
+      expect(studio?.nonGatingBoundary).toContain("80% formal assessment rule");
+      expect(studio?.safetyBoundary.length).toBeGreaterThan(60);
+    });
+  });
+
   it("applies the complete field-brief and semantic assessment standard to the first three foundation modules", () => {
     const foundationModules = cropAdvisorCourse.modules.filter(module => module.index <= 3);
     const finalItems = new Map(
