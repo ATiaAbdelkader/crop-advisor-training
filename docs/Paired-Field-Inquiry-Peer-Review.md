@@ -16,6 +16,8 @@ The owner saves one Field Inquiry decision for a module, covering the field deci
 | **Revise** | Saving a changed decision automatically revokes any active link. | Must receive a new link to review the revised decision. | A peer cannot unknowingly comment on changed evidence. |
 | **Reflect** | View feedback in the private owner workspace. | Feedback remains associated with the pair link. | Completed feedback is visible only in the owner’s private learning record. |
 
+After feedback is complete, the owner can also save a private **learning taken / revised action / next evidence** reflection. This follow-through record is available only to the owner and is described in [`Peer-Feedback-Reflections.md`](./Peer-Feedback-Reflections.md).
+
 ## Structured prompts
 
 The system uses three prompts to keep feedback constructive and evidence-led: **Evidence you can see**, **Question to test**, and **Next evidence to strengthen**. Prompts focus the peer on observations, alternative explanations, and safe evidence gathering rather than personal judgement.

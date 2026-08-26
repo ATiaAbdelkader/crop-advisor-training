@@ -7,6 +7,7 @@ import { competencyPerformanceLevels, moduleCompetencyByModuleId } from "../shar
 import { competencyScoreOptions, competencyScoringRequirements, type CompetencyEvidenceAttachment, type CompetencyEvidenceSubmissionPayload, type CompetencyScorecard } from "../shared/competencyScoring";
 import { scorecardReflectionRequirements, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
 import { fieldInquiryPeerReviewRequirements, type FieldInquiryDecisionPayload, type FieldInquiryPeerReviewPayload } from "../shared/fieldInquiryPeerReview";
+import { fieldInquiryPeerReflectionRequirements, type FieldInquiryPeerReflectionPayload } from "../shared/fieldInquiryPeerReflections";
 import { buildLearnerExperience } from "../shared/learnerExperience";
 import {
   MAX_FIELD_RECORD_ENTRIES,
@@ -40,6 +41,7 @@ import {
   createCompetencyAssessmentSubmission,
   getActiveFieldRecordReviewShare,
   getActiveFieldInquiryPeerShare,
+  getFieldInquiryPeerReflectionForOwner,
   getFieldRecord,
   getFieldInquiryDecisionForOwner,
   getAssessmentTimeLimitOverride,
@@ -64,6 +66,7 @@ import {
   listLearnerReflections,
   listScenarioAttempts,
   saveFieldRecord,
+  saveFieldInquiryPeerReflectionForOwner,
   saveScorecardReflectionForLearner,
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
@@ -136,6 +139,12 @@ const fieldInquiryPeerReviewPayloadInput = z.object({
   nextEvidenceSuggestion: z.string().trim().min(fieldInquiryPeerReviewRequirements.minimumReviewLength).max(fieldInquiryPeerReviewRequirements.maximumReviewLength),
 });
 
+const fieldInquiryPeerReflectionPayloadInput = z.object({
+  learningTaken: z.string().trim().min(fieldInquiryPeerReflectionRequirements.minimumResponseLength).max(fieldInquiryPeerReflectionRequirements.maximumResponseLength),
+  revisedAction: z.string().trim().min(fieldInquiryPeerReflectionRequirements.minimumResponseLength).max(fieldInquiryPeerReflectionRequirements.maximumResponseLength),
+  nextEvidence: z.string().trim().min(fieldInquiryPeerReflectionRequirements.minimumResponseLength).max(fieldInquiryPeerReflectionRequirements.maximumResponseLength),
+});
+
 function requireCourseModule(moduleId: string) {
   const module = cropAdvisorCourse.modules.find(item => item.id === moduleId);
   if (!module) throw new TRPCError({ code: "NOT_FOUND", message: "Course module not found." });
@@ -148,6 +157,10 @@ function normaliseFieldInquiryDecisionPayload(payload: z.infer<typeof fieldInqui
 
 function normaliseFieldInquiryPeerReviewPayload(payload: z.infer<typeof fieldInquiryPeerReviewPayloadInput>): FieldInquiryPeerReviewPayload {
   return Object.fromEntries(Object.entries(payload).map(([key, value]) => [key, value.trim()])) as FieldInquiryPeerReviewPayload;
+}
+
+function normaliseFieldInquiryPeerReflectionPayload(payload: z.infer<typeof fieldInquiryPeerReflectionPayloadInput>): FieldInquiryPeerReflectionPayload {
+  return Object.fromEntries(Object.entries(payload).map(([key, value]) => [key, value.trim()])) as FieldInquiryPeerReflectionPayload;
 }
 
 function requireFieldRecordTemplate(templateId: string) {
@@ -487,6 +500,16 @@ export const appRouter = router({
         const submitted = await submitFieldInquiryPeerReview({ shareToken: input.shareToken, reviewerUserId: ctx.user.id, reviewerName: ctx.user.name ?? "Paired learner", feedback: normaliseFieldInquiryPeerReviewPayload(input.feedback) });
         if (!submitted) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "This paired review is unavailable, already completed, or cannot be submitted by the decision owner." });
         return { submitted: true } as const;
+      }),
+    reflection: protectedProcedure
+      .input(z.object({ shareId: z.number().int().positive() }))
+      .query(async ({ ctx, input }) => ({ reflection: await getFieldInquiryPeerReflectionForOwner({ ownerUserId: ctx.user.id, shareId: input.shareId }) })),
+    saveReflection: protectedProcedure
+      .input(z.object({ shareId: z.number().int().positive(), payload: fieldInquiryPeerReflectionPayloadInput }))
+      .mutation(async ({ ctx, input }) => {
+        const reflection = await saveFieldInquiryPeerReflectionForOwner({ ownerUserId: ctx.user.id, shareId: input.shareId, payload: normaliseFieldInquiryPeerReflectionPayload(input.payload) });
+        if (!reflection) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "A reflection can be saved only by the decision owner after completed peer feedback." });
+        return reflection;
       }),
   }),
   assessmentTiming: router({

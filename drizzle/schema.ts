@@ -297,6 +297,24 @@ export const fieldInquiryPeerShares = mysqlTable(
   table => [index("field_inquiry_peer_share_owner_decision_idx").on(table.ownerUserId, table.decisionId, table.revokedAt)]
 );
 
+/** One private learner reflection may be saved after a completed paired Field Inquiry review. */
+export const fieldInquiryPeerReflections = mysqlTable(
+  "fieldInquiryPeerReflections",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    shareId: int("shareId")
+      .notNull()
+      .references(() => fieldInquiryPeerShares.id, { onDelete: "cascade" }),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    payloadJson: text("payloadJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [uniqueIndex("field_inquiry_peer_reflection_owner_share_unique").on(table.userId, table.shareId)]
+);
+
 /** A completed photo-annotation attempt remains private to the learner and assigned course administrators. */
 export const cropDiagnosisAnnotationReviews = mysqlTable(
   "cropDiagnosisAnnotationReviews",

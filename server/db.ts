@@ -9,6 +9,7 @@ import {
   courseEnrollments,
   cropDiagnosisAnnotationReviews,
   fieldInquiryDecisions,
+  fieldInquiryPeerReflections,
   fieldInquiryPeerShares,
   fieldPracticumEntries,
   fieldRecords,
@@ -23,6 +24,7 @@ import {
 import { ENV } from "./_core/env";
 import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
 import type { FieldInquiryDecisionPayload, FieldInquiryPeerReviewPayload } from "../shared/fieldInquiryPeerReview";
+import type { FieldInquiryPeerReflectionPayload } from "../shared/fieldInquiryPeerReflections";
 import type { CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import type { CompetencyEvidenceSubmissionPayload, CompetencyScorecard } from "../shared/competencyScoring";
 import { parseScorecardReflection, scorecardReflectionFocus, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
@@ -480,6 +482,7 @@ export async function submitFieldRecordReview(input: { shareToken: string; revie
 
 type StoredFieldInquiryDecision = Omit<typeof fieldInquiryDecisions.$inferSelect, "payloadJson"> & { payload: FieldInquiryDecisionPayload };
 type StoredFieldInquiryPeerShare = Omit<typeof fieldInquiryPeerShares.$inferSelect, "feedbackJson"> & { feedback: FieldInquiryPeerReviewPayload | null };
+type StoredFieldInquiryPeerReflection = Omit<typeof fieldInquiryPeerReflections.$inferSelect, "payloadJson"> & { payload: FieldInquiryPeerReflectionPayload };
 
 function toStoredFieldInquiryDecision(entry: typeof fieldInquiryDecisions.$inferSelect): StoredFieldInquiryDecision {
   return { ...entry, payload: JSON.parse(entry.payloadJson) as FieldInquiryDecisionPayload };
@@ -487,6 +490,10 @@ function toStoredFieldInquiryDecision(entry: typeof fieldInquiryDecisions.$infer
 
 function toStoredFieldInquiryPeerShare(entry: typeof fieldInquiryPeerShares.$inferSelect): StoredFieldInquiryPeerShare {
   return { ...entry, feedback: entry.feedbackJson ? JSON.parse(entry.feedbackJson) as FieldInquiryPeerReviewPayload : null };
+}
+
+function toStoredFieldInquiryPeerReflection(entry: typeof fieldInquiryPeerReflections.$inferSelect): StoredFieldInquiryPeerReflection {
+  return { ...entry, payload: JSON.parse(entry.payloadJson) as FieldInquiryPeerReflectionPayload };
 }
 
 export async function upsertFieldInquiryDecision(input: { userId: number; moduleId: string; payload: FieldInquiryDecisionPayload }) {
@@ -552,6 +559,23 @@ export async function submitFieldInquiryPeerReview(input: { shareToken: string; 
   if (!share || share.ownerUserId === input.reviewerUserId) return false;
   const result = await db.update(fieldInquiryPeerShares).set({ reviewerUserId: input.reviewerUserId, reviewerName: input.reviewerName, feedbackJson: JSON.stringify(input.feedback), reviewedAt: new Date() }).where(and(eq(fieldInquiryPeerShares.id, share.id), isNull(fieldInquiryPeerShares.revokedAt), isNull(fieldInquiryPeerShares.reviewedAt)));
   return result[0].affectedRows > 0;
+}
+
+export async function getFieldInquiryPeerReflectionForOwner(input: { ownerUserId: number; shareId: number }) {
+  const db = await requireDb();
+  const shares = await db.select().from(fieldInquiryPeerShares).where(and(eq(fieldInquiryPeerShares.id, input.shareId), eq(fieldInquiryPeerShares.ownerUserId, input.ownerUserId), isNotNull(fieldInquiryPeerShares.reviewedAt))).limit(1);
+  if (!shares[0]) return null;
+  const reflections = await db.select().from(fieldInquiryPeerReflections).where(and(eq(fieldInquiryPeerReflections.shareId, input.shareId), eq(fieldInquiryPeerReflections.userId, input.ownerUserId))).limit(1);
+  return reflections[0] ? toStoredFieldInquiryPeerReflection(reflections[0]) : null;
+}
+
+export async function saveFieldInquiryPeerReflectionForOwner(input: { ownerUserId: number; shareId: number; payload: FieldInquiryPeerReflectionPayload }) {
+  const db = await requireDb();
+  const shares = await db.select().from(fieldInquiryPeerShares).where(and(eq(fieldInquiryPeerShares.id, input.shareId), eq(fieldInquiryPeerShares.ownerUserId, input.ownerUserId), isNotNull(fieldInquiryPeerShares.reviewedAt))).limit(1);
+  if (!shares[0]) return null;
+  await db.insert(fieldInquiryPeerReflections).values({ userId: input.ownerUserId, shareId: input.shareId, payloadJson: JSON.stringify(input.payload) }).onDuplicateKeyUpdate({ set: { payloadJson: JSON.stringify(input.payload), updatedAt: new Date() } });
+  const reflections = await db.select().from(fieldInquiryPeerReflections).where(and(eq(fieldInquiryPeerReflections.shareId, input.shareId), eq(fieldInquiryPeerReflections.userId, input.ownerUserId))).limit(1);
+  return reflections[0] ? toStoredFieldInquiryPeerReflection(reflections[0]) : null;
 }
 
 type StoredCropDiagnosisAnnotationReview = Omit<typeof cropDiagnosisAnnotationReviews.$inferSelect, "payloadJson"> & {
