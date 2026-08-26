@@ -124,3 +124,4 @@
 - [x] Develop a distinctive, source-grounded field-learning layer across the curriculum using trusted agricultural and competency-based references without changing formal progression or safety boundaries.
 - [x] Add learner-controlled paired peer review for Field Inquiry decisions, with private share links, structured feedback prompts, one-review safeguards, and no effect on formal progression.
 - [x] Add learner-owned reflections linked to completed Field Inquiry peer feedback, covering learning taken, revised action, and next evidence without affecting formal progression.
+- [x] Generate and integrate source-aligned instructional visuals for Modules 11–20 with accessible descriptions, safety boundaries, and learner-route validation.

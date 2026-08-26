@@ -55,4 +55,54 @@ export const moduleVisuals: Readonly<Record<string, ModuleVisual>> = {
     alt: "Crop advisor holds a stable soil aggregate beside rooted vegetable beds while inspecting soil texture and organic matter.",
     caption: "Soil texture, structure, roots, organic matter, and water condition shape the crop’s productive environment.",
   },
+  "soil-degradation-and-management": {
+    src: "/manus-storage/module-11-soil-degradation-and-management_71e72121.jpg",
+    alt: "Crop advisor and vegetable grower inspect covered and bare areas of a gently sloping field beside a protected grassed runoff channel.",
+    caption: "Read soil cover, slope, runoff pathways, and field condition together before selecting a site-appropriate response.",
+  },
+  "nutrients-required-in-plant-nutrition": {
+    src: "/manus-storage/module-12-nutrients-required-in-plant-nutrition_58563c39.jpg",
+    alt: "Grower and crop advisor compare leafy vegetable plants and roots in adjacent field rows while recording observations.",
+    caption: "Link whole-plant growth to roots, water, crop stage, and field conditions instead of relying on one symptom alone.",
+  },
+  "nutrient-management": {
+    src: "/manus-storage/module-13-nutrient-management_1a3785ad.jpg",
+    alt: "Crop advisor and vegetable grower review an unbranded laboratory report, field map, and plant samples at an outdoor farm table.",
+    caption: "Use representative evidence, farm context, and a reviewable plan when discussing nutrient management decisions.",
+  },
+  "acid-soil-causes-and-management": {
+    src: "/manus-storage/module-14-acid-soil-causes-and-management_b7fb7e91.jpg",
+    alt: "Crop advisor and grower take a careful soil sample from a vegetable plot beside a small soil profile and clean field tools.",
+    caption: "Start with representative sampling and field context; a soil result informs a decision but does not prescribe one by itself.",
+  },
+  "how-to-promote-soil-health": {
+    src: "/manus-storage/module-15-soil-health_8920672f.jpg",
+    alt: "Two growers inspect a stable soil aggregate, fine roots, and mulch cover beside a diverse vegetable rotation plot.",
+    caption: "Observe soil structure, roots, cover, and management history together when evaluating soil-health practices.",
+  },
+  "collect-soil-samples-for-soil-testing": {
+    src: "/manus-storage/module-16-collect-soil-samples-for-soil-testing_0e0705de.jpg",
+    alt: "Crop advisor and grower collect several soil cores across vegetable field zones using clean tools, a bucket, and a field map.",
+    caption: "A useful soil test begins with a clean, representative sample that matches the field area and management question.",
+  },
+  "nursery-for-vegetable-production": {
+    src: "/manus-storage/module-17-nursery-for-vegetable-production_238175fd.jpg",
+    alt: "Grower and crop advisor inspect uniform vegetable seedlings and a healthy plug root system in a clean protected nursery.",
+    caption: "Review roots, plant form, uniformity, and nursery conditions before deciding whether a seedling batch is field-ready.",
+  },
+  "open-field-seedling-production": {
+    src: "/manus-storage/module-18-open-field-seedling-production_0a3e854b.jpg",
+    alt: "Growers tend orderly open-field vegetable seedling beds with visible drainage, spacing, and light shade support.",
+    caption: "Bring spacing, bed condition, drainage, light, and routine observation together in open-field seedling production.",
+  },
+  "protective-and-cellular-seedling-production": {
+    src: "/manus-storage/module-19-protective-and-cellular-seedling-production_a78af6d5.jpg",
+    alt: "Crop advisor and grower inspect uniform seedlings in cell trays inside a clean nursery house with fine insect netting.",
+    caption: "A protected nursery works as a linked system of clean growing space, light, drainage, airflow, and exclusion barriers.",
+  },
+  "seedling-production-planning": {
+    src: "/manus-storage/module-20-seedling-production-planning_87bcfedd.jpg",
+    alt: "Grower and crop advisor plan seedling batches at a nursery table using a blank calendar, tray samples, and a field map.",
+    caption: "Plan batches, field timing, readiness checks, and records so seedling production supports reliable establishment.",
+  },
 };
