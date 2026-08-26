@@ -1,7 +1,7 @@
 # Crop Advisor Foundations: Training Design Package
 
 **Author:** Manus AI  
-**Version:** 5.4  
+**Version:** 5.5  
 **Delivery format:** LMS-ready Markdown specification with matching application implementation
 
 ## Purpose and learner outcome
@@ -12,7 +12,7 @@ Crop Advisor Foundations is a sixteen-hour, self-paced professional learning pat
 
 ## Timed formal-assessment delivery
 
-Module checks and the final assessment use a learner-visible timed session of **90 seconds per question**, with a five-minute minimum. The learner starts the clock explicitly; the server records the start and expiry and accepts only one unexpired submission for that session. A refresh cannot extend the deadline. When time ends, the interface submits completed responses, and the learner may begin a new attempt afterward. Timing does not change the 80% pass mark, lesson sequence, certificate rule, owner alert, competency scoring, or crop-safety boundaries. See [`Timed-Quizzes.md`](./Timed-Quizzes.md).
+Module checks and the final assessment use a learner-visible timed session of **90 seconds per question**, with a five-minute minimum. The learner starts the clock explicitly; the server records the start and expiry and accepts only one unexpired submission for that session. A refresh cannot extend the deadline. When time ends, the interface submits completed responses, and the learner may begin a new attempt afterward. Course administrators can set a persisted one-to-240-minute custom limit for an individual module check; the final assessment retains its question-scaled standard, and active sessions retain the limit stored at their start. Timing does not change the 80% pass mark, lesson sequence, certificate rule, owner alert, competency scoring, or crop-safety boundaries. See [`Timed-Quizzes.md`](./Timed-Quizzes.md).
 
 ## Module architecture
 

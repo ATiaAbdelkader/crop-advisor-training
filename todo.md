@@ -120,3 +120,4 @@
 - [x] Add a workspace-level fixture regression proving protected supervisor reflection-query failure renders retry UI rather than the empty reflection state.
 - [x] Add a private before-and-after competency evidence comparison for revision requests, linking original and revised learner evidence, supervisor feedback, reflections, and authorised photo evidence without affecting formal gates.
 - [x] Add a protected timed-quiz flow with visible remaining time, server-validated expiry, and unchanged 80% assessment and progression rules.
+- [x] Add administrator-only persisted custom time-limit settings for individual module assessments, with learner sessions using the configured values.

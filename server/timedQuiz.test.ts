@@ -3,7 +3,7 @@ import type { TrpcContext } from "./_core/context";
 import { cropAdvisorCourse, getAssessmentById } from "../shared/curriculum";
 import { getTimedQuizLimitSeconds, minimumTimedQuizSeconds, secondsPerTimedQuizQuestion, timedQuizBoundary } from "../shared/timedAssessments";
 
-const mocks = vi.hoisted(() => ({ enroll: vi.fn(), records: vi.fn(), start: vi.fn(), consume: vi.fn(), recordAttempt: vi.fn() }));
+const mocks = vi.hoisted(() => ({ enroll: vi.fn(), records: vi.fn(), start: vi.fn(), consume: vi.fn(), recordAttempt: vi.fn(), getOverride: vi.fn(), listOverrides: vi.fn(), saveOverride: vi.fn(), clearOverride: vi.fn() }));
 
 vi.mock("./db", async importOriginal => {
   const actual = await importOriginal<typeof import("./db")>();
@@ -14,14 +14,18 @@ vi.mock("./db", async importOriginal => {
     startTimedAssessmentSession: mocks.start,
     consumeUnexpiredTimedAssessmentSession: mocks.consume,
     recordAssessmentAttempt: mocks.recordAttempt,
+    getAssessmentTimeLimitOverride: mocks.getOverride,
+    listAssessmentTimeLimitOverrides: mocks.listOverrides,
+    saveAssessmentTimeLimitOverride: mocks.saveOverride,
+    clearAssessmentTimeLimitOverride: mocks.clearOverride,
   };
 });
 
 import { appRouter } from "./routers";
 
-function createCaller() {
+function createCaller(role: "user" | "admin" = "user") {
   const ctx: TrpcContext = {
-    user: { id: 73, openId: "learner-73", email: "learner@example.com", name: "Learner", loginMethod: "manus", role: "user", createdAt: new Date(), updatedAt: new Date(), lastSignedIn: new Date() },
+    user: { id: role === "admin" ? 9 : 73, openId: `${role}-user`, email: `${role}@example.com`, name: role === "admin" ? "Course Admin" : "Learner", loginMethod: "manus", role, createdAt: new Date(), updatedAt: new Date(), lastSignedIn: new Date() },
     req: { protocol: "https", headers: {} } as TrpcContext["req"],
     res: {} as TrpcContext["res"],
   };
@@ -38,6 +42,10 @@ describe("timed formal quizzes", () => {
     mocks.start.mockResolvedValue({ id: 41, startedAt: new Date("2026-08-26T08:00:00Z"), expiresAt: new Date("2026-08-26T08:06:00Z"), timeLimitSeconds: 360 });
     mocks.consume.mockResolvedValue(true);
     mocks.recordAttempt.mockResolvedValue(undefined);
+    mocks.getOverride.mockResolvedValue(null);
+    mocks.listOverrides.mockResolvedValue([]);
+    mocks.saveOverride.mockResolvedValue({ assessmentId: assessment.id, timeLimitSeconds: 720, updatedByUserId: 9 });
+    mocks.clearOverride.mockResolvedValue(true);
   });
 
   it("uses a transparent question-scaled limit while preserving the 80% formal threshold", () => {
@@ -53,6 +61,17 @@ describe("timed formal quizzes", () => {
     expect(result).toMatchObject({ id: 41, timeLimitSeconds: 360 });
   });
 
+  it("uses an administrator-configured module limit for future learner sessions", async () => {
+    mocks.getOverride.mockResolvedValue({ assessmentId: assessment.id, timeLimitSeconds: 720 });
+    await createCaller().training.startTimedAssessment({ assessmentId: assessment.id });
+    expect(mocks.start).toHaveBeenCalledWith(expect.objectContaining({ assessmentId: assessment.id, timeLimitSeconds: 720 }));
+  });
+
+  it("returns the resolved configured time before an eligible learner starts the quiz", async () => {
+    mocks.getOverride.mockResolvedValue({ assessmentId: assessment.id, timeLimitSeconds: 720 });
+    await expect(createCaller().training.assessmentTimeLimit({ assessmentId: assessment.id })).resolves.toEqual({ timeLimitSeconds: 720 });
+  });
+
   it("scores an assessment only after consuming its authenticated, unexpired timed session", async () => {
     const answers = Object.fromEntries(assessment.questions.map(question => [question.id, question.correctOptionId]));
     const result = await createCaller().training.submitAssessment({ assessmentId: assessment.id, timedSessionId: 41, answers });
@@ -66,5 +85,15 @@ describe("timed formal quizzes", () => {
     const answers = Object.fromEntries(assessment.questions.map(question => [question.id, question.correctOptionId]));
     await expect(createCaller().training.submitAssessment({ assessmentId: assessment.id, timedSessionId: 41, answers })).rejects.toMatchObject({ code: "PRECONDITION_FAILED" });
     expect(mocks.recordAttempt).not.toHaveBeenCalled();
+  });
+
+  it("restricts module limit configuration to administrators and supports saving or clearing an override", async () => {
+    await expect(createCaller().assessmentTiming.list()).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await createCaller("admin").assessmentTiming.list();
+    expect(mocks.listOverrides).toHaveBeenCalledTimes(1);
+    await createCaller("admin").assessmentTiming.set({ assessmentId: assessment.id, timeLimitSeconds: 720 });
+    expect(mocks.saveOverride).toHaveBeenCalledWith({ assessmentId: assessment.id, timeLimitSeconds: 720, updatedByUserId: 9 });
+    await createCaller("admin").assessmentTiming.set({ assessmentId: assessment.id, timeLimitSeconds: null });
+    expect(mocks.clearOverride).toHaveBeenCalledWith(assessment.id);
   });
 });

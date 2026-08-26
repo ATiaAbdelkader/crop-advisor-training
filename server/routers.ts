@@ -28,6 +28,7 @@ import {
   shouldNotifyOwnerOfCertification,
 } from "../shared/trainingLogic";
 import {
+  clearAssessmentTimeLimitOverride,
   consumeUnexpiredTimedAssessmentSession,
   enrollLearner,
   deleteFieldRecord,
@@ -37,6 +38,7 @@ import {
   createCompetencyAssessmentSubmission,
   getActiveFieldRecordReviewShare,
   getFieldRecord,
+  getAssessmentTimeLimitOverride,
   getCompetencyEvidenceComparisonForLearner,
   getCompetencyEvidenceComparisonForSupervisor,
   getScorecardReflectionForLearner,
@@ -52,6 +54,7 @@ import {
   listFieldRecords,
   listFieldPracticumEntries,
   listAllFieldRecords,
+  listAssessmentTimeLimitOverrides,
   listFieldRecordReviewShares,
   listLearnerReflections,
   listScenarioAttempts,
@@ -59,6 +62,7 @@ import {
   saveScorecardReflectionForLearner,
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
+  saveAssessmentTimeLimitOverride,
   listCapstoneSubmissions,
   listCropDiagnosisAnnotationNotificationStates,
   listCropDiagnosisAnnotationReviewsForSupervisor,
@@ -80,7 +84,7 @@ import { storagePut } from "./storage";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { COOKIE_NAME } from "@shared/const";
-import { getTimedQuizLimitSeconds } from "../shared/timedAssessments";
+import { maximumAdministratorTimedQuizSeconds, minimumAdministratorTimedQuizSeconds, resolveTimedQuizLimitSeconds } from "../shared/timedAssessments";
 
 async function getOverviewForLearner(userId: number) {
   const records = await getLearningRecords(userId, cropAdvisorCourse.id);
@@ -285,6 +289,18 @@ export const appRouter = router({
         await markLessonComplete(ctx.user.id, cropAdvisorCourse.id, input.lessonId);
         return getOverviewForLearner(ctx.user.id);
       }),
+    assessmentTimeLimit: protectedProcedure
+      .input(z.object({ assessmentId: z.string().min(1) }))
+      .query(async ({ ctx, input }) => {
+        const assessment = getAssessmentById(input.assessmentId);
+        if (!assessment) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment not found." });
+        const overview = await getOverviewForLearner(ctx.user.id);
+        if (!overview.availableAssessmentIds.includes(assessment.id)) {
+          throw new TRPCError({ code: "FORBIDDEN", message: "This assessment is not yet unlocked." });
+        }
+        const configuredLimit = await getAssessmentTimeLimitOverride(assessment.id);
+        return { timeLimitSeconds: resolveTimedQuizLimitSeconds(assessment, configuredLimit?.timeLimitSeconds) };
+      }),
     startTimedAssessment: protectedProcedure
       .input(z.object({ assessmentId: z.string().min(1) }))
       .mutation(async ({ ctx, input }) => {
@@ -295,11 +311,12 @@ export const appRouter = router({
         if (!overview.availableAssessmentIds.includes(assessment.id)) {
           throw new TRPCError({ code: "FORBIDDEN", message: "This assessment is not yet unlocked." });
         }
+        const configuredLimit = await getAssessmentTimeLimitOverride(assessment.id);
         const session = await startTimedAssessmentSession({
           userId: ctx.user.id,
           courseSlug: cropAdvisorCourse.id,
           assessmentId: assessment.id,
-          timeLimitSeconds: getTimedQuizLimitSeconds(assessment),
+          timeLimitSeconds: resolveTimedQuizLimitSeconds(assessment, configuredLimit?.timeLimitSeconds),
         });
         return {
           id: session.id,
@@ -384,6 +401,24 @@ export const appRouter = router({
           ownerNotified,
           overview: await getOverviewForLearner(ctx.user.id),
         };
+      }),
+  }),
+  assessmentTiming: router({
+    list: adminProcedure.query(() => listAssessmentTimeLimitOverrides()),
+    set: adminProcedure
+      .input(z.object({ assessmentId: z.string().min(1).max(128), timeLimitSeconds: z.number().int().min(minimumAdministratorTimedQuizSeconds).max(maximumAdministratorTimedQuizSeconds).nullable() }))
+      .mutation(async ({ ctx, input }) => {
+        const assessment = getAssessmentById(input.assessmentId);
+        if (!assessment || assessment.kind !== "module") {
+          throw new TRPCError({ code: "NOT_FOUND", message: "Module assessment not found." });
+        }
+        if (input.timeLimitSeconds === null) {
+          await clearAssessmentTimeLimitOverride(assessment.id);
+          return { assessmentId: assessment.id, timeLimitSeconds: null };
+        }
+        const saved = await saveAssessmentTimeLimitOverride({ assessmentId: assessment.id, timeLimitSeconds: input.timeLimitSeconds, updatedByUserId: ctx.user.id });
+        if (!saved) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Time limit could not be saved." });
+        return saved;
       }),
   }),
   fieldRecords: router({

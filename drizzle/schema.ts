@@ -155,6 +155,21 @@ export const timedAssessmentSessions = mysqlTable(
   table => [index("timed_assessment_session_owner_idx").on(table.userId, table.assessmentId, table.submittedAt, table.expiresAt)]
 );
 
+/** Administrator-maintained overrides apply to future sessions for one formal module check. */
+export const assessmentTimeLimitOverrides = mysqlTable(
+  "assessmentTimeLimitOverrides",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    assessmentId: varchar("assessmentId", { length: 128 }).notNull(),
+    timeLimitSeconds: int("timeLimitSeconds").notNull(),
+    updatedByUserId: int("updatedByUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [uniqueIndex("assessment_time_limit_assessment_unique").on(table.assessmentId)]
+);
+
 export const certificates = mysqlTable(
   "certificates",
   {

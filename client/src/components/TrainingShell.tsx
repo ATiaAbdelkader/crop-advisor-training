@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { startLogin } from "@/const";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Award, BarChart3, BookOpenCheck, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal, Target } from "lucide-react";
+import { Award, BarChart3, BookOpenCheck, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal, Settings2, Target } from "lucide-react";
 import type { ReactNode } from "react";
 import { useLocation } from "wouter";
 
@@ -70,6 +70,7 @@ export default function TrainingShell({
           <div className="flex items-center gap-2">
             {isAuthenticated ? (
               <>
+                {user?.role === "admin" && <button type="button" onClick={() => setLocation("/supervisor/assessment-time-limits")} className="grid h-9 w-9 place-items-center rounded-full text-[#647465] transition-colors hover:bg-[#e6eadf] hover:text-[#1c4639]" aria-label="Open administrator assessment settings" title="Assessment settings"><Settings2 className="h-4 w-4" /></button>}
                 <div className="hidden text-right sm:block">
                   <p className="max-w-36 truncate text-sm font-semibold text-[#294237]">{user?.name || "Learner"}</p>
                   <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#879486]">Learner account</p>

@@ -1,6 +1,7 @@
 import { and, desc, eq, gt, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
+  assessmentTimeLimitOverrides,
   assessmentAttempts,
   capstoneSubmissions,
   certificates,
@@ -202,6 +203,33 @@ export async function consumeUnexpiredTimedAssessmentSession(input: {
       isNull(timedAssessmentSessions.submittedAt),
       gt(timedAssessmentSessions.expiresAt, now),
     ));
+  return result[0].affectedRows > 0;
+}
+
+export async function getAssessmentTimeLimitOverride(assessmentId: string) {
+  const db = await requireDb();
+  const rows = await db.select().from(assessmentTimeLimitOverrides).where(eq(assessmentTimeLimitOverrides.assessmentId, assessmentId)).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function listAssessmentTimeLimitOverrides() {
+  const db = await requireDb();
+  return db.select().from(assessmentTimeLimitOverrides).orderBy(assessmentTimeLimitOverrides.assessmentId);
+}
+
+export async function saveAssessmentTimeLimitOverride(input: { assessmentId: string; timeLimitSeconds: number; updatedByUserId: number }) {
+  const db = await requireDb();
+  await db
+    .insert(assessmentTimeLimitOverrides)
+    .values(input)
+    .onDuplicateKeyUpdate({ set: { timeLimitSeconds: input.timeLimitSeconds, updatedByUserId: input.updatedByUserId, updatedAt: new Date() } });
+  const rows = await db.select().from(assessmentTimeLimitOverrides).where(eq(assessmentTimeLimitOverrides.assessmentId, input.assessmentId)).limit(1);
+  return rows[0] ?? null;
+}
+
+export async function clearAssessmentTimeLimitOverride(assessmentId: string) {
+  const db = await requireDb();
+  const result = await db.delete(assessmentTimeLimitOverrides).where(eq(assessmentTimeLimitOverrides.assessmentId, assessmentId));
   return result[0].affectedRows > 0;
 }
 

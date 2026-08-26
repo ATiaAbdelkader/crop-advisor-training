@@ -7,6 +7,13 @@ export function getTimedQuizLimitSeconds(assessment: Pick<Assessment, "questions
   return Math.max(minimumTimedQuizSeconds, assessment.questions.length * secondsPerTimedQuizQuestion);
 }
 
+export function resolveTimedQuizLimitSeconds(assessment: Pick<Assessment, "questions">, configuredLimitSeconds?: number | null) {
+  return configuredLimitSeconds ?? getTimedQuizLimitSeconds(assessment);
+}
+
+export const minimumAdministratorTimedQuizSeconds = 60;
+export const maximumAdministratorTimedQuizSeconds = 14_400;
+
 export function formatTimedQuizDuration(totalSeconds: number) {
   const minutes = Math.floor(totalSeconds / 60);
   const seconds = totalSeconds % 60;
