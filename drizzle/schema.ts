@@ -137,6 +137,24 @@ export const assessmentAttempts = mysqlTable("assessmentAttempts", {
   submittedAt: timestamp("submittedAt").defaultNow().notNull(),
 });
 
+/** Server-issued quiz sessions prevent browser clocks or refreshes from extending a formal assessment time limit. */
+export const timedAssessmentSessions = mysqlTable(
+  "timedAssessmentSessions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    courseSlug: varchar("courseSlug", { length: 128 }).notNull(),
+    assessmentId: varchar("assessmentId", { length: 128 }).notNull(),
+    timeLimitSeconds: int("timeLimitSeconds").notNull(),
+    startedAt: timestamp("startedAt").defaultNow().notNull(),
+    expiresAt: timestamp("expiresAt").notNull(),
+    submittedAt: timestamp("submittedAt"),
+  },
+  table => [index("timed_assessment_session_owner_idx").on(table.userId, table.assessmentId, table.submittedAt, table.expiresAt)]
+);
+
 export const certificates = mysqlTable(
   "certificates",
   {

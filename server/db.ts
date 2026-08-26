@@ -1,4 +1,4 @@
-import { and, desc, eq, inArray, isNotNull, isNull, sql } from "drizzle-orm";
+import { and, desc, eq, gt, inArray, isNotNull, isNull, sql } from "drizzle-orm";
 import { drizzle } from "drizzle-orm/mysql2";
 import {
   assessmentAttempts,
@@ -14,6 +14,7 @@ import {
   learnerReflections,
   lessonCompletions,
   scenarioAttempts,
+  timedAssessmentSessions,
   users,
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
@@ -144,6 +145,64 @@ export async function recordAssessmentAttempt(input: {
     passed: input.passed ? "yes" : "no",
     answersJson: JSON.stringify(input.answers),
   });
+}
+
+export async function startTimedAssessmentSession(input: {
+  userId: number;
+  courseSlug: string;
+  assessmentId: string;
+  timeLimitSeconds: number;
+}) {
+  const db = await requireDb();
+  const activeRows = await db
+    .select()
+    .from(timedAssessmentSessions)
+    .where(and(
+      eq(timedAssessmentSessions.userId, input.userId),
+      eq(timedAssessmentSessions.courseSlug, input.courseSlug),
+      eq(timedAssessmentSessions.assessmentId, input.assessmentId),
+      isNull(timedAssessmentSessions.submittedAt),
+    ))
+    .orderBy(desc(timedAssessmentSessions.startedAt))
+    .limit(1);
+  const active = activeRows[0];
+  if (active && active.expiresAt.getTime() > Date.now()) return active;
+
+  const startedAt = new Date();
+  const expiresAt = new Date(startedAt.getTime() + input.timeLimitSeconds * 1000);
+  const result = await db.insert(timedAssessmentSessions).values({
+    userId: input.userId,
+    courseSlug: input.courseSlug,
+    assessmentId: input.assessmentId,
+    timeLimitSeconds: input.timeLimitSeconds,
+    startedAt,
+    expiresAt,
+  });
+  const rows = await db.select().from(timedAssessmentSessions).where(eq(timedAssessmentSessions.id, Number(result[0].insertId))).limit(1);
+  if (!rows[0]) throw new Error("Timed assessment session could not be created.");
+  return rows[0];
+}
+
+export async function consumeUnexpiredTimedAssessmentSession(input: {
+  id: number;
+  userId: number;
+  courseSlug: string;
+  assessmentId: string;
+}) {
+  const db = await requireDb();
+  const now = new Date();
+  const result = await db
+    .update(timedAssessmentSessions)
+    .set({ submittedAt: now })
+    .where(and(
+      eq(timedAssessmentSessions.id, input.id),
+      eq(timedAssessmentSessions.userId, input.userId),
+      eq(timedAssessmentSessions.courseSlug, input.courseSlug),
+      eq(timedAssessmentSessions.assessmentId, input.assessmentId),
+      isNull(timedAssessmentSessions.submittedAt),
+      gt(timedAssessmentSessions.expiresAt, now),
+    ));
+  return result[0].affectedRows > 0;
 }
 
 export async function issueCertificateIfNeeded(input: {

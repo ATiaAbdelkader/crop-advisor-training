@@ -28,6 +28,7 @@ import {
   shouldNotifyOwnerOfCertification,
 } from "../shared/trainingLogic";
 import {
+  consumeUnexpiredTimedAssessmentSession,
   enrollLearner,
   deleteFieldRecord,
   deleteFieldPracticumEntry,
@@ -70,6 +71,7 @@ import {
   submitFieldRecordReview,
   submitCropDiagnosisAnnotationSupervisorFeedback,
   submitSupervisorCompetencyScore,
+  startTimedAssessmentSession,
   upsertLearnerReflection,
 } from "./db";
 import { getSessionCookieOptions } from "./_core/cookies";
@@ -78,6 +80,7 @@ import { storagePut } from "./storage";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { COOKIE_NAME } from "@shared/const";
+import { getTimedQuizLimitSeconds } from "../shared/timedAssessments";
 
 async function getOverviewForLearner(userId: number) {
   const records = await getLearningRecords(userId, cropAdvisorCourse.id);
@@ -282,10 +285,34 @@ export const appRouter = router({
         await markLessonComplete(ctx.user.id, cropAdvisorCourse.id, input.lessonId);
         return getOverviewForLearner(ctx.user.id);
       }),
+    startTimedAssessment: protectedProcedure
+      .input(z.object({ assessmentId: z.string().min(1) }))
+      .mutation(async ({ ctx, input }) => {
+        const assessment = getAssessmentById(input.assessmentId);
+        if (!assessment) throw new TRPCError({ code: "NOT_FOUND", message: "Assessment not found." });
+        await enrollLearner(ctx.user.id, cropAdvisorCourse.id);
+        const overview = await getOverviewForLearner(ctx.user.id);
+        if (!overview.availableAssessmentIds.includes(assessment.id)) {
+          throw new TRPCError({ code: "FORBIDDEN", message: "This assessment is not yet unlocked." });
+        }
+        const session = await startTimedAssessmentSession({
+          userId: ctx.user.id,
+          courseSlug: cropAdvisorCourse.id,
+          assessmentId: assessment.id,
+          timeLimitSeconds: getTimedQuizLimitSeconds(assessment),
+        });
+        return {
+          id: session.id,
+          startedAt: session.startedAt,
+          expiresAt: session.expiresAt,
+          timeLimitSeconds: session.timeLimitSeconds,
+        };
+      }),
     submitAssessment: protectedProcedure
       .input(
         z.object({
           assessmentId: z.string().min(1),
+          timedSessionId: z.number().int().positive(),
           answers: z.record(z.string(), z.string()),
         })
       )
@@ -300,6 +327,19 @@ export const appRouter = router({
           throw new TRPCError({
             code: "FORBIDDEN",
             message: "This assessment is not yet unlocked.",
+          });
+        }
+
+        const validSession = await consumeUnexpiredTimedAssessmentSession({
+          id: input.timedSessionId,
+          userId: ctx.user.id,
+          courseSlug: cropAdvisorCourse.id,
+          assessmentId: assessment.id,
+        });
+        if (!validSession) {
+          throw new TRPCError({
+            code: "PRECONDITION_FAILED",
+            message: "This timed quiz session has expired or was already submitted. Begin a new attempt to continue.",
           });
         }
 
