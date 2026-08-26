@@ -129,3 +129,4 @@
 - [x] Add printable low-bandwidth field-card packs and expanded supervisor calibration resources for evidence-based field practice.
 - [x] Add French and Arabic plain-language learner support, translated visual captions, and accessibility controls for reading and audio support.
 - [x] Add a voluntary capstone case-conference guide that connects field evidence, communication, economics, and referral decisions without becoming a formal gate.
+- [x] Add an administrator-managed facilitator case-conference booking board with private learner reservations, capacity safeguards, cancellation, and no effect on formal progression.

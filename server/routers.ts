@@ -31,6 +31,9 @@ import {
 } from "../shared/trainingLogic";
 import {
   clearAssessmentTimeLimitOverride,
+  cancelCaseConferenceReservation,
+  cancelCaseConferenceSlot,
+  createCaseConferenceSlot,
   createFieldInquiryPeerShare,
   consumeUnexpiredTimedAssessmentSession,
   enrollLearner,
@@ -61,6 +64,8 @@ import {
   listFieldPracticumEntries,
   listAllFieldRecords,
   listAssessmentTimeLimitOverrides,
+  listCaseConferenceSlotsForAdmin,
+  listCaseConferenceSlotsForLearner,
   listFieldRecordReviewShares,
   listFieldInquiryPeerSharesForOwner,
   listLearnerReflections,
@@ -79,6 +84,7 @@ import {
   listMyCompetencyAssessments,
   listMyCropDiagnosisAnnotationReviews,
   recordScenarioAttempt,
+  reserveCaseConferenceSlot,
   revokeFieldRecordReviewShare,
   revokeFieldInquiryPeerShare,
   submitFieldRecordReview,
@@ -528,6 +534,31 @@ export const appRouter = router({
         const saved = await saveAssessmentTimeLimitOverride({ assessmentId: assessment.id, timeLimitSeconds: input.timeLimitSeconds, updatedByUserId: ctx.user.id });
         if (!saved) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Time limit could not be saved." });
         return saved;
+      }),
+  }),
+  caseConferences: router({
+    list: protectedProcedure.query(({ ctx }) => listCaseConferenceSlotsForLearner(ctx.user.id)),
+    reserve: protectedProcedure
+      .input(z.object({ slotId: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        await reserveCaseConferenceSlot(ctx.user.id, input.slotId);
+        return { reserved: true } as const;
+      }),
+    cancelReservation: protectedProcedure
+      .input(z.object({ slotId: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        await cancelCaseConferenceReservation(ctx.user.id, input.slotId);
+        return { cancelled: true } as const;
+      }),
+    adminList: adminProcedure.query(() => listCaseConferenceSlotsForAdmin()),
+    createSlot: adminProcedure
+      .input(z.object({ title: z.string().trim().min(3).max(160), startsAt: z.coerce.date(), endsAt: z.coerce.date(), capacity: z.number().int().min(1).max(24) }))
+      .mutation(async ({ ctx, input }) => ({ id: await createCaseConferenceSlot({ ...input, facilitatorUserId: ctx.user.id }) })),
+    cancelSlot: adminProcedure
+      .input(z.object({ slotId: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        await cancelCaseConferenceSlot(ctx.user.id, input.slotId);
+        return { cancelled: true } as const;
       }),
   }),
   fieldRecords: router({

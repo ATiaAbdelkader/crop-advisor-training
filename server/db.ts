@@ -3,6 +3,8 @@ import { drizzle } from "drizzle-orm/mysql2";
 import {
   assessmentTimeLimitOverrides,
   assessmentAttempts,
+  caseConferenceReservations,
+  caseConferenceSlots,
   capstoneSubmissions,
   certificates,
   competencyAssessments,
@@ -30,6 +32,22 @@ import type { CompetencyEvidenceSubmissionPayload, CompetencyScorecard } from ".
 import { parseScorecardReflection, scorecardReflectionFocus, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
 import type { CapstoneSubmissionPayload, FieldPracticumPayload } from "../shared/fieldReadiness";
 
+export type CaseConferenceSlotView = {
+  id: number;
+  title: string;
+  startsAt: Date;
+  endsAt: Date;
+  capacity: number;
+  reservedCount: number;
+  status: "open" | "cancelled";
+  isBooked: boolean;
+};
+
+export type AdminCaseConferenceSlotView = CaseConferenceSlotView & {
+  facilitatorUserId: number;
+  reservations: readonly { id: number; learnerName: string; learnerEmail: string | null; status: "booked" | "cancelled"; createdAt: Date; cancelledAt: Date | null }[];
+};
+
 let _db: ReturnType<typeof drizzle> | null = null;
 
 export async function getDb() {
@@ -48,6 +66,75 @@ async function requireDb() {
   const db = await getDb();
   if (!db) throw new Error("Database is not available.");
   return db;
+}
+
+export async function listCaseConferenceSlotsForLearner(userId: number): Promise<CaseConferenceSlotView[]> {
+  const db = await requireDb();
+  const slots = await db.select().from(caseConferenceSlots).where(and(eq(caseConferenceSlots.status, "open"), gt(caseConferenceSlots.startsAt, new Date()))).orderBy(caseConferenceSlots.startsAt);
+  if (!slots.length) return [];
+  const reservations = await db.select().from(caseConferenceReservations).where(and(eq(caseConferenceReservations.userId, userId), inArray(caseConferenceReservations.slotId, slots.map(slot => slot.id))));
+  const bookedIds = new Set(reservations.filter(reservation => reservation.status === "booked").map(reservation => reservation.slotId));
+  return slots.map(slot => ({ id: slot.id, title: slot.title, startsAt: slot.startsAt, endsAt: slot.endsAt, capacity: slot.capacity, reservedCount: slot.reservedCount, status: slot.status, isBooked: bookedIds.has(slot.id) }));
+}
+
+export async function listCaseConferenceSlotsForAdmin(): Promise<AdminCaseConferenceSlotView[]> {
+  const db = await requireDb();
+  const slots = await db.select().from(caseConferenceSlots).orderBy(desc(caseConferenceSlots.startsAt));
+  if (!slots.length) return [];
+  const reservations = await db.select({ id: caseConferenceReservations.id, slotId: caseConferenceReservations.slotId, status: caseConferenceReservations.status, createdAt: caseConferenceReservations.createdAt, cancelledAt: caseConferenceReservations.cancelledAt, learnerName: users.name, learnerEmail: users.email }).from(caseConferenceReservations).innerJoin(users, eq(caseConferenceReservations.userId, users.id)).where(inArray(caseConferenceReservations.slotId, slots.map(slot => slot.id)));
+  return slots.map(slot => ({
+    id: slot.id,
+    facilitatorUserId: slot.facilitatorUserId,
+    title: slot.title,
+    startsAt: slot.startsAt,
+    endsAt: slot.endsAt,
+    capacity: slot.capacity,
+    reservedCount: slot.reservedCount,
+    status: slot.status,
+    isBooked: false,
+    reservations: reservations.filter(reservation => reservation.slotId === slot.id).map(({ slotId: _slotId, ...reservation }) => ({ ...reservation, learnerName: reservation.learnerName || "Learner" })),
+  }));
+}
+
+export async function createCaseConferenceSlot(input: { facilitatorUserId: number; title: string; startsAt: Date; endsAt: Date; capacity: number }) {
+  const db = await requireDb();
+  if (input.startsAt <= new Date() || input.endsAt <= input.startsAt) throw new Error("Choose a future start time and an end time after the start.");
+  if (input.capacity < 1 || input.capacity > 24) throw new Error("Conference capacity must be between 1 and 24 learners.");
+  const result = await db.insert(caseConferenceSlots).values({ ...input, status: "open", reservedCount: 0 });
+  return Number(result[0].insertId);
+}
+
+export async function cancelCaseConferenceSlot(adminUserId: number, slotId: number) {
+  const db = await requireDb();
+  const slot = (await db.select().from(caseConferenceSlots).where(eq(caseConferenceSlots.id, slotId)).limit(1))[0];
+  if (!slot) throw new Error("Conference slot not found.");
+  if (slot.facilitatorUserId !== adminUserId) throw new Error("Only the facilitator who created this slot can cancel it.");
+  await db.update(caseConferenceSlots).set({ status: "cancelled" }).where(eq(caseConferenceSlots.id, slotId));
+}
+
+export async function reserveCaseConferenceSlot(userId: number, slotId: number) {
+  const db = await requireDb();
+  const slot = (await db.select().from(caseConferenceSlots).where(eq(caseConferenceSlots.id, slotId)).limit(1))[0];
+  if (!slot || slot.status !== "open" || slot.startsAt <= new Date()) throw new Error("This conference slot is no longer available.");
+  const existing = (await db.select().from(caseConferenceReservations).where(and(eq(caseConferenceReservations.slotId, slotId), eq(caseConferenceReservations.userId, userId))).limit(1))[0];
+  if (existing?.status === "booked") throw new Error("You already reserved this conference slot.");
+  if (slot.reservedCount >= slot.capacity) throw new Error("This conference is fully booked.");
+  if (existing) {
+    await db.update(caseConferenceReservations).set({ status: "booked", cancelledAt: null }).where(eq(caseConferenceReservations.id, existing.id));
+  } else {
+    await db.insert(caseConferenceReservations).values({ slotId, userId, status: "booked" });
+  }
+  await db.update(caseConferenceSlots).set({ reservedCount: sql`${caseConferenceSlots.reservedCount} + 1` }).where(eq(caseConferenceSlots.id, slotId));
+}
+
+export async function cancelCaseConferenceReservation(userId: number, slotId: number) {
+  const db = await requireDb();
+  const slot = (await db.select().from(caseConferenceSlots).where(eq(caseConferenceSlots.id, slotId)).limit(1))[0];
+  if (!slot || slot.startsAt <= new Date()) throw new Error("This conference can no longer be cancelled online.");
+  const reservation = (await db.select().from(caseConferenceReservations).where(and(eq(caseConferenceReservations.slotId, slotId), eq(caseConferenceReservations.userId, userId), eq(caseConferenceReservations.status, "booked"))).limit(1))[0];
+  if (!reservation) throw new Error("You do not have an active reservation for this conference.");
+  await db.update(caseConferenceReservations).set({ status: "cancelled", cancelledAt: new Date() }).where(eq(caseConferenceReservations.id, reservation.id));
+  await db.update(caseConferenceSlots).set({ reservedCount: sql`GREATEST(0, ${caseConferenceSlots.reservedCount} - 1)` }).where(eq(caseConferenceSlots.id, slotId));
 }
 
 export async function upsertUser(user: InsertUser): Promise<void> {

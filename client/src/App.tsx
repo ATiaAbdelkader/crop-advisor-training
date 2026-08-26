@@ -31,6 +31,7 @@ import FieldInquiryPeerReview from "@/pages/FieldInquiryPeerReview";
 import FieldInquiryPeerFeedback from "@/pages/FieldInquiryPeerFeedback";
 import LearningExperience from "@/pages/LearningExperience";
 import LearningTools from "@/pages/LearningTools";
+import CaseConferenceBooking from "@/pages/CaseConferenceBooking";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -56,6 +57,7 @@ function Router() {
       <Route path="/competencies" component={CompetencyMap} />
       <Route path="/learning-experience" component={LearningExperience} />
       <Route path="/learning-tools" component={LearningTools} />
+      <Route path="/case-conferences" component={CaseConferenceBooking} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
       <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />

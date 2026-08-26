@@ -2,7 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { startLogin } from "@/const";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Award, BarChart3, BookOpenCheck, BrainCircuit, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal, Settings2, Target } from "lucide-react";
+import { Award, BarChart3, BookOpenCheck, BrainCircuit, CalendarClock, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal, Settings2, Target } from "lucide-react";
 import type { ReactNode } from "react";
 import { useLocation } from "wouter";
 
@@ -13,6 +13,7 @@ const navigation = [
   { label: "Field Ready", href: "/field-readiness", icon: Medal },
   { label: "Competencies", href: "/competencies", icon: Target },
   { label: "Practice", href: "/learning-tools", icon: BrainCircuit },
+  { label: "Conference", href: "/case-conferences", icon: CalendarClock },
   { label: "Curriculum", href: "/course/advisory-practice", icon: BookOpenCheck },
   { label: "Credential", href: "/certificate", icon: Award },
 ];

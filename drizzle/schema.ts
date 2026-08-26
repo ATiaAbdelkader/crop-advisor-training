@@ -155,6 +155,44 @@ export const timedAssessmentSessions = mysqlTable(
   table => [index("timed_assessment_session_owner_idx").on(table.userId, table.assessmentId, table.submittedAt, table.expiresAt)]
 );
 
+/** Administrator-published availability for voluntary facilitator-led case conferences. */
+export const caseConferenceSlots = mysqlTable(
+  "caseConferenceSlots",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    facilitatorUserId: int("facilitatorUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: varchar("title", { length: 160 }).notNull(),
+    startsAt: timestamp("startsAt").notNull(),
+    endsAt: timestamp("endsAt").notNull(),
+    capacity: int("capacity").notNull(),
+    reservedCount: int("reservedCount").default(0).notNull(),
+    status: mysqlEnum("status", ["open", "cancelled"]).default("open").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [index("case_conference_slot_open_idx").on(table.status, table.startsAt), index("case_conference_facilitator_idx").on(table.facilitatorUserId, table.startsAt)]
+);
+
+/** Learner bookings remain private to the learner and authorised administrators facilitating the conference. */
+export const caseConferenceReservations = mysqlTable(
+  "caseConferenceReservations",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    slotId: int("slotId")
+      .notNull()
+      .references(() => caseConferenceSlots.id, { onDelete: "cascade" }),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    status: mysqlEnum("status", ["booked", "cancelled"]).default("booked").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    cancelledAt: timestamp("cancelledAt"),
+  },
+  table => [uniqueIndex("case_conference_slot_learner_unique").on(table.slotId, table.userId), index("case_conference_learner_booking_idx").on(table.userId, table.status, table.slotId)]
+);
+
 /** Administrator-maintained overrides apply to future sessions for one formal module check. */
 export const assessmentTimeLimitOverrides = mysqlTable(
   "assessmentTimeLimitOverrides",
