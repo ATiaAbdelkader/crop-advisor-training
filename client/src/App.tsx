@@ -30,6 +30,7 @@ import AssessmentTimeLimits from "@/pages/AssessmentTimeLimits";
 import FieldInquiryPeerReview from "@/pages/FieldInquiryPeerReview";
 import FieldInquiryPeerFeedback from "@/pages/FieldInquiryPeerFeedback";
 import LearningExperience from "@/pages/LearningExperience";
+import LearningTools from "@/pages/LearningTools";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -54,6 +55,7 @@ function Router() {
       <Route path="/diagnosis-annotation" component={CropDiagnosisAnnotation} />
       <Route path="/competencies" component={CompetencyMap} />
       <Route path="/learning-experience" component={LearningExperience} />
+      <Route path="/learning-tools" component={LearningTools} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
       <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />

@@ -116,9 +116,9 @@ describe("crop-advisor progression", () => {
   });
 
   it("extends decision practice and supports consistent supervisor calibration without relaxing evidence boundaries", () => {
-    expect(Object.keys(appliedScenarios)).toHaveLength(14);
-    const extendedModules = ["crop-observation", "irrigation-systems", "nutrient-management", "harvesting-and-post-harvest-handling", "insect-pests-and-mites-identification-and-management"];
-    expect(Object.values(appliedScenarios).filter(scenario => extendedModules.includes(scenario.moduleId))).toHaveLength(6);
+    expect(Object.keys(appliedScenarios)).toHaveLength(16);
+    const extendedModules = ["crop-observation", "irrigation-systems", "nutrient-management", "harvesting-and-post-harvest-handling", "insect-pests-and-mites-identification-and-management", "soil-degradation-and-management", "nursery-for-vegetable-production"];
+    expect(Object.values(appliedScenarios).filter(scenario => extendedModules.includes(scenario.moduleId))).toHaveLength(8);
     expect(supervisorCalibrationGuide.anchors.map(anchor => anchor.level)).toEqual(["Prepare", "Perform", "Review and refer"]);
     expect(supervisorCalibrationGuide.safeguards.join(" ")).toContain("authorised");
   });
@@ -192,7 +192,7 @@ describe("crop-advisor progression", () => {
     expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 1 })).toBe("ready");
   });
 
-  it("provides fourteen source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
+  it("provides sixteen source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
     expect(Object.keys(appliedScenarios)).toEqual([
       "water-root-zone-decision",
       "fertilisation-limiting-factor-decision",
@@ -208,6 +208,8 @@ describe("crop-advisor progression", () => {
       "nutrient-evidence-and-loss-risk",
       "harvest-traceability-handoff",
       "pest-beneficial-evidence-decision",
+      "soil-protection-runoff-decision",
+      "nursery-batch-readiness-decision",
     ]);
     expect(Object.keys(appliedScenarioByModuleId)).toEqual(expect.arrayContaining([
       "water-management",
@@ -218,6 +220,8 @@ describe("crop-advisor progression", () => {
       "field-diagnosis-in-vegetable-crops",
       "disease-identification-and-management",
       "responsible-use-of-pesticides",
+      "soil-degradation-and-management",
+      "nursery-for-vegetable-production",
       "weed-management",
       "crop-observation",
       "irrigation-systems",

@@ -125,3 +125,7 @@
 - [x] Add learner-controlled paired peer review for Field Inquiry decisions, with private share links, structured feedback prompts, one-review safeguards, and no effect on formal progression.
 - [x] Add learner-owned reflections linked to completed Field Inquiry peer feedback, covering learning taken, revised action, and next evidence without affecting formal progression.
 - [x] Generate and integrate source-aligned instructional visuals for Modules 11–20 with accessible descriptions, safety boundaries, and learner-route validation.
+- [x] Add adaptive practice pathways and richer branching field cases without changing the 80% formal assessment or sequential progression rules.
+- [x] Add printable low-bandwidth field-card packs and expanded supervisor calibration resources for evidence-based field practice.
+- [x] Add French and Arabic plain-language learner support, translated visual captions, and accessibility controls for reading and audio support.
+- [x] Add a voluntary capstone case-conference guide that connects field evidence, communication, economics, and referral decisions without becoming a formal gate.

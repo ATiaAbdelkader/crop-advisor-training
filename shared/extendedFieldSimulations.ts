@@ -71,4 +71,32 @@ export const extendedFieldSimulations: Readonly<Record<string, AppliedScenario>>
       { id: "beneficial-q3", prompt: "What boundary must remain explicit?", options: [{ id: "a", label: "Any insect observation automatically determines a treatment" }, { id: "b", label: "Product decisions require verified target, current local conditions, lawful crop-target fit, label direction, and authorised guidance" }, { id: "c", label: "Beneficials should never be recorded" }, { id: "d", label: "Crop stage does not matter" }], correctOptionId: "b", feedback: "The simulation does not create a universal threshold or prescription; lawful escalation requires current evidence and authorised sources." },
     ],
   },
+  "soil-protection-runoff-decision": {
+    id: "soil-protection-runoff-decision",
+    moduleId: "soil-degradation-and-management",
+    title: "Simulation: Protect a vulnerable slope before the next rain",
+    context: "A vegetable field has a bare traffic lane running downslope toward a drainage edge. Recent irrigation left visible surface movement in the lower section, and rain is forecast. The grower proposes adding a routine input immediately, but no one has mapped the runoff pathway or compared covered and bare areas.",
+    decisionPrompt: "Use cover, slope, water movement, field access, and timing evidence to frame a protective response and a review trigger.",
+    evidenceChecklist: ["Slope, bare-area, and runoff-pathway observation", "Covered and uncovered comparison points", "Irrigation and forecast context", "Access, drainage-edge, and practical follow-up conditions"],
+    reflectionPrompt: "What observation would show that soil movement risk has changed, and when would you seek site-specific authorised support?",
+    questions: [
+      { id: "soil-protection-q1", prompt: "What should be recorded before choosing a protective action?", options: [{ id: "a", label: "Only the crop name" }, { id: "b", label: "Bare and covered areas, slope, water pathway, recent water conditions, and the drainage edge" }, { id: "c", label: "A universal input rate" }, { id: "d", label: "The preferred machinery brand" }], correctOptionId: "b", feedback: "A protective decision needs a mapped field context. Cover, slope, water movement, and the receiving area help identify the risk pathway." },
+      { id: "soil-protection-q2", prompt: "Which next step best protects decision quality?", options: [{ id: "a", label: "Add an input before checking runoff" }, { id: "b", label: "Reduce avoidable bare-soil exposure, inspect water pathways and access, record the condition, and recheck after the next relevant water event" }, { id: "c", label: "Ignore the drainage edge" }, { id: "d", label: "Assume every slope needs the same measure" }], correctOptionId: "b", feedback: "The learner can identify and reduce visible risk while preserving a site-specific review; the course does not provide universal designs or prescriptions." },
+      { id: "soil-protection-q3", prompt: "What boundary remains essential?", options: [{ id: "a", label: "Slope management can be prescribed without site evidence" }, { id: "b", label: "Engineering, legal, drainage, or site-design questions beyond the evidence should use authorised technical support" }, { id: "c", label: "Runoff pathways never need review" }, { id: "d", label: "A single observation guarantees the cause" }], correctOptionId: "b", feedback: "Field observation can frame a concern and a recheck; technical, legal, drainage, or design decisions require suitable current local authority." },
+    ],
+  },
+  "nursery-batch-readiness-decision": {
+    id: "nursery-batch-readiness-decision",
+    moduleId: "nursery-for-vegetable-production",
+    title: "Simulation: Hold or release a seedling batch using readiness evidence",
+    context: "A vegetable seedling batch has uneven height after several hot days. Most trays have firm plugs and healthy-looking roots, but one section is soft, crowded, and has poorer drainage. The field crew is ready to transplant tomorrow and asks for an immediate release decision for every tray.",
+    decisionPrompt: "Use root condition, uniformity, growing environment, batch pattern, and field timing evidence to decide what can be released, held, or referred for further review.",
+    evidenceChecklist: ["Root plug condition and plant form", "Uniform versus weak tray comparison", "Drainage, spacing, light, and heat context", "Field timing, batch identity, and follow-up condition"],
+    reflectionPrompt: "Which observation would make you change a hold or release decision, and what should remain traceable by batch?",
+    questions: [
+      { id: "nursery-readiness-q1", prompt: "Why should the whole batch not be released from height alone?", options: [{ id: "a", label: "Height is the only nursery quality measure" }, { id: "b", label: "Root condition, uniformity, drainage, and tray pattern can show that one section needs a different decision" }, { id: "c", label: "Every tray always establishes equally" }, { id: "d", label: "Nursery conditions never affect transplant response" }], correctOptionId: "b", feedback: "Seedling readiness is a combined judgement. Comparing strong and weak trays protects the field from carrying avoidable nursery stress forward." },
+      { id: "nursery-readiness-q2", prompt: "Which response is most defensible?", options: [{ id: "a", label: "Release every tray without a record" }, { id: "b", label: "Separate the weak section for review, document root and nursery conditions, and release only evidence-supported batches with a field follow-up check" }, { id: "c", label: "Discard all seedlings without inspection" }, { id: "d", label: "Guarantee recovery after transplanting" }], correctOptionId: "b", feedback: "A hold, recovery, or release decision should be traceable by batch and connected to a practical transplant and follow-up check." },
+      { id: "nursery-readiness-q3", prompt: "What information makes the decision reviewable?", options: [{ id: "a", label: "Only the seedling variety" }, { id: "b", label: "Batch identity, root and plant observations, nursery conditions, release or hold decision, and the next field check" }, { id: "c", label: "A claim that all trays are healthy" }, { id: "d", label: "A product recommendation" }], correctOptionId: "b", feedback: "A field-ready nursery record connects the observed batch condition to the decision and the evidence that will be checked after transplanting." },
+    ],
+  },
 };
