@@ -31,6 +31,7 @@ import type { CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnos
 import type { CompetencyEvidenceSubmissionPayload, CompetencyScorecard } from "../shared/competencyScoring";
 import { parseScorecardReflection, scorecardReflectionFocus, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
 import type { CapstoneSubmissionPayload, FieldPracticumPayload } from "../shared/fieldReadiness";
+import type { CaseConferencePreparationMaterial } from "../shared/caseConferencePreparation";
 
 export type CaseConferenceSlotView = {
   id: number;
@@ -41,12 +42,41 @@ export type CaseConferenceSlotView = {
   reservedCount: number;
   status: "open" | "cancelled";
   isBooked: boolean;
+  preparation?: { notes: string | null; materials: readonly CaseConferencePreparationMaterial[] };
 };
 
 export type AdminCaseConferenceSlotView = CaseConferenceSlotView & {
   facilitatorUserId: number;
   reservations: readonly { id: number; learnerName: string; learnerEmail: string | null; status: "booked" | "cancelled"; createdAt: Date; cancelledAt: Date | null }[];
 };
+
+function parseCaseConferenceMaterials(value: string | null): readonly CaseConferencePreparationMaterial[] {
+  if (!value) return [];
+  try {
+    const parsed = JSON.parse(value);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.filter(item => item && typeof item.name === "string" && typeof item.key === "string" && typeof item.url === "string" && typeof item.contentType === "string" && typeof item.sizeBytes === "number") as CaseConferencePreparationMaterial[];
+  } catch {
+    return [];
+  }
+}
+
+export function projectCaseConferenceSlotForLearner(
+  slot: Pick<typeof caseConferenceSlots.$inferSelect, "id" | "title" | "startsAt" | "endsAt" | "capacity" | "reservedCount" | "status" | "preparationNotes" | "preparationMaterialsJson">,
+  isBooked: boolean,
+): CaseConferenceSlotView {
+  return {
+    id: slot.id,
+    title: slot.title,
+    startsAt: slot.startsAt,
+    endsAt: slot.endsAt,
+    capacity: slot.capacity,
+    reservedCount: slot.reservedCount,
+    status: slot.status,
+    isBooked,
+    ...(isBooked ? { preparation: { notes: slot.preparationNotes, materials: parseCaseConferenceMaterials(slot.preparationMaterialsJson) } } : {}),
+  };
+}
 
 let _db: ReturnType<typeof drizzle> | null = null;
 
@@ -74,7 +104,7 @@ export async function listCaseConferenceSlotsForLearner(userId: number): Promise
   if (!slots.length) return [];
   const reservations = await db.select().from(caseConferenceReservations).where(and(eq(caseConferenceReservations.userId, userId), inArray(caseConferenceReservations.slotId, slots.map(slot => slot.id))));
   const bookedIds = new Set(reservations.filter(reservation => reservation.status === "booked").map(reservation => reservation.slotId));
-  return slots.map(slot => ({ id: slot.id, title: slot.title, startsAt: slot.startsAt, endsAt: slot.endsAt, capacity: slot.capacity, reservedCount: slot.reservedCount, status: slot.status, isBooked: bookedIds.has(slot.id) }));
+  return slots.map(slot => projectCaseConferenceSlotForLearner(slot, bookedIds.has(slot.id)));
 }
 
 export async function listCaseConferenceSlotsForAdmin(): Promise<AdminCaseConferenceSlotView[]> {
@@ -92,6 +122,7 @@ export async function listCaseConferenceSlotsForAdmin(): Promise<AdminCaseConfer
     reservedCount: slot.reservedCount,
     status: slot.status,
     isBooked: false,
+    preparation: { notes: slot.preparationNotes, materials: parseCaseConferenceMaterials(slot.preparationMaterialsJson) },
     reservations: reservations.filter(reservation => reservation.slotId === slot.id).map(({ slotId: _slotId, ...reservation }) => ({ ...reservation, learnerName: reservation.learnerName || "Learner" })),
   }));
 }
@@ -110,6 +141,21 @@ export async function cancelCaseConferenceSlot(adminUserId: number, slotId: numb
   if (!slot) throw new Error("Conference slot not found.");
   if (slot.facilitatorUserId !== adminUserId) throw new Error("Only the facilitator who created this slot can cancel it.");
   await db.update(caseConferenceSlots).set({ status: "cancelled" }).where(eq(caseConferenceSlots.id, slotId));
+}
+
+export async function saveCaseConferencePreparation(input: { facilitatorUserId: number; slotId: number; notes: string | null; materials: readonly CaseConferencePreparationMaterial[] }) {
+  const db = await requireDb();
+  const slot = (await db.select().from(caseConferenceSlots).where(eq(caseConferenceSlots.id, input.slotId)).limit(1))[0];
+  if (!slot) throw new Error("Conference slot not found.");
+  if (slot.facilitatorUserId !== input.facilitatorUserId) throw new Error("Only the facilitator who created this slot can edit its preparation content.");
+  await db.update(caseConferenceSlots).set({ preparationNotes: input.notes, preparationMaterialsJson: JSON.stringify(input.materials) }).where(eq(caseConferenceSlots.id, input.slotId));
+}
+
+export async function assertCaseConferenceSlotFacilitator(facilitatorUserId: number, slotId: number) {
+  const db = await requireDb();
+  const slot = (await db.select().from(caseConferenceSlots).where(eq(caseConferenceSlots.id, slotId)).limit(1))[0];
+  if (!slot || slot.facilitatorUserId !== facilitatorUserId) throw new Error("Only the facilitator who created this slot can add preparation materials.");
+  return slot;
 }
 
 export async function reserveCaseConferenceSlot(userId: number, slotId: number) {

@@ -130,3 +130,4 @@
 - [x] Add French and Arabic plain-language learner support, translated visual captions, and accessibility controls for reading and audio support.
 - [x] Add a voluntary capstone case-conference guide that connects field evidence, communication, economics, and referral decisions without becoming a formal gate.
 - [x] Add an administrator-managed facilitator case-conference booking board with private learner reservations, capacity safeguards, cancellation, and no effect on formal progression.
+- [x] Add optional facilitator notes and secure preparation materials to conference slots, visible only to reserving learners and authorised facilitators.

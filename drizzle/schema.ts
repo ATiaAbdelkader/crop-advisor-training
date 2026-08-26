@@ -168,6 +168,8 @@ export const caseConferenceSlots = mysqlTable(
     endsAt: timestamp("endsAt").notNull(),
     capacity: int("capacity").notNull(),
     reservedCount: int("reservedCount").default(0).notNull(),
+    preparationNotes: text("preparationNotes"),
+    preparationMaterialsJson: text("preparationMaterialsJson"),
     status: mysqlEnum("status", ["open", "cancelled"]).default("open").notNull(),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),

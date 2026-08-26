@@ -10,11 +10,19 @@ Administrators publish a future slot with a title, start and end time, and capac
 
 | Role | Can see | Can do |
 |---|---|---|
-| Learner | Open future slots, remaining capacity, and their own reservation status | Reserve or cancel their own future reservation |
-| Administrator facilitator | Published slot details and active learner reservations for facilitation | Create slots and cancel slots they created |
+| Learner | Open future slots, remaining capacity, their own reservation status, and optional preparation content after an active reservation | Reserve or cancel their own future reservation |
+| Administrator facilitator | Published slot details, active learner reservations, and preparation content | Create slots, cancel slots they created, and manage preparation content only for slots they created |
 | Other learners | No learner identity or reservation information | Cannot inspect another learner’s booking |
 
-The learner list intentionally omits facilitator and peer identity. The administrator view is limited to authenticated administrator procedures, and slot cancellation is separately checked against the facilitator who created the slot.
+The learner list intentionally omits facilitator and peer identity. It also omits preparation notes, material names, and material links until the querying learner has an active reservation for that slot. Cancelling a reservation removes this preparation access. The administrator view is limited to authenticated administrator procedures, and slot cancellation and preparation editing are separately checked against the facilitator who created the slot.
+
+## Optional preparation content
+
+The facilitator who created an open slot may add, edit, or remove an optional preparation note of up to **2,500 characters**, together with up to **three** preparation documents. The system accepts only PDF (`application/pdf`), plain-text (`text/plain`), and DOCX (`application/vnd.openxmlformats-officedocument.wordprocessingml.document`) files, each no larger than **3 MB**.
+
+Files are uploaded to managed storage. The database retains only the document name, storage key, storage URL, content type, and byte size; it never stores the file bytes. The server validates the declared MIME type, data URL, decoded size, safe file name, and facilitator-and-slot storage-key prefix before saving metadata. Material references are disclosed only as part of an authorised learner reservation view or the authenticated administrator view.
+
+> Preparation content is voluntary conference support. It is **not** required course evidence and does **not** alter formal assessment scores, the 80% pass rule, sequential gates, competency scoring, certification, or owner alerts.
 
 ## Capacity and cancellation safeguards
 
@@ -24,6 +32,6 @@ The system rejects expired, cancelled, duplicate, or full slots. It maintains a 
 
 ## Scope boundary
 
-This release does not connect to external calendars, send automatic reminders, generate meeting links, or create recurring jobs. This keeps the first booking board private and manageable without additional credentials or background scheduling. Any future calendar synchronisation or reminders should be assessed as a separate integration and scheduling release.
+This release does not connect to external calendars, send automatic reminders, generate meeting links, create recurring jobs, or automatically notify learners when preparation content changes. This keeps the booking board private and manageable without additional credentials or background scheduling. Any future calendar synchronisation or reminders should be assessed as a separate integration and scheduling release.
 
 High-consequence agricultural discussion remains bounded by the current programme safeguards: facilitators and learners should use current labels, authorised channels, laboratory evidence, extension, or specialist referral where appropriate.

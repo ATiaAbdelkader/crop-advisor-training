@@ -8,6 +8,7 @@ import { competencyScoreOptions, competencyScoringRequirements, type CompetencyE
 import { scorecardReflectionRequirements, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
 import { fieldInquiryPeerReviewRequirements, type FieldInquiryDecisionPayload, type FieldInquiryPeerReviewPayload } from "../shared/fieldInquiryPeerReview";
 import { fieldInquiryPeerReflectionRequirements, type FieldInquiryPeerReflectionPayload } from "../shared/fieldInquiryPeerReflections";
+import { caseConferencePreparationRequirements, type CaseConferencePreparationMaterial } from "../shared/caseConferencePreparation";
 import { buildLearnerExperience } from "../shared/learnerExperience";
 import {
   MAX_FIELD_RECORD_ENTRIES,
@@ -31,6 +32,7 @@ import {
 } from "../shared/trainingLogic";
 import {
   clearAssessmentTimeLimitOverride,
+  assertCaseConferenceSlotFacilitator,
   cancelCaseConferenceReservation,
   cancelCaseConferenceSlot,
   createCaseConferenceSlot,
@@ -76,6 +78,7 @@ import {
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
   saveAssessmentTimeLimitOverride,
+  saveCaseConferencePreparation,
   listCapstoneSubmissions,
   listCropDiagnosisAnnotationNotificationStates,
   listCropDiagnosisAnnotationReviewsForSupervisor,
@@ -289,6 +292,21 @@ const competencyPhotoUploadInput = z.object({
   dataUrl: z.string().min(32).max(Math.ceil(competencyScoringRequirements.maximumEvidencePhotoBytes * 1.4) + 128),
 });
 
+const caseConferenceMaterialInput = z.object({
+  name: z.string().trim().min(1).max(120),
+  key: z.string().trim().min(1).max(360),
+  url: z.string().trim().min(1).max(480),
+  contentType: z.enum(caseConferencePreparationRequirements.acceptedMaterialTypes),
+  sizeBytes: z.number().int().positive().max(caseConferencePreparationRequirements.maximumMaterialBytes),
+});
+
+const caseConferenceMaterialUploadInput = z.object({
+  slotId: z.number().int().positive(),
+  name: z.string().trim().min(1).max(120),
+  contentType: z.enum(caseConferencePreparationRequirements.acceptedMaterialTypes),
+  dataUrl: z.string().min(32).max(Math.ceil(caseConferencePreparationRequirements.maximumMaterialBytes * 1.4) + 128),
+});
+
 const scorecardReflectionInput = z.object({
   feedbackObservation: z.string().trim().min(scorecardReflectionRequirements.minimumResponseLength).max(scorecardReflectionRequirements.maximumResponseLength),
   revisedAction: z.string().trim().min(scorecardReflectionRequirements.minimumResponseLength).max(scorecardReflectionRequirements.maximumResponseLength),
@@ -304,6 +322,14 @@ function decodeCompetencyPhoto(input: z.infer<typeof competencyPhotoUploadInput>
   if (!match || match[1] !== input.contentType) throw new TRPCError({ code: "BAD_REQUEST", message: "Upload a JPEG, PNG, or WEBP image." });
   const bytes = Buffer.from(match[2], "base64");
   if (!bytes.length || bytes.length > competencyScoringRequirements.maximumEvidencePhotoBytes) throw new TRPCError({ code: "PAYLOAD_TOO_LARGE", message: "Each evidence photo must be 1.5 MB or smaller." });
+  return bytes;
+}
+
+function decodeCaseConferenceMaterial(input: z.infer<typeof caseConferenceMaterialUploadInput>) {
+  const match = input.dataUrl.match(/^data:([^;]+);base64,([A-Za-z0-9+/=]+)$/);
+  if (!match || match[1] !== input.contentType) throw new TRPCError({ code: "BAD_REQUEST", message: "Upload a PDF, text file, or DOCX preparation material." });
+  const bytes = Buffer.from(match[2], "base64");
+  if (!bytes.length || bytes.length > caseConferencePreparationRequirements.maximumMaterialBytes) throw new TRPCError({ code: "PAYLOAD_TOO_LARGE", message: "Each preparation material must be 3 MB or smaller." });
   return bytes;
 }
 
@@ -559,6 +585,23 @@ export const appRouter = router({
       .mutation(async ({ ctx, input }) => {
         await cancelCaseConferenceSlot(ctx.user.id, input.slotId);
         return { cancelled: true } as const;
+      }),
+    uploadPreparationMaterial: adminProcedure
+      .input(caseConferenceMaterialUploadInput)
+      .mutation(async ({ ctx, input }) => {
+        await assertCaseConferenceSlotFacilitator(ctx.user.id, input.slotId);
+        const safeName = input.name.replace(/[^a-zA-Z0-9._-]/g, "-").replace(/-+/g, "-").slice(0, 96) || "conference-material";
+        const bytes = decodeCaseConferenceMaterial(input);
+        const stored = await storagePut(`case-conference-materials/${ctx.user.id}/${input.slotId}/${safeName}`, bytes, input.contentType);
+        return { name: input.name, key: stored.key, url: stored.url, contentType: input.contentType, sizeBytes: bytes.length } satisfies CaseConferencePreparationMaterial;
+      }),
+    savePreparation: adminProcedure
+      .input(z.object({ slotId: z.number().int().positive(), notes: z.string().trim().max(caseConferencePreparationRequirements.maximumNoteLength).nullable(), materials: z.array(caseConferenceMaterialInput).max(caseConferencePreparationRequirements.maximumMaterials) }))
+      .mutation(async ({ ctx, input }) => {
+        const prefix = `case-conference-materials/${ctx.user.id}/${input.slotId}/`;
+        if (input.materials.some(material => !material.key.startsWith(prefix) || material.url !== `/manus-storage/${material.key}`)) throw new TRPCError({ code: "BAD_REQUEST", message: "Preparation materials must be uploaded by this facilitator for this conference slot." });
+        await saveCaseConferencePreparation({ facilitatorUserId: ctx.user.id, slotId: input.slotId, notes: input.notes?.trim() || null, materials: input.materials });
+        return { saved: true } as const;
       }),
   }),
   fieldRecords: router({
