@@ -122,3 +122,4 @@
 - [x] Add a protected timed-quiz flow with visible remaining time, server-validated expiry, and unchanged 80% assessment and progression rules.
 - [x] Add administrator-only persisted custom time-limit settings for individual module assessments, with learner sessions using the configured values.
 - [x] Develop a distinctive, source-grounded field-learning layer across the curriculum using trusted agricultural and competency-based references without changing formal progression or safety boundaries.
+- [x] Add learner-controlled paired peer review for Field Inquiry decisions, with private share links, structured feedback prompts, one-review safeguards, and no effect on formal progression.

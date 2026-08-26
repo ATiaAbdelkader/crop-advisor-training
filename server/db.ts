@@ -8,6 +8,8 @@ import {
   competencyAssessments,
   courseEnrollments,
   cropDiagnosisAnnotationReviews,
+  fieldInquiryDecisions,
+  fieldInquiryPeerShares,
   fieldPracticumEntries,
   fieldRecords,
   fieldRecordReviewShares,
@@ -20,6 +22,7 @@ import {
 } from "../drizzle/schema";
 import { ENV } from "./_core/env";
 import type { FieldRecordPayload } from "../shared/digitalFieldRecords";
+import type { FieldInquiryDecisionPayload, FieldInquiryPeerReviewPayload } from "../shared/fieldInquiryPeerReview";
 import type { CropDiagnosisAnnotationReviewPayload } from "../shared/cropDiagnosisAnnotation";
 import type { CompetencyEvidenceSubmissionPayload, CompetencyScorecard } from "../shared/competencyScoring";
 import { parseScorecardReflection, scorecardReflectionFocus, type ScorecardReflectionPayload } from "../shared/scorecardReflections";
@@ -472,6 +475,82 @@ export async function submitFieldRecordReview(input: { shareToken: string; revie
     .update(fieldRecordReviewShares)
     .set({ reviewerName: input.reviewerName, reviewComment: input.reviewComment, reviewedAt: new Date() })
     .where(and(eq(fieldRecordReviewShares.shareToken, input.shareToken), isNull(fieldRecordReviewShares.revokedAt)));
+  return result[0].affectedRows > 0;
+}
+
+type StoredFieldInquiryDecision = Omit<typeof fieldInquiryDecisions.$inferSelect, "payloadJson"> & { payload: FieldInquiryDecisionPayload };
+type StoredFieldInquiryPeerShare = Omit<typeof fieldInquiryPeerShares.$inferSelect, "feedbackJson"> & { feedback: FieldInquiryPeerReviewPayload | null };
+
+function toStoredFieldInquiryDecision(entry: typeof fieldInquiryDecisions.$inferSelect): StoredFieldInquiryDecision {
+  return { ...entry, payload: JSON.parse(entry.payloadJson) as FieldInquiryDecisionPayload };
+}
+
+function toStoredFieldInquiryPeerShare(entry: typeof fieldInquiryPeerShares.$inferSelect): StoredFieldInquiryPeerShare {
+  return { ...entry, feedback: entry.feedbackJson ? JSON.parse(entry.feedbackJson) as FieldInquiryPeerReviewPayload : null };
+}
+
+export async function upsertFieldInquiryDecision(input: { userId: number; moduleId: string; payload: FieldInquiryDecisionPayload }) {
+  const db = await requireDb();
+  const existingRows = await db.select().from(fieldInquiryDecisions).where(and(eq(fieldInquiryDecisions.userId, input.userId), eq(fieldInquiryDecisions.moduleId, input.moduleId))).limit(1);
+  await db
+    .insert(fieldInquiryDecisions)
+    .values({ userId: input.userId, moduleId: input.moduleId, payloadJson: JSON.stringify(input.payload) })
+    .onDuplicateKeyUpdate({ set: { payloadJson: JSON.stringify(input.payload), updatedAt: new Date() } });
+  if (existingRows[0]) {
+    await db.update(fieldInquiryPeerShares).set({ revokedAt: new Date() }).where(and(eq(fieldInquiryPeerShares.ownerUserId, input.userId), eq(fieldInquiryPeerShares.decisionId, existingRows[0].id), isNull(fieldInquiryPeerShares.revokedAt), isNull(fieldInquiryPeerShares.reviewedAt)));
+  }
+  const rows = await db.select().from(fieldInquiryDecisions).where(and(eq(fieldInquiryDecisions.userId, input.userId), eq(fieldInquiryDecisions.moduleId, input.moduleId))).limit(1);
+  return rows[0] ? toStoredFieldInquiryDecision(rows[0]) : null;
+}
+
+export async function getFieldInquiryDecisionForOwner(userId: number, moduleId: string) {
+  const db = await requireDb();
+  const rows = await db.select().from(fieldInquiryDecisions).where(and(eq(fieldInquiryDecisions.userId, userId), eq(fieldInquiryDecisions.moduleId, moduleId))).limit(1);
+  return rows[0] ? toStoredFieldInquiryDecision(rows[0]) : null;
+}
+
+export async function listFieldInquiryPeerSharesForOwner(ownerUserId: number, decisionId: number) {
+  const db = await requireDb();
+  const decisionRows = await db.select().from(fieldInquiryDecisions).where(and(eq(fieldInquiryDecisions.id, decisionId), eq(fieldInquiryDecisions.userId, ownerUserId))).limit(1);
+  if (!decisionRows[0]) return null;
+  const shares = await db.select().from(fieldInquiryPeerShares).where(and(eq(fieldInquiryPeerShares.ownerUserId, ownerUserId), eq(fieldInquiryPeerShares.decisionId, decisionId))).orderBy(desc(fieldInquiryPeerShares.createdAt));
+  return shares.map(toStoredFieldInquiryPeerShare);
+}
+
+export async function createFieldInquiryPeerShare(input: { ownerUserId: number; decisionId: number; pairLabel?: string }) {
+  const db = await requireDb();
+  const decisionRows = await db.select().from(fieldInquiryDecisions).where(and(eq(fieldInquiryDecisions.id, input.decisionId), eq(fieldInquiryDecisions.userId, input.ownerUserId))).limit(1);
+  if (!decisionRows[0]) return null;
+  const activeShares = await db.select().from(fieldInquiryPeerShares).where(and(eq(fieldInquiryPeerShares.ownerUserId, input.ownerUserId), eq(fieldInquiryPeerShares.decisionId, input.decisionId), isNull(fieldInquiryPeerShares.revokedAt))).limit(1);
+  if (activeShares[0]) return null;
+  const shareToken = crypto.randomUUID().replace(/-/g, "");
+  const result = await db.insert(fieldInquiryPeerShares).values({ decisionId: input.decisionId, ownerUserId: input.ownerUserId, shareToken, pairLabel: input.pairLabel?.trim() || null });
+  const shares = await db.select().from(fieldInquiryPeerShares).where(eq(fieldInquiryPeerShares.id, Number(result[0].insertId))).limit(1);
+  return shares[0] ? toStoredFieldInquiryPeerShare(shares[0]) : null;
+}
+
+export async function revokeFieldInquiryPeerShare(ownerUserId: number, id: number) {
+  const db = await requireDb();
+  const result = await db.update(fieldInquiryPeerShares).set({ revokedAt: new Date() }).where(and(eq(fieldInquiryPeerShares.id, id), eq(fieldInquiryPeerShares.ownerUserId, ownerUserId), isNull(fieldInquiryPeerShares.revokedAt)));
+  return result[0].affectedRows > 0;
+}
+
+export async function getActiveFieldInquiryPeerShare(shareToken: string) {
+  const db = await requireDb();
+  const shareRows = await db.select().from(fieldInquiryPeerShares).where(and(eq(fieldInquiryPeerShares.shareToken, shareToken), isNull(fieldInquiryPeerShares.revokedAt))).limit(1);
+  const share = shareRows[0];
+  if (!share) return null;
+  const decisionRows = await db.select().from(fieldInquiryDecisions).where(eq(fieldInquiryDecisions.id, share.decisionId)).limit(1);
+  const decision = decisionRows[0];
+  return decision ? { share: toStoredFieldInquiryPeerShare(share), decision: toStoredFieldInquiryDecision(decision) } : null;
+}
+
+export async function submitFieldInquiryPeerReview(input: { shareToken: string; reviewerUserId: number; reviewerName: string; feedback: FieldInquiryPeerReviewPayload }) {
+  const db = await requireDb();
+  const shareRows = await db.select().from(fieldInquiryPeerShares).where(and(eq(fieldInquiryPeerShares.shareToken, input.shareToken), isNull(fieldInquiryPeerShares.revokedAt))).limit(1);
+  const share = shareRows[0];
+  if (!share || share.ownerUserId === input.reviewerUserId) return false;
+  const result = await db.update(fieldInquiryPeerShares).set({ reviewerUserId: input.reviewerUserId, reviewerName: input.reviewerName, feedbackJson: JSON.stringify(input.feedback), reviewedAt: new Date() }).where(and(eq(fieldInquiryPeerShares.id, share.id), isNull(fieldInquiryPeerShares.revokedAt), isNull(fieldInquiryPeerShares.reviewedAt)));
   return result[0].affectedRows > 0;
 }
 

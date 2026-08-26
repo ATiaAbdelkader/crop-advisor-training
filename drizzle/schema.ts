@@ -258,6 +258,45 @@ export const fieldRecordReviewShares = mysqlTable(
   table => [index("field_record_share_owner_record_idx").on(table.ownerUserId, table.recordId, table.revokedAt)]
 );
 
+/** Learner-owned Field Inquiry decisions can be shared through one revocable paired peer-review link. */
+export const fieldInquiryDecisions = mysqlTable(
+  "fieldInquiryDecisions",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    moduleId: varchar("moduleId", { length: 128 }).notNull(),
+    payloadJson: text("payloadJson").notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [uniqueIndex("field_inquiry_decision_owner_module_unique").on(table.userId, table.moduleId)]
+);
+
+/** Each private pair link permits one signed-in peer’s structured feedback and can be revoked by its owner. */
+export const fieldInquiryPeerShares = mysqlTable(
+  "fieldInquiryPeerShares",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    decisionId: int("decisionId")
+      .notNull()
+      .references(() => fieldInquiryDecisions.id, { onDelete: "cascade" }),
+    ownerUserId: int("ownerUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    shareToken: varchar("shareToken", { length: 64 }).notNull().unique(),
+    pairLabel: varchar("pairLabel", { length: 80 }),
+    reviewerUserId: int("reviewerUserId").references(() => users.id, { onDelete: "set null" }),
+    reviewerName: varchar("reviewerName", { length: 160 }),
+    feedbackJson: text("feedbackJson"),
+    reviewedAt: timestamp("reviewedAt"),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
+    revokedAt: timestamp("revokedAt"),
+  },
+  table => [index("field_inquiry_peer_share_owner_decision_idx").on(table.ownerUserId, table.decisionId, table.revokedAt)]
+);
+
 /** A completed photo-annotation attempt remains private to the learner and assigned course administrators. */
 export const cropDiagnosisAnnotationReviews = mysqlTable(
   "cropDiagnosisAnnotationReviews",

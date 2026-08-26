@@ -192,7 +192,7 @@ export default function Course() {
                     </dl>
                   </section>
                 )}
-                {fieldInquiryStudio && <FieldInquiryStudioCard studio={fieldInquiryStudio} />}
+                {fieldInquiryStudio && <FieldInquiryStudioCard studio={fieldInquiryStudio} onOpenPeerReview={() => isAuthenticated ? setLocation(`/field-inquiry/${module.id}`) : startLogin()} />}
               </div>
             )}
 

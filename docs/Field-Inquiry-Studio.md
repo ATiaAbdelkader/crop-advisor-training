@@ -26,6 +26,10 @@ The shared routine is instantiated for all 34 modules using the existing `module
 
 High-consequence crop-protection modules continue to forbid improvised product, rate, threshold, treatment, medical, cleanup, disposal, legal-reporting, or unverified local-regulatory advice. The Studio repeats the existing module safety boundary and directs learners to current labels, authorised channels, laboratories, extension services, or qualified specialists when those checks are required.
 
+## Paired peer review
+
+Learners may now save a Field Inquiry decision and voluntarily create one revocable private link for one signed-in peer to review it through three structured prompts: evidence seen, question to test, and next evidence to strengthen. This is a developmental conversation rather than a peer grade. The owner controls the link, self-review is blocked, the first completed review closes the pair, and saving revised reasoning automatically revokes an active link. The workflow and privacy boundary are specified in [`Paired-Field-Inquiry-Peer-Review.md`](./Paired-Field-Inquiry-Peer-Review.md).
+
 ## References
 
 [1] [Food and Agriculture Organization of the United Nations, *Global Farmer Field School Platform: Overview*](https://www.fao.org/farmer-field-schools/overview/en/).

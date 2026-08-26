@@ -27,6 +27,8 @@ import ScorecardReflectionLibrary from "@/pages/ScorecardReflectionLibrary";
 import SupervisorCompetencyReviews from "@/pages/SupervisorCompetencyReviews";
 import SupervisorCalibration from "@/pages/SupervisorCalibration";
 import AssessmentTimeLimits from "@/pages/AssessmentTimeLimits";
+import FieldInquiryPeerReview from "@/pages/FieldInquiryPeerReview";
+import FieldInquiryPeerFeedback from "@/pages/FieldInquiryPeerFeedback";
 import LearningExperience from "@/pages/LearningExperience";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
@@ -59,6 +61,8 @@ function Router() {
       <Route path="/supervisor/competency-reviews" component={SupervisorCompetencyReviews} />
       <Route path="/supervisor/competency-calibration" component={SupervisorCalibration} />
       <Route path="/supervisor/assessment-time-limits" component={AssessmentTimeLimits} />
+      <Route path="/field-inquiry-peer/:shareToken" component={FieldInquiryPeerFeedback} />
+      <Route path="/field-inquiry/:moduleId" component={FieldInquiryPeerReview} />
       <Route path="/supervisor/annotation-reviews" component={AnnotationSupervisorReviews} />
       <Route path="/practicum/:entryId" component={FieldPracticum} />
       <Route path="/practicum" component={FieldPracticum} />
