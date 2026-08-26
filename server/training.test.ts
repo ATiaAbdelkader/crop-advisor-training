@@ -123,14 +123,14 @@ describe("crop-advisor progression", () => {
     expect(supervisorCalibrationGuide.safeguards.join(" ")).toContain("authorised");
   });
 
-  it("provides a distinct accessible instructional visual for each of the first twenty modules", () => {
-    const firstTwentyModules = cropAdvisorCourse.modules.filter(module => module.index <= 20);
-    const visualSources = firstTwentyModules.map(module => moduleVisuals[module.id]?.src);
+  it("provides a distinct accessible instructional visual for each of the first twenty-six modules", () => {
+    const firstTwentySixModules = cropAdvisorCourse.modules.filter(module => module.index <= 26);
+    const visualSources = firstTwentySixModules.map(module => moduleVisuals[module.id]?.src);
 
-    expect(Object.keys(moduleVisuals)).toHaveLength(20);
-    expect(firstTwentyModules).toHaveLength(20);
-    expect(new Set(visualSources).size).toBe(20);
-    firstTwentyModules.forEach(module => {
+    expect(Object.keys(moduleVisuals)).toHaveLength(26);
+    expect(firstTwentySixModules).toHaveLength(26);
+    expect(new Set(visualSources).size).toBe(26);
+    firstTwentySixModules.forEach(module => {
       const visual = moduleVisuals[module.id];
       expect(visual).toBeDefined();
       expect(visual.src).toMatch(/^\/manus-storage\/module-\d{2}-.+\.jpg$/);
