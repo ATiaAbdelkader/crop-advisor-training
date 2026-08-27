@@ -143,3 +143,4 @@
 - [ ] Complete the remaining one-at-a-time, source-aligned content enhancements across all modules while preserving evidence-first and non-gating safety boundaries.
 - [x] Implement a researched Module 31 pest-and-mite observation evidence lab with threshold-free monitoring and authorised referral boundaries.
 - [x] Implement a researched Module 31 pest-and-mite observation evidence lab with threshold-free monitoring and authorised referral boundaries.
+- [x] Implement a researched Module 32 IPM decision exercise connecting prevention, monitoring evidence, non-chemical options, and authorised escalation boundaries.
