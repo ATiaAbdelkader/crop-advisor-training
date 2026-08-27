@@ -23,7 +23,8 @@ import { fertilisationPlanningRequirements } from "@shared/fertilisationPlanning
 import { cropWalkEvidenceLabRequirements } from "@shared/cropWalkEvidenceLab";
 import { soilSamplingQualityAuditRequirements } from "@shared/soilSamplingQualityAudit";
 import { rootZoneWaterDecisionLabRequirements } from "@shared/rootZoneWaterDecisionLab";
-import { Calculator, CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, FlaskConical, ImageOff, LockKeyhole, MapPinned, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target, Waves } from "lucide-react";
+import { dripUniformityInvestigationRequirements } from "@shared/dripUniformityInvestigation";
+import { Calculator, CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, Droplets, FileText, FlaskConical, ImageOff, LockKeyhole, MapPinned, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target, Waves } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -252,6 +253,16 @@ export default function Course() {
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Compare root-zone, water-context, crop-pattern, and system evidence across two field zones before choosing the next safe recheck or referral.</p>
                 <Button variant="outline" onClick={() => setLocation("/root-zone-water-lab")} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><Waves className="mr-1.5 h-3.5 w-3.5" />Open water decision lab</Button>
                 <p className="mt-3 text-[10px] leading-4 text-[#668069]">{rootZoneWaterDecisionLabRequirements.nonGatingBoundary}</p>
+              </div>
+            )}
+            {module.id === "drip-irrigation-system" && (
+              <div className="rounded-[22px] border border-[#cfe1d0] bg-[#eef7ec] p-5">
+                <Droplets className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Interactive field exercise</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">Drip Uniformity Investigation Lab</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Compare source-near, middle, and far-end delivery, wetting, crop, and hardware evidence before choosing the next safe check or referral.</p>
+                <Button variant="outline" onClick={() => setLocation("/drip-uniformity-lab")} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><Droplets className="mr-1.5 h-3.5 w-3.5" />Open uniformity lab</Button>
+                <p className="mt-3 text-[10px] leading-4 text-[#668069]">{dripUniformityInvestigationRequirements.nonGatingBoundary}</p>
               </div>
             )}
             {module.id === "vegetable-fertilisation" && (
