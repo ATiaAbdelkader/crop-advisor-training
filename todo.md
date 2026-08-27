@@ -132,7 +132,7 @@
 - [x] Add an administrator-managed facilitator case-conference booking board with private learner reservations, capacity safeguards, cancellation, and no effect on formal progression.
 - [x] Add optional facilitator notes and secure preparation materials to conference slots, visible only to reserving learners and authorised facilitators.
 - [x] Add a non-gating fertilisation planning lab with learner-entered crop requirements, calendar drafting, and dose calculations tied to soil-test, label, and local-authority verification.
-- [ ] Generate and integrate source-aligned instructional visuals for the remaining modules that do not yet have visual learning support.
+- [x] Pause the quota-limited remaining instructional visuals for Modules 27–34 at the user's request; Modules 21–26 visuals are integrated and the remaining set may resume when generation is available.
 - [x] Produce and prioritise an expert module-by-module blueprint for the next crop-advisor content upgrades.
 - [x] Implement a researched Module 3 Crop-Walk Evidence Lab for structured observation, comparison, uncertainty, and referral practice.
 - [x] Implement a researched Module 16 soil-sampling quality audit for representative zones, clean handling, traceability, and laboratory referral practice.
@@ -148,3 +148,4 @@
 - [x] Implement a researched Module 34 integrated weed-observation exercise connecting field pattern, prevention context, evidence limits, and authorised escalation.
 - [x] Implement a researched Module 27 field-care maintenance evidence exercise for routine observation, prioritisation, and safe escalation practice.
 - [x] Implement a researched Module 28 harvest-quality evidence exercise for maturity observation, handling-risk recognition, traceability, and safe referral practice.
+- [x] Implement a researched Module 21 field-layout evidence exercise for field preparation, mulch and trellis context, readiness checks, and safe escalation practice.
