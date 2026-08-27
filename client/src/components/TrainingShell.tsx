@@ -2,6 +2,7 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { startLogin } from "@/const";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { AutoExerciseProgress } from "@/components/ExerciseChecklistProgress";
 import { Award, BarChart3, BookOpenCheck, BrainCircuit, CalendarClock, ClipboardList, Leaf, LayoutDashboard, LogOut, Medal, Settings2, Target } from "lucide-react";
 import type { ReactNode } from "react";
 import { useLocation } from "wouter";
@@ -98,6 +99,7 @@ export default function TrainingShell({
           </div>
         </div>
       </header>
+      <AutoExerciseProgress />
       {children}
     </div>
   );
