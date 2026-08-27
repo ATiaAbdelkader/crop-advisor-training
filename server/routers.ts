@@ -33,6 +33,7 @@ import {
 import {
   clearAssessmentTimeLimitOverride,
   assertCaseConferenceSlotFacilitator,
+  acknowledgeLearnerExerciseSummaryShare,
   cancelCaseConferenceReservation,
   cancelCaseConferenceSlot,
   createCaseConferenceSlot,
@@ -522,6 +523,13 @@ export const appRouter = router({
         return { revoked: true } as const;
       }),
     facilitatorQueue: adminProcedure.query(() => listActiveLearnerExerciseSummarySharesForFacilitator()),
+    acknowledge: adminProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        const acknowledged = await acknowledgeLearnerExerciseSummaryShare(ctx.user.id, input.id);
+        if (!acknowledged) throw new TRPCError({ code: "NOT_FOUND", message: "Active learner-selected exercise summary not found." });
+        return { acknowledged: true } as const;
+      }),
   }),
   fieldInquiryPeerReview: router({
     mine: protectedProcedure

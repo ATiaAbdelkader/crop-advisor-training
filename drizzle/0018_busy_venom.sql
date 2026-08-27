@@ -1,0 +1,3 @@
+ALTER TABLE `learnerExerciseSummaryShares` ADD `reviewedByUserId` int;--> statement-breakpoint
+ALTER TABLE `learnerExerciseSummaryShares` ADD `reviewedAt` timestamp;--> statement-breakpoint
+ALTER TABLE `learnerExerciseSummaryShares` ADD CONSTRAINT `learnerExerciseSummaryShares_reviewedByUserId_users_id_fk` FOREIGN KEY (`reviewedByUserId`) REFERENCES `users`(`id`) ON DELETE set null ON UPDATE no action;

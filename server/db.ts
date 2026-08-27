@@ -293,10 +293,19 @@ export async function mergeLearnerExerciseProgress(input: {
       .limit(1);
     const current = existing[0];
     const completedPrompts = Math.min(entry.totalPrompts, Math.max(entry.completedPrompts, current?.completedPrompts ?? 0));
-    await db
-      .insert(learnerExerciseProgress)
-      .values({ userId: input.userId, exerciseRoute: entry.exerciseRoute, completedPrompts, totalPrompts: entry.totalPrompts })
-      .onDuplicateKeyUpdate({ set: { completedPrompts, totalPrompts: entry.totalPrompts, updatedAt: new Date() } });
+    const changed = !current || current.completedPrompts !== completedPrompts || current.totalPrompts !== entry.totalPrompts;
+    if (!current) {
+      await db.insert(learnerExerciseProgress).values({ userId: input.userId, exerciseRoute: entry.exerciseRoute, completedPrompts, totalPrompts: entry.totalPrompts });
+    } else if (changed) {
+      await db.update(learnerExerciseProgress).set({ completedPrompts, totalPrompts: entry.totalPrompts, updatedAt: new Date() }).where(eq(learnerExerciseProgress.id, current.id));
+    }
+    if (changed) {
+      await db.update(learnerExerciseSummaryShares).set({ reviewedAt: null, reviewedByUserId: null }).where(and(
+        eq(learnerExerciseSummaryShares.ownerUserId, input.userId),
+        eq(learnerExerciseSummaryShares.exerciseRoute, entry.exerciseRoute),
+        isNull(learnerExerciseSummaryShares.revokedAt),
+      ));
+    }
   }
   return listLearnerExerciseProgress(input.userId);
 }
@@ -305,6 +314,7 @@ export type LearnerExerciseSummaryShare = {
   id: number;
   exerciseRoute: string;
   sharedAt: Date;
+  reviewedAt: Date | null;
   revokedAt: Date | null;
   completedPrompts: number | null;
   totalPrompts: number | null;
@@ -318,6 +328,7 @@ export async function listLearnerExerciseSummaryShares(ownerUserId: number): Pro
       id: learnerExerciseSummaryShares.id,
       exerciseRoute: learnerExerciseSummaryShares.exerciseRoute,
       sharedAt: learnerExerciseSummaryShares.sharedAt,
+      reviewedAt: learnerExerciseSummaryShares.reviewedAt,
       revokedAt: learnerExerciseSummaryShares.revokedAt,
       completedPrompts: learnerExerciseProgress.completedPrompts,
       totalPrompts: learnerExerciseProgress.totalPrompts,
@@ -343,7 +354,7 @@ export async function shareLearnerExerciseSummary(ownerUserId: number, exerciseR
   await db
     .insert(learnerExerciseSummaryShares)
     .values({ ownerUserId, exerciseRoute })
-    .onDuplicateKeyUpdate({ set: { sharedAt: new Date(), revokedAt: null } });
+    .onDuplicateKeyUpdate({ set: { sharedAt: new Date(), revokedAt: null, reviewedAt: null, reviewedByUserId: null } });
   const shares = await listLearnerExerciseSummaryShares(ownerUserId);
   return shares.find(share => share.exerciseRoute === exerciseRoute && !share.revokedAt) ?? null;
 }
@@ -362,6 +373,16 @@ export async function revokeLearnerExerciseSummaryShare(ownerUserId: number, id:
   return result[0].affectedRows > 0;
 }
 
+/** An authorised facilitator can acknowledge one active learner-selected summary; this is not a score or assessment. */
+export async function acknowledgeLearnerExerciseSummaryShare(facilitatorUserId: number, id: number) {
+  const db = await requireDb();
+  const result = await db
+    .update(learnerExerciseSummaryShares)
+    .set({ reviewedByUserId: facilitatorUserId, reviewedAt: new Date() })
+    .where(and(eq(learnerExerciseSummaryShares.id, id), isNull(learnerExerciseSummaryShares.revokedAt)));
+  return result[0].affectedRows > 0;
+}
+
 /** Course administrators can review only actively shared aggregate completion summaries. */
 export async function listActiveLearnerExerciseSummarySharesForFacilitator() {
   const db = await requireDb();
@@ -373,6 +394,7 @@ export async function listActiveLearnerExerciseSummarySharesForFacilitator() {
       learnerEmail: users.email,
       exerciseRoute: learnerExerciseSummaryShares.exerciseRoute,
       sharedAt: learnerExerciseSummaryShares.sharedAt,
+      reviewedAt: learnerExerciseSummaryShares.reviewedAt,
       completedPrompts: learnerExerciseProgress.completedPrompts,
       totalPrompts: learnerExerciseProgress.totalPrompts,
     })

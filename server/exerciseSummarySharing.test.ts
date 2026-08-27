@@ -6,6 +6,7 @@ const mocks = vi.hoisted(() => ({
   share: vi.fn(),
   revoke: vi.fn(),
   queue: vi.fn(),
+  acknowledge: vi.fn(),
 }));
 
 vi.mock("./db", async importOriginal => {
@@ -16,6 +17,7 @@ vi.mock("./db", async importOriginal => {
     shareLearnerExerciseSummary: mocks.share,
     revokeLearnerExerciseSummaryShare: mocks.revoke,
     listActiveLearnerExerciseSummarySharesForFacilitator: mocks.queue,
+    acknowledgeLearnerExerciseSummaryShare: mocks.acknowledge,
   };
 });
 
@@ -30,7 +32,7 @@ function createCaller(userId = 73, role: "user" | "admin" = "user") {
   return appRouter.createCaller(ctx);
 }
 
-const share = { id: 9, exerciseRoute: "/crop-walk-lab", sharedAt: new Date(), revokedAt: null, completedPrompts: 3, totalPrompts: 4 };
+const share = { id: 9, exerciseRoute: "/crop-walk-lab", sharedAt: new Date(), reviewedAt: null, revokedAt: null, completedPrompts: 3, totalPrompts: 4 };
 
 describe("exerciseSummaryShares", () => {
   beforeEach(() => {
@@ -38,6 +40,7 @@ describe("exerciseSummaryShares", () => {
     mocks.share.mockReset().mockResolvedValue(share);
     mocks.revoke.mockReset().mockResolvedValue(true);
     mocks.queue.mockReset().mockResolvedValue([]);
+    mocks.acknowledge.mockReset().mockResolvedValue(true);
   });
 
   it("lists and creates shares only for the authenticated learner", async () => {
@@ -62,5 +65,11 @@ describe("exerciseSummaryShares", () => {
     await expect(createCaller(73, "user").exerciseSummaryShares.facilitatorQueue()).rejects.toMatchObject({ code: "FORBIDDEN" });
     await expect(createCaller(1, "admin").exerciseSummaryShares.facilitatorQueue()).resolves.toEqual([]);
     expect(mocks.queue).toHaveBeenCalledOnce();
+  });
+
+  it("allows only an authorised facilitator to acknowledge an active learner-selected summary", async () => {
+    await expect(createCaller(73, "user").exerciseSummaryShares.acknowledge({ id: share.id })).rejects.toMatchObject({ code: "FORBIDDEN" });
+    await expect(createCaller(1, "admin").exerciseSummaryShares.acknowledge({ id: share.id })).resolves.toEqual({ acknowledged: true });
+    expect(mocks.acknowledge).toHaveBeenCalledWith(1, share.id);
   });
 });
