@@ -140,3 +140,6 @@
 - [x] Implement a researched Module 25 drip-uniformity investigation lab for source-to-far-end comparison, maintenance evidence, and safe referral practice.
 - [x] Implement a researched Module 29 differential field-diagnosis evidence board for competing explanations, evidence checks, and safe referral practice.
 - [x] Implement a researched Module 30 disease-investigation evidence lab for observation, confirmation limits, and authorised diagnostic referral practice.
+- [ ] Complete the remaining one-at-a-time, source-aligned content enhancements across all modules while preserving evidence-first and non-gating safety boundaries.
+- [x] Implement a researched Module 31 pest-and-mite observation evidence lab with threshold-free monitoring and authorised referral boundaries.
+- [x] Implement a researched Module 31 pest-and-mite observation evidence lab with threshold-free monitoring and authorised referral boundaries.
