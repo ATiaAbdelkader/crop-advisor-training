@@ -20,7 +20,8 @@ import { moduleCompetencyByModuleId } from "@shared/competencyFramework";
 import { moduleVisuals } from "@shared/moduleVisuals";
 import { getFieldInquiryStudio } from "@shared/fieldInquiryStudio";
 import { fertilisationPlanningRequirements } from "@shared/fertilisationPlanning";
-import { Calculator, CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target } from "lucide-react";
+import { cropWalkEvidenceLabRequirements } from "@shared/cropWalkEvidenceLab";
+import { Calculator, CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, MapPinned, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -219,6 +220,16 @@ export default function Course() {
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Fill, save, reopen, and export a private digital record for this field decision.</p>
                 <Button onClick={() => setLocation(`/records/${fieldRecord.id}/entry`)} className="mt-4 w-full rounded-full bg-[#315f47] text-xs font-bold hover:bg-[#214d36]"><FileText className="mr-1.5 h-3.5 w-3.5" />Start digital record</Button>
                 <button type="button" onClick={() => setLocation(`/records/${fieldRecord.id}`)} className="mt-3 w-full text-center text-[11px] font-bold text-[#54705a] hover:text-[#1f4a37]">View blank printable template</button>
+              </div>
+            )}
+            {module.id === "crop-observation" && (
+              <div className="rounded-[22px] border border-[#cfe1d0] bg-[#eef7ec] p-5">
+                <MapPinned className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Interactive field exercise</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">Crop-Walk Evidence Lab</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Plan a repeatable crop walk, compare healthy, typical, and unusual field zones, record evidence before interpretation, and state the next safe check or referral.</p>
+                <Button variant="outline" onClick={() => setLocation("/crop-walk-lab")} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><MapPinned className="mr-1.5 h-3.5 w-3.5" />Open crop-walk lab</Button>
+                <p className="mt-3 text-[10px] leading-4 text-[#668069]">{cropWalkEvidenceLabRequirements.nonGatingBoundary}</p>
               </div>
             )}
             {module.id === "vegetable-fertilisation" && (

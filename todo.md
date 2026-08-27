@@ -134,3 +134,4 @@
 - [x] Add a non-gating fertilisation planning lab with learner-entered crop requirements, calendar drafting, and dose calculations tied to soil-test, label, and local-authority verification.
 - [ ] Generate and integrate source-aligned instructional visuals for the remaining modules that do not yet have visual learning support.
 - [x] Produce and prioritise an expert module-by-module blueprint for the next crop-advisor content upgrades.
+- [x] Implement a researched Module 3 Crop-Walk Evidence Lab for structured observation, comparison, uncertainty, and referral practice.

@@ -33,6 +33,7 @@ import LearningExperience from "@/pages/LearningExperience";
 import LearningTools from "@/pages/LearningTools";
 import CaseConferenceBooking from "@/pages/CaseConferenceBooking";
 import FertilisationPlanningLab from "@/pages/FertilisationPlanningLab";
+import CropWalkEvidenceLab from "@/pages/CropWalkEvidenceLab";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -60,6 +61,7 @@ function Router() {
       <Route path="/learning-tools" component={LearningTools} />
       <Route path="/case-conferences" component={CaseConferenceBooking} />
       <Route path="/fertilisation-planner" component={FertilisationPlanningLab} />
+      <Route path="/crop-walk-lab" component={CropWalkEvidenceLab} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
       <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />
