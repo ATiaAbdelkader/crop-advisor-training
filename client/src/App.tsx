@@ -35,6 +35,7 @@ import CaseConferenceBooking from "@/pages/CaseConferenceBooking";
 import FertilisationPlanningLab from "@/pages/FertilisationPlanningLab";
 import CropWalkEvidenceLab from "@/pages/CropWalkEvidenceLab";
 import SoilSamplingQualityAudit from "@/pages/SoilSamplingQualityAudit";
+import RootZoneWaterDecisionLab from "@/pages/RootZoneWaterDecisionLab";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -64,6 +65,7 @@ function Router() {
       <Route path="/fertilisation-planner" component={FertilisationPlanningLab} />
       <Route path="/crop-walk-lab" component={CropWalkEvidenceLab} />
       <Route path="/soil-sampling-audit" component={SoilSamplingQualityAudit} />
+      <Route path="/root-zone-water-lab" component={RootZoneWaterDecisionLab} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
       <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />
