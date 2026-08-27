@@ -157,3 +157,6 @@
 - [x] Add facilitator acknowledgement and learner-visible reviewed status badges for voluntarily shared exercise summaries without affecting formal progression.
 - [x] Display an unread reviewed-summary count on the learner dashboard and save learner-owned read state without affecting formal progression.
 - [x] Generate and integrate source-aligned instructional visuals for the remaining Modules 27–34 with accessible descriptions, safe imagery, and learner-route validation.
+- [x] Audit all 34 module instructional-image loads and regenerate or remap only confirmed failures with accessible safe replacements.
+- [x] Verify original failed module-image generation jobs and ensure every active module mapping uses a successfully generated replacement.
+- [x] Verify the original generation status and active image mappings for Modules 22–27, regenerating only any failed active asset.

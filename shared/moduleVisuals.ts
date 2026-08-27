@@ -111,27 +111,27 @@ export const moduleVisuals: Readonly<Record<string, ModuleVisual>> = {
     caption: "Prepare beds, cover, crop support, drainage, and access as one field layout that can be checked before planting advances.",
   },
   "transplanting": {
-    src: "/manus-storage/module-22-transplanting_f410556e.jpg",
+    src: "/manus-storage/module-22-transplanting-v2_b62e4e8e.jpg",
     alt: "Grower and crop advisor carefully place uniform vegetable seedlings into prepared beds while checking roots, spacing, soil condition, and water access.",
     caption: "Observe root condition, planting quality, soil moisture, and early establishment together rather than treating transplanting as a single action.",
   },
   "water-management": {
-    src: "/manus-storage/module-23-water-management_ee01010f.jpg",
+    src: "/manus-storage/module-23-water-management-v2_2331cb20.jpg",
     alt: "Crop advisor and vegetable grower inspect root-zone soil moisture beside vegetable rows, a simple rain gauge, and an irrigation line.",
     caption: "Use root-zone, crop, water-history, and drainage evidence together before changing a water-management decision.",
   },
   "irrigation-systems": {
-    src: "/manus-storage/module-24-irrigation-systems_9981bb96.jpg",
+    src: "/manus-storage/module-24-irrigation-systems-v2_e55a40e5.jpg",
     alt: "Grower and crop advisor inspect a small irrigation layout with a header line, filter housing, valves, orderly laterals, and a field map.",
     caption: "Read the water source, distribution layout, field zones, maintenance capacity, and crop context as one irrigation system.",
   },
   "drip-irrigation-system": {
-    src: "/manus-storage/module-25-drip-irrigation-system_ec9d29e9.jpg",
+    src: "/manus-storage/module-25-drip-irrigation-system-v2_934aa190.jpg",
     alt: "Crop advisor and grower compare drip emitters, wetting patterns, intact laterals, and crop rows from near to far along a vegetable bed.",
     caption: "Compare the full water path and near-to-far evidence before changing runtime, pressure, or a maintenance plan.",
   },
   "vegetable-fertilisation": {
-    src: "/manus-storage/module-26-vegetable-fertilisation_c125b94a.jpg",
+    src: "/manus-storage/module-26-vegetable-fertilisation-v2_57fe02d7.jpg",
     alt: "Vegetable grower and crop advisor review an unbranded nutrient report, field-zone sketch, plant sample, and soil sample beside vegetable rows.",
     caption: "Use crop demand, soil supply, label analysis, field zones, and 4R review evidence before forming a fertilisation plan.",
   },
