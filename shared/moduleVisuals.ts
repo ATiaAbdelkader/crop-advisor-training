@@ -135,4 +135,44 @@ export const moduleVisuals: Readonly<Record<string, ModuleVisual>> = {
     alt: "Vegetable grower and crop advisor review an unbranded nutrient report, field-zone sketch, plant sample, and soil sample beside vegetable rows.",
     caption: "Use crop demand, soil supply, label analysis, field zones, and 4R review evidence before forming a fertilisation plan.",
   },
+  "field-care-and-maintenance": {
+    src: "/manus-storage/module-27-field-care-maintenance_07b6b4ef.jpg",
+    alt: "Crop advisor and vegetable grower walk orderly crop rows with a field map and clipboard while comparing crop, soil-surface, irrigation-line, and access conditions.",
+    caption: "A repeatable route turns crop, soil, water-system, and access observations into a documented priority and safe recheck.",
+  },
+  "harvesting-and-post-harvest-handling": {
+    src: "/manus-storage/module-28-harvesting-postharvest-v2_905d5195.jpg",
+    alt: "Vegetable grower and crop advisor inspect clean unbranded harvest containers, a blank lot card, and vegetable quality under a shaded field-edge work area.",
+    caption: "Observe maturity, handling conditions, and traceability handover together before documenting the next quality check.",
+  },
+  "field-diagnosis-in-vegetable-crops": {
+    src: "/manus-storage/module-29-field-diagnosis-v2_37b07790.jpg",
+    alt: "Crop advisor and grower compare an uneven patch of vegetable plants with healthier nearby plants while recording field and root-zone observations.",
+    caption: "Compare patterns and conditions before forming a working explanation; a visible patch is evidence, not a confirmed cause.",
+  },
+  "disease-identification-and-management": {
+    src: "/manus-storage/module-30-disease-investigation-v2_68b59818.jpg",
+    alt: "Crop advisor observes non-specific vegetable leaf symptoms with a hand lens while a grower records field context and compares nearby healthy foliage.",
+    caption: "Symptoms, signs, field pattern, history, and a qualified referral route are different parts of a responsible investigation.",
+  },
+  "insect-pests-and-mites-identification-and-management": {
+    src: "/manus-storage/module-31-pest-mite-observation-v2_ae948eff.jpg",
+    alt: "Crop advisor and grower use a hand lens to inspect the underside of a leafy vegetable leaf alongside a blank sampling card and field map.",
+    caption: "Record the sampled plant part, visible injury, beneficial context, and field pattern before drawing a pest-management conclusion.",
+  },
+  "integrated-pest-management": {
+    src: "/manus-storage/module-32-integrated-pest-management-v2_59f8d069.jpg",
+    alt: "Crop advisor and grower review a blank scouting sheet, field map, hand lens, and crop observations at the edge of a vegetable plot.",
+    caption: "Link prevention context, comparable monitoring evidence, beneficial observations, and a recheck boundary in an IPM decision.",
+  },
+  "responsible-use-of-pesticides": {
+    src: "/manus-storage/module-33-pesticide-readiness-v2_0f8d83fb.jpg",
+    alt: "Crop advisor and grower pause at a farm table to review an unbranded folder and blank safety checklist beside clean gloves and buffer vegetation.",
+    caption: "Pause, document the facts, verify current authorised information, and use a competent escalation route when a pesticide decision carries risk.",
+  },
+  "weed-management": {
+    src: "/manus-storage/module-34-weed-observation-v2_5b19659f.jpg",
+    alt: "Crop advisor and grower observe varied non-crop plants at a vegetable bed margin while comparing distribution, soil cover, and a blank field map.",
+    caption: "Map field pattern, crop-resource context, and identification limits before deciding what further evidence or authorised support is needed.",
+  },
 };

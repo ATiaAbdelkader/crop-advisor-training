@@ -156,3 +156,4 @@
 - [x] Enable learner-controlled selection and sharing of voluntary exercise summaries with authorised facilitators without affecting formal progression.
 - [x] Add facilitator acknowledgement and learner-visible reviewed status badges for voluntarily shared exercise summaries without affecting formal progression.
 - [x] Display an unread reviewed-summary count on the learner dashboard and save learner-owned read state without affecting formal progression.
+- [x] Generate and integrate source-aligned instructional visuals for the remaining Modules 27–34 with accessible descriptions, safe imagery, and learner-route validation.
