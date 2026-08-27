@@ -135,3 +135,4 @@
 - [ ] Generate and integrate source-aligned instructional visuals for the remaining modules that do not yet have visual learning support.
 - [x] Produce and prioritise an expert module-by-module blueprint for the next crop-advisor content upgrades.
 - [x] Implement a researched Module 3 Crop-Walk Evidence Lab for structured observation, comparison, uncertainty, and referral practice.
+- [x] Implement a researched Module 16 soil-sampling quality audit for representative zones, clean handling, traceability, and laboratory referral practice.

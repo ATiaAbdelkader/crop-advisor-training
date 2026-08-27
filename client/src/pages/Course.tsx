@@ -21,7 +21,8 @@ import { moduleVisuals } from "@shared/moduleVisuals";
 import { getFieldInquiryStudio } from "@shared/fieldInquiryStudio";
 import { fertilisationPlanningRequirements } from "@shared/fertilisationPlanning";
 import { cropWalkEvidenceLabRequirements } from "@shared/cropWalkEvidenceLab";
-import { Calculator, CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, ImageOff, LockKeyhole, MapPinned, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target } from "lucide-react";
+import { soilSamplingQualityAuditRequirements } from "@shared/soilSamplingQualityAudit";
+import { Calculator, CheckCircle2, ChevronLeft, ChevronRight, Circle, ClipboardCheck, Clock3, FileText, FlaskConical, ImageOff, LockKeyhole, MapPinned, NotebookPen, Printer, Ruler, ScanSearch, Search, ShieldAlert, Sprout, Target } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useLocation, useParams } from "wouter";
@@ -230,6 +231,16 @@ export default function Course() {
                 <p className="mt-1 text-xs leading-5 text-[#607460]">Plan a repeatable crop walk, compare healthy, typical, and unusual field zones, record evidence before interpretation, and state the next safe check or referral.</p>
                 <Button variant="outline" onClick={() => setLocation("/crop-walk-lab")} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><MapPinned className="mr-1.5 h-3.5 w-3.5" />Open crop-walk lab</Button>
                 <p className="mt-3 text-[10px] leading-4 text-[#668069]">{cropWalkEvidenceLabRequirements.nonGatingBoundary}</p>
+              </div>
+            )}
+            {module.id === "collect-soil-samples-for-soil-testing" && (
+              <div className="rounded-[22px] border border-[#cfe1d0] bg-[#eef7ec] p-5">
+                <FlaskConical className="h-4 w-4 text-[#4c7e57]" />
+                <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.18em] text-[#658164]">Interactive quality audit</p>
+                <p className="mt-2 text-sm font-semibold leading-6 text-[#314b39]">Soil Sampling Quality Audit</p>
+                <p className="mt-1 text-xs leading-5 text-[#607460]">Map comparable zones, build traceable sample identity, check clean handling and current laboratory instructions, then decide whether to pause, clarify, or submit.</p>
+                <Button variant="outline" onClick={() => setLocation("/soil-sampling-audit")} className="mt-4 w-full rounded-full border-[#9db99d] bg-white text-xs font-bold text-[#315f47] hover:bg-[#edf5e9]"><FlaskConical className="mr-1.5 h-3.5 w-3.5" />Open sampling audit</Button>
+                <p className="mt-3 text-[10px] leading-4 text-[#668069]">{soilSamplingQualityAuditRequirements.nonGatingBoundary}</p>
               </div>
             )}
             {module.id === "vegetable-fertilisation" && (
