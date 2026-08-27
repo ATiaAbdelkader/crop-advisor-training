@@ -162,3 +162,6 @@
 - [x] Verify the original generation status and active image mappings for Modules 22–27, regenerating only any failed active asset.
 - [x] Expand Module 1 advisory-practice learning content with competency-based, evidence-first applied learning while preserving formal progression safeguards.
 - [x] Expand Module 2 soil-and-nutrition learning content with a competency-based root-zone evidence sequence while preserving formal progression safeguards.
+- [x] Expand Module 3 with a repeatable crop-walk evidence sequence while preserving formal progression safeguards.
+- [x] Add a printable root-zone comparison record that learners can use in the field without prescribing irrigation or nutrient action.
+- [x] Add a short non-prescriptive scenario on conflicting soil and crop evidence to test learner interpretation.

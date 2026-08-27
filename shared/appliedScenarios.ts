@@ -20,6 +20,20 @@ export type AppliedScenario = {
 };
 
 export const appliedScenarios: Readonly<Record<string, AppliedScenario>> = {
+  "conflicting-soil-and-crop-evidence": {
+    id: "conflicting-soil-and-crop-evidence",
+    moduleId: "soil-and-nutrition",
+    title: "Scenario: Reconcile conflicting soil and crop evidence",
+    context: "A vegetable crop has pale, uneven growth in a low area. A recent soil report from that zone suggests low nutrient availability, but the comparison walk finds shallow roots, dense wet soil below the surface, and healthier plants on a nearby better-drained position. The grower requests an immediate nutrient product choice for the whole field.",
+    decisionPrompt: "Use matched-zone evidence to decide what must be clarified before any nutrient response is considered.",
+    evidenceChecklist: ["Crop stage, field pattern, and matched healthy or typical comparison", "Root distribution, profile structure, pore condition, and moisture observations", "Sampling zone, depth, collection context, and current laboratory interpretation basis", "Recent weather, water movement, management history, uncertainty, and a bounded recheck or referral route"],
+    reflectionPrompt: "Which observation most challenged your first explanation, and what evidence would justify revising the next step?",
+    questions: [
+      { id: "conflict-soil-crop-q1", prompt: "What is the most defensible interpretation of the conflicting evidence?", options: [{ id: "a", label: "The low nutrient result proves an immediate product decision is needed everywhere." }, { id: "b", label: "The shallow roots and wet dense profile may limit uptake or response, so the nutrient report needs root-zone context before a field-wide decision." }, { id: "c", label: "The healthier comparison area is irrelevant because it has different drainage." }, { id: "d", label: "A pale crop always confirms nutrient deficiency." }], correctOptionId: "b", feedback: "Correct. A nutrient value is important evidence, but root-zone condition and matched-zone comparison can change what it means for crop response." },
+      { id: "conflict-soil-crop-q2", prompt: "Which additional record would best help another advisor assess the evidence?", options: [{ id: "a", label: "Only the suspected nutrient name." }, { id: "b", label: "A comparison note with crop stage, mapped positions, root and profile observations, moisture context, sample identity, and recent management history." }, { id: "c", label: "A product list without field observations." }, { id: "d", label: "One photograph of the palest leaf without a location." }], correctOptionId: "b", feedback: "Correct. The evidence needs to preserve the contrast between areas and the sampling context, not only the visual symptom or a product idea." },
+      { id: "conflict-soil-crop-q3", prompt: "What is the appropriate next step while uncertainty remains?", options: [{ id: "a", label: "Choose a high-rate product for the entire field before the next observation." }, { id: "b", label: "Ignore the soil result because roots are shallow." }, { id: "c", label: "Record the evidence limit, recheck or extend the matched comparison, and seek current authorised interpretation or qualified support if the decision remains consequential." }, { id: "d", label: "Combine every field zone into one average sample and assume the cause is resolved." }], correctOptionId: "c", feedback: "Correct. The immediate task is to reduce the important uncertainty through traceable comparison and appropriate interpretation, not to force an input decision." },
+    ],
+  },
   "water-root-zone-decision": {
     id: "water-root-zone-decision",
     moduleId: "water-management",

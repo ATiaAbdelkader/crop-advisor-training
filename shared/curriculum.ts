@@ -469,69 +469,117 @@ export const cropAdvisorCourse: CourseDefinition = {
       title: "Crop observation",
       eyebrow: "Module 03",
       description:
-        "Scout by growth stage, interpret variability, and move from visible symptom to a testable field diagnosis.",
+        "Use a repeatable crop-walk sequence to scout by growth stage, compare variability, and turn visible symptoms into a testable field question.",
       lessons: [
         {
           id: "scouting-by-stage",
           title: "Scout by growth stage",
-          duration: "19 min",
+          duration: "26 min",
           kicker: "Timely field intelligence",
           summary:
-            "Build scouting visits around crop growth stage, risk windows, and field history so observations lead to timely, relevant action.",
+            "Build scouting visits around crop growth stage, grower priorities, risk windows, and field history so observations lead to timely, relevant next checks.",
           outcomes: [
-            "Prioritise observations by crop stage and field risk.",
-            "Use a consistent walk pattern that captures variability.",
-            "Record enough context for another advisor to understand the observation.",
+            "Prepare a purposeful, repeatable crop walk that respects the field context and agreed observation priorities.",
+            "Prioritise observations by crop stage, field risk, and the practical decision they must inform.",
+            "Use a consistent route that captures field variability instead of only convenient or striking plants.",
+            "Record enough context for another advisor to locate, understand, and revisit the observation.",
           ],
           sections: [
             {
-              heading: "Let crop stage set the agenda",
+              heading: "Prepare the crop walk before entering the field",
               body:
-                "The same organism, symptom, or management issue can carry different consequences at different growth stages. Plan visits around critical windows for stand establishment, nutrient demand, canopy development, reproduction, and harvest readiness. Add field-specific risks such as recent weather events, historic problem areas, and prior crop pressure.",
+                "A useful crop walk begins before the first plant is inspected. Clarify the grower’s concern, the decision the visit should inform, crop and variety, planting date or stage, field history, recent weather, recent operations, and the route or reporting expectation. Gather only the tools and records needed for the agreed purpose, use current authorised local resources when they are needed, and make the visit repeatable by recording the date, observer, and starting reference. This preparation stops a field walk from becoming an unstructured search for a familiar symptom.",
+              callout:
+                "Field discipline: define the decision and route first; let observations test the question rather than confirm the first explanation.",
+            },
+            {
+              heading: "Let crop stage set the observation agenda",
+              body:
+                "The same organism, symptom, or management issue can carry different consequences at different growth stages. Plan visits around critical windows for stand establishment, canopy development, reproduction, and harvest readiness, while retaining a whole-field view. Add field-specific signals such as recent weather events, historic problem areas, irrigation or drainage differences, and prior crop pressure. Crop stage helps the observer decide what to inspect; it does not remove the need to compare areas or question assumptions.",
             },
             {
               heading: "Walk for contrast, not convenience",
               body:
-                "Start at the field edge for orientation, then move into the field using a route that crosses changes in soil, topography, crop vigour, and management history. Compare symptomatic plants with apparently healthy plants at a similar stage. Photographs, counts, and simple maps are strongest when they preserve location and scale.",
+                "Start at the field edge for orientation, then move into the field using a route that crosses changes in soil, topography, crop vigour, and management history. Include a reference healthy area, a typical area, and an unusual or affected area where possible. Compare plants at a similar stage and record where the observation sits in the field. Photographs, counts, simple maps, and notes are strongest when they preserve date, location, scale, and the relationship between the observed crop and its comparison.",
               callout:
-                "A scouting observation gains value when it links crop stage, distribution, incidence, severity, and a plausible driver.",
+                "A scouting observation gains value when it links crop stage, route, distribution, incidence, severity, and the context that could challenge a plausible driver.",
             },
             {
               heading: "Separate incidence from severity",
               body:
-                "Incidence describes how widely an issue occurs; severity describes how strongly affected individual plants or plant parts are. Both matter. A severe issue in a few plants and a mild issue across most of the field may call for different responses, monitoring, or urgency.",
+                "Incidence describes how widely an issue occurs; severity describes how strongly affected individual plants or plant parts are. Both matter, and neither confirms a cause. A severe issue in a few plants and a mild issue across much of the field create different evidence questions. Record the observation unit, the crop stage, the field pattern, and the healthy or typical comparison before deciding whether more evidence, repeat monitoring, or qualified support is needed.",
             },
           ],
         },
         {
           id: "diagnose-variability",
           title: "Diagnose field variability",
-          duration: "21 min",
+          duration: "25 min",
           kicker: "Evidence-led diagnosis",
           summary:
-            "Use patterns, plant examination, and management history to test competing explanations for variable crop performance.",
+            "Use patterns, matched plant examination, root-zone context, and management history to test competing explanations for variable crop performance.",
           outcomes: [
-            "Generate more than one plausible explanation for a field pattern.",
-            "Select observations that differentiate competing explanations.",
-            "Communicate a diagnosis with confidence proportional to the evidence.",
+            "Generate more than one plausible explanation for a crop pattern without treating a visual cue as a diagnosis.",
+            "Select matched observations that can differentiate soil, water, management, and crop-health explanations.",
+            "Communicate a working explanation with confidence proportional to the evidence and consequence.",
           ],
           sections: [
             {
               heading: "Use the pattern as a clue",
               body:
-                "Field patterns can suggest where to look next: straight lines may point to equipment or application patterns; patches may align with soil, drainage, or pest distribution; field edges may indicate traffic, compaction, or off-target exposure. A pattern is a clue, not proof. Test it against plant condition, soil context, and management records.",
+                "Field patterns can suggest where to look next: straight lines may point to equipment or application patterns; patches may align with soil, drainage, or crop-health distribution; field edges may indicate traffic, compaction, or off-target exposure. Observe patterns first across the field community, then on individual plants, then on plant parts and roots where appropriate. A pattern is a clue, not proof. Test it against crop stage, plant condition, root-zone context, time development, and management records.",
             },
             {
               heading: "Test competing explanations",
               body:
-                "Name at least two plausible causes, then choose observations that could distinguish them. For example, compare roots, soil moisture, nearby healthy plants, recent applications, and distribution relative to field features. This reduces the risk of recommending a response that only fits the first explanation considered.",
+                "Name at least two plausible explanations, then choose observations that could distinguish them. For example, compare roots and soil condition at matched crop stages, nearby healthy plants, recent water or management changes, and distribution relative to field features. Ask which observation would be difficult to explain if the first explanation were true. This reduces the risk of recommending a response that only fits the first explanation considered.",
             },
             {
               heading: "State certainty honestly",
               body:
-                "Classify conclusions as observed, likely, or unconfirmed. Where evidence is incomplete, identify the sample, observation, or monitoring point needed to refine the diagnosis. Growers can act more confidently when they understand both the recommended step and the evidence limits behind it.",
+                "Classify conclusions as observed, consistent with, or unconfirmed. Where evidence is incomplete, identify the next sample, matched observation, repeat crop walk, current authorised source, or specialist support needed to refine the working explanation. Growers can act more confidently when they understand both the bounded next step and the evidence limits behind it.",
               callout:
                 "Good diagnosis is not a quick label; it is a transparent argument that links evidence to the next decision.",
+            },
+          ],
+        },
+        {
+          id: "repeatable-crop-walk-sequence",
+          title: "Run a repeatable crop-walk sequence",
+          duration: "28 min",
+          kicker: "Route, compare, review",
+          summary:
+            "Use the same five-stage sequence at each visit so field evidence can be compared over time, discussed with growers, and reviewed by another advisor.",
+          outcomes: [
+            "Frame a crop-walk question and select a route that deliberately crosses meaningful field variation.",
+            "Record reference healthy, typical, and unusual areas using comparable crop-stage and location notes.",
+            "Separate observation, grower report, working explanation, and unknown evidence in the crop-walk note.",
+            "Set a bounded recheck, qualified referral, or current authorised information step without prescribing treatment.",
+          ],
+          sections: [
+            {
+              heading: "1. Frame the walk and agree the route",
+              body:
+                "Write the question that matters for this visit: “What must be observed to decide whether this pattern is changing, widespread, or likely linked to a field condition?” Choose a route that is systematic, zig-zag, boundary-to-interior, or locally agreed and repeatable. Mark the entry point and planned comparison positions. The route does not need to cover every plant; it needs to give an honest view of meaningful variation that can be used again at the next visit.",
+            },
+            {
+              heading: "2. Observe reference, typical, and unusual areas",
+              body:
+                "At each position, record crop stage, location, crop condition, soil or water context that is visible, and field pattern. In the reference area, record what normal or healthier crop condition looks like at the same stage. In the typical area, record what represents the main field condition. In the unusual area, record the difference without naming a cause. Use the same observation categories at all three positions so the comparison is fair rather than anecdotal.",
+              callout:
+                "Do not make the most damaged plant the whole story. A reference and a typical area show whether the unusual observation is truly different.",
+            },
+            {
+              heading: "3. Sort the evidence before explanation",
+              body:
+                "Sort the note into four parts: what you observed, what the grower or record reports, the working explanation that is consistent with the evidence, and what remains unknown. Then name at least one competing explanation and the evidence that could distinguish it. A crop walk is complete when another advisor can see why the evidence supports a question, not when a cause has been declared too early.",
+            },
+            {
+              heading: "4. Recheck, compare, or refer",
+              body:
+                "End with a single bounded next step: revisit the same marked areas, compare with weather or field records, collect or request authorised diagnostic evidence, consult a current authorised source, or seek qualified extension, crop-health, or specialist support. Record the review point and what would change the working explanation. This learning sequence does not identify a pathogen, select a product, set a threshold, or prescribe treatment.",
+              callout:
+                "Source-informed practice: effective crop scouting combines preparation, systematic in-field observation, accurate documentation, and clear reporting; crop diagnosis uses patterns, time development, and case history rather than an image alone.",
             },
           ],
         },

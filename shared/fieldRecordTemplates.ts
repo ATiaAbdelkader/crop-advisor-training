@@ -12,6 +12,22 @@ export type FieldRecordTemplate = {
 };
 
 export const fieldRecordTemplates: Readonly<Record<string, FieldRecordTemplate>> = {
+  "root-zone-comparison-record": {
+    id: "root-zone-comparison-record",
+    moduleId: "soil-and-nutrition",
+    title: "Root-Zone Comparison Field Record",
+    shortTitle: "Root-zone comparison",
+    purpose: "Compare two meaningful crop areas from the surface through the root zone, preserve the evidence context, and identify the next check before a nutrient, irrigation, or soil-management decision is made.",
+    useSteps: [
+      "State the field question and select an affected or uncertain area plus a similar-stage reference or typical comparison area.",
+      "Record the same visible surface, profile, root, moisture, crop, and management-context evidence for both areas; separate observations from explanations.",
+      "Use the decision review to identify the evidence gap, repeat observation, authorised interpretation, or qualified referral needed next.",
+    ],
+    setupFields: ["Farm or grower", "Field or management zone", "Crop and growth stage", "Field question or decision", "Reference and comparison area identifiers"],
+    recordColumns: ["Date / observer", "Area and location", "Surface and crop pattern", "Profile, root, and pore observation", "Moisture / recent water or management context", "Comparison, uncertainty, and next evidence"],
+    reviewPrompts: ["Which observations agree with the working explanation, and which observation challenges it?", "What is the lowest-risk next evidence step, and what would require a pause, recheck, or qualified referral?"],
+    safetyNote: "This record supports observation and comparison only. It does not confirm a diagnosis or prescribe irrigation, drainage, fertiliser, amendment, product, dose, rate, timing, or field operation. Use current local laboratory interpretation, authorised guidance, and qualified support when a consequential decision is needed.",
+  },
   "water-management-record": {
     id: "water-management-record",
     moduleId: "water-management",
