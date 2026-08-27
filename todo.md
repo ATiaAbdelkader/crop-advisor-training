@@ -146,3 +146,4 @@
 - [x] Implement a researched Module 32 IPM decision exercise connecting prevention, monitoring evidence, non-chemical options, and authorised escalation boundaries.
 - [x] Implement a researched Module 33 pesticide-use readiness exercise focused on label verification, risk boundaries, and authorised escalation without operational instructions.
 - [x] Implement a researched Module 34 integrated weed-observation exercise connecting field pattern, prevention context, evidence limits, and authorised escalation.
+- [x] Implement a researched Module 27 field-care maintenance evidence exercise for routine observation, prioritisation, and safe escalation practice.

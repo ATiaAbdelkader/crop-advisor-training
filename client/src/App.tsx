@@ -43,6 +43,7 @@ import PestMiteObservationLab from "@/pages/PestMiteObservationLab";
 import IPMDecisionExercise from "@/pages/IPMDecisionExercise";
 import PesticideReadinessExercise from "@/pages/PesticideReadinessExercise";
 import WeedObservationExercise from "@/pages/WeedObservationExercise";
+import FieldCareMaintenanceExercise from "@/pages/FieldCareMaintenanceExercise";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -80,6 +81,7 @@ function Router() {
       <Route path="/ipm-decision-exercise" component={IPMDecisionExercise} />
       <Route path="/pesticide-readiness-exercise" component={PesticideReadinessExercise} />
       <Route path="/weed-observation-exercise" component={WeedObservationExercise} />
+      <Route path="/field-care-maintenance-exercise" component={FieldCareMaintenanceExercise} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
       <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />
