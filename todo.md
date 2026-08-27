@@ -160,3 +160,4 @@
 - [x] Audit all 34 module instructional-image loads and regenerate or remap only confirmed failures with accessible safe replacements.
 - [x] Verify original failed module-image generation jobs and ensure every active module mapping uses a successfully generated replacement.
 - [x] Verify the original generation status and active image mappings for Modules 22–27, regenerating only any failed active asset.
+- [x] Expand Module 1 advisory-practice learning content with competency-based, evidence-first applied learning while preserving formal progression safeguards.

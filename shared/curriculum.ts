@@ -67,69 +67,112 @@ export const cropAdvisorCourse: CourseDefinition = {
       title: "Advisory practice",
       eyebrow: "Module 01",
       description:
-        "Build a repeatable advisory process that protects the grower, the crop, and the quality of each recommendation.",
+        "Build a grower-centred, repeatable advisory process that turns field questions into transparent, reviewable decisions without overclaiming certainty.",
       lessons: [
         {
           id: "observe-frame-decide",
           title: "Observe, frame, decide",
-          duration: "18 min",
+          duration: "28 min",
           kicker: "The advisory sequence",
           summary:
-            "Translate a field observation into a recommendation that is specific, evidence-led, and suited to the grower’s operating context.",
+            "Translate a grower concern into a defined field decision, a purposeful comparison, and a bounded next step that fits the farm’s operating context.",
           outcomes: [
-            "Separate an observation from an interpretation and a recommendation.",
-            "Use a field question to define the evidence required before acting.",
-            "Record the conditions that can change the suitability of an intervention.",
+            "Elicit the grower’s purpose, concern, constraints, and decision that the visit must support.",
+            "Separate direct observation, grower report, inference, and uncertainty in a field evidence ledger.",
+            "Use a field question and meaningful comparison to define the evidence required before acting.",
+            "Set a bounded next action and record the conditions that can change its suitability.",
           ],
           sections: [
             {
-              heading: "Start with a field question",
+              heading: "Start with the grower’s decision, not a ready-made solution",
               body:
-                "A useful crop-advisor visit begins with a decision that must be made, not with a product or a diagnosis already assumed. State the crop, growth stage, field location, symptom or opportunity, and the management decision at stake. This creates a boundary around the evidence you need and prevents a single visible symptom from becoming the entire diagnosis.",
+                "A useful crop-advisor visit begins with the decision the grower is trying to make, not with a product, diagnosis, or technique already assumed. Ask what outcome matters, what has changed, what action is being considered, and what practical limits shape that choice. Then state the crop, growth stage, field location, visible concern or opportunity, and decision at stake. This creates a boundary around the evidence needed and prevents a striking symptom, an advisor preference, or a familiar input from becoming the entire diagnosis.",
               callout:
-                "Field discipline: record what is seen, where it occurs, and how it varies before explaining why it happened.",
+                "Field discipline: record the grower’s question, what is seen, where it occurs, and how it varies before explaining why it happened.",
             },
             {
-              heading: "Build evidence across the field",
+              heading: "Build evidence across the field, not around one plant",
               body:
-                "Compare affected and unaffected areas. Review crop distribution, recent weather, irrigation or drainage patterns, planting date, cultivar, prior crop, fertility history, and any recent applications. A recommendation is stronger when it explains the field pattern rather than only the most striking plant.",
+                "Compare affected and unaffected areas at a similar crop stage. Review distribution, extent, crop condition, recent weather, irrigation or drainage patterns, planting date, cultivar, prior crop, fertility history, and recent management changes. Look for a counter-example that could challenge the first explanation: a healthy plant in a similar setting, a weak plant in a different zone, or a change that does not fit the apparent pattern. A recommendation is stronger when it accounts for field variation rather than only the most striking plant.",
             },
             {
-              heading: "Make the decision auditable",
+              heading: "Sort the evidence before interpreting it",
               body:
-                "Document the recommendation, its purpose, the evidence supporting it, operational constraints, and what should be monitored afterward. The record supports continuity between visits and gives the grower a clear basis for action. Where uncertainty remains, identify the next observation or test that would reduce it.",
+                "Use four clear labels in your notes: observed, reported, inferred, and still unknown. An observation is something you directly saw or measured; a report is useful context supplied by the grower or another source; an inference is a provisional explanation; and an unknown is a gap that could change the decision. This simple ledger makes reasoning reviewable, protects the grower from false certainty, and helps a colleague or specialist see exactly what has and has not been established.",
+              callout:
+                "A pattern can justify a question. It does not, by itself, confirm a cause, a treatment, or a universal recommendation.",
+            },
+            {
+              heading: "Make the next step auditable and bounded",
+              body:
+                "Document the proposed next step, its purpose, the evidence supporting it, practical constraints, and the observation that will be monitored afterward. Where uncertainty remains, identify the next low-risk observation, current authorised source, diagnostic route, or specialist support that could reduce it. The record supports continuity between visits and gives the grower a clear basis for deciding whether to proceed, pause, or seek further advice.",
             },
           ],
         },
         {
           id: "stewardship-records",
           title: "Stewardship, records, and risk",
-          duration: "16 min",
+          duration: "24 min",
           kicker: "Professional responsibility",
           summary:
-            "Use transparent records and risk-aware communication to keep advice technically sound and professionally defensible.",
+            "Use transparent records, consent-aware documentation, and risk-aware communication to keep advice technically sound, proportionate, and professionally defensible.",
           outcomes: [
-            "Identify records that make a recommendation traceable.",
-            "Communicate uncertainty without making advice vague.",
-            "Recognise when a recommendation should be escalated or deferred.",
+            "Create a traceable field-visit record that distinguishes decision evidence from assumptions.",
+            "Agree how observations, images, samples, and follow-up information can be recorded and shared.",
+            "Communicate uncertainty, conditions, and alternatives without making advice vague.",
+            "Recognise when a recommendation should be deferred, escalated, or referred.",
           ],
           sections: [
             {
-              heading: "Keep the advisory record complete",
+              heading: "Keep the advisory record complete, proportionate, and permission-aware",
               body:
-                "A useful record includes the date, field identity, crop and growth stage, observations, samples or diagnostics used, recommendation, timing, applicable restrictions, and planned follow-up. Avoid replacing field evidence with memory after the visit. Notes that distinguish facts from assumptions are especially valuable when several people manage the account.",
+                "A useful record includes the date, field identity, crop and growth stage, grower objective, observations, reported history, samples or diagnostics considered, bounded next step, conditions, and planned follow-up. Ask permission before capturing photographs or sharing identifiable field information, and record only what is needed for the agreed advisory purpose. Avoid replacing field evidence with memory after the visit. Notes that distinguish facts from assumptions are especially valuable when several people support the same grower or field.",
             },
             {
-              heading: "Treat risk as part of the recommendation",
+              heading: "Treat risk and implementation capacity as part of the decision",
               body:
-                "Every action has a practical context: weather windows, soil condition, crop stress, equipment capability, neighbouring sensitive areas, label or regulatory requirements, and worker safety. Explain which condition would cause the advice to change. This is more useful than presenting a recommendation as universally applicable.",
+                "Every potential action has a practical context: weather, soil condition, crop stress, labour, access, equipment capability, neighbouring sensitive areas, current authorised requirements, and worker safety. Discuss which conditions the grower can realistically meet and which condition would cause the next step to change. A technically plausible option that cannot be carried out safely, lawfully, or consistently is not yet a useful recommendation. This is more honest and more practical than presenting advice as universally applicable.",
               callout:
-                "Professional judgement includes knowing when more evidence, local expertise, or a specialist referral is needed before action.",
+                "Professional judgement includes knowing when more evidence, local expertise, a current authorised source, or specialist referral is needed before action.",
             },
             {
-              heading: "Close the loop",
+              heading: "Close the loop with a shared review plan",
               body:
-                "Set a follow-up observation that tests whether the intervention worked. Capture the outcome, including unexpected effects. Over time, these records build local knowledge about field zones, timing, and management responses without confusing correlation for certainty.",
+                "Agree the outcome indicator, field location, and review timing that will test whether the next step is helping. Capture the result, including unexpected effects and conditions that changed. If a sample, diagnostic service, or specialist is needed, explain the purpose of the referral, information being shared, and the next contact point. Over time, these records build local knowledge about field zones, timing, and management responses without confusing correlation for certainty.",
+            },
+          ],
+        },
+        {
+          id: "consult-handover-and-refer",
+          title: "Consult, hand over, and refer",
+          duration: "22 min",
+          kicker: "Advisory relationship in practice",
+          summary:
+            "Turn a field visit into a shared, practical next-step plan that respects grower knowledge, makes conditions visible, and uses referral when the decision exceeds the evidence or role.",
+          outcomes: [
+            "Use open questions and reflective summaries to check that the grower’s concern and constraints have been understood.",
+            "Co-design a short handover that names the next step, its purpose, conditions, and review indicator.",
+            "Prepare a concise, factual referral brief when specialist or laboratory support is needed.",
+          ],
+          sections: [
+            {
+              heading: "Listen for the operating context",
+              body:
+                "Start the conversation with the grower’s account of the field, what has already been tried, and the outcome they need to protect. Use open questions, then reflect back the key facts and constraints in plain language: “I understand the decision is …, the evidence so far is …, and the practical limits are ….” This checks understanding before technical language enters the discussion and recognises that local field history is evidence that must be tested, not ignored.",
+              callout:
+                "The advisor’s role is not to replace grower judgement. It is to make the decision process clearer, safer, and more reviewable.",
+            },
+            {
+              heading: "Hand over a decision note the grower can use",
+              body:
+                "Before leaving, summarise five points: the field question, evidence observed, what remains uncertain, the agreed next step, and the specific condition for review or pause. Use language the grower can repeat to other farm workers or advisors. Where there are alternatives, name the trade-off rather than pretending one option is automatically right. A concise handover turns an advisory conversation into an accountable plan rather than an instruction that loses its context.",
+            },
+            {
+              heading: "Refer with a useful factual brief",
+              body:
+                "Refer when the evidence is insufficient for the consequence of the decision, the issue requires specialist capability, or the advisor lacks authority to provide the necessary guidance. A useful referral brief states the field question, crop and stage, location or mapped pattern, observations and comparison evidence, reported history, photographs or samples only where authorised, what has already been checked, and the decision that needs support. Do not fill gaps with a confident claim; make the uncertainty visible so the next professional can investigate efficiently.",
+              callout:
+                "Source-informed practice: strong field visits prepare purposefully, ask and observe before answering, keep a visit record, and follow up; advisory services are most useful when responsive to local needs and context.",
             },
           ],
         },

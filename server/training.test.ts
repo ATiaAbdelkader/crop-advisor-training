@@ -42,6 +42,21 @@ import {
 } from "../shared/trainingLogic";
 
 describe("crop-advisor progression", () => {
+  it("expands advisory practice with a grower-centred consultation and referral sequence without changing its formal threshold", () => {
+    const advisoryPractice = cropAdvisorCourse.modules.find(module => module.id === "advisory-practice")!;
+    const lessonIds = advisoryPractice.lessons.map(lesson => lesson.id);
+    const allSections = advisoryPractice.lessons.flatMap(lesson => lesson.sections);
+    const fieldBrief = documentModuleFieldBriefs[advisoryPractice.id];
+
+    expect(lessonIds).toEqual(["observe-frame-decide", "stewardship-records", "consult-handover-and-refer"]);
+    expect(allSections.some(section => section.heading.includes("Sort the evidence"))).toBe(true);
+    expect(allSections.some(section => section.heading.includes("Refer with a useful factual brief"))).toBe(true);
+    expect(fieldBrief.evidence).toContain("Grower objective");
+    expect(fieldBrief.standard).toContain("pause, review, specialist support");
+    expect(advisoryPractice.assessment.passMark).toBe(80);
+    expect(advisoryPractice.assessment.questions).toHaveLength(4);
+  });
+
   it("adds a source-grounded Field Inquiry Studio to every module without changing formal progression", () => {
     expect(fieldInquirySourceBasis).toContain("FAO Farmer Field School");
     cropAdvisorCourse.modules.forEach(module => {
