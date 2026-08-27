@@ -13,6 +13,22 @@ export type FieldRecordTemplate = {
 };
 
 export const fieldRecordTemplates: Readonly<Record<string, FieldRecordTemplate>> = {
+  "input-source-quote-comparison": {
+    id: "input-source-quote-comparison",
+    moduleId: "cost-planning-and-decisions",
+    title: "Input and Source Quote-Comparison Worksheet",
+    shortTitle: "Quote comparison",
+    purpose: "Compare like-for-like source quotes or service estimates against a stated production plan, retain the assumptions and terms, and identify the evidence needed before a cost is used in a decision.",
+    useSteps: [
+      "State the production objective, requested item or service scope, required specification, quantity, and unit before recording a quote.",
+      "Record the source reference, quote date, stated charges, availability, delivery or collection terms, validity, and any quality or comparison gap; do not infer missing terms.",
+      "Use the decision review to identify whether the quotes are comparable, what information could change the plan, and whether to revise, pause, or seek qualified support.",
+    ],
+    setupFields: ["Farm or grower", "Production objective or activity", "Item or service scope and specification", "Required quantity and unit", "Quote request and comparison date"],
+    recordColumns: ["Item or service and specification", "Source or quote reference", "Quantity and unit", "Quoted price and stated charges", "Availability, delivery, and validity", "Terms, quality check, and evidence gap"],
+    reviewPrompts: ["Are these quotes genuinely comparable in scope, unit, quantity, condition, timing, and stated charges?", "Which uncertain cost or return assumption could change the plan, and what is the next verification, revision, pause, or qualified-support step?"],
+    safetyNote: "This worksheet records comparison evidence; it does not endorse a supplier, product, service, specification, price, quantity, input, rate, timing, or purchase decision. Confirm current product, technical, market, financial, legal, and safety requirements through authorised local sources or qualified support before a consequential commitment.",
+  },
   "root-zone-comparison-record": {
     id: "root-zone-comparison-record",
     moduleId: "soil-and-nutrition",

@@ -168,3 +168,6 @@
 - [x] Expand Module 4 with a farm-context planning sequence while preserving formal progression safeguards.
 - [x] Add a crop-walk map sketch field to the printable root-zone comparison record for clearer field notes.
 - [x] Add a short non-prescriptive scenario on recognising evidence gaps before crop selection.
+- [x] Expand Module 5 with a cost-and-uncertainty planning sequence while preserving formal progression safeguards.
+- [x] Add a printable input and source quote-comparison worksheet for learner field-record use without endorsing vendors or inputs.
+- [x] Add a short non-prescriptive scenario on revising a plan when projected costs exceed evidence-backed returns.

@@ -869,69 +869,104 @@ export const cropAdvisorCourse: CourseDefinition = {
       title: "Cost planning and decisions",
       eyebrow: "Module 05",
       description:
-        "Turn a vegetable-production objective into tasks, resource quantities, costs, expected returns, and a decision to proceed or revise the plan.",
+        "Turn a vegetable-production objective into traceable quantities, current cost evidence, uncertainty-aware return ranges, and a reviewable decision to proceed, revise, or defer.",
       lessons: [
         {
           id: "set-objectives-map-activities",
-          title: "Set objectives and map activities",
-          duration: "24 min",
+          title: "Frame the enterprise and traceable baseline",
+          duration: "30 min",
           kicker: "Plan before spending",
           summary:
-            "Establish a clear production objective, estimate the scale of the crop, and map the activity sequence, resources, and timing needed to deliver it.",
+            "Establish a clear production objective, map the activity sequence, and build a traceable baseline for quantities, costs, returns, sources, and assumptions.",
           outcomes: [
-            "Write a production objective that states crop, area, season, and intended production context.",
-            "Estimate plant numbers from a crop-guide density and a measured field area.",
-            "Map crop-cycle tasks, resources, and timing from land preparation through harvest and post-harvest handling.",
+            "Write a production objective that states crop, area, season, intended production context, and the decision the estimate will support.",
+            "Estimate plant numbers and activity quantities from a measured field area and clearly stated basis.",
+            "Map crop-cycle tasks, resources, timing, and cost categories from preparation through harvest and handling.",
+            "Separate verified figures, supplier or grower reports, assumptions, and evidence gaps in a planning ledger.",
           ],
           sections: [
             {
               heading: "Start with a measurable production objective",
               body:
-                "Cost planning begins with a specific objective rather than a general desire to grow vegetables. In the document scenario, the objective is to establish a tomato crop on 500 m² during the dry season. Measure field length and width, confirm the crop and season with the farmer, and check what varieties are available. A measurable objective gives every later quantity, task, and cost a clear basis.",
+                "Cost planning begins with a specific objective rather than a general desire to grow vegetables. State the intended crop enterprise, measured area, growing period, production system, intended outlet or household purpose, and the decision the plan must support. In the document example, the objective is to establish a tomato crop on a measured 500 m² field during the dry season. A measurable objective gives every later quantity, task, cost, and return estimate a clear basis—and makes it possible to recognise when a quoted cost or projected return belongs to a different plan.",
               callout:
-                "A cost estimate is only as useful as the production objective and field area on which it is based.",
+                "A cost estimate is only as useful as its production objective, field area, time period, stated unit, and source basis.",
             },
             {
-              heading: "Translate the crop guide into a field estimate",
+              heading: "Translate field geometry into a quantity basis",
               body:
-                "Use crop-guide information to make a first estimate of the crop scale. The document illustrates a guide density of 26,600 tomato plants per 10,000 m². For a 500 m² field, the quick estimate is 1,330 plants: divide the guide density by 10,000 and multiply by the field area. Expected production is then estimated from the expected yield per plant and the planned plant population. When a farm-gate price is available, expected returns equal expected kilograms multiplied by the price per kilogram.",
+                "Use measured field geometry and current authorised crop guidance to make a first estimate of crop scale. The document illustrates how a guide density can be converted to a measured field area and then checked against workable beds, paths, plant positions, and replacement capacity. Record the unit and calculation basis next to every quantity. This prevents a figure taken from a different crop, production system, pack size, field size, or season from becoming an unexamined cost assumption.",
             },
             {
-              heading: "List the work before pricing it",
+              heading: "Map the work before pricing it",
               body:
-                "Create a crop-cycle task list from land preparation to harvest and post-harvest operations. The source document includes clearing, ploughing, bed preparation, basal fertilisation, nursery set-up, sowing and seedling care, transplanting, watering, fertiliser application, pest management, trellising, pruning, fruit thinning, harvesting, and other crop-specific activities. For each activity, identify the resources and inputs needed and when they are needed, such as labour and a plough in the first week, seed trays and media for seedling production, mulch for bed preparation, and water infrastructure during field layout.",
+                "Create a crop-cycle task map from preparation through harvest and handling. For each task, identify resources, timing, unit, expected quantity, whether the cost varies with the plan, whether it is an existing or committed resource, and the evidence needed to price it. Compare source quotes only after the scope is the same: an item or service description, specification, unit, quantity, quality or condition, availability, delivery or collection terms, stated charges, validity period, and date. A lower number is not automatically a lower comparable cost when the underlying quantity, condition, terms, or timing differs.",
+              callout:
+                "Quote-comparison discipline: compare like with like, keep the quote date and terms, and label the decision still waiting on evidence.",
             },
           ],
         },
         {
           id: "compute-costs-test-returns",
-          title: "Compute costs and test returns",
-          duration: "30 min",
+          title: "Build and challenge the cost-return view",
+          duration: "34 min",
           kicker: "Quantity, cost, and decision",
           summary:
-            "Calculate the physical quantities behind a vegetable plan, price the required inputs, estimate plausible returns, and revise a plan when the numbers do not justify the risk.",
+            "Calculate traceable quantities, compare current cost evidence, state the return assumptions, and challenge a plan when the result depends on weak or outdated information.",
           outcomes: [
-            "Calculate bed, mulch, plant, seedling, seed-tray, fertiliser, and other input quantities from a field layout.",
-            "Include a seedling-production allowance and use locally relevant input prices in the cost plan.",
-            "Compare potential returns with production costs and revise the plan when costs are not justified by likely benefits.",
+            "Calculate bed, plant, seedling, material, labour, and other activity quantities from the stated field layout and unit basis.",
+            "Use current, comparable quote evidence and record availability, stated charges, terms, and confidence limits rather than a price alone.",
+            "Compare projected costs with clearly labelled return assumptions and identify the figures that could materially change the plan.",
           ],
           sections: [
             {
               heading: "Calculate quantities from the field layout",
               body:
-                "Work from dimensions rather than guesses. In the 20 m by 25 m tomato example, a 1 m bed plus a 0.5 m canal requires 1.5 m across the field, so 25 m ÷ 1.5 m gives 16 whole beds. Leave 0.5 m at each end for path and drainage, producing a 19 m bed length. Plastic mulch required is therefore 16 beds × 19 m = 304 m. With 0.5 m plant spacing and two rows per bed, each bed holds (19 ÷ 0.5) × 2 = 76 plants, for a minimum of 1,216 plants in the field.",
+                "Work from dimensions rather than guesses. In the document’s 20 m by 25 m tomato example, a 1 m bed plus a 0.5 m canal requires 1.5 m across the field, so 25 m ÷ 1.5 m gives 16 whole beds. Leave 0.5 m at each end for path and drainage, producing a 19 m bed length. The calculation shows how a material quantity and plant estimate must be traceable to the physical plan. Record the formula, rounded working unit, and uncertainty—for example, an unverified field measurement or packaging constraint—beside the total.",
               callout:
-                "Use whole, workable units. A fractional bed or a partially priced packet cannot be treated as a full production resource without a clear adjustment.",
+                "Use whole, workable units. A fractional bed, partial pack, unconfirmed delivery charge, or mismatched quote cannot be treated as a final production cost without a clear adjustment.",
             },
             {
-              heading: "Build a realistic input cost plan",
+              heading: "Build a comparable cost view",
               body:
-                "Add a safety allowance where production losses are likely. The document uses a 30% seedling allowance: 1,216 plants plus 30% gives 1,581 seedlings or seeds to plan for. Divide seeds required by seeds per packet, round up to a whole packet, then multiply by the actual local packet price. The same process applies to seed trays: 1,581 seeds in 104-hole trays require 16 trays after rounding. Price fertilizers, liming where soil pH requires it, mulch, trellis materials, water and irrigation components, crop-protection inputs, labour, and any other resource identified in the activity plan.",
+                "Price each required resource only after checking that the quoted item or service matches the planned unit and specification. Use the quote-comparison worksheet to record source reference, quantity, unit, stated price, additional charges, availability, delivery or collection, validity, terms, and relevant quality or evidence gap. A planning allowance may be used only when it is stated as an assumption and is later reviewed against actual evidence. Include labour, materials, equipment or services, transport or access needs, and other resources identified in the activity plan; do not make a projected margin appear stronger by omitting a known cost category.",
             },
             {
-              heading: "Test the plan against plausible returns",
+              heading: "Test projections without calling them promises",
               body:
-                "Estimate yield and return using a realistic crop population rather than assuming every plant will produce. In the tomato example, if 70% of 1,216 plants produce and yield averages 2 kg per producing plant, estimated yield is about 1,702 kg. Multiply this by a relevant farm-gate price to estimate return. Place all costs and returns in a spreadsheet or farm record. If projected costs are high compared with potential returns, review the plan, lower avoidable costs, adjust the production strategy, or defer the decision. Store the plan and actual costs so future decisions can improve on the estimate.",
+                "Estimate potential return with a stated production, quality, handling, and price basis rather than assuming every plant will perform or every unit will sell at one value. Place each assumption beside its source and date, then ask what happens if a key quantity, cost, yield, or return assumption is different. A projection is a planning aid, not a promise. If projected costs are high relative to evidence-backed return assumptions, review the scope, quantities, timing, source terms, operational capacity, or decision to defer. Store the baseline, quotes, actual costs, and outcome evidence so the next estimate can improve.",
+            },
+          ],
+        },
+        {
+          id: "stress-test-uncertainty-and-revise",
+          title: "Stress-test uncertainty and revise the plan",
+          duration: "28 min",
+          kicker: "Assumptions, sensitivity, decision boundary",
+          summary:
+            "Test which uncertain assumptions matter most, communicate the decision boundary honestly, and revise or defer a plan when its expected return is not supported by current evidence.",
+          outcomes: [
+            "Identify the cost, quantity, yield, timing, and return assumptions that have the greatest influence on a planning conclusion.",
+            "Use a simple low, expected, and high evidence range to test the direction of risk without presenting a forecast as fact.",
+            "Explain a revision, deferral, or request for qualified business support using traceable assumptions and a clear review point.",
+          ],
+          sections: [
+            {
+              heading: "Make uncertainty visible",
+              body:
+                "Place an uncertainty marker beside every figure that is estimated, reported, outdated, incomplete, or dependent on a condition outside the plan. Common high-influence assumptions include quantity, availability, delivered or collected cost, labour capacity, crop establishment, harvestable output, quality, handling loss, and the return basis. Do not hide uncertainty by replacing it with a single confident number. The advisor’s task is to identify which uncertain assumption could most change the decision and how it can be checked.",
+            },
+            {
+              heading: "Use ranges to challenge the planning conclusion",
+              body:
+                "A simple sensitivity check changes one clearly labelled assumption at a time—for example, a lower, expected, and higher cost or return basis—while recording what remains unchanged. The purpose is not to predict the future or declare profitability. It is to discover whether the plan only works under one optimistic assumption, which input or return evidence deserves current verification, and whether several uncertainties could move together. If key assumptions are unsupported or a projected shortfall is material, the appropriate response may be to revise the plan, reduce or phase the scope, seek current local business or market support, or defer the commitment.",
+              callout:
+                "A plan that changes when one uncertain figure changes is not necessarily wrong; it needs a clearer decision boundary and a stronger evidence source.",
+            },
+            {
+              heading: "Record the revision decision and learning loop",
+              body:
+                "Close the analysis with a short decision note: what the current evidence supports; which quote, production, or return assumptions remain uncertain; what revision or pause is proposed; who will verify the next fact; and when the plan will be reviewed. Keep projected and actual values separate. A learner should not use this activity to endorse a supplier, recommend an input, guarantee a return, commit funds, or replace qualified local financial, market, technical, or legal advice.",
             },
           ],
         },
