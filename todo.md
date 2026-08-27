@@ -144,3 +144,4 @@
 - [x] Implement a researched Module 31 pest-and-mite observation evidence lab with threshold-free monitoring and authorised referral boundaries.
 - [x] Implement a researched Module 31 pest-and-mite observation evidence lab with threshold-free monitoring and authorised referral boundaries.
 - [x] Implement a researched Module 32 IPM decision exercise connecting prevention, monitoring evidence, non-chemical options, and authorised escalation boundaries.
+- [x] Implement a researched Module 33 pesticide-use readiness exercise focused on label verification, risk boundaries, and authorised escalation without operational instructions.
