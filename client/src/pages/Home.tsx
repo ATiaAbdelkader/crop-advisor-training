@@ -28,6 +28,7 @@ export default function Home() {
   const overviewQuery = trpc.training.overview.useQuery(undefined, { enabled: isAuthenticated });
   const annotationNotificationsQuery = trpc.annotationNotifications.list.useQuery(undefined, { enabled: isAuthenticated });
   const competencyNotificationsQuery = trpc.competencyNotifications.list.useQuery(undefined, { enabled: isAuthenticated });
+  const reviewedSummaryNotificationsQuery = trpc.exerciseSummaryShares.unread.useQuery(undefined, { enabled: isAuthenticated });
   const enroll = trpc.training.enroll.useMutation({
     onSuccess: () => utils.training.overview.invalidate(),
   });
@@ -37,6 +38,11 @@ export default function Home() {
   const markCompetencyFeedbackRead = trpc.competencyNotifications.markRead.useMutation({
     onSuccess: () => utils.competencyNotifications.list.invalidate(),
   });
+  const markReviewedSummariesRead = trpc.exerciseSummaryShares.markReviewedRead.useMutation({
+    onSuccess: async () => {
+      await Promise.all([utils.exerciseSummaryShares.unread.invalidate(), utils.exerciseSummaryShares.mine.invalidate()]);
+    },
+  });
   const overview = overviewQuery.data;
   const annotationNotifications = sortAnnotationReviewNotifications(annotationNotificationsQuery.data ?? []);
   const annotationFeedback = annotationNotifications.filter(notification => Boolean(notification.feedback));
@@ -44,6 +50,7 @@ export default function Home() {
   const latestAnnotationReview = annotationNotifications[0];
   const competencyFeedback = (competencyNotificationsQuery.data ?? []).filter(notification => Boolean(notification.feedback));
   const unreadCompetencyFeedback = competencyFeedback.filter(notification => !notification.feedbackReadAt);
+  const unreadReviewedSummaries = reviewedSummaryNotificationsQuery.data ?? [];
   const progress = overview?.progressPercent ?? 0;
   const action = overview?.nextAction;
   const ActionIcon = getActionIcon(action?.type ?? "lesson");
@@ -68,6 +75,10 @@ export default function Home() {
       markCompetencyFeedbackRead.mutate({ ids: [id] });
     }
     setLocation(`/competency-review/${moduleId}`);
+  };
+  const openReviewedSummaries = () => {
+    if (unreadReviewedSummaries.length) markReviewedSummariesRead.mutate({ ids: unreadReviewedSummaries.map(summary => summary.id) });
+    setLocation("/progress");
   };
 
   if (isAuthenticated && overviewQuery.isLoading) {
@@ -186,6 +197,13 @@ export default function Home() {
               <section className="rounded-[22px] border border-[#dbe6d9] bg-[#fcfcf8] p-5 shadow-[0_9px_24px_rgba(39,67,47,.035)]">
                 <div className="flex items-center justify-between gap-3"><div className="flex items-center gap-2"><BellRing className="h-4 w-4 text-[#4f8063]" /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#5a745f]">In-app feedback</p></div>{unreadAnnotationFeedback.length > 0 && <Button variant="ghost" disabled={markAnnotationFeedbackRead.isPending} onClick={() => markAnnotationFeedbackRead.mutate()} className="h-auto p-0 text-[10px] font-bold text-[#426e4d] hover:bg-transparent">Mark all read</Button>}</div>
                 <div className="mt-4 space-y-3">{annotationFeedback.slice(0, 3).map(notification => <button key={notification.id} type="button" onClick={() => openAnnotationFeedback(notification.id)} className={`w-full rounded-xl border p-3 text-left transition-colors ${notification.feedbackReadAt ? "border-[#e2e8e0] bg-[#fafcf9] hover:bg-[#f4f9f3]" : notification.status === "revision_requested" ? "border-[#eacdaf] bg-[#fff8f0] hover:bg-[#fff3e7]" : "border-[#cfe3d1] bg-[#f2faf2] hover:bg-[#e9f6e8]"}`}><div className="flex items-start gap-2"><span className={`mt-1 h-2 w-2 shrink-0 rounded-full ${notification.feedbackReadAt ? "bg-[#bcc9ba]" : notification.status === "revision_requested" ? "bg-[#c56a43]" : "bg-[#4b9a5b]"}`} /><div className="min-w-0 flex-1"><p className="text-xs font-bold text-[#3c5842]">{notification.status === "revision_requested" ? "Supervisor requested a revision" : "Supervisor feedback received"}</p><p className="mt-1 line-clamp-2 text-[11px] leading-4 text-[#657765]">{notification.feedback}</p><p className="mt-2 text-[10px] text-[#7c8a7d]">{notification.supervisorName || "Course supervisor"} · {notification.reviewedAt ? new Date(notification.reviewedAt).toLocaleDateString() : "New update"}</p></div></div></button>)}</div>
+              </section>
+            )}
+
+            {isAuthenticated && (unreadReviewedSummaries.length > 0 || reviewedSummaryNotificationsQuery.isLoading || reviewedSummaryNotificationsQuery.isError) && (
+              <section className="rounded-[22px] border border-[#dbe6d9] bg-[#fcfcf8] p-5 shadow-[0_9px_24px_rgba(39,67,47,.035)]">
+                <div className="flex items-center justify-between gap-3"><div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#4f8063]" /><p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#5a745f]">Shared practice reviews</p></div>{unreadReviewedSummaries.length > 0 && <span className="rounded-full bg-[#ba5536] px-2 py-0.5 text-[10px] font-bold text-white">{unreadReviewedSummaries.length} new</span>}</div>
+                {reviewedSummaryNotificationsQuery.isLoading ? <p className="mt-4 text-xs leading-5 text-[#647764]">Checking your learner-selected practice shares…</p> : reviewedSummaryNotificationsQuery.isError ? <><p className="mt-4 text-sm font-bold text-[#805237]">Shared practice review status is unavailable</p><Button variant="ghost" onClick={() => reviewedSummaryNotificationsQuery.refetch()} className="mt-3 h-auto p-0 text-xs font-bold text-[#8d563d] hover:bg-transparent"><RefreshCw className="mr-1.5 h-3.5 w-3.5" />Retry updates</Button></> : <><p className="mt-4 text-sm font-bold text-[#35513b]">{unreadReviewedSummaries.length === 1 ? "A facilitator reviewed one shared practice summary." : `Facilitators reviewed ${unreadReviewedSummaries.length} shared practice summaries.`}</p><p className="mt-2 text-xs leading-5 text-[#647764]">Open your voluntary sharing controls to see the reviewed status for each exercise. No response text or formal course progress is affected.</p><Button variant="ghost" disabled={markReviewedSummariesRead.isPending} onClick={openReviewedSummaries} className="mt-4 h-auto p-0 text-xs font-bold text-[#2d6844] hover:bg-transparent">Open shared summaries<ChevronRight className="ml-1 h-3.5 w-3.5" /></Button></>}
               </section>
             )}
 

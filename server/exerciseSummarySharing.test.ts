@@ -7,6 +7,8 @@ const mocks = vi.hoisted(() => ({
   revoke: vi.fn(),
   queue: vi.fn(),
   acknowledge: vi.fn(),
+  listUnread: vi.fn(),
+  markRead: vi.fn(),
 }));
 
 vi.mock("./db", async importOriginal => {
@@ -18,6 +20,8 @@ vi.mock("./db", async importOriginal => {
     revokeLearnerExerciseSummaryShare: mocks.revoke,
     listActiveLearnerExerciseSummarySharesForFacilitator: mocks.queue,
     acknowledgeLearnerExerciseSummaryShare: mocks.acknowledge,
+    listUnreadReviewedLearnerExerciseSummaries: mocks.listUnread,
+    markReviewedLearnerExerciseSummariesRead: mocks.markRead,
   };
 });
 
@@ -32,7 +36,7 @@ function createCaller(userId = 73, role: "user" | "admin" = "user") {
   return appRouter.createCaller(ctx);
 }
 
-const share = { id: 9, exerciseRoute: "/crop-walk-lab", sharedAt: new Date(), reviewedAt: null, revokedAt: null, completedPrompts: 3, totalPrompts: 4 };
+const share = { id: 9, exerciseRoute: "/crop-walk-lab", sharedAt: new Date(), reviewedAt: null, reviewedReadAt: null, revokedAt: null, completedPrompts: 3, totalPrompts: 4 };
 
 describe("exerciseSummaryShares", () => {
   beforeEach(() => {
@@ -41,6 +45,8 @@ describe("exerciseSummaryShares", () => {
     mocks.revoke.mockReset().mockResolvedValue(true);
     mocks.queue.mockReset().mockResolvedValue([]);
     mocks.acknowledge.mockReset().mockResolvedValue(true);
+    mocks.listUnread.mockReset().mockResolvedValue([]);
+    mocks.markRead.mockReset().mockResolvedValue(0);
   });
 
   it("lists and creates shares only for the authenticated learner", async () => {
@@ -71,5 +77,14 @@ describe("exerciseSummaryShares", () => {
     await expect(createCaller(73, "user").exerciseSummaryShares.acknowledge({ id: share.id })).rejects.toMatchObject({ code: "FORBIDDEN" });
     await expect(createCaller(1, "admin").exerciseSummaryShares.acknowledge({ id: share.id })).resolves.toEqual({ acknowledged: true });
     expect(mocks.acknowledge).toHaveBeenCalledWith(1, share.id);
+  });
+
+  it("returns and marks reviewed-summary notifications only for the authenticated learner", async () => {
+    const reviewed = { id: share.id, exerciseRoute: share.exerciseRoute, reviewedAt: new Date() };
+    mocks.listUnread.mockResolvedValueOnce([reviewed]);
+    await expect(createCaller(73).exerciseSummaryShares.unread()).resolves.toEqual([reviewed]);
+    expect(mocks.listUnread).toHaveBeenCalledWith(73);
+    await expect(createCaller(74).exerciseSummaryShares.markReviewedRead({ ids: [share.id] })).resolves.toBe(0);
+    expect(mocks.markRead).toHaveBeenCalledWith(74, [share.id]);
   });
 });

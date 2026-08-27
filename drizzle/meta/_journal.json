@@ -134,6 +134,13 @@
       "when": 1787824118111,
       "tag": "0018_busy_venom",
       "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "5",
+      "when": 1787824850190,
+      "tag": "0019_strong_squirrel_girl",
+      "breakpoints": true
     }
   ]
 }

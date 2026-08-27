@@ -60,6 +60,7 @@ import {
   getLearningRecords,
   issueCertificateIfNeeded,
   markCropDiagnosisAnnotationFeedbackRead,
+  markReviewedLearnerExerciseSummariesRead,
   markCompetencyAssessmentFeedbackRead,
   markLessonComplete,
   listActiveLearnerExerciseSummarySharesForFacilitator,
@@ -75,6 +76,7 @@ import {
   listFieldInquiryPeerSharesForOwner,
   listLearnerExerciseProgress,
   listLearnerExerciseSummaryShares,
+  listUnreadReviewedLearnerExerciseSummaries,
   listLearnerReflections,
   listScenarioAttempts,
   saveFieldRecord,
@@ -508,6 +510,10 @@ export const appRouter = router({
   }),
   exerciseSummaryShares: router({
     mine: protectedProcedure.query(({ ctx }) => listLearnerExerciseSummaryShares(ctx.user.id)),
+    unread: protectedProcedure.query(({ ctx }) => listUnreadReviewedLearnerExerciseSummaries(ctx.user.id)),
+    markReviewedRead: protectedProcedure
+      .input(z.object({ ids: z.array(z.number().int().positive()).max(14).optional() }))
+      .mutation(({ ctx, input }) => markReviewedLearnerExerciseSummariesRead(ctx.user.id, input.ids)),
     share: protectedProcedure
       .input(z.object({ exerciseRoute: z.string().min(1).max(160).refine(isFieldExerciseRoute, "Exercise route is not recognised.") }))
       .mutation(async ({ ctx, input }) => {

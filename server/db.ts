@@ -300,7 +300,7 @@ export async function mergeLearnerExerciseProgress(input: {
       await db.update(learnerExerciseProgress).set({ completedPrompts, totalPrompts: entry.totalPrompts, updatedAt: new Date() }).where(eq(learnerExerciseProgress.id, current.id));
     }
     if (changed) {
-      await db.update(learnerExerciseSummaryShares).set({ reviewedAt: null, reviewedByUserId: null }).where(and(
+      await db.update(learnerExerciseSummaryShares).set({ reviewedAt: null, reviewedByUserId: null, reviewedReadAt: null }).where(and(
         eq(learnerExerciseSummaryShares.ownerUserId, input.userId),
         eq(learnerExerciseSummaryShares.exerciseRoute, entry.exerciseRoute),
         isNull(learnerExerciseSummaryShares.revokedAt),
@@ -315,6 +315,7 @@ export type LearnerExerciseSummaryShare = {
   exerciseRoute: string;
   sharedAt: Date;
   reviewedAt: Date | null;
+  reviewedReadAt: Date | null;
   revokedAt: Date | null;
   completedPrompts: number | null;
   totalPrompts: number | null;
@@ -329,6 +330,7 @@ export async function listLearnerExerciseSummaryShares(ownerUserId: number): Pro
       exerciseRoute: learnerExerciseSummaryShares.exerciseRoute,
       sharedAt: learnerExerciseSummaryShares.sharedAt,
       reviewedAt: learnerExerciseSummaryShares.reviewedAt,
+      reviewedReadAt: learnerExerciseSummaryShares.reviewedReadAt,
       revokedAt: learnerExerciseSummaryShares.revokedAt,
       completedPrompts: learnerExerciseProgress.completedPrompts,
       totalPrompts: learnerExerciseProgress.totalPrompts,
@@ -354,7 +356,7 @@ export async function shareLearnerExerciseSummary(ownerUserId: number, exerciseR
   await db
     .insert(learnerExerciseSummaryShares)
     .values({ ownerUserId, exerciseRoute })
-    .onDuplicateKeyUpdate({ set: { sharedAt: new Date(), revokedAt: null, reviewedAt: null, reviewedByUserId: null } });
+    .onDuplicateKeyUpdate({ set: { sharedAt: new Date(), revokedAt: null, reviewedAt: null, reviewedByUserId: null, reviewedReadAt: null } });
   const shares = await listLearnerExerciseSummaryShares(ownerUserId);
   return shares.find(share => share.exerciseRoute === exerciseRoute && !share.revokedAt) ?? null;
 }
@@ -378,9 +380,38 @@ export async function acknowledgeLearnerExerciseSummaryShare(facilitatorUserId: 
   const db = await requireDb();
   const result = await db
     .update(learnerExerciseSummaryShares)
-    .set({ reviewedByUserId: facilitatorUserId, reviewedAt: new Date() })
+    .set({ reviewedByUserId: facilitatorUserId, reviewedAt: new Date(), reviewedReadAt: null })
     .where(and(eq(learnerExerciseSummaryShares.id, id), isNull(learnerExerciseSummaryShares.revokedAt)));
   return result[0].affectedRows > 0;
+}
+
+/** Returns only the signed-in learner's active, facilitator-reviewed summaries that have not yet been seen. */
+export async function listUnreadReviewedLearnerExerciseSummaries(ownerUserId: number) {
+  const db = await requireDb();
+  return db
+    .select({ id: learnerExerciseSummaryShares.id, exerciseRoute: learnerExerciseSummaryShares.exerciseRoute, reviewedAt: learnerExerciseSummaryShares.reviewedAt })
+    .from(learnerExerciseSummaryShares)
+    .where(and(
+      eq(learnerExerciseSummaryShares.ownerUserId, ownerUserId),
+      isNull(learnerExerciseSummaryShares.revokedAt),
+      isNotNull(learnerExerciseSummaryShares.reviewedAt),
+      isNull(learnerExerciseSummaryShares.reviewedReadAt),
+    ))
+    .orderBy(desc(learnerExerciseSummaryShares.reviewedAt));
+}
+
+/** Marks only the current learner's active reviewed-summary notifications as seen. */
+export async function markReviewedLearnerExerciseSummariesRead(ownerUserId: number, ids?: number[]) {
+  const conditions = [
+    eq(learnerExerciseSummaryShares.ownerUserId, ownerUserId),
+    isNull(learnerExerciseSummaryShares.revokedAt),
+    isNotNull(learnerExerciseSummaryShares.reviewedAt),
+    isNull(learnerExerciseSummaryShares.reviewedReadAt),
+  ];
+  if (ids?.length) conditions.push(inArray(learnerExerciseSummaryShares.id, ids));
+  const db = await requireDb();
+  const result = await db.update(learnerExerciseSummaryShares).set({ reviewedReadAt: new Date() }).where(and(...conditions));
+  return result[0].affectedRows;
 }
 
 /** Course administrators can review only actively shared aggregate completion summaries. */

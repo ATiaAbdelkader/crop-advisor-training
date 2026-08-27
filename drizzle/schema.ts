@@ -150,6 +150,7 @@ export const learnerExerciseSummaryShares = mysqlTable(
     sharedAt: timestamp("sharedAt").defaultNow().notNull(),
     reviewedByUserId: int("reviewedByUserId").references(() => users.id, { onDelete: "set null" }),
     reviewedAt: timestamp("reviewedAt"),
+    reviewedReadAt: timestamp("reviewedReadAt"),
     revokedAt: timestamp("revokedAt"),
   },
   table => [uniqueIndex("learner_exercise_summary_share_owner_route_unique").on(table.ownerUserId, table.exerciseRoute), index("learner_exercise_summary_share_active_idx").on(table.revokedAt, table.sharedAt), index("learner_exercise_summary_share_owner_idx").on(table.ownerUserId, table.revokedAt)]

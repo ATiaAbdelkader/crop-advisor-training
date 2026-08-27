@@ -1,0 +1,1 @@
+ALTER TABLE `learnerExerciseSummaryShares` ADD `reviewedReadAt` timestamp;
