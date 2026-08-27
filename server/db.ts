@@ -19,6 +19,7 @@ import {
   InsertUser,
   learnerReflections,
   learnerExerciseProgress,
+  learnerExerciseSummaryShares,
   lessonCompletions,
   scenarioAttempts,
   timedAssessmentSessions,
@@ -298,6 +299,91 @@ export async function mergeLearnerExerciseProgress(input: {
       .onDuplicateKeyUpdate({ set: { completedPrompts, totalPrompts: entry.totalPrompts, updatedAt: new Date() } });
   }
   return listLearnerExerciseProgress(input.userId);
+}
+
+export type LearnerExerciseSummaryShare = {
+  id: number;
+  exerciseRoute: string;
+  sharedAt: Date;
+  revokedAt: Date | null;
+  completedPrompts: number | null;
+  totalPrompts: number | null;
+};
+
+/** Shows a learner only the voluntary exercise summaries they have personally shared or revoked. */
+export async function listLearnerExerciseSummaryShares(ownerUserId: number): Promise<LearnerExerciseSummaryShare[]> {
+  const db = await requireDb();
+  return db
+    .select({
+      id: learnerExerciseSummaryShares.id,
+      exerciseRoute: learnerExerciseSummaryShares.exerciseRoute,
+      sharedAt: learnerExerciseSummaryShares.sharedAt,
+      revokedAt: learnerExerciseSummaryShares.revokedAt,
+      completedPrompts: learnerExerciseProgress.completedPrompts,
+      totalPrompts: learnerExerciseProgress.totalPrompts,
+    })
+    .from(learnerExerciseSummaryShares)
+    .leftJoin(learnerExerciseProgress, and(
+      eq(learnerExerciseProgress.userId, learnerExerciseSummaryShares.ownerUserId),
+      eq(learnerExerciseProgress.exerciseRoute, learnerExerciseSummaryShares.exerciseRoute),
+    ))
+    .where(eq(learnerExerciseSummaryShares.ownerUserId, ownerUserId))
+    .orderBy(desc(learnerExerciseSummaryShares.sharedAt));
+}
+
+/** Shares the latest aggregate completion summary only after the learner has started that exercise. */
+export async function shareLearnerExerciseSummary(ownerUserId: number, exerciseRoute: string) {
+  const db = await requireDb();
+  const progress = await db
+    .select()
+    .from(learnerExerciseProgress)
+    .where(and(eq(learnerExerciseProgress.userId, ownerUserId), eq(learnerExerciseProgress.exerciseRoute, exerciseRoute)))
+    .limit(1);
+  if (!progress[0]) return null;
+  await db
+    .insert(learnerExerciseSummaryShares)
+    .values({ ownerUserId, exerciseRoute })
+    .onDuplicateKeyUpdate({ set: { sharedAt: new Date(), revokedAt: null } });
+  const shares = await listLearnerExerciseSummaryShares(ownerUserId);
+  return shares.find(share => share.exerciseRoute === exerciseRoute && !share.revokedAt) ?? null;
+}
+
+/** Revoking immediately removes the aggregate exercise status from all facilitator views. */
+export async function revokeLearnerExerciseSummaryShare(ownerUserId: number, id: number) {
+  const db = await requireDb();
+  const result = await db
+    .update(learnerExerciseSummaryShares)
+    .set({ revokedAt: new Date() })
+    .where(and(
+      eq(learnerExerciseSummaryShares.id, id),
+      eq(learnerExerciseSummaryShares.ownerUserId, ownerUserId),
+      isNull(learnerExerciseSummaryShares.revokedAt),
+    ));
+  return result[0].affectedRows > 0;
+}
+
+/** Course administrators can review only actively shared aggregate completion summaries. */
+export async function listActiveLearnerExerciseSummarySharesForFacilitator() {
+  const db = await requireDb();
+  return db
+    .select({
+      id: learnerExerciseSummaryShares.id,
+      learnerId: learnerExerciseSummaryShares.ownerUserId,
+      learnerName: users.name,
+      learnerEmail: users.email,
+      exerciseRoute: learnerExerciseSummaryShares.exerciseRoute,
+      sharedAt: learnerExerciseSummaryShares.sharedAt,
+      completedPrompts: learnerExerciseProgress.completedPrompts,
+      totalPrompts: learnerExerciseProgress.totalPrompts,
+    })
+    .from(learnerExerciseSummaryShares)
+    .innerJoin(users, eq(users.id, learnerExerciseSummaryShares.ownerUserId))
+    .innerJoin(learnerExerciseProgress, and(
+      eq(learnerExerciseProgress.userId, learnerExerciseSummaryShares.ownerUserId),
+      eq(learnerExerciseProgress.exerciseRoute, learnerExerciseSummaryShares.exerciseRoute),
+    ))
+    .where(isNull(learnerExerciseSummaryShares.revokedAt))
+    .orderBy(desc(learnerExerciseSummaryShares.sharedAt));
 }
 
 export async function recordAssessmentAttempt(input: {

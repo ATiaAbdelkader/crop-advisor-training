@@ -120,6 +120,13 @@
       "when": 1787822701818,
       "tag": "0016_real_jean_grey",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1787823495469,
+      "tag": "0017_stormy_shockwave",
+      "breakpoints": true
     }
   ]
 }

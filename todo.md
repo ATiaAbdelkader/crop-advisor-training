@@ -153,3 +153,4 @@
 - [x] Extend the reusable voluntary checklist and visual progress component to every remaining field-exercise interface.
 - [x] Create a learner completion-summary dashboard for module progress, formal assessment status, and voluntary field-exercise completion.
 - [x] Persist voluntary field-exercise progress per authenticated learner for secure cross-device completion summaries without changing formal progression.
+- [x] Enable learner-controlled selection and sharing of voluntary exercise summaries with authorised facilitators without affecting formal progression.

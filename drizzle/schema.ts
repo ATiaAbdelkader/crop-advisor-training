@@ -138,6 +138,21 @@ export const learnerExerciseProgress = mysqlTable(
   table => [uniqueIndex("learner_exercise_progress_owner_route_unique").on(table.userId, table.exerciseRoute), index("learner_exercise_progress_owner_updated_idx").on(table.userId, table.updatedAt)]
 );
 
+/** Learner-controlled, revocable visibility for a single voluntary exercise summary; it contains no exercise response text. */
+export const learnerExerciseSummaryShares = mysqlTable(
+  "learnerExerciseSummaryShares",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    ownerUserId: int("ownerUserId")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    exerciseRoute: varchar("exerciseRoute", { length: 160 }).notNull(),
+    sharedAt: timestamp("sharedAt").defaultNow().notNull(),
+    revokedAt: timestamp("revokedAt"),
+  },
+  table => [uniqueIndex("learner_exercise_summary_share_owner_route_unique").on(table.ownerUserId, table.exerciseRoute), index("learner_exercise_summary_share_active_idx").on(table.revokedAt, table.sharedAt), index("learner_exercise_summary_share_owner_idx").on(table.ownerUserId, table.revokedAt)]
+);
+
 export const assessmentAttempts = mysqlTable("assessmentAttempts", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId")

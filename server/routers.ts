@@ -61,6 +61,7 @@ import {
   markCropDiagnosisAnnotationFeedbackRead,
   markCompetencyAssessmentFeedbackRead,
   markLessonComplete,
+  listActiveLearnerExerciseSummarySharesForFacilitator,
   mergeLearnerExerciseProgress,
   recordAssessmentAttempt,
   listFieldRecords,
@@ -72,11 +73,13 @@ import {
   listFieldRecordReviewShares,
   listFieldInquiryPeerSharesForOwner,
   listLearnerExerciseProgress,
+  listLearnerExerciseSummaryShares,
   listLearnerReflections,
   listScenarioAttempts,
   saveFieldRecord,
   saveFieldInquiryPeerReflectionForOwner,
   saveScorecardReflectionForLearner,
+  shareLearnerExerciseSummary,
   saveFieldPracticumEntry,
   saveCapstoneSubmission,
   saveAssessmentTimeLimitOverride,
@@ -91,6 +94,7 @@ import {
   recordScenarioAttempt,
   reserveCaseConferenceSlot,
   revokeFieldRecordReviewShare,
+  revokeLearnerExerciseSummaryShare,
   revokeFieldInquiryPeerShare,
   submitFieldRecordReview,
   submitFieldInquiryPeerReview,
@@ -500,6 +504,24 @@ export const appRouter = router({
     sync: protectedProcedure
       .input(z.object({ progress: z.array(exerciseProgressEntryInput).max(14).refine(progress => new Set(progress.map(entry => entry.exerciseRoute)).size === progress.length, "Include each exercise only once.") }))
       .mutation(({ ctx, input }) => mergeLearnerExerciseProgress({ userId: ctx.user.id, progress: input.progress })),
+  }),
+  exerciseSummaryShares: router({
+    mine: protectedProcedure.query(({ ctx }) => listLearnerExerciseSummaryShares(ctx.user.id)),
+    share: protectedProcedure
+      .input(z.object({ exerciseRoute: z.string().min(1).max(160).refine(isFieldExerciseRoute, "Exercise route is not recognised.") }))
+      .mutation(async ({ ctx, input }) => {
+        const share = await shareLearnerExerciseSummary(ctx.user.id, input.exerciseRoute);
+        if (!share) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Open and begin this voluntary exercise before sharing its completion summary." });
+        return share;
+      }),
+    revoke: protectedProcedure
+      .input(z.object({ id: z.number().int().positive() }))
+      .mutation(async ({ ctx, input }) => {
+        const revoked = await revokeLearnerExerciseSummaryShare(ctx.user.id, input.id);
+        if (!revoked) throw new TRPCError({ code: "NOT_FOUND", message: "Active voluntary exercise share not found." });
+        return { revoked: true } as const;
+      }),
+    facilitatorQueue: adminProcedure.query(() => listActiveLearnerExerciseSummarySharesForFacilitator()),
   }),
   fieldInquiryPeerReview: router({
     mine: protectedProcedure

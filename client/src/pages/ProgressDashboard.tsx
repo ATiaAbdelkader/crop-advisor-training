@@ -1,6 +1,7 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import LearnerLoading from "@/components/LearnerLoading";
 import TrainingShell from "@/components/TrainingShell";
+import ExerciseSummarySharing from "@/components/ExerciseSummarySharing";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -135,6 +136,8 @@ export default function ProgressDashboard() {
         </section>
 
         <section className="mt-7 rounded-[24px] border border-[#dce7d8] bg-[#f7faf5] p-5 sm:p-6"><div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#718471]">Voluntary field practice</p><h2 className="mt-1 font-serif text-2xl font-semibold text-[#294235]">Exercise completion summary</h2></div><p className="max-w-md text-xs leading-5 text-[#667866]">Completed prompt counts are securely saved to your account and available across devices. Response text stays on the device where it was entered. This practice remains separate from formal assessment, progression, scoring, certification, and alerts.</p></div><div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{fieldExerciseCatalog.map(item=>{const record=exerciseProgress[item.route];const done=Boolean(record&&record.total>0&&record.completed===record.total);return <button key={item.route} onClick={()=>setLocation(item.route)} className="rounded-xl border border-[#dce7d8] bg-white p-3 text-left transition-colors hover:bg-[#eef7ec]"><div className="flex items-center justify-between gap-2"><span className="text-xs font-bold text-[#315f47]">{item.module}</span><Badge className={cn("border-0 text-[9px]",done?"bg-[#dcefdc] text-[#337047]":"bg-[#edf1eb] text-[#647464]")}>{done?"Complete":"Not complete"}</Badge></div><p className="mt-1 text-sm font-semibold text-[#334b3a]">{item.title}</p><p className="mt-1 text-xs text-[#718071]">{record?`${record.completed}/${record.total} prompts completed`:"Open to begin practice"}</p></button>})}</div></section>
+
+        <ExerciseSummarySharing exerciseProgress={exerciseProgress} />
 
         <section className="mt-7 rounded-[24px] border border-[#e0e5dc] bg-[#fcfcf8] shadow-[0_9px_24px_rgba(39,67,47,.035)]">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#e7ece4] px-5 py-5 sm:px-6">

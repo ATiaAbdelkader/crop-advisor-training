@@ -49,6 +49,7 @@ import FieldLayoutEvidenceExercise from "@/pages/FieldLayoutEvidenceExercise";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
+import FacilitatorExerciseSummaryReviews from "@/pages/FacilitatorExerciseSummaryReviews";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -93,6 +94,7 @@ function Router() {
       <Route path="/supervisor/competency-reviews" component={SupervisorCompetencyReviews} />
       <Route path="/supervisor/competency-calibration" component={SupervisorCalibration} />
       <Route path="/supervisor/assessment-time-limits" component={AssessmentTimeLimits} />
+      <Route path="/supervisor/exercise-summaries" component={FacilitatorExerciseSummaryReviews} />
       <Route path="/field-inquiry-peer/:shareToken" component={FieldInquiryPeerFeedback} />
       <Route path="/field-inquiry/:moduleId" component={FieldInquiryPeerReview} />
       <Route path="/supervisor/annotation-reviews" component={AnnotationSupervisorReviews} />
