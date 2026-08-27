@@ -38,6 +38,7 @@ import SoilSamplingQualityAudit from "@/pages/SoilSamplingQualityAudit";
 import RootZoneWaterDecisionLab from "@/pages/RootZoneWaterDecisionLab";
 import DripUniformityInvestigationLab from "@/pages/DripUniformityInvestigationLab";
 import FieldDiagnosisEvidenceBoard from "@/pages/FieldDiagnosisEvidenceBoard";
+import DiseaseInvestigationLab from "@/pages/DiseaseInvestigationLab";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/NotFound";
 import ProgressDashboard from "@/pages/ProgressDashboard";
@@ -70,6 +71,7 @@ function Router() {
       <Route path="/root-zone-water-lab" component={RootZoneWaterDecisionLab} />
       <Route path="/drip-uniformity-lab" component={DripUniformityInvestigationLab} />
       <Route path="/field-diagnosis-board" component={FieldDiagnosisEvidenceBoard} />
+      <Route path="/disease-investigation-lab" component={DiseaseInvestigationLab} />
       <Route path="/competency-reflections" component={ScorecardReflectionLibrary} />
       <Route path="/competency-reflection/:assessmentId" component={ScorecardReflection} />
       <Route path="/competency-comparison/:assessmentId" component={CompetencyEvidenceComparison} />

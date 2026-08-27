@@ -139,3 +139,4 @@
 - [x] Implement a researched Module 23 root-zone water and air decision lab for comparative observation, uncertainty, and safe recheck or referral practice.
 - [x] Implement a researched Module 25 drip-uniformity investigation lab for source-to-far-end comparison, maintenance evidence, and safe referral practice.
 - [x] Implement a researched Module 29 differential field-diagnosis evidence board for competing explanations, evidence checks, and safe referral practice.
+- [x] Implement a researched Module 30 disease-investigation evidence lab for observation, confirmation limits, and authorised diagnostic referral practice.
