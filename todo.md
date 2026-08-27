@@ -138,3 +138,4 @@
 - [x] Implement a researched Module 16 soil-sampling quality audit for representative zones, clean handling, traceability, and laboratory referral practice.
 - [x] Implement a researched Module 23 root-zone water and air decision lab for comparative observation, uncertainty, and safe recheck or referral practice.
 - [x] Implement a researched Module 25 drip-uniformity investigation lab for source-to-far-end comparison, maintenance evidence, and safe referral practice.
+- [x] Implement a researched Module 29 differential field-diagnosis evidence board for competing explanations, evidence checks, and safe referral practice.
