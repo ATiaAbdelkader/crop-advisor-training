@@ -266,69 +266,116 @@ export const cropAdvisorCourse: CourseDefinition = {
       title: "Soil and nutrition",
       eyebrow: "Module 02",
       description:
-        "Read soil context, design representative sampling, and turn laboratory results into cautious nutrient-management decisions.",
+        "Read the root zone as a living water–air–soil system, design representative samples, and turn laboratory results into cautious nutrient-management decisions.",
       lessons: [
         {
           id: "soil-profile-context",
           title: "Read the soil profile in context",
-          duration: "22 min",
+          duration: "30 min",
           kicker: "Soil as a system",
           summary:
-            "Interpret rooting environment, structure, water movement, and field variability before attaching a nutrient explanation to crop symptoms.",
+            "Interpret rooting environment, pore space, water movement, structure, and field variability before attaching a nutrient explanation to crop symptoms.",
           outcomes: [
-            "Describe how rooting depth and soil structure influence crop performance.",
-            "Identify observations that indicate water or compaction constraints.",
-            "Relate soil variability to a practical scouting or sampling plan.",
+            "Describe the root zone as a changing balance of soil solids, water, air, roots, and biological activity.",
+            "Observe profile layers, roots, structure, pore continuity, and moisture distribution without converting a clue into a confirmed cause.",
+            "Compare root-zone evidence from contrasting crop areas before inferring a nutrient or management limitation.",
+            "Relate soil variability to a practical scouting, sampling, or referral plan.",
           ],
           sections: [
             {
-              heading: "Look below the canopy",
+              heading: "Read the root zone as a functioning system",
               body:
-                "Above-ground symptoms may be shaped by root restriction, waterlogging, drought, compaction, shallow topsoil, or abrupt texture changes. A spade or soil probe can reveal rooting depth, aggregate condition, pore continuity, moisture distribution, and the transition between horizons. Observe several representative positions rather than relying on one excavation.",
+                "The root zone is not simply “soil beneath the crop.” It is a changing balance of solids, pore space, water, air, roots, and biological activity. Those conditions influence whether roots can explore the profile, exchange gases, take up water, and access nutrients. Above-ground symptoms may therefore be shaped by root restriction, saturated or dry pore space, compaction, shallow topsoil, or abrupt texture changes. A spade or soil probe can reveal root distribution, aggregate condition, pore continuity, moisture distribution, and the transition between horizons. Observe several representative positions rather than relying on one excavation.",
               callout:
-                "A laboratory result is easier to interpret when it is paired with a field description of rooting and water conditions.",
+                "A laboratory result is easier to interpret when it is paired with a field description of roots, pore space, water condition, and the crop pattern it represents.",
+            },
+            {
+              heading: "Trace evidence from the surface into the profile",
+              body:
+                "Start with surface clues—cover, crusting, residue, traffic pattern, ponding, slope, and crop distribution—then connect them to the profile. Record where roots become sparse, change direction, or stop; where the soil becomes denser, wetter, drier, or structurally different; and whether the healthy comparison shows the same feature. These are field observations, not automatic diagnoses. Their value is that they help define what a sample, measurement, or specialist review must clarify next.",
             },
             {
               heading: "Separate zones before sampling",
               body:
-                "Ridges, depressions, soil types, management history, yield maps, and visible crop patterns can define zones with different likely responses. Do not combine materially different zones into one composite sample if the decision will be made by zone. Mark their position so later observations can be compared with the same places.",
+                "Ridges, depressions, soil types, management history, yield maps, irrigation patterns, and visible crop patterns can define zones with different likely responses. Keep materially different decision zones separate when management may differ. Mark the position, crop stage, and comparison area so later observations can return to the same places. A composite sample is an average; it cannot preserve the difference between zones that should be interpreted separately.",
             },
             {
               heading: "Interpret limits before nutrients",
               body:
-                "Nutrient availability and crop uptake depend on water, aeration, rooting, temperature, pH, and biological activity. A nutrient-focused intervention may not correct a yield limitation caused primarily by poor root access or water management. Identify the dominant limitation before selecting a response.",
+                "Nutrient availability and crop uptake depend on water, aeration, rooting, temperature, pH, and biological activity. A nutrient-focused intervention may not correct a yield limitation caused primarily by poor root access or water condition. Sort what is observed, reported, inferred, and still unknown before naming a dominant limitation. Where root-zone evidence and a test result do not agree, retain the uncertainty and identify the next check rather than forcing a single explanation.",
             },
           ],
         },
         {
           id: "sampling-to-recommendation",
           title: "From sampling to recommendation",
-          duration: "20 min",
+          duration: "27 min",
           kicker: "Evidence that represents the field",
           summary:
-            "Plan representative samples, preserve the context of laboratory data, and communicate nutrient recommendations with their assumptions.",
+            "Plan representative samples, protect the evidence chain from field to laboratory, and communicate nutrient decisions with their assumptions and limits.",
           outcomes: [
-            "Choose sampling depth and timing that match the management question.",
-            "Avoid common sources of sampling bias.",
-            "State the assumptions and follow-up checks behind a nutrient recommendation.",
+            "Define the field question and decision zone before selecting sample positions, depth, timing, and laboratory route.",
+            "Protect sample identity, cleanliness, and field context through the handover to the laboratory.",
+            "Avoid common sources of sampling bias and explain what a composite result can and cannot represent.",
+            "State the assumptions, evidence limits, and follow-up checks behind a nutrient-management decision.",
           ],
           sections: [
             {
-              heading: "Design the sample for the decision",
+              heading: "Design the sample for the field question",
               body:
-                "Set the sampling depth, positions, number of cores, and timing to match the nutrient or soil condition being assessed and the local interpretation system. Avoid atypical locations such as headlands, manure piles, gateways, fertiliser bands, or recently disturbed ground unless those zones are specifically being investigated.",
+                "State the decision the sample must support, then define the field zone, crop context, soil layer or depth, timing, and laboratory interpretation system that fit that question. Choose sample positions that represent the decision area rather than convenient or visually dramatic spots. Atypical locations—such as headlands, stockpiles, gateways, input bands, or recently disturbed ground—can be valuable as separate investigations but should not silently distort a representative composite sample.",
             },
             {
-              heading: "Protect sample integrity",
+              heading: "Protect the evidence chain",
               body:
-                "Use clean tools and containers, label samples immediately, and keep field identity, depth, and zone information attached to the sample. The laboratory can only analyse what it receives; poor field representation cannot be repaired by a precise analytical result.",
+                "Use clean tools and containers, label samples immediately, and keep field identity, crop context, depth, zone, date, and relevant history attached to the sample. Record the route and exclusions used to collect it. The laboratory can only analyse what it receives; poor field representation cannot be repaired by a precise analytical result. Keep the laboratory’s current instructions and interpretation basis with the result so a later advisor can understand what the number does—and does not—mean.",
               callout:
-                "Sampling error is often a bigger practical risk than small differences between two legitimate laboratory numbers.",
+                "Sampling error or lost context can be a larger practical risk than a small difference between two legitimate laboratory numbers.",
             },
             {
-              heading: "Explain the recommendation’s basis",
+              heading: "Explain the decision’s basis and limits",
               body:
-                "When translating a report into advice, state the crop need, expected yield context, nutrient source assumptions, placement and timing considerations, and constraints such as moisture or soil pH. Specify what will be monitored after application, especially where response is uncertain or field variability is high.",
+                "When translating a report into advice, state the crop need, expected yield context, nutrient-source assumptions, placement and timing considerations, and root-zone constraints such as water condition, pH, or shallow rooting. Specify what will be monitored afterward, especially where response is uncertain or field variability is high. A soil result is evidence in a wider decision; it is not authority for an unverified product or rate.",
+            },
+          ],
+        },
+        {
+          id: "root-zone-evidence-sequence",
+          title: "Build a root-zone evidence sequence",
+          duration: "26 min",
+          kicker: "From profile to next check",
+          summary:
+            "Use a repeatable sequence to compare two field zones, preserve observation quality, and decide whether to recheck, sample, or seek qualified interpretation.",
+          outcomes: [
+            "Frame a root-zone question that identifies the crop stage, decision, comparison zone, and evidence gap.",
+            "Build an evidence note that links surface condition, soil profile, root distribution, moisture, and crop pattern.",
+            "Use matched-zone comparison to challenge an initial nutrient explanation.",
+            "Choose a bounded next evidence step, follow-up indicator, or qualified referral without prescribing an input.",
+          ],
+          sections: [
+            {
+              heading: "1. Frame the root-zone question",
+              body:
+                "Write the decision in one sentence: “Before deciding whether a nutrient response is appropriate in this crop zone, what root-zone evidence must be checked?” Add the crop stage, affected area, healthy or typical comparison area, and the practical consequence of being wrong. This frames the work around evidence needed for a decision, rather than around proving a favoured explanation.",
+            },
+            {
+              heading: "2. Compare matched field positions",
+              body:
+                "Choose an affected or uncertain position and a meaningful comparison at a similar crop stage. For each, record surface cover and condition, crop distribution, root depth and branching where visible, soil structure and pore continuity, moisture condition, layers or abrupt changes, and recent water or management context. Keep observations separate from the grower’s report and from your interpretation. The comparison is useful when it exposes both similarities and differences that the first explanation must account for.",
+              callout:
+                "The aim is not to find a single perfect hole. It is to create a fair, repeatable comparison that another advisor could understand and revisit.",
+            },
+            {
+              heading: "3. Decide what the evidence can support",
+              body:
+                "Review the two notes together. Which observations agree with the leading explanation? Which ones challenge it? What relevant fact is still missing: representative sampling, current laboratory interpretation, a repeat observation after changing conditions, or specialist support? Name the evidence limit plainly. This protects against treating an observed root, wet layer, or laboratory value as proof of a complete diagnosis.",
+            },
+            {
+              heading: "4. Set the next evidence and review boundary",
+              body:
+                "Choose the lowest-risk next step that reduces the important uncertainty. This may be a properly scoped sample, an additional matched observation, a current authorised interpretation source, or a qualified referral. Record the location, timing, information needed, and the observation that would cause the working explanation to be revised. Do not turn this exercise into a fertiliser selection, dose, or rate decision; those require current local evidence and authorised guidance.",
+              callout:
+                "Source-informed practice: healthy soils regulate water, cycle nutrients, and provide physical support for roots; representative sampling begins with zones that match the decision area and retains the field context through interpretation.",
             },
           ],
         },

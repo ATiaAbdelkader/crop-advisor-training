@@ -57,6 +57,22 @@ describe("crop-advisor progression", () => {
     expect(advisoryPractice.assessment.questions).toHaveLength(4);
   });
 
+  it("expands soil and nutrition with a matched-zone root-zone evidence sequence without prescribing inputs", () => {
+    const soilAndNutrition = cropAdvisorCourse.modules.find(module => module.id === "soil-and-nutrition")!;
+    const lessonIds = soilAndNutrition.lessons.map(lesson => lesson.id);
+    const allSections = soilAndNutrition.lessons.flatMap(lesson => lesson.sections);
+    const fieldBrief = documentModuleFieldBriefs[soilAndNutrition.id];
+
+    expect(lessonIds).toEqual(["soil-profile-context", "sampling-to-recommendation", "root-zone-evidence-sequence"]);
+    expect(allSections.some(section => section.heading.includes("Frame the root-zone question"))).toBe(true);
+    expect(allSections.some(section => section.heading.includes("Compare matched field positions"))).toBe(true);
+    expect(allSections.some(section => section.heading.includes("Set the next evidence and review boundary"))).toBe(true);
+    expect(fieldBrief.evidence).toContain("root distribution");
+    expect(fieldBrief.standard).toContain("root-zone evidence");
+    expect(soilAndNutrition.assessment.passMark).toBe(80);
+    expect(soilAndNutrition.assessment.questions).toHaveLength(4);
+  });
+
   it("adds a source-grounded Field Inquiry Studio to every module without changing formal progression", () => {
     expect(fieldInquirySourceBasis).toContain("FAO Farmer Field School");
     cropAdvisorCourse.modules.forEach(module => {
