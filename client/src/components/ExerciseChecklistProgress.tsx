@@ -1,0 +1,8 @@
+import { CheckCircle2, Circle, ListChecks } from "lucide-react";
+
+type Step = readonly [string, string];
+export function ExerciseChecklistProgress({ steps, values }: { steps: readonly Step[]; values: Record<string, string> }) {
+  const done = steps.filter(([id]) => Boolean(values[id]?.trim())).length;
+  const percent = Math.round((done / steps.length) * 100);
+  return <section aria-label="Exercise progress" className="mt-6 rounded-2xl border border-[#cfe1d0] bg-white/80 p-4 shadow-sm"><div className="flex items-center justify-between gap-3"><div className="flex items-center gap-2 text-sm font-bold text-[#315f47]"><ListChecks className="h-4 w-4"/>Your practice checklist</div><span className="text-xs font-bold text-[#527056]">{done} of {steps.length} complete</span></div><div className="mt-3 h-2 overflow-hidden rounded-full bg-[#e6efe4]" role="progressbar" aria-valuemin={0} aria-valuemax={steps.length} aria-valuenow={done} aria-label={`${done} of ${steps.length} prompts complete`}><div className="h-full rounded-full bg-[#4c7e57] transition-[width] duration-200" style={{width:`${percent}%`}}/></div><div className="mt-3 grid gap-2 sm:grid-cols-2">{steps.map(([id,label])=>{const complete=Boolean(values[id]?.trim());return <a key={id} href={`#${id}`} className="flex items-center gap-2 rounded-lg px-2 py-1.5 text-xs font-medium text-[#48614e] hover:bg-[#eef7ec] focus:outline-none focus:ring-2 focus:ring-[#6b9a74]">{complete?<CheckCircle2 className="h-4 w-4 text-[#4c7e57]" aria-hidden="true"/>:<Circle className="h-4 w-4 text-[#97ad9b]" aria-hidden="true"/>}<span>{label}</span></a>})}</div></section>
+}

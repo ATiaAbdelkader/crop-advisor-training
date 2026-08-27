@@ -149,3 +149,4 @@
 - [x] Implement a researched Module 27 field-care maintenance evidence exercise for routine observation, prioritisation, and safe escalation practice.
 - [x] Implement a researched Module 28 harvest-quality evidence exercise for maturity observation, handling-risk recognition, traceability, and safe referral practice.
 - [x] Implement a researched Module 21 field-layout evidence exercise for field preparation, mulch and trellis context, readiness checks, and safe escalation practice.
+- [x] Add reusable voluntary interactive checklists and visual progress tracking to the field-exercise interfaces without altering formal learning progression.
