@@ -20,6 +20,20 @@ export type AppliedScenario = {
 };
 
 export const appliedScenarios: Readonly<Record<string, AppliedScenario>> = {
+  "crop-selection-evidence-gap": {
+    id: "crop-selection-evidence-gap",
+    moduleId: "vegetable-production-planning",
+    title: "Scenario: Recognise an evidence gap before crop selection",
+    context: "A grower wants to select a vegetable crop for a newly accessed field after hearing that one option has strong local demand. The field has a provisional access route and an apparent water source, but the seasonal water reliability and suitability, drainage pattern after heavy rain, current buyer requirements, crop and variety availability, and labour for harvest and handling have not been confirmed. The grower asks for a definitive crop selection today.",
+    decisionPrompt: "Use a farm-context evidence ledger to decide what can be said now and which gap must be checked before treating a crop option as a recommendation.",
+    evidenceChecklist: ["Grower objective, intended use or buyer, time frame, labour, skills, and operational capacity", "Site access, field history, soil and drainage observations, exposure, and mapped water context", "Current local crop and variety guidance, availability, and crop-health context", "Current market or household requirements, evidence gaps, source for verification, and review or referral route"],
+    reflectionPrompt: "Which unknown could most change the proposed crop decision, and how would you explain the need to pause without dismissing the grower’s objective?",
+    questions: [
+      { id: "crop-selection-gap-q1", prompt: "What is the most appropriate response to the request for a definitive crop selection?", options: [{ id: "a", label: "Select the crop with reported demand because the field appears to have water." }, { id: "b", label: "State the promising option as a final recommendation without checking the missing context." }, { id: "c", label: "Record the grower objective and the current evidence, then identify the unresolved water, drainage, market, availability, and operational gaps that could change the decision." }, { id: "d", label: "Choose a crop only from a generic list because every field has similar constraints." }], correctOptionId: "c", feedback: "Correct. Demand and an apparent water source are starting information, not enough evidence to claim a crop is a fit for this specific farm context." },
+      { id: "crop-selection-gap-q2", prompt: "Which missing evidence has the clearest potential to alter the decision before selection?", options: [{ id: "a", label: "A current check of seasonal water suitability and reliability, field drainage after rain, and the grower’s harvest and handling capacity." }, { id: "b", label: "A preferred colour for a field sign." }, { id: "c", label: "An unverified crop story from a different farm." }, { id: "d", label: "A product list without crop, site, or grower context." }], correctOptionId: "a", feedback: "Correct. Water, drainage, and delivery capacity can materially change whether an option is practical and should be verified through context-appropriate current evidence." },
+      { id: "crop-selection-gap-q3", prompt: "How should the advisor close the planning conversation while important gaps remain?", options: [{ id: "a", label: "Commit to planting before the next review so momentum is not lost." }, { id: "b", label: "Document what is known, assign the next evidence source and review point, and use current authorised local guidance or qualified support before a consequential choice." }, { id: "c", label: "Ignore the grower’s objective until every possible fact is known." }, { id: "d", label: "Assume that a nearby field has identical water, market, and labour conditions." }], correctOptionId: "b", feedback: "Correct. The advisor should preserve the grower’s purpose while making the evidence gap, verification source, and decision boundary clear." },
+    ],
+  },
   "conflicting-soil-and-crop-evidence": {
     id: "conflicting-soil-and-crop-evidence",
     moduleId: "soil-and-nutrition",

@@ -165,3 +165,6 @@
 - [x] Expand Module 3 with a repeatable crop-walk evidence sequence while preserving formal progression safeguards.
 - [x] Add a printable root-zone comparison record that learners can use in the field without prescribing irrigation or nutrient action.
 - [x] Add a short non-prescriptive scenario on conflicting soil and crop evidence to test learner interpretation.
+- [x] Expand Module 4 with a farm-context planning sequence while preserving formal progression safeguards.
+- [x] Add a crop-walk map sketch field to the printable root-zone comparison record for clearer field notes.
+- [x] Add a short non-prescriptive scenario on recognising evidence gaps before crop selection.

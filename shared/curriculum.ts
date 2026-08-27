@@ -673,69 +673,109 @@ export const cropAdvisorCourse: CourseDefinition = {
       title: "Vegetable production planning",
       eyebrow: "Module 04",
       description:
-        "Build a rich picture of the farm context, then turn climatic, soil, market, biological, and knowledge factors into a practical vegetable field plan.",
+        "Build a farm-context evidence picture, identify planning gaps, and turn climate, site, water, market, operational, and grower factors into a reviewable vegetable-production plan.",
       lessons: [
         {
           id: "build-the-rich-picture",
           title: "Build the rich picture",
-          duration: "24 min",
+          duration: "29 min",
           kicker: "Planning the whole system",
           summary:
-            "Use a rich picture to make visible the main elements and relationships that shape a vegetable-production decision before choosing a crop, variety, or field layout.",
+            "Use a rich picture and planning evidence ledger to make visible the farm goals, resources, constraints, and unknowns that shape a vegetable-production decision before choosing a crop, variety, or field layout.",
           outcomes: [
-            "Identify the climatic, edaphic, topographic, economic, biological, and knowledge factors that shape vegetable production.",
-            "Use planning questions to reveal constraints beyond location, soil quality, and water availability.",
-            "Create a field-context picture that connects farm conditions with practical decisions.",
+            "Frame a crop-production decision around the grower’s purpose, practical objective, and consequences of being wrong.",
+            "Identify climatic, edaphic, topographic, economic, biological, operational, and knowledge factors that shape vegetable production.",
+            "Use planning questions to reveal constraints and evidence gaps beyond location, soil quality, and water availability.",
+            "Create a farm-context picture that connects observed conditions, reported context, uncertainties, and next evidence steps.",
           ],
           sections: [
             {
-              heading: "See the system before the plot",
+              heading: "Start with the farm purpose and decision",
               body:
-                "A rich picture is a drawing of a situation that brings together the elements and relationships to consider before an intervention. In vegetable production, this prevents planning from narrowing too early to a suitable soil or a nearby water source. The picture can include the field, access route, water point, family labour, buyers, neighbouring crops, seasonal hazards, available equipment, and the farmer’s existing knowledge.",
+                "Before comparing crops or layouts, ask what the grower is trying to achieve, who will use or buy the crop, what time frame matters, what resources are genuinely available, and what decision needs to be made now. State the consequence of an unsupported choice: for example, a crop selected without understanding access, water reliability, labour, market requirements, or seasonal exposure may create a problem that a soil observation alone cannot solve. This first step keeps the plan grower-centred and prevents the advisor from supplying a generic answer to a context-specific question.",
               callout:
-                "Planning is strongest when the field is understood as a production-and-market system, not as soil alone.",
+                "Planning discipline: a crop option is not a recommendation until its claimed fit can be traced to farm-context evidence.",
             },
             {
-              heading: "Ask about the growing environment",
+              heading: "See the system before the plot",
               body:
-                "Climatic conditions influence crop choice and timing. Short and long days can affect flowering in fruit vegetables; the hottest and coldest months can influence pests, diseases, flowering, fruiting, and variety adaptability. Ask whether water is reliable year-round or only in the rainy season, and identify the months in which flooding or typhoon risk is most likely. These questions help make timing and risk controls explicit.",
+                "A rich picture is a sketch or map that brings together the elements and relationships to consider before an intervention. In vegetable production, it prevents planning from narrowing too early to a suitable soil or a nearby water source. Include the field and access route, water point, drainage direction, low or exposed areas, family or hired labour, buyers, neighbouring crops, seasonal hazards, available equipment, existing records, and the farmer’s knowledge. Label what is directly observed, what is reported, and what is still unknown.",
+              callout:
+                "Planning is strongest when the field is understood as a production-and-market system, not as soil alone or a generic crop list.",
+            },
+            {
+              heading: "Trace resources and constraints through the farm context",
+              body:
+                "Follow the proposed production activity through the farm. Trace how a crop would move from field access to planting material, water source, labour, harvest, handling, and buyer or household use. Ask what conditions are seasonal, what is fixed, what has changed since the last season, and which claims need current verification. Climate, rainfall pattern, heat or cold exposure, water source, drainage, field history, soil condition, nearby crops, access, finance, skills, labour, harvest handling, and market requirements are connected evidence domains rather than separate checklist items.",
             },
             {
               heading: "Use the six planning lenses",
               body:
-                "Work through six connected lenses. Edaphic factors include soil condition, colour, structure, texture, porosity, pH, nutrient content, organic matter, soil life, and access to testing. Topographic factors include location, access, transport route, slope, drainage, and elevation. Economic factors include market, seasonal price and quantity changes, agro-input availability, finance, information, land, labour, equipment, and locally available materials. Biological factors include field history, problem history, recent outbreaks, nearby crops, biodiversity, and ecosystem observations. Finally, assess the farmer’s skills, prior training, farming experience, learning preferences, and access to phones or smartphones.",
+                "Work through six connected lenses. Edaphic factors include soil condition, colour, structure, texture, porosity, pH, nutrient content, organic matter, soil life, and access to testing. Topographic factors include location, access, transport route, slope, drainage, and elevation. Economic factors include market, seasonal price and quantity changes, access to inputs, finance, information, land, labour, equipment, and locally available materials. Biological factors include field history, problem history, nearby crops, biodiversity, and ecosystem observations. Add operational factors such as safe access, handling capacity, and recordkeeping, then assess the farmer’s skills, prior training, farming experience, learning preferences, and access to communication tools. For each lens, write the supporting evidence and the evidence gap; do not fill a gap with an assumption.",
             },
           ],
         },
         {
           id: "turn-site-appraisal-into-plan",
           title: "Turn a site appraisal into a field plan",
-          duration: "26 min",
+          duration: "30 min",
           kicker: "From observation to action",
           summary:
-            "Translate field history, soil and water checks, crop selection, and household or market purpose into an agreed vegetable-production plan and practical checklist.",
+            "Translate field history, site and water checks, crop options, operational capacity, and household or market purpose into an agreed, reviewable vegetable-production plan.",
           outcomes: [
-            "Conduct a field appraisal that covers location, history, soil, water, slope, sun, wind, and biological pressures.",
-            "Select crop and variety using field evidence, season, farmer preference, and market or household purpose.",
-            "Co-design a field layout, irrigation approach, crop-protection practices, and activity record with the farmer.",
+            "Conduct a field appraisal that covers location, history, soil, water, drainage, exposure, access, and biological pressures.",
+            "Compare crop options using field evidence, season, grower preference, operational capacity, and market or household purpose without overclaiming fit.",
+            "Co-design a field layout and activity record that identifies assumptions, constraints, review points, and current local guidance needed before implementation.",
           ],
           sections: [
             {
               heading: "Appraise the site in sequence",
               body:
-                "Begin with field location and access: is the site close to a road, path, or home, and how will inputs and harvested produce move? Review the field’s crop and fertiliser history, recurrent problems, neighbouring practices, and crops grown around it. Then examine soil pH, texture, profile and hardpan, colour and humus; map the water source, seasonal availability, water quality, and irrigation equipment; and note slope, sun exposure, wind, farm animals, or stray animals.",
+                "Begin with field location and access: how will people, tools, inputs, and harvested produce move safely and realistically? Review the field’s crop and management history, recurrent problems, neighbouring practices, and crops grown around it. Then document soil profile and visible condition, mapped water source and seasonal availability, drainage and exposure, existing infrastructure, and relevant crop, handling, market, or household constraints. If a factor is reported rather than observed or verified, label it as such. A sound appraisal makes it possible to see which evidence must be collected before a crop or layout decision is treated as ready.",
               callout:
-                "A plan should be made with the farmer, using a map or crop planner that makes the site conditions and intended layout visible.",
+                "A plan should be made with the farmer, using a map or crop planner that makes site conditions, intended layout, evidence gaps, and review points visible.",
             },
             {
-              heading: "Choose the crop, variety, and plot design together",
+              heading: "Compare options before calling one a fit",
               body:
-                "Crop and variety selection should respond to field observations, season, the farmer’s preference, and relevant market or partner information. Once a choice is made, agree land preparation, ploughing or harrowing needs, basal amendments, raised-bed number, size, height, and orientation. Decide whether to use seedlings or direct sowing, which mulch is suitable, whether a trellis or net trellis is required, and how irrigation will be delivered. A gentle slope can support irrigation and drainage, but the plan must still control erosion and avoid concentrating water in vulnerable areas.",
+                "Compare possible crop and variety options against the same farm-context evidence: season and exposure, soil and root-zone observations, available and suitable water evidence, field history, crop-health risk, labour and skill capacity, harvest and handling capacity, grower preference, and realistic household or market purpose. Then identify the option’s strongest evidence, its key uncertainty, and the source needed to close that gap. Use current authorised local crop and variety guidance, laboratory interpretation, buyer requirements, and qualified support where they are relevant. This exercise does not select a crop, variety, layout dimension, input, timing, or field operation from a generic checklist.",
             },
             {
-              heading: "Adapt the checklist to the production purpose",
+              heading: "Create an evidence-backed, reviewable plan",
               body:
-                "A small commercial field checklist should include market potential, buyer access, crop quality requirements, input and finance access, harvest and post-harvest planning, and safe disposal of non-biodegradable materials. A home-garden checklist can centre household vegetable preferences, a compact layout, water intervals checked against soil moisture, nursery quality, healthy and uniform seedlings, organic mulch, trellis timing, crop protection, and the farmer’s activity record. In both settings, record decisions so the plan can be checked and improved over time.",
+                "Turn the agreed context into a plan with four visible parts: the farm objective; the evidence that supports the current option; the gaps or constraints that must be resolved; and the review point or referral route. A small commercial plan may need current buyer, quality, handling, finance, and access evidence. A household-focused plan may need to clarify food preferences, labour availability, water access, and practical care capacity. In both cases, record who will verify each unknown, where the information will come from, and what would cause the plan to be revised. This makes planning an accountable learning process rather than a one-time recommendation.",
+            },
+          ],
+        },
+        {
+          id: "recognise-evidence-gaps-before-selection",
+          title: "Recognise evidence gaps before crop selection",
+          duration: "24 min",
+          kicker: "Pause before claiming fit",
+          summary:
+            "Use an evidence-gap screen to distinguish a promising crop idea from a crop decision that has sufficient farm-context support.",
+          outcomes: [
+            "Separate known facts, grower reports, assumptions, and evidence gaps in a proposed crop-selection decision.",
+            "Identify which missing evidence could materially change the crop, variety, timing, or field-use decision.",
+            "Choose a proportionate information, recheck, or qualified-referral step before implementation.",
+          ],
+          sections: [
+            {
+              heading: "Build an evidence ledger, not a confident narrative",
+              body:
+                "For each proposed crop option, create four columns: observed or verified evidence, reported context, assumptions, and unknowns. A soil result without its sampling context, a nearby water source without current suitability evidence, a market conversation without current requirements, or a crop list without season and labour context belongs in a different column from verified information. This distinction is especially important when an attractive option is being treated as a decision before its weak points have been examined.",
+            },
+            {
+              heading: "Prioritise gaps that could change the decision",
+              body:
+                "Not every missing detail has the same consequence. Ask whether the gap could change crop suitability, crop or variety availability, timing, root-zone or water feasibility, handling capacity, market or household value, safety, legality, or the grower’s ability to carry out the plan. Prioritise the gap that could reverse the decision or create the greatest avoidable risk. Then identify the appropriate source: a mapped observation, representative test and interpretation, current local guide, buyer requirement, grower record, or qualified specialist support.",
+              callout:
+                "An evidence gap is not a failure of planning. It is a reason to pause an unsupported claim and make the next enquiry visible.",
+            },
+            {
+              heading: "State the decision boundary and review route",
+              body:
+                "End the planning conversation by naming what can be said now and what cannot yet be claimed. Record a conditional next step, the evidence owner, the review time, and the condition that would change the plan. Use current, authorised local information for crop-selection, input, water, market, regulatory, or safety decisions that have meaningful consequences. This learning sequence does not recommend a crop, variety, input, field layout, timing, or market commitment.",
             },
           ],
         },

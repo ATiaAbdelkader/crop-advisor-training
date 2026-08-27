@@ -75,6 +75,21 @@ export default function FieldRecord() {
             </div>
           </section>
 
+          {template.mapSketchPrompt && (
+            <section className="record-avoid-break mt-8">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h2 className="font-serif text-xl font-semibold text-[#2d4834]">Crop-walk map sketch</h2>
+                  <p className="mt-1 max-w-3xl text-xs leading-5 text-[#607460]">{template.mapSketchPrompt}</p>
+                </div>
+                <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#6c856d]">North ↑ · route · key</p>
+              </div>
+              <div className="mt-4 min-h-52 rounded-xl border border-dashed border-[#9fb39f] bg-[linear-gradient(rgba(178,199,176,.32)_1px,transparent_1px),linear-gradient(90deg,rgba(178,199,176,.32)_1px,transparent_1px)] bg-[size:24px_24px] p-4">
+                <div className="flex h-44 items-start justify-between text-[10px] font-bold uppercase tracking-[0.14em] text-[#85a086]"><span>Sketch area</span><span>Observation key</span></div>
+              </div>
+            </section>
+          )}
+
           <section className="record-avoid-break mt-8">
             <div className="flex items-end justify-between gap-4">
               <h2 className="font-serif text-xl font-semibold text-[#2d4834]">Observation and action log</h2>

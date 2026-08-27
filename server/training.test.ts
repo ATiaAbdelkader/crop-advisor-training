@@ -89,6 +89,19 @@ describe("crop-advisor progression", () => {
     expect(cropObservation.assessment.questions).toHaveLength(4);
   });
 
+  it("expands vegetable production planning with farm-context evidence and evidence-gap sequencing without changing its formal threshold", () => {
+    const productionPlanning = cropAdvisorCourse.modules.find(module => module.id === "vegetable-production-planning")!;
+    const lessonIds = productionPlanning.lessons.map(lesson => lesson.id);
+    const allSections = productionPlanning.lessons.flatMap(lesson => lesson.sections);
+
+    expect(lessonIds).toEqual(["build-the-rich-picture", "turn-site-appraisal-into-plan", "recognise-evidence-gaps-before-selection"]);
+    expect(allSections.some(section => section.heading.includes("Start with the farm purpose and decision"))).toBe(true);
+    expect(allSections.some(section => section.heading.includes("Compare options before calling one a fit"))).toBe(true);
+    expect(allSections.some(section => section.heading.includes("Prioritise gaps that could change the decision"))).toBe(true);
+    expect(productionPlanning.assessment.passMark).toBe(80);
+    expect(productionPlanning.assessment.questions).toHaveLength(4);
+  });
+
   it("adds a source-grounded Field Inquiry Studio to every module without changing formal progression", () => {
     expect(fieldInquirySourceBasis).toContain("FAO Farmer Field School");
     cropAdvisorCourse.modules.forEach(module => {
@@ -163,7 +176,7 @@ describe("crop-advisor progression", () => {
   });
 
   it("extends decision practice and supports consistent supervisor calibration without relaxing evidence boundaries", () => {
-    expect(Object.keys(appliedScenarios)).toHaveLength(17);
+    expect(Object.keys(appliedScenarios)).toHaveLength(18);
     const extendedModules = ["crop-observation", "irrigation-systems", "nutrient-management", "harvesting-and-post-harvest-handling", "insect-pests-and-mites-identification-and-management", "soil-degradation-and-management", "nursery-for-vegetable-production"];
     expect(Object.values(appliedScenarios).filter(scenario => extendedModules.includes(scenario.moduleId))).toHaveLength(8);
     expect(supervisorCalibrationGuide.anchors.map(anchor => anchor.level)).toEqual(["Prepare", "Perform", "Review and refer"]);
@@ -203,6 +216,7 @@ describe("crop-advisor progression", () => {
 
     expect(fieldRecordTemplates["root-zone-comparison-record"].recordColumns.join(" ")).toContain("Profile, root, and pore observation");
     expect(fieldRecordTemplates["root-zone-comparison-record"].safetyNote).toContain("does not confirm a diagnosis");
+    expect(fieldRecordTemplates["root-zone-comparison-record"].mapSketchPrompt).toContain("crop-walk route");
     expect(fieldRecordTemplates["water-management-record"].recordColumns.join(" ")).toContain("Root-zone moisture");
     expect(fieldRecordTemplates["fertilisation-record"].recordColumns.join(" ")).toContain("Right rate");
     expect(fieldRecordTemplates["integrated-pest-management-record"].recordColumns.join(" ")).toContain("Beneficials");
@@ -240,8 +254,9 @@ describe("crop-advisor progression", () => {
     expect(getSavedRecordListState({ isLoading: false, isError: false, recordCount: 1 })).toBe("ready");
   });
 
-  it("provides seventeen source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
+  it("provides eighteen source-aligned scenario practices for core and high-risk advisory decisions without changing formal assessment rules", () => {
     expect(Object.keys(appliedScenarios)).toEqual([
+      "crop-selection-evidence-gap",
       "conflicting-soil-and-crop-evidence",
       "water-root-zone-decision",
       "fertilisation-limiting-factor-decision",
@@ -274,6 +289,7 @@ describe("crop-advisor progression", () => {
       "weed-management",
       "crop-observation",
       "soil-and-nutrition",
+      "vegetable-production-planning",
       "irrigation-systems",
       "nutrient-management",
       "insect-pests-and-mites-identification-and-management",
@@ -291,6 +307,7 @@ describe("crop-advisor progression", () => {
     expect(appliedScenarios["disease-cycle-and-escalation-decision"].questions[2].feedback).toContain("Legal fit");
     expect(appliedScenarios["weed-persistence-and-control-decision"].evidenceChecklist.join(" ")).toContain("drift");
     expect(appliedScenarios["conflicting-soil-and-crop-evidence"].questions[2].options.find(option => option.id === "c")?.label).toContain("qualified support");
+    expect(appliedScenarios["crop-selection-evidence-gap"].questions[2].options.find(option => option.id === "b")?.label).toContain("authorised local guidance");
   });
 
   it("provides six source-grounded measurement and decision routines with evidence, review, and referral boundaries", () => {
@@ -625,8 +642,8 @@ describe("crop-advisor progression", () => {
     expect(documentStates).toHaveLength(31);
     expect(overview.latestScores[firstDocumentModule.assessment.id]).toBe(100);
     expect(documentStates.find(module => module.id === firstDocumentModule.id)).toMatchObject({
-      completedLessons: 2,
-      lessonCount: 2,
+      completedLessons: 3,
+      lessonCount: 3,
       assessmentPassed: true,
     });
   });
@@ -657,7 +674,7 @@ describe("crop-advisor progression", () => {
     );
     const previousModule = cropAdvisorCourse.modules[2];
 
-    expect(planningModule?.lessons).toHaveLength(2);
+    expect(planningModule?.lessons).toHaveLength(3);
     expect(planningModule?.assessment.questions).toHaveLength(4);
     expect(
       isLessonAccessible(planningModule!.lessons[0].id, [], [

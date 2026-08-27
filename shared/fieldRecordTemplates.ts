@@ -9,6 +9,7 @@ export type FieldRecordTemplate = {
   recordColumns: readonly string[];
   reviewPrompts: readonly string[];
   safetyNote: string;
+  mapSketchPrompt?: string;
 };
 
 export const fieldRecordTemplates: Readonly<Record<string, FieldRecordTemplate>> = {
@@ -27,6 +28,7 @@ export const fieldRecordTemplates: Readonly<Record<string, FieldRecordTemplate>>
     recordColumns: ["Date / observer", "Area and location", "Surface and crop pattern", "Profile, root, and pore observation", "Moisture / recent water or management context", "Comparison, uncertainty, and next evidence"],
     reviewPrompts: ["Which observations agree with the working explanation, and which observation challenges it?", "What is the lowest-risk next evidence step, and what would require a pause, recheck, or qualified referral?"],
     safetyNote: "This record supports observation and comparison only. It does not confirm a diagnosis or prescribe irrigation, drainage, fertiliser, amendment, product, dose, rate, timing, or field operation. Use current local laboratory interpretation, authorised guidance, and qualified support when a consequential decision is needed.",
+    mapSketchPrompt: "Sketch the crop-walk route, reference and comparison areas, drainage or field-direction cues, and the marked observation positions. Add a simple key; record observations rather than a diagnosis.",
   },
   "water-management-record": {
     id: "water-management-record",
