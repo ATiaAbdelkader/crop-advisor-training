@@ -18,6 +18,7 @@ import {
   fieldRecordReviewShares,
   InsertUser,
   learnerReflections,
+  learnerExerciseProgress,
   lessonCompletions,
   scenarioAttempts,
   timedAssessmentSessions,
@@ -265,6 +266,38 @@ export async function markLessonComplete(
     .insert(lessonCompletions)
     .values({ userId, courseSlug, lessonId })
     .onDuplicateKeyUpdate({ set: { completedAt: new Date() } });
+}
+
+/** Returns only the signed-in learner's voluntary aggregate exercise completion; prompt content is never stored here. */
+export async function listLearnerExerciseProgress(userId: number) {
+  const db = await requireDb();
+  return db
+    .select()
+    .from(learnerExerciseProgress)
+    .where(eq(learnerExerciseProgress.userId, userId))
+    .orderBy(desc(learnerExerciseProgress.updatedAt));
+}
+
+/** Merges a device's voluntary completion counts without allowing an older device to erase completed practice. */
+export async function mergeLearnerExerciseProgress(input: {
+  userId: number;
+  progress: readonly { exerciseRoute: string; completedPrompts: number; totalPrompts: number }[];
+}) {
+  const db = await requireDb();
+  for (const entry of input.progress) {
+    const existing = await db
+      .select()
+      .from(learnerExerciseProgress)
+      .where(and(eq(learnerExerciseProgress.userId, input.userId), eq(learnerExerciseProgress.exerciseRoute, entry.exerciseRoute)))
+      .limit(1);
+    const current = existing[0];
+    const completedPrompts = Math.min(entry.totalPrompts, Math.max(entry.completedPrompts, current?.completedPrompts ?? 0));
+    await db
+      .insert(learnerExerciseProgress)
+      .values({ userId: input.userId, exerciseRoute: entry.exerciseRoute, completedPrompts, totalPrompts: entry.totalPrompts })
+      .onDuplicateKeyUpdate({ set: { completedPrompts, totalPrompts: entry.totalPrompts, updatedAt: new Date() } });
+  }
+  return listLearnerExerciseProgress(input.userId);
 }
 
 export async function recordAssessmentAttempt(input: {

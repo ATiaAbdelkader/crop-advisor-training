@@ -8,8 +8,8 @@ import { trpc } from "@/lib/trpc";
 import { startLogin } from "@/const";
 import { cropAdvisorCourse } from "@shared/curriculum";
 import { AlertTriangle, BarChart3, CheckCircle2, ChevronRight, ClipboardCheck, Clock3, LockKeyhole, RefreshCw, Target } from "lucide-react";
-import { useMemo } from "react";
-import { fieldExerciseCatalog, parseExerciseProgress } from "@shared/exerciseProgress";
+import { useEffect, useMemo, useRef } from "react";
+import { exerciseProgressStorageKey, fieldExerciseCatalog, parseExerciseProgress } from "@shared/exerciseProgress";
 import { useLocation } from "wouter";
 
 function getLearningTrack(index: number) {
@@ -23,8 +23,37 @@ export default function ProgressDashboard() {
   const { isAuthenticated } = useAuth();
   const [, setLocation] = useLocation();
   const overviewQuery = trpc.training.overview.useQuery(undefined, { enabled: isAuthenticated });
+  const accountExerciseProgressQuery = trpc.exerciseProgress.mine.useQuery(undefined, { enabled: isAuthenticated });
+  const syncAccountExerciseProgress = trpc.exerciseProgress.sync.useMutation({ onSuccess: () => void accountExerciseProgressQuery.refetch() });
+  const hasImportedBrowserProgress = useRef(false);
   const overview = overviewQuery.data;
-  const exerciseProgress = useMemo(() => typeof window === "undefined" ? {} : parseExerciseProgress(localStorage.getItem("crop-advisor-exercise-progress")), []);
+  const browserExerciseProgress = useMemo(() => typeof window === "undefined" ? {} : parseExerciseProgress(localStorage.getItem(exerciseProgressStorageKey)), []);
+  useEffect(() => {
+    if (!isAuthenticated || !accountExerciseProgressQuery.isSuccess || hasImportedBrowserProgress.current) return;
+    hasImportedBrowserProgress.current = true;
+    const progress = fieldExerciseCatalog.flatMap(item => {
+      const record = browserExerciseProgress[item.route];
+      return record && record.total > 0 && record.completed >= 0 && record.completed <= record.total
+        ? [{ exerciseRoute: item.route, completedPrompts: record.completed, totalPrompts: record.total }]
+        : [];
+    });
+    if (progress.length) syncAccountExerciseProgress.mutate({ progress });
+  }, [accountExerciseProgressQuery.isSuccess, browserExerciseProgress, isAuthenticated]);
+  const exerciseProgress = useMemo(() => {
+    const merged: Record<string, { completed: number; total: number; updatedAt: number }> = {};
+    fieldExerciseCatalog.forEach(item => {
+      const browserRecord = browserExerciseProgress[item.route];
+      const accountRecord = accountExerciseProgressQuery.data?.find(record => record.exerciseRoute === item.route);
+      const total = Math.max(browserRecord?.total ?? 0, accountRecord?.totalPrompts ?? 0);
+      if (!total) return;
+      merged[item.route] = {
+        completed: Math.min(total, Math.max(browserRecord?.completed ?? 0, accountRecord?.completedPrompts ?? 0)),
+        total,
+        updatedAt: Math.max(browserRecord?.updatedAt ?? 0, accountRecord?.updatedAt?.getTime() ?? 0),
+      };
+    });
+    return merged;
+  }, [accountExerciseProgressQuery.data, browserExerciseProgress]);
   const completedExercises = fieldExerciseCatalog.filter(item => { const record = exerciseProgress[item.route]; return record && record.total > 0 && record.completed === record.total; }).length;
 
   const documentModules = useMemo(
@@ -102,10 +131,10 @@ export default function ProgressDashboard() {
           <MetricCard label="Lesson completion" value={`${completedLessons} / ${totalLessons}`} detail="Completed lesson requirements" icon={<ClipboardCheck className="h-4 w-4" />} tone="sage" />
           <MetricCard label="Average latest score" value={averageScore === null ? "—" : `${averageScore}%`} detail={averageScore === null ? "Complete a module check to begin" : `${scoredModules.length} module checks recorded`} icon={<Target className="h-4 w-4" />} tone="gold" />
           <MetricCard label="Document-module progress" value={`${progressPercent}%`} detail="Based on passed module checks" icon={<BarChart3 className="h-4 w-4" />} tone="green" />
-          <MetricCard label="Field exercises" value={`${completedExercises} / ${fieldExerciseCatalog.length}`} detail="Voluntary progress saved in this browser" icon={<ClipboardCheck className="h-4 w-4" />} tone="sage" />
+          <MetricCard label="Field exercises" value={`${completedExercises} / ${fieldExerciseCatalog.length}`} detail="Voluntary progress saved to your account" icon={<ClipboardCheck className="h-4 w-4" />} tone="sage" />
         </section>
 
-        <section className="mt-7 rounded-[24px] border border-[#dce7d8] bg-[#f7faf5] p-5 sm:p-6"><div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#718471]">Voluntary field practice</p><h2 className="mt-1 font-serif text-2xl font-semibold text-[#294235]">Exercise completion summary</h2></div><p className="max-w-md text-xs leading-5 text-[#667866]">These checklists reflect completed prompts in this browser only. They support practice and do not change formal assessment, progression, scoring, certification, or alerts.</p></div><div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{fieldExerciseCatalog.map(item=>{const record=exerciseProgress[item.route];const done=Boolean(record&&record.total>0&&record.completed===record.total);return <button key={item.route} onClick={()=>setLocation(item.route)} className="rounded-xl border border-[#dce7d8] bg-white p-3 text-left transition-colors hover:bg-[#eef7ec]"><div className="flex items-center justify-between gap-2"><span className="text-xs font-bold text-[#315f47]">{item.module}</span><Badge className={cn("border-0 text-[9px]",done?"bg-[#dcefdc] text-[#337047]":"bg-[#edf1eb] text-[#647464]")}>{done?"Complete":"Not complete"}</Badge></div><p className="mt-1 text-sm font-semibold text-[#334b3a]">{item.title}</p><p className="mt-1 text-xs text-[#718071]">{record?`${record.completed}/${record.total} prompts completed`:"Open to begin practice"}</p></button>})}</div></section>
+        <section className="mt-7 rounded-[24px] border border-[#dce7d8] bg-[#f7faf5] p-5 sm:p-6"><div className="flex flex-wrap items-end justify-between gap-3"><div><p className="text-[10px] font-bold uppercase tracking-[.16em] text-[#718471]">Voluntary field practice</p><h2 className="mt-1 font-serif text-2xl font-semibold text-[#294235]">Exercise completion summary</h2></div><p className="max-w-md text-xs leading-5 text-[#667866]">Completed prompt counts are securely saved to your account and available across devices. Response text stays on the device where it was entered. This practice remains separate from formal assessment, progression, scoring, certification, and alerts.</p></div><div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-3">{fieldExerciseCatalog.map(item=>{const record=exerciseProgress[item.route];const done=Boolean(record&&record.total>0&&record.completed===record.total);return <button key={item.route} onClick={()=>setLocation(item.route)} className="rounded-xl border border-[#dce7d8] bg-white p-3 text-left transition-colors hover:bg-[#eef7ec]"><div className="flex items-center justify-between gap-2"><span className="text-xs font-bold text-[#315f47]">{item.module}</span><Badge className={cn("border-0 text-[9px]",done?"bg-[#dcefdc] text-[#337047]":"bg-[#edf1eb] text-[#647464]")}>{done?"Complete":"Not complete"}</Badge></div><p className="mt-1 text-sm font-semibold text-[#334b3a]">{item.title}</p><p className="mt-1 text-xs text-[#718071]">{record?`${record.completed}/${record.total} prompts completed`:"Open to begin practice"}</p></button>})}</div></section>
 
         <section className="mt-7 rounded-[24px] border border-[#e0e5dc] bg-[#fcfcf8] shadow-[0_9px_24px_rgba(39,67,47,.035)]">
           <div className="flex flex-wrap items-end justify-between gap-4 border-b border-[#e7ece4] px-5 py-5 sm:px-6">

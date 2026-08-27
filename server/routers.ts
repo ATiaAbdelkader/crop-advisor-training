@@ -61,6 +61,7 @@ import {
   markCropDiagnosisAnnotationFeedbackRead,
   markCompetencyAssessmentFeedbackRead,
   markLessonComplete,
+  mergeLearnerExerciseProgress,
   recordAssessmentAttempt,
   listFieldRecords,
   listFieldPracticumEntries,
@@ -70,6 +71,7 @@ import {
   listCaseConferenceSlotsForLearner,
   listFieldRecordReviewShares,
   listFieldInquiryPeerSharesForOwner,
+  listLearnerExerciseProgress,
   listLearnerReflections,
   listScenarioAttempts,
   saveFieldRecord,
@@ -105,6 +107,7 @@ import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
 import { COOKIE_NAME } from "@shared/const";
 import { maximumAdministratorTimedQuizSeconds, minimumAdministratorTimedQuizSeconds, resolveTimedQuizLimitSeconds } from "../shared/timedAssessments";
+import { isFieldExerciseRoute, maximumExercisePromptCount } from "../shared/exerciseProgress";
 
 async function getOverviewForLearner(userId: number) {
   const records = await getLearningRecords(userId, cropAdvisorCourse.id);
@@ -130,9 +133,17 @@ async function getOverviewForLearner(userId: number) {
 
 const fieldRecordPayloadInput = z.object({
   setup: z.record(z.string().max(160), z.string().max(MAX_FIELD_RECORD_VALUE_LENGTH)),
-  entries: z.array(z.record(z.string().max(160), z.string().max(MAX_FIELD_RECORD_VALUE_LENGTH))).max(MAX_FIELD_RECORD_ENTRIES),
+  entries: z.array(z.record(z.string().max(160), z.string().max(MAX_FIELD_RECORD_ENTRIES))).max(MAX_FIELD_RECORD_ENTRIES),
   review: z.array(z.string().max(MAX_FIELD_RECORD_VALUE_LENGTH)).max(2),
 });
+
+const exerciseProgressEntryInput = z
+  .object({
+    exerciseRoute: z.string().min(1).max(160).refine(isFieldExerciseRoute, "Exercise route is not recognised."),
+    completedPrompts: z.number().int().min(0).max(maximumExercisePromptCount),
+    totalPrompts: z.number().int().min(1).max(maximumExercisePromptCount),
+  })
+  .refine(entry => entry.completedPrompts <= entry.totalPrompts, "Completed prompt count cannot exceed the prompt total.");
 
 const fieldInquiryDecisionPayloadInput = z.object({
   decisionQuestion: z.string().trim().min(fieldInquiryPeerReviewRequirements.minimumDecisionLength).max(fieldInquiryPeerReviewRequirements.maximumDecisionLength),
@@ -483,6 +494,12 @@ export const appRouter = router({
           overview: await getOverviewForLearner(ctx.user.id),
         };
       }),
+  }),
+  exerciseProgress: router({
+    mine: protectedProcedure.query(({ ctx }) => listLearnerExerciseProgress(ctx.user.id)),
+    sync: protectedProcedure
+      .input(z.object({ progress: z.array(exerciseProgressEntryInput).max(14).refine(progress => new Set(progress.map(entry => entry.exerciseRoute)).size === progress.length, "Include each exercise only once.") }))
+      .mutation(({ ctx, input }) => mergeLearnerExerciseProgress({ userId: ctx.user.id, progress: input.progress })),
   }),
   fieldInquiryPeerReview: router({
     mine: protectedProcedure

@@ -124,6 +124,20 @@ export const lessonCompletions = mysqlTable(
   ]
 );
 
+/** Latest voluntary prompt-completion state for a learner's field exercise; it never affects formal progression. */
+export const learnerExerciseProgress = mysqlTable(
+  "learnerExerciseProgress",
+  {
+    id: int("id").autoincrement().primaryKey(),
+    userId: int("userId").notNull().references(() => users.id, { onDelete: "cascade" }),
+    exerciseRoute: varchar("exerciseRoute", { length: 160 }).notNull(),
+    completedPrompts: int("completedPrompts").default(0).notNull(),
+    totalPrompts: int("totalPrompts").notNull(),
+    updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  },
+  table => [uniqueIndex("learner_exercise_progress_owner_route_unique").on(table.userId, table.exerciseRoute), index("learner_exercise_progress_owner_updated_idx").on(table.userId, table.updatedAt)]
+);
+
 export const assessmentAttempts = mysqlTable("assessmentAttempts", {
   id: int("id").autoincrement().primaryKey(),
   userId: int("userId")
